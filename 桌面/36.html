@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src='js/jquery-3.1.1.js'></script>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				border: 1px solid red;
+				position: absolute;
+				font-size: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+		<div>5</div>
+	</body>
+	<script>
+		init()
+		function init(){
+			var w = $(window).innerWidth();
+			var h = $(window).innerHeight();
+			
+			if(w<200){
+				$(window).width(200)
+			}
+			if(h<200){
+				$(window).height(200)
+			}
+			var odivW = $('div').eq(0).innerWidth()+20;
+			
+			var yNum = Math.floor(h/odivW); //y个数
+			$('div').each(function(index,item){
+				console.log(Math.floor(index/yNum))
+				var left = Math.floor(index/yNum)*odivW;
+				var top = (index%yNum)*odivW;
+				var l = $(item).offset().left;
+				var t= $(item).offset().top;
+				$(item).css({
+					top:top,
+					left:left
+				})
+//				if(left==l  && top==t){
+//					
+//				}else{
+//					$(item).animate({
+//						top:top,
+//						left:left
+//					})
+//				}
+			})
+		}
+		$(window).resize(function(){
+			init()
+		})
+	</script> 
+</html>

@@ -18,7 +18,7 @@ folder.prototype = {
 		obj.downTime = null;
 		obj.onmousedown = function(e) {
 				var that = obj;
-				that.downTime = setTimeout(function() {
+//				that.downTime = setTimeout(function() {
 //					console.log(123)
 					if(e.which == 1) {
 						var disx = e.clientX - obj.offsetLeft;
@@ -48,12 +48,13 @@ folder.prototype = {
 						}
 						return false;
 					}
-				}, 1000)
-			},
-			obj.onmouseup = function(e) {
-				this.downTime = null;
-				console.log(123);
+//				}, 1000)
 			}
+//		,
+//			obj.onmouseup = function(e) {
+//				this.downTime = null;
+//				console.log(123);
+//			}
 	},
 	contextmenu: function(obj) { //右键事件
 		obj.oncontextmenu = function(e) {

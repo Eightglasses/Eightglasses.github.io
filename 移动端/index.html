@@ -125,19 +125,13 @@
 				}
 			}
 			
-			.left {
-				transform: rotateZ(-60deg) 2s;
-			}
-			
-			.right {
-				transform: rotateZ(60deg) 2s;
-			}
+		
 		</style>
 	</head>
 
 	<body>
 		<section class="welcome">
-			<div class="tree left">
+			<div class="tree">
 				<img class="tree_img" src="img/tree.jpg" />
 				<div class="welcome2">
 					<img src="img/title.png" />
@@ -164,10 +158,10 @@
 				logo.innerHTML += "<br/>y:" + y;
 				logo.innerHTML += "<br/>z:" + z;
 				if(y < 0) {
-					oTree.className = 'left tree';
+					oTree.style.transform = 'translateX(50px)'
 				}
 				if(y > 0) {
-					oTree.className = 'right tree';
+					oTree.style.transform = 'translateX(-50px)'
 				}
 			});
 		</script>

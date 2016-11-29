@@ -153,10 +153,13 @@
 				var y = Math.round(e.gamma);
 				var z = Math.round(e.alpha);
 				if(y < 0) {
-					logo.innerHTML += "<br/>y:" + y;
+					logo.innerHTML = "<br/>y:" + y;
+					oTree.style.transform = 'translateY('+y+'rem)'
 				}
 				if(y > 0) {
-					logo.innerHTML += "<br/>y:" + y;
+					logo.innerHTML = "<br/>y:" + y;
+					oTree.style.transform = 'translateY('+y+'rem)'
+
 				}
 			});
 		</script>

@@ -124,8 +124,6 @@
 					-webkit-transform: translateX(-50px);
 				}
 			}
-			
-		
 		</style>
 	</head>
 
@@ -154,14 +152,11 @@
 				var x = Math.round(e.beta);
 				var y = Math.round(e.gamma);
 				var z = Math.round(e.alpha);
-				logo.innerHTML = "x:" + x;
-				logo.innerHTML += "<br/>y:" + y;
-				logo.innerHTML += "<br/>z:" + z;
 				if(y < 0) {
-					oTree.style.transform = 'translateX(50px)'
+					logo.innerHTML += "<br/>y:" + y;
 				}
 				if(y > 0) {
-					oTree.style.transform = 'translateX(-50px)'
+					logo.innerHTML += "<br/>y:" + y;
 				}
 			});
 		</script>

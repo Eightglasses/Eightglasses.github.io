@@ -148,18 +148,18 @@
 
 		<script type="text/javascript">
 			var logo = document.querySelector('#logo');
-			var oTree = document.querySelector('.tree');
+			var welcome = document.querySelector('.welcome');
 			window.addEventListener('deviceorientation', function(e) {
 				var x = Math.round(e.beta);
 				var y = Math.round(e.gamma);
 				var z = Math.round(e.alpha);
 				if(y < 0) {
 					logo.innerHTML = "<br/>y:" + y;
-					oTree.style.transform = 'translateX('+y+'px)'
+					welcome.style.transform = 'translateX('+y+'px)'
 				}
 				if(y > 0) {
 					logo.innerHTML = "<br/>y:" + y;
-					oTree.style.transform = 'translateX('+y+'px)'
+					welcome.style.transform = 'translateX('+y+'px)'
 
 				}
 			});

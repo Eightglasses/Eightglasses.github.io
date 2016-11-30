@@ -8,7 +8,7 @@ option {
 }
 
 body {
-	overflow: hidden;
+/*	overflow: hidden;*/
 }
 
 body,
@@ -202,7 +202,8 @@ body {
 
 .tab {
 	position: relative;
-	height: 8.83rem;
+	height: 8.4rem;
+	overflow: hidden;
 }
 
 .tab ul {

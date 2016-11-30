@@ -1,54 +1,61 @@
-var logo = document.querySelector('#logo');
-var showpage = document.querySelector('.showpage');
-var arrimg = [{
-	src: 'img/1.jpg',
-	title: '阳光河边垂柳树'
-}, {
-	src: 'img/2.jpg',
-	title: '海边观赏风景'
-}, {
-	src: 'img/3.jpg',
-	title: '金毛趴在海边看风景'
-}, {
-	src: 'img/4.jpg',
-	title: '水库旁的杨树'
-}, {
-	src: 'img/5.jpg',
-	title: '一只孤舟'
-}];
-var welcome = document.querySelector('.welcome');
-var oTab = document.querySelector('.tab');
-var tabChild = oTab.children[0].children;
-//手机左右晃动，整体移动的效果
-window.addEventListener('deviceorientation', function(e) {
-	var x = Math.round(e.beta);
-	var y = Math.round(e.gamma);
-	var z = Math.round(e.alpha);
-	if(y < 0) {
-		welcome.style.transform = 'translateX(' + y + 'px)'
-	}
-	if(y > 0) {
-		welcome.style.transform = 'translateX(' + y + 'px)'
-	}
-});
-console.log(tabChild)
-	//滚动图
-$(arrimg).each(function(i) {
-	console.log(arrimg[i].title)
-	$('<li></li>').append($('<img>').attr('src', arrimg[i].src)).appendTo($('.tab ul'));
-	$('.picMask nav').append($('<span>'));
-});
-var w = document.documentElement.offsetWidth;
-var time = null;
-var i = 0;
-$('.picMask p').html(arrimg[0].title);
-$('.picMask span').eq(0).addClass('active');
-time = setInterval(function() {
-	i++;
-	if(i > 4) {
-		i = 0;
-	}
-	$('.picMask span').eq(i).addClass('active').siblings().removeClass('active')
-	$('.picMask p').html(arrimg[i].title);
-	$(".tab ul").css("left", -w * i + 'px');
-}, 2000)
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title></title>
+		<meta name="viewport" content="width=device-width,user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<script src="js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			(function() {
+				var html = document.documentElement;
+				html.style.fontSize = html.clientWidth / 16 + "px";
+			})();
+		</script>
+
+		<style type="text/css">
+			
+		</style>
+	</head>
+
+	<body>
+		<section class="welcome" style="display: none;">
+			<div class="tree">
+				<img class="tree_img" src="img/tree.jpg" />
+				<div class="welcome2">
+					<img src="img/title.png" />
+					<span class="shake"></span>
+				</div>
+				<img src="img/title2.png" class="tree3" />
+				<span class="cloud"></span>
+				<span class="cloud"></span>
+				<span class="cloud"></span>
+			</div>
+			<footer id="logo">
+				<img src="img/logo.png" />
+			</footer>
+		</section>
+		<section class="showpage">
+			<div class="tab">
+				<ul>
+					
+				</ul>
+				<div class="picMask">
+					<p></p>
+					<nav>
+						
+					</nav>
+				</div>
+			</div>
+		</section>
+	
+		
+		<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			
+		</script>
+	</body>
+
+</html>

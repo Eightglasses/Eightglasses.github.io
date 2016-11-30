@@ -3,9 +3,10 @@
 
 	<head>
 		<meta charset="UTF-8" />
-		<title>Document</title>
+		<title></title>
 		<meta name="viewport" content="width=device-width,user-scalable=no">
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<script src="js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			(function() {
 				var html = document.documentElement;
@@ -14,122 +15,12 @@
 		</script>
 
 		<style type="text/css">
-			html,
-			.welcome,
-			body {
-				width: 100%;
-				height: 100%;
-			}
 			
-			.tree {
-				width: 100%;
-				position: absolute;
-				top: 4.75rem;
-			}
-			
-			#logo {
-				position: absolute;
-				bottom: 1.5rem;
-			}
-			
-			.tree img {
-				width: 101%;
-			}
-			
-			.welcome2 {
-				padding-top: 1.35rem;
-			}
-			
-			.tree3 {
-				padding-top: .5rem;
-			}
-			
-			#logo img {
-				width: 100%;
-			}
-			
-			.cloud {
-				position: absolute;
-				background: url(img/cloud.png) no-repeat;
-				background-size: contain;
-			}
-			
-			.cloud:nth-of-type(1) {
-				left: 11.6rem;
-				top: .75rem;
-				width: 3rem;
-				height: 1.25rem;
-			}
-			
-			.cloud:nth-of-type(3) {
-				left: 11.6rem;
-				top: 3.75rem;
-				width: 2.9rem;
-				height: 1rem;
-			}
-			
-			.cloud:nth-of-type(2) {
-				left: 2.75rem;
-				top: 2.5rem;
-				width: 2.5rem;
-				height: 1.75rem;
-			}
-			
-			.tree {
-				animation: treeimg 1s;
-				animation-fill-mode: forwards;
-				opacity: 0;
-			}
-			
-			.welcome2 {
-				opacity: 0;
-				transform: translateY(2rem);
-				-webkit-animation: treeimg1 2s;
-				animation: treeimg1 2s;
-				animation-fill-mode: forwards;
-			}
-			
-			.tree3 {
-				opacity: 0;
-				transform: translateY(2rem);
-				-webkit-animation: treeimg1 2.5s;
-				animation: treeimg1 2.5s;
-				animation-fill-mode: forwards;
-			}
-			
-			.cloud {
-				-webkit-animation: cloud 3s 2s infinite alternate linear;
-				animation-fill-mode: forwards;
-			}
-			
-			
-			@-webkit-keyframes treeimg {
-				100% {
-					opacity: 1;
-					-webkit-transform: translateY(-2rem);
-				}
-			}
-			
-			@-webkit-keyframes treeimg1 {
-				100% {
-					opacity: 1;
-					-webkit-transform: translateY(0rem);
-				}
-			}
-			
-			@-webkit-keyframes cloud {
-				0% {
-					-webkit-transform: translateX(0px);
-				}
-				100% {
-					-webkit-transform: translateX(-50px);
-				}
-			}
 		</style>
 	</head>
 
 	<body>
-		<section class="welcome">
+		<section class="welcome" style="display: none;">
 			<div class="tree">
 				<img class="tree_img" src="img/tree.jpg" />
 				<div class="welcome2">
@@ -145,22 +36,25 @@
 				<img src="img/logo.png" />
 			</footer>
 		</section>
-
+		<section class="showpage">
+			<div class="tab">
+				<ul>
+					
+				</ul>
+				<div class="picMask">
+					<p></p>
+					<nav>
+						
+					</nav>
+				</div>
+			</div>
+		</section>
+	
+		
+		<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			var logo = document.querySelector('#logo');
-			var welcome = document.querySelector('.welcome');
-			window.addEventListener('deviceorientation', function(e) {
-				var x = Math.round(e.beta);
-				var y = Math.round(e.gamma);
-				var z = Math.round(e.alpha);
-				if(y < 0) {
-					welcome.style.transform = 'translateX('+y+'px)'
-				}
-				if(y > 0) {
-					welcome.style.transform = 'translateX('+y+'px)'
-
-				}
-			});
+			
+			
 		</script>
 	</body>
 

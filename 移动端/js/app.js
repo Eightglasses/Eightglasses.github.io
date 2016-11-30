@@ -35,17 +35,20 @@ console.log(tabChild)
 	//滚动图
 $(arrimg).each(function(i) {
 	console.log(arrimg[i].title)
-	$('<li></li>').append($('<img>').attr('src', arrimg[i].src)).appendTo($('.tab ul'))
+	$('<li></li>').append($('<img>').attr('src', arrimg[i].src)).appendTo($('.tab ul'));
+	$('.picMask nav').append($('<span>'));
 });
 var w = document.documentElement.offsetWidth;
 var time = null;
 var i = 0;
 $('.picMask p').html(arrimg[0].title);
+$('.picMask span').eq(0).addClass('active');
 time = setInterval(function() {
 	i++;
 	if(i > 4) {
 		i = 0;
 	}
+	$('.picMask span').eq(i).addClass('active').siblings().removeClass('active')
 	$('.picMask p').html(arrimg[i].title);
 	$(".tab ul").css("left", -w * i + 'px');
 }, 2000)

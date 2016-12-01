@@ -260,6 +260,52 @@ body {
 	background: #fff;
 	opacity: .5;
 }
-.picMask nav .active{
+
+.picMask nav .active {
 	opacity: 1;
+}
+
+.score {
+	padding-left: .6rem;
+}
+
+.score h3 {
+	font-size: .9rem;
+	font-weight: normal;
+	margin: 0;
+	padding: .8rem 0;
+	color: #333;
+}
+
+.score li {
+	height: 1.5rem;
+	/*line-height: 1.5rem;*/
+	font-size: .7rem;
+	width: 100%;
+}
+
+.score li label {
+	color: #666;
+	float: left;
+	line-height: 1.1rem;
+}
+
+.score li span {
+	margin-left: 1rem;
+	float: left;
+}
+
+.score li span a {
+	width: 1rem;
+	height: 1rem;
+	background-image: url(../img/star.png);
+	background-repeat: no-repeat;
+	background-size: 2rem 1rem;
+	background-position: -1rem 0;
+	margin-right: 1rem;
+	display: inline-block;
+	transition: .3s;
+	outline: none;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+	-webkit-user-modify: read-only;
 }

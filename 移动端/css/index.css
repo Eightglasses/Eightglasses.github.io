@@ -10,9 +10,10 @@ option {
 body {
 	overflow-x: hidden;
 	margin: 0;
-	
 };
-
+input{
+	-webkit-appearance: none;
+}
 
 body,
 h1,

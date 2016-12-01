@@ -138,7 +138,7 @@ body {
 
 .cloud {
 	position: absolute;
-	background: url(img/cloud.png) no-repeat;
+	background: url(../img/cloud.png) no-repeat;
 	background-size: contain;
 }
 
@@ -189,6 +189,11 @@ body {
 	-webkit-animation: cloud 3s 2s infinite alternate linear;
 	animation-fill-mode: forwards;
 }
+
+.welcome {
+	/*transition: .9s;*/
+}
+.showpage{display: none;}
 
 @-webkit-keyframes treeimg {
 	100% {

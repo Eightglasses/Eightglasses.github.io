@@ -16,6 +16,7 @@ var arrimg = [{
 	src: 'img/5.jpg',
 	title: '一只孤舟'
 }];
+
 var welcome = document.querySelector('.welcome');
 var oTab = document.querySelector('.tab');
 var tabChild = oTab.children[0].children;
@@ -31,10 +32,8 @@ window.addEventListener('deviceorientation', function(e) {
 		welcome.style.transform = 'translateX(' + y + 'px)'
 	}
 });
-console.log(tabChild)
-	//滚动图
+//滚动图
 $(arrimg).each(function(i) {
-	console.log(arrimg[i].title)
 	$('<li></li>').append($('<img>').attr('src', arrimg[i].src)).appendTo($('.tab ul'));
 	$('.picMask nav').append($('<span>'));
 });
@@ -52,3 +51,26 @@ time = setInterval(function() {
 	$('.picMask p').html(arrimg[i].title);
 	$(".tab ul").css("left", -w * i + 'px');
 }, 2000)
+
+//添加评分的星星
+var oScore = document.querySelector('.score');
+var oScorespan = document.querySelectorAll('.score span');
+for(var i = 0; i < oScorespan.length; i++) {
+	star(i);
+}
+//每个span下的子集都添加星星的方法
+function star(index) {
+	var oScorea = oScorespan[index].children;
+	for(var i = 0; i < oScorea.length; i++) {
+		oScorea[i].index = i;
+		oScorea[i].onclick = function() {
+			for(var i = 0; i < oScorea.length; i++) {
+				if(i<=this.index){
+					oScorea[i].style.backgroundPositionX = 0;
+				}else{
+					oScorea[i].style.backgroundPositionX = '-1rem';
+				}
+			}
+		}
+	}
+}

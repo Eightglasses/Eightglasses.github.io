@@ -32,13 +32,22 @@ window.addEventListener('deviceorientation', function(e) {
 		welcome.style.transform = 'translateX(' + y + 'px)'
 	}
 });
-//滚动图<section class="showpage"> 数据arrimg
+//5s后 首页消失
+setTimeout(function(){
+	
+		$('.welcome').fadeOut('slow',function(){
+			$('.showpage').fadeIn('slow');
+		});
+		
+		
+},5000)
 
+//滚动图<section class="showpage"> 数据arrimg
 $(arrimg).each(function(i) {
 	$('<li></li>').append($('<img>').attr('src', arrimg[i].src)).appendTo($('.tab ul'));
 	$('.picMask nav').append($('<span>'));
 });
-var w = document.documentElement.offsetWidth;
+var w = $('.tab li').width;
 var time = null;
 var i = 0;
 $('.picMask p').html(arrimg[0].title);
@@ -62,6 +71,7 @@ for(var i = 0; i < oScorespan.length; i++) {
 //每个span下的子集都添加星星的方法
 function star(index) {
 	var oScorea = oScorespan[index].children;
+	console.log(oScorea)
 	for(var i = 0; i < oScorea.length; i++) {
 		oScorea[i].index = i;
 		oScorea[i].onclick = function() {

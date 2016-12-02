@@ -12,15 +12,6 @@ body {
 	margin: 0;
 }
 
-;
-input[type=button],
-input[type=submit],
-input[type=file],
-button {
-	cursor: pointer;
-	-webkit-appearance: none;
-}
-
 body,
 h1,
 h2,
@@ -190,7 +181,10 @@ body {
 .welcome {
 	/*transition: .9s;*/
 }
-.showpage{display: none;}
+
+.showpage {
+	display: none;
+}
 
 @-webkit-keyframes treeimg {
 	100% {
@@ -361,8 +355,11 @@ body {
 	border: none;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
-	font-size: .7rem;
+	font-size: .9rem;
 	display: block;
 	background: #3c9bbb;
 	margin: 3rem 0 .5rem 0;
+	text-align: center;
+	line-height: 1.95rem;
+	letter-spacing:8px
 }

@@ -21,26 +21,25 @@ var welcome = document.querySelector('.welcome');
 var oTab = document.querySelector('.tab');
 var tabChild = oTab.children[0].children;
 //手机左右晃动，整体移动的效果
-window.addEventListener('deviceorientation', function(e) {
-	var x = Math.round(e.beta);
-	var y = Math.round(e.gamma);
-	var z = Math.round(e.alpha);
-	if(y < 0) {
-		welcome.style.transform = 'translateX(' + y + 'px)'
-	}
-	if(y > 0) {
-		welcome.style.transform = 'translateX(' + y + 'px)'
-	}
-});
+//window.addEventListener('deviceorientation', function(e) {
+//	var x = Math.round(e.beta);
+//	var y = Math.round(e.gamma);
+//	var z = Math.round(e.alpha);
+//	if(y < 0) {
+//		welcome.style.transform = 'translateX(' + y + 'px)'
+//	}
+//	if(y > 0) {
+//		welcome.style.transform = 'translateX(' + y + 'px)'
+//	}
+//});
 //5s后 首页消失
-setTimeout(function(){
-	
-		$('.welcome').fadeOut('slow',function(){
-			$('.showpage').fadeIn('slow');
-		});
-		
-		
-},5000)
+setTimeout(function() {
+
+	$('.welcome').fadeOut('slow', function() {
+		$('.showpage').fadeIn('slow');
+	});
+
+}, 5000)
 
 //滚动图<section class="showpage"> 数据arrimg
 $(arrimg).each(function(i) {
@@ -90,6 +89,6 @@ function star(index) {
 $(tag).each(function(index) {
 	$('<li>').append($('<input>').attr('type', 'radio')).append($('<span>').html(tag[index])).appendTo($('.tag ul'))
 });
-$('.tag li').click(function(){
-		$(this).addClass('active').siblings().removeClass('active');
-	})
+$('.tag li').click(function() {
+	$(this).addClass('active').siblings().removeClass('active');
+})

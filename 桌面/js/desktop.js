@@ -7,27 +7,25 @@ window.onload = function() {
 	var oContextmenu2 = document.getElementById('contextmenu2');
 	var menu2child = oContextmenu2.children[0].children;
 	var menu1child = oContextmenu1.children;
-	var oInvisible = document.getElementById('invisible');
+	var oInvisible = document.getElementById('invisible'); //弹出框
 	var oBody = document.body;
 	//宽度高度自适用
-
 	windowresize();
 
 	function windowresize() {
 		//加载需要显示的内容
-		var divlisthtml = '';
-		for(var i = 0; i < data.length; i++) {
-			divlisthtml += `
-				<div class="divlist">
-					<a href="javascript:;">
-						<span class="divlistimg"> </span>
-						<p>` + data[i].name + `</p>
-					</a>
-				</div>`;
-		}
-
-		//宽高自适用
-		oMain.innerHTML = divlisthtml;
+		var oMainc = oMain.children;
+		if(oMainc.length == '0') { //判断omain是否有子集，有的话就不添加了
+			$(data).each(function(index) {
+				$('#main').append($('<div>').addClass('divlist').append($('<a>').append($('<span>').addClass('divlistimg')).append($('<p>').html(data[index].name))));
+			});
+		};
+		menu2child[2].onmousedown = function(e) {
+				oContextmenu2.style.display = 'none';
+				$('#main').append($('<div>').addClass('divlist').append($('<a>').append($('<span>').addClass('divlistimg')).append($('<p>').html('新建文件夹'))));
+				e.cancelBubble = true;
+			}
+			//宽高自适用
 		var elem = document.documentElement;
 		var elemWidth = elem.clientWidth;
 		var elemHeight = elem.clientHeight;
@@ -40,16 +38,16 @@ window.onload = function() {
 		for(var i = 0; i < divList.length; i++) {
 			one.move(divList[i]); //移动
 			one.contextmenu(divList[i]); //右键
+			console.log(data[i].href)
 			one.dbl(divList[i], data[i].href, oInvisible); //双击
 			//位置
 			var oleft = Math.floor(i / lNum) * divList[i].offsetWidth;
 			var otop = (i % lNum) * 130;
-			//divList[i].style.left = Math.floor(i / lNum) * divList[i].offsetWidth + 'px';
-			//divList[i].style.top = (i % lNum) * 130 + 'px';
-			move(divList[i], {
+
+			$('.divlist').eq(i).animate({
 				left: oleft,
 				top: otop
-			}, 200, 'linear')
+			}, 100)
 		}
 
 	}
@@ -60,14 +58,24 @@ window.onload = function() {
 		console.log(this)
 		oInvisible.style.display = 'none';
 	}
-	child[1].onclick = function(e) {
-			//		var child = oInvisible.children[1].children[0]
+
+	child[1].onoff = true;
+	child[1].onclick = function(e) { //iframe窗口放大缩小
 			e.cancelBubble = true;
-			//			oInvisible.style.left = 0;
-			//			oInvisible.style.top = 0;
-			oInvisible.style.width = '100%';
-			oInvisible.style.height = '100%';
-			oinposition(oInvisible, '28', '0');
+			if(child[1].onoff) {
+				oInvisible.style.width = '100%';
+				oInvisible.style.height = '100%';
+				this.style.backgroundPosition = 'left -60px'
+				oinposition(oInvisible, '28', '0');
+				child[1].onoff = false;
+			} else {
+				oInvisible.style.width = '750px';
+				oInvisible.style.height = '450px';
+				child[1].onoff = true;
+				oinposition(oInvisible, '28', '30');
+
+			}
+
 		}
 		//窗口大小改变时重新加载
 	window.onresize = function() {
@@ -87,11 +95,11 @@ window.onload = function() {
 		contextmenu2.style.display = 'block';
 		return false;
 	};
-	menu2child[1].onmousedown = function(e){//刷新页面
+	menu2child[1].onmousedown = function(e) { //刷新页面
 		e.cancelBubble;
 		location.reload()
 	}
-	menu2child[0].onmousedown = function(e){//整理桌面
+	menu2child[0].onmousedown = function(e) { //整理桌面
 		e.cancelBubble;
 		windowresize()
 	}

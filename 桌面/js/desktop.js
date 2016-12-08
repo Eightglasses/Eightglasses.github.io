@@ -1,18 +1,38 @@
 window.onload = function() {
+	//	get(); //拿本地存储数据
 	var oMain = document.getElementById('main');
 	var oDesktop = document.getElementById('desktop');
 	var oBottom = document.getElementById('bottom');
 	var divList = document.getElementsByClassName('divlist');
+	var oRemove = document.getElementsByClassName('removeItem')[0];
+	var oNew_file = document.getElementsByClassName('new_file')[0];
 	var oContextmenu1 = document.getElementById('contextmenu1');
 	var oContextmenu2 = document.getElementById('contextmenu2');
 	var menu2child = oContextmenu2.children[0].children;
 	var menu1child = oContextmenu1.children;
 	var oInvisible = document.getElementById('invisible'); //弹出框
 	var oBody = document.body;
-	//宽度高度自适用
-	windowresize();
+	var data = null; //本地缓存数据
 
-	function windowresize() {
+	//获取本地缓存
+	var getItem = localStorage.getItem('str');
+	data = JSON.parse(getItem);
+	if(data == null) { //如果有本地缓存用本地缓存没有本地缓存用datalist的数据
+		data = dataList;
+	} else {
+		data = data;
+	}
+	//默认加载
+	windowR();
+	//数据
+	save();
+	//存数据
+	function save() {
+		var str = JSON.stringify(data);
+		localStorage.setItem('str', str);
+	}
+
+	function windowR() {
 		//加载需要显示的内容
 		var oMainc = oMain.children;
 		if(oMainc.length == '0') { //判断omain是否有子集，有的话就不添加了
@@ -20,12 +40,12 @@ window.onload = function() {
 				$('#main').append($('<div>').addClass('divlist').append($('<a>').append($('<span>').addClass('divlistimg')).append($('<p>').html(data[index].name))));
 			});
 		};
-		menu2child[2].onmousedown = function(e) {
-				oContextmenu2.style.display = 'none';
-				$('#main').append($('<div>').addClass('divlist').append($('<a>').append($('<span>').addClass('divlistimg')).append($('<p>').html('新建文件夹'))));
-				e.cancelBubble = true;
-			}
-			//宽高自适用
+
+		location();
+
+	}
+
+	function location() { //宽高自适用
 		var elem = document.documentElement;
 		var elemWidth = elem.clientWidth;
 		var elemHeight = elem.clientHeight;
@@ -33,29 +53,26 @@ window.onload = function() {
 		oBody.style.height = elemHeight + 'px';
 		oMain.style.height = elemHeight + 'px';
 		oMain.style.backgroundSize = '100% 100%';
-		//图标位置确定
+		//图标位置确定 ，lnum一列能放几个图标
 		var lNum = Math.floor(elemHeight / divList[0].offsetHeight);
+		oMain.lNum = Math.floor(elemHeight / divList[0].offsetHeight);
 		for(var i = 0; i < divList.length; i++) {
 			one.move(divList[i]); //移动
 			one.contextmenu(divList[i]); //右键
-			console.log(data[i].href)
-			one.dbl(divList[i], data[i].href, oInvisible); //双击
-			//位置
+			one.dbl(divList[i], 'data[i].href', oInvisible); //双击
 			var oleft = Math.floor(i / lNum) * divList[i].offsetWidth;
 			var otop = (i % lNum) * 130;
-
 			$('.divlist').eq(i).animate({
 				left: oleft,
 				top: otop
-			}, 100)
+			}, 100);
+			oMain.i = i;
 		}
-
 	}
-
 	var child = oInvisible.children[0].children[1].children;
 	child[2].onclick = function(e) {
 		e.cancelBubble = true;
-		console.log(this)
+
 		oInvisible.style.display = 'none';
 	}
 
@@ -73,13 +90,12 @@ window.onload = function() {
 				oInvisible.style.height = '450px';
 				child[1].onoff = true;
 				oinposition(oInvisible, '28', '30');
-
 			}
 
 		}
 		//窗口大小改变时重新加载
 	window.onresize = function() {
-		windowresize();
+		windowR();
 	};
 
 	document.onmousedown = function() {
@@ -97,11 +113,42 @@ window.onload = function() {
 	};
 	menu2child[1].onmousedown = function(e) { //刷新页面
 		e.cancelBubble;
-		location.reload()
-	}
+		document.location.reload();
+	};
 	menu2child[0].onmousedown = function(e) { //整理桌面
 		e.cancelBubble;
-		windowresize()
+		windowR();
+	};
+	oRemove.onmousedown = function() {
+		localStorage.removeItem('str');
+		document.location.reload();
 	}
+
+	oNew_file.onmousedown = function(e) { //新建文件夹
+		oContextmenu2.style.display = 'none';
+		var newdata = '';
+		//新数据
+		newdata = {
+			name: '新建文件夹',
+			pid: 1,
+			id: data.length + 1,
+			href: ''
+		};
+		data.push(newdata);
+		save();
+		$('#main').append($('<div>').addClass('divlist').append($('<a>').append($('<span>').addClass('divlistimg')).append($('<p>').html('新建文件夹'))));
+		var ol = Math.floor((oMain.i + 1) / oMain.lNum) * divList[oMain.i + 1].offsetWidth;
+		var ot = ((oMain.i + 1) % oMain.lNum) * 130;
+		$('#main div').each(function(index) {
+			$('#main div').last().animate({
+				left: ol,
+				top: ot
+			})
+		})
+
+		oMain.i++;
+		location();
+		e.cancelBubble = true;
+	};
 
 }

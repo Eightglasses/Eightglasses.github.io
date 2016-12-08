@@ -17,44 +17,48 @@ folder.prototype = {
 	move: function(obj) { //点击移动
 		obj.downTime = null;
 		obj.onmousedown = function(e) {
-				var that = obj;
-//				that.downTime = setTimeout(function() {
-//					console.log(123)
-					if(e.which == 1) {
-						var disx = e.clientX - obj.offsetLeft;
-						var disy = e.clientY - obj.offsetTop;
-						console.log(that)
-						that.style.zIndex = '99';
-						var _this = that;
-						document.onmousemove = function(e) {
-							_this.style.opacity = .5;
-							var l = e.clientX - disx;
-							var t = e.clientY - disy;
-							var maxLeft = window.innerWidth - obj.offsetWidth;
-							var maxTop = window.innerHeight - obj.offsetHeight;
-							//范围限制
-							l < 0 ? l = 0 : l = l;
-							l > maxLeft ? l = maxLeft : l = l;
-							t < 0 ? t = 0 : t = t;
-							t > maxTop ? t = maxTop : t = t;
+			var that = obj;
+			//				that.downTime = setTimeout(function() {
+			//					console.log(123)
+			var nowleft = obj.offsetLeft;
+			var nowtop = obj.offsetTop;
+			console.log(nowleft, nowtop)
+			if(e.which == 1) {
+				var disx = e.clientX - obj.offsetLeft;
+				var disy = e.clientY - obj.offsetTop;
 
-							obj.style.left = l + 'px';
-							obj.style.top = t + 'px';
-						}
-						document.onmouseup = function() {
-							_this.style.zIndex = 1;
-							_this.style.opacity = 1;
-							document.onmousemove = document.onmouseup = null;
-						}
-						return false;
-					}
-//				}, 1000)
+				that.style.zIndex = '99';
+				var _this = that;
+				document.onmousemove = function(e) {
+					_this.style.opacity = .5;
+					var l = e.clientX - disx;
+					var t = e.clientY - disy;
+					var maxLeft = window.innerWidth - obj.offsetWidth;
+					var maxTop = window.innerHeight - obj.offsetHeight;
+					//范围限制
+					l < 0 ? l = 0 : l = l;
+					l > maxLeft ? l = maxLeft : l = l;
+					t < 0 ? t = 0 : t = t;
+					t > maxTop ? t = maxTop : t = t;
+
+					obj.style.left = l + 'px';
+					obj.style.top = t + 'px';
+				}
+				document.onmouseup = function() {
+					$(obj).animate({
+							left: nowleft,
+							top: nowtop-4
+						})
+						//					obj.style.left = nowleft +'px';
+						//					obj.style.top = nowtop +'px';
+					_this.style.zIndex = 1;
+					_this.style.opacity = 1;
+					document.onmousemove = document.onmouseup = null;
+				}
+				return false;
 			}
-//		,
-//			obj.onmouseup = function(e) {
-//				this.downTime = null;
-//				console.log(123);
-//			}
+		}
+
 	},
 	contextmenu: function(obj) { //右键事件
 		obj.oncontextmenu = function(e) {
@@ -78,13 +82,12 @@ folder.prototype = {
 
 var one = new folder();
 
-function oinposition(oInvisible, a, b) { //显示内置框
+function oinposition(oInvisible, a, b) { //显示内置框 b：定位高
 	var child = oInvisible.children[1].children[0]
 	oInvisible.style.display = 'block';
 	var ohei = oInvisible.offsetHeight;
 	var owid = oInvisible.offsetWidth;
 	oInvisible.style.left = (document.documentElement.clientWidth - owid) / 2 + 'px';
-	console.log(a)
 	child.style.height = ohei - a + 'px';
 	oInvisible.style.top = b + 'px';
 

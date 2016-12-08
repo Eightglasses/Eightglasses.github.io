@@ -6,11 +6,7 @@
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="css/main.css" />
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
-		<script src="js/jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/move.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/data.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/tool.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/desktop.js" type="text/javascript" charset="utf-8"></script>
+
 	</head>
 
 	<body>
@@ -29,18 +25,28 @@
 			<ul>
 				<li>整理桌面</li>
 				<li>刷新</li>
-				<li>新建文件夹</li>
+				<li class="new_file">新建文件夹</li>
+				<li class="removeItem">清除缓存</li>
 			</ul>
 		</div>
 		<div id="invisible">
 			<header>
 				<h4>当前页面内容</h4>
-				<div><span></span><span></span><span></span></div>
+				<div class="cl">
+					<span class="fl"></span>
+					<span class="fl"></span>
+					<span class="fl"></span>
+				</div>
 			</header>
 			<section>
 				<iframe src="../百度云/index.html"></iframe>
 			</section>
 		</div>
+		<script src="js/jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/move.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/data.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/tool.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/desktop.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 
 </html>

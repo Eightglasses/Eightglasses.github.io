@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/home.css" />
+		<script src="js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="js/music.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+
+	</head>
+
+	<body>
+		<canvas id="cas" width="500" height="300"></canvas>
+		<input type="file" id="file">
+		<input id="start" type="button" value="开始" />
+		<input id="stop" type="button" value="停止" />
+		<div class="main">
+			<div class="show">
+				<!--下落区-->
+				<div class="show_list">
+					<ul id="rain">
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</div>
+				<!--触发线-->
+				<div class="show_line"></div>
+				<!--键盘响应-->
+				<div class="show_hand">
+					<ul class="cl key">
+						<li><span></span>D</li>
+						<li><span></span>F</li>
+						<li><span></span>SPACE</li>
+						<li><span></span>J</li>
+						<li><span></span>K</li>
+					</ul>
+				</div>
+				<!--分数-->
+				<div class="show_point"></div>
+			</div>
+		</div>
+		<!--<div class="fade"></div>-->
+
+		<script>
+			var file = document.getElementById('file');
+			var cas = document.getElementById('cas');
+			var m1 = new Music(cas);
+			m1.onready = function() {
+				console.log('音频分析完毕');
+				this.play();
+				this.sonic();
+			};
+			m1.onstart = function() {
+				console.log('播放');
+			};
+			m1.onend = function() {
+				console.log('停止');
+			};
+			file.onchange = function() {
+				var f = this.files[0];
+				upload(f, function(data) {
+					m1.read(data);
+				})
+			};
+
+			$('.main').css('display', 'none').fadeIn('slow', 'swing');
+			var time = null;
+			var time1 = null;
+			var ot = new Date().getTime();
+			var fade = $('.fade'); //后背景
+			var h = $(window).height();
+			var fadeh = fade.height();
+			var oUl = $('.key');
+			var oRain = document.getElementById('rain');
+			var oKey = document.getElementsByClassName('key')[0];
+			var oShowline = document.getElementsByClassName('show_line')[0];
+			var spans = oRain.getElementsByTagName('span');
+			var aspan = oKey.getElementsByTagName('span');
+			var point = 0;
+			var health = 5;
+			$('.show_point').html(point + '分</br>生命：' + health);
+
+			//			fade.css({
+			//					top: (h - fadeh) / 2
+			//				})
+			//后背景转动
+			//			time = setInterval(function() {
+			//				var nt = new Date().getTime();
+			//				var deg = (nt - ot) / 90 + 'deg';
+			//				$('.fade').css('transform', 'rotate(' + deg + ')')
+			//			}, 20);
+			//键盘按下
+			var key = [];
+			$(window).keydown(function(e) {
+				key[e.which] = true;
+				keyd();
+			});
+			//键盘抬起
+			$(window).keyup(function(e) {
+				key[e.which] = false;
+				keyu()
+			})
+
+			//浮动变定位(位置)
+			$('.key li,#rain li').each(function() {
+					var liLeft = $(this).position();
+					$(this).css({
+						left: liLeft.left
+					})
+				})
+				//浮动变定位
+			$('.key li,#rain li').each(function() {
+					$(this).css({
+						position: 'absolute'
+					})
+				})
+				//点击开始
+			$('#start').click(function() {
+				time1 = setInterval(function() {
+						fn();
+					}, 500),
+					oKey.time = setInterval(function() {
+						for(var i = 0; i < spans.length; i++) {
+							spans[i].index = false;
+							if(spans[i]) {
+								for(var j = 0; j < aspan.length; j++) {
+									if(duang(spans[i], aspan[j])) {
+										spans[i].index = true;
+										point = point + 10;
+									}
+								}
+								if(duang(spans[i], oShowline)) {
+									if(spans[i].index == false) {
+										health -= spans[i].onOff;
+										spans[i].onOff = 0;
+									}
+								}
+							}
+						}
+						$('.show_point').html(point + '分</br>生命：' + health);
+					}, 20)
+			})
+
+			//点击停止
+			$('#stop').click(function() {
+					clearInterval(time1);
+				})
+				//开始后下雨
+			function fn() {
+				var rainli = $('#rain li').eq(rrandom(5));
+				var rainheight = rrandom(10) * 2 + 30;
+				var $span = $('<span></span>');
+				console.log($span[0]);
+				$span[0].onOff = 1;
+				$span.css('height', rainheight).appendTo(rainli).end().animate({
+					top: 400
+				}, 'slow', function() {
+					$(this).remove()
+				});
+
+			}
+
+			//5列中随机
+			function rrandom(n) {
+				return parseInt(Math.random() * 10 % n);
+			}
+
+			//键盘按下
+			function keyd() {
+				if(key[68]) {
+					$('.key li').eq(0).css('background', 'red').find('span').css('display', 'block');
+				}
+				if(key[70]) {
+					$('.key li').eq(1).css('background', 'red').find('span').css('display', 'block');
+				}
+				if(key[32]) {
+					$('.key li').eq(2).css('background', 'red').find('span').css('display', 'block');
+				}
+				if(key[74]) {
+					$('.key li').eq(3).css('background', 'red').find('span').css('display', 'block');
+				}
+				if(key[75]) {
+					$('.key li').eq(4).css('background', 'red').find('span').css('display', 'block');
+				}
+			}
+
+			//键盘抬起
+			function keyu() {
+				if(key[68] == false) {
+					$('.key li').eq(0).css('background', '').find('span').css('display', 'none');
+				}
+				if(key[70] == false) {
+					$('.key li').eq(1).css('background', '').find('span').css('display', 'none');
+				}
+				if(key[32] == false) {
+					$('.key li').eq(2).css('background', '').find('span').css('display', 'none');
+				}
+				if(key[74] == false) {
+					$('.key li').eq(3).css('background', '').find('span').css('display', 'none');
+				}
+				if(key[75] == false) {
+					$('.key li').eq(4).css('background', '').find('span').css('display', 'none');
+				}
+			}
+
+			function duang(obj1, obj2) {
+
+				var pos1 = obj1.getBoundingClientRect();
+				var pos2 = obj2.getBoundingClientRect();
+				if(pos1.right < pos2.left || pos1.bottom < pos2.top || pos1.left > pos2.right || pos1.top > pos2.bottom) {
+					return false;
+				} else {
+					return true;
+				}
+			}
+		</script>
+	</body>
+
+</html>

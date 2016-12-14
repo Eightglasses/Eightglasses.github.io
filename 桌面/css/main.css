@@ -20,7 +20,7 @@ body {
 .divlist {
 	width: 142px;
 	height: 122px;
-	margin: 4px 4px 0 0;
+	/*margin: 4px 4px 0 0;*/
 	text-align: center;
 	position: absolute;
 	/*transition: 1s;*/
@@ -28,6 +28,8 @@ body {
 
 .divlist p {
 	color: #fff;
+	padding: 5px;
+	
 }
 
 .divlistimg {
@@ -37,6 +39,18 @@ body {
 	margin: 0 auto;
 	overflow: hidden;
 	background: url(../img/gridIcon.png) no-repeat 16px -77px;
+}
+
+#main .recycle .divlistimg {
+	background-image: url(../img/recycle1.png);
+	background-size: cover;
+	background-position: center;
+}
+
+#main .baidu .divlistimg {
+	background-image: url(../img/baidu.png);
+	background-size: cover;
+	background-position: center;
 }
 
 #contextmenu1,
@@ -82,7 +96,7 @@ body {
 	height: 28px;
 	line-height: 28px;
 	background: #87c1fe;
-	border-bottom: 1px solid rgb(180,190,245);
+	border-bottom: 1px solid rgb(180, 190, 245);
 }
 
 #invisible header h4 {
@@ -120,4 +134,7 @@ body {
 	bottom: 0;
 	border: none;
 }
-#invisible iframe body{overflow: hidden;}
+
+#invisible iframe body {
+	overflow: hidden;
+}

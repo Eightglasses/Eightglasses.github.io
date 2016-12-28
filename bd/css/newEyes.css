@@ -1,0 +1,390 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+body{
+	background:#ededed;
+}
+.wrap{
+	width:100%;
+	height:100%;
+}
+.top-pic{
+	width:100%;
+	height:694px;
+	background:url(../images/newEys-TopPic.jpg) no-repeat;
+}
+.content{
+	width:1000px;
+	height:auto;
+	margin:auto;
+}
+.top-area{
+	width:976px;
+	height:389;
+	background:#fff;
+	padding:12px;
+	margin-top:7px;
+}
+.top-area .left{
+	width:559px;
+	height:390px;
+	float:left;
+}
+.top-area .left img{
+	width:559px;
+	height:390px;
+}
+.top-area .right{
+	width:390px;
+	float:left;
+	margin-left:15px;
+}
+.top-area .right h2{
+	font-size:24px;
+	color:#222;
+	text-align:center;
+	line-height:72px;
+	margin-bottom:5px;
+}
+.top-area .right li{
+	margin-bottom:25px;
+}
+.top-area .right p{
+	font-size:16px;
+	color:#5b5b5b;
+	line-height:28px;
+	text-indent:2em;
+}
+.top-area .right p a{
+	color:#fb0101;
+}
+
+/*活动报名*/
+.active-box{
+	width:1000px;
+	height:504px;
+	margin-top:22px;
+	position:relative;
+}
+.active-box .icon-hdbm{
+	position:absolute;
+	left:0;
+	right:0;
+	top:-12px;
+	margin:auto;
+	z-index:2;
+}
+.active-box .left{
+	width:473px;
+	height:430px;	
+	float:left;
+	background:#fff;
+	padding-top:74px;
+	padding-left:35px;
+}
+.active-box .left h2{
+	font-size:22px;
+	color:#444;
+	line-height:42px;
+	font-weight:normal;
+}
+.active-box .left .dialog{
+	font-size:16px;
+	color:#515050;
+	line-height:30px;
+}
+.active-box .left .dialog .text-no{
+	float:left;
+}
+.active-box .left .dialog .text-cont{
+	padding-left:80px;
+}
+.d-logo{
+	margin-top:10px;
+}
+.d-logo .text-cont{
+	vertical-align:middle;
+}
+.d-logo .text-no{
+	margin-top:20px;
+}
+.d-logo .text-cont img{
+	display:inline-block;
+	vertical-align:middle;
+}
+.d-logo .text-cont p{
+	display:inline-block;
+	vertical-align:middle;
+}
+.active-box .right{
+	width:460px;
+	height:424px;
+	float:left;
+	background:#f8f6f7;
+	padding-left:32px;
+	padding-top:80px;
+	position:relative;
+}
+.active-box .right h2{
+	font-size:22px;
+	color:#444;
+	font-weight:normal;
+}
+.active-box .right .formCont{
+	margin-top:10px;
+}
+.active-box .right .formCont .f-dialog{
+	margin-top:15px;
+}
+.active-box .right .formCont .ncode{
+	font-size:16px;
+	color:#444;
+	margin-top:4px;
+	margin-right:10px;
+	float:left;
+}
+.active-box .right .formCont .InpCode{
+	width:388px;
+	height:24px;
+	border:1px solid #ededed;
+	line-height:24px;
+	text-indent:1em;
+}
+.active-box .right .formCont .f-dialog .TeleCode{
+	width:146px;
+	height:24px;
+	border:1px solid #ededed;
+	line-height:24px;
+	text-indent:1em;
+	float:left;
+	margin-right:34px;
+}
+.active-box .right .formCont .f-dialog .MemCode{
+	width:100px;
+	height:24px;
+	border:1px solid #ededed;
+	line-height:24px;
+	text-indent:1em;
+	float:left;
+}
+.active-box .right .formCont .f-picCode .ncode{
+	float:none;
+	margin-top:25px;
+}
+.active-box .right .picT-list{
+	margin-top:18px;
+}
+.active-box .right .picT-list li{
+	width:95px;
+	height:58px;
+	float:left;
+	margin-right:30px;
+	position:relative;
+	overflow:hidden;
+}
+.active-box .right .picT-list .PicBox{
+	width:67px;
+	height:57px;
+	display:block;
+	background:#fff;
+	border:1px solid #ededed;
+	position:relative;
+	overflow:hidden;
+}
+.active-box .right .picT-list .PicBox .PicClick{
+	width:67px;
+	height:57px;
+	filter:alpha(opacity=0);
+	opacity:0;
+	z-index:9;
+	position:relative;
+}
+.active-box .right .picT-list .PicBox img{
+	position:absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	margin:auto;
+	z-index:2;
+	/*width: 67px; height: 57px;*/
+}
+.active-box .right .picT-list .icon-delete{
+	width:20px;
+	height:20px;
+	display:block;
+	background:url(../images/icon-delete.png) no-repeat;
+	position:absolute;
+	right:0;
+	bottom:2px;
+}
+.active-box .right .btn-sure{
+	width:140px;
+	height:45px;
+	display:block;
+	background:url(../images/btn-sure.png) no-repeat;
+	position:absolute;
+	bottom:60px;
+	left:0;
+	right:0;
+	margin:auto;
+	border:none;
+}
+/*滚动区域*/
+.DialogCont{
+	background:#fff;
+}
+.DialogCont .top-area{
+	width:1000px;
+	height:48px;
+	border-bottom:1px solid #fb5f5f;
+	position:relative;
+	padding:0;
+	margin:0;
+}
+.DialogCont .top-area .title-cont{
+	width:122px;
+	height:48px;
+	background:#fb5f5f;
+	font-size:20px;
+	line-height:48px;
+	color:#413f3f;
+	text-align:center;
+}
+.DialogCont .top-area p{
+	font-size:14px;
+	color:#7e7e7e;
+	position:absolute;
+	right:10px;
+	top:24px;
+}
+.DialogCont .top-area .btn-more{
+	font-size:14px;
+	color:#7e7e7e;
+	position:absolute;
+	right:10px;
+	top:24px;
+}
+.DialogCont .scroll-box{
+	width:1000px;
+	height:255px;
+	position:relative;
+}
+.DialogCont .scroll-cont{
+	width:920px;
+	height:228px;
+	margin:auto;
+	position:relative;
+	overflow:hidden;
+}
+.DialogCont .scroll-cont ul{
+	width:1000000px;
+	height:228px;
+	position:absolute;
+	top:44px;
+	left:0;	
+	transition:1s;
+	-webkit-transition:1s;
+	-moz-transition:1s;
+	-o-transition:1s;
+}
+.DialogCont .scroll-cont ul li{
+	width:164px;
+	height:auto;
+	float:left;
+	margin:0 10px;
+}
+.DialogCont .scroll-cont ul li img{
+	width:164px;
+	height:109px;
+	margin-bottom:9px;
+}
+.DialogCont .scroll-cont ul li p{
+	width:115px;
+	font-size:14px;
+	color:#515050;
+	line-height:20px;
+	margin:auto;
+}
+.DialogCont .btn-prev{
+	width:25px;
+	height:50px;
+	background:url(../images/icon-left.png) no-repeat;
+	position:absolute;
+	top:0;
+	bottom:20px;
+	left:0;
+	margin:auto;
+}
+.DialogCont .btn-next{
+	width:25px;
+	height:50px;
+	background:url(../images/icon-right.png) no-repeat;
+	position:absolute;
+	top:0;
+	bottom:20px;
+	right:0;
+	margin:auto;
+}
+.marginT20{
+	margin-top:20px;
+}
+
+.eyes-knowledge .top-area{
+	width:1000px;
+	height:48px;
+	border-bottom:1px solid #fcc900;
+	position:relative;
+	padding:0;
+	margin-top:20px;
+}
+.eyes-knowledge .top-area .title-cont{
+	width:122px;
+	height:48px;
+	background:#fcc900;
+	font-size:20px;
+	line-height:48px;
+	color:#413f3f;
+	text-align:center;
+}
+.eyes-knowledge .top-area p{
+	font-size:14px;
+	color:#7e7e7e;
+	position:absolute;
+	right:10px;
+	top:24px;
+}
+.eyes-knowledge .top-area .btn-more{
+	font-size:14px;
+	color:#7e7e7e;
+	position:absolute;
+	right:10px;
+	top:24px;
+}
+.eyes-knowledge .ul-list{
+	width:1000px;
+	height:188px;
+	background:#fff;
+	padding-top:26px;
+}
+.eyes-knowledge .ul-list li{
+	width:465px;
+	float:left;
+	margin-left:25px;
+}
+.eyes-knowledge .ul-list li img{
+	width:195px;
+	height:150px;
+	float:left;
+}
+.eyes-knowledge .ul-list li .txt-group{
+	width:255px;
+	float:left;
+	margin-left:12px;
+}
+.eyes-knowledge .ul-list li .txt-group p{
+	font-size:18px;
+	color:#3d3d3d;
+	line-height:36px;
+}

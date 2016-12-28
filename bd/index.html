@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link href="css/reset.css" type="text/css" rel="stylesheet" />
+		<link href="css/newEyes.css" type="text/css" rel="stylesheet" />
+		<script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
+		<script src="js/newEyes.js" type="text/javascript"></script>
+		<script src="js/jqform.js" type="text/javascript"></script>
+		<title>未命名</title>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="content">
+				<div class="active-box">
+					<div class="left"></div>
+					<!-- 表单 -->
+					<div class="right">
+						<h2>报名通道</h2>
+						<form id="form1" class="formCont" enctype="multipart/form-data">
+							<div class="f-dialog">
+								<div class="ncode">名称</div>
+								<input type="text" class="InpCode NameCode" name="name" />
+							</div>
+							<div class="f-dialog">
+								<div class="ncode">地址</div>
+								<input type="text" class="InpCode AddCode" name="address" />
+							</div>
+							<div class="f-dialog">
+								<div class="ncode">联系电话</div>
+								<input type="text" class="TeleCode" name="mobile" />
+								<div class="ncode">参与人数</div>
+								<input type="text" class="MemCode" name="particinum" />
+							</div>
+							<div class="clear"></div>
+							<div class="f-dialog f-picCode">
+								<div class="ncode">上传活动照片</div>
+								<ul class="picT-list">
+									<li>
+										<a class="PicBox">
+											<input type="file" name="attachment[]" class="PicClick" id="f" />
+											<img class="PicImg" src="images/icon-add.png" />
+										</a>
+										<a class="icon-delete"></a>
+									</li>
+									<li>
+										<a class="PicBox">
+											<input type="file" name="attachment[]" class="PicClick" />
+											<img class="PicImg" src="images/icon-add.png" />
+										</a>
+										<a class="icon-delete"></a>
+									</li>
+									<li>
+										<a class="PicBox">
+											<input type="file" name="attachment[]" class="PicClick" />
+											<img class="PicImg" src="images/icon-add.png" />
+										</a>
+										<a class="icon-delete"></a>
+									</li>
+									<div class="clear"></div>
+								</ul>
+							</div>
+							<input type="button" class="btn-sure" />
+						</form>
+					</div>
+					<!-- end -->
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

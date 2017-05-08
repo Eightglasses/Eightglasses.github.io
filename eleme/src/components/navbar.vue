@@ -45,13 +45,13 @@
 		z-index: 999;
 	}
 	
-	h3 {
+	.back_box h3 {
 		color: #fff;
 		width: 100%;
-		display: block;
 		font-size: .52rem;
 		text-align: center;
 		font-weight: 700;
+		margin: 0;font-size: 0.8rem;
 	}
 	
 	div.back_arrow {
@@ -62,6 +62,6 @@
 		top: 0;
 		line-height: 2rem;
 		color: #fff;
-		font-size: 1.5rem;
+		font-size: 1rem;
 	}
 </style>

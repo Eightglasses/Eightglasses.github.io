@@ -5,8 +5,8 @@
 		<navTitle></navTitle>
 		<form>
 			<div id="app-login">
-				<input type="text" v-model="uname" placeholder="请输入用户名" maxlength="18"  @click="app_check"/>
-				<input type="password" v-model='passw' placeholder="请输入密码" maxlength="18"  @click="app_check"/>
+				<input type="text" v-model="uname" placeholder="请输入用户名" maxlength="18"  @enter="app_check"/>
+				<input type="password" v-model='passw' placeholder="请输入密码" maxlength="18"  @enter="app_check"/>
 			</div>
 
 			<div id="app-dl"><button @click="app_check">登录</button></div>
@@ -38,7 +38,7 @@
 					return;
 				} else {
 //					this.$store.dispatch('setLogin', true);
-					this.$router.replace('/Homepage');
+					this.$router.replace('/Myzone');
 				}
 			}
 		}
@@ -49,7 +49,7 @@
 		background: #F4F4F4;
 		margin: 0;
 	}
-	
+	.login{margin-top: 2rem;}
 	#app-login input {
 		width: 100%;
 		height: 1.8rem;
@@ -85,4 +85,5 @@
 		border-radius: .1rem;
 		letter-spacing: 5px;
 	}
+	
 </style>

@@ -1,23 +1,24 @@
 // store.js
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
+
 Vue.use(Vuex) // 要记得use一下哦
 
 export default new Vuex.Store({
-  state: {
+state: {
     count: 1
-  },
-  mutations: {
+},
+mutations: {
     Count (state, platform) {
       state.count = platform
     }
-  },
-  actions: {
+},
+actions: {
     setCount ({commit}, platform) {
       commit('Count', platform)
     }
-  },
-  getters: {
+},
+getters: {
     getCount: (state) => state.count
-  }
+}
 })

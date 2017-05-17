@@ -24,7 +24,28 @@
 				<span class="three-lan-span">积分</span>
 			</a>
 		</div>
+		<div class="myzone-list">
+			<router-link to="/Order">
+				<div class="myzonelist">
+					<span class="v-md">我的订单</span>
+				</div>
+			</router-link>
+			<div class="myzonelist">
+				<span class="v-md">积分商城</span>
+			</div>
+			<div class="myzonelist">
+				<span class="v-md">饿了么会员卡</span>
+			</div>
+			<div class="myzonelist">
+				<span class="v-md">服务中心</span>
+			</div>
+			<div class="myzonelist">
+				<span class="v-md">下载饿了么app</span>
+			</div>
+		</div>
+
 	</div>
+
 </template>
 
 <script>
@@ -41,6 +62,26 @@
 </script>
 
 <style>
+	.v-md {
+		font-size: .7rem;
+	}
+	
+	.myzone-list {
+		margin-top: 1rem;
+	}
+	
+	.myzonelist:nth-of-type(2) {
+		margin-bottom: 1rem;
+	}
+	
+	.myzonelist {
+		text-align: left;
+		border-top: 1px solid #dedede;
+		background: #fff;
+		font-size: 0.8rem;
+		padding: .3rem 1rem;
+	}
+	
 	.myzone-top {
 		background: #0097ff;
 		margin-top: 2rem;
@@ -66,7 +107,6 @@
 		font-size: 0.8rem;
 		color: #fff;
 		text-align: left;
-		;
 	}
 	
 	.myzone-user p {
@@ -76,10 +116,12 @@
 	
 	.three-lan {
 		display: flex;
+		text-align: center;
 	}
 	
 	.three-lan a {
-		flex: 1;  align-items: center;
+		flex: 1;
+		align-items: center;
 		background: #FFFFFF;
 	}
 	
@@ -114,5 +156,6 @@
 	}
 	
 	.three-lan-span {
-		font-size: 0.5rem;}
+		font-size: 0.5rem;
+	}
 </style>

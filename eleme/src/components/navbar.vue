@@ -2,10 +2,9 @@
 	<!-- 我只是个头 -->
 	<div class="back_box">
 		<div class="back_arrow" @click="back_one">
-			< 
+			< </div>
+				<h3>{{title}}</h3>
 		</div>
-		<h3>{{title}}</h3>
-	</div>
 
 </template>
 
@@ -51,7 +50,8 @@
 		font-size: .52rem;
 		text-align: center;
 		font-weight: 700;
-		margin: 0;font-size: 0.8rem;
+		margin: 0;
+		font-size: 0.7rem;
 	}
 	
 	div.back_arrow {
@@ -63,5 +63,6 @@
 		line-height: 2rem;
 		color: #fff;
 		font-size: 1rem;
+		margin-left: 0.5rem;
 	}
 </style>

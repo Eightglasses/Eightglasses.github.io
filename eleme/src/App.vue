@@ -8,15 +8,16 @@
 	export default {
 		name: 'app'
 	}
+	
+	
 </script>
 	
 <style>
-	
+	a{color: #2C3E50;text-decoration: none;}
 	#app {
 		font-family: '微软雅黑';
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
-		text-align: center;
 		color: #2c3e50;
 		/*margin-top: 2rem;*/
 	}

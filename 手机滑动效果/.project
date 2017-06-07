@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>手机滑动效果</name>
+	<name>phone</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -16,7 +16,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1495869050929</id>
+			<id>0</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -25,7 +25,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1496823222063</id>
+			<id>0</id>
 			<name></name>
 			<type>26</type>
 			<matcher>

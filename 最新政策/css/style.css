@@ -191,9 +191,12 @@
 	}
 	
 	.cont_tabel tr:nth-of-type(1) {
-		background: #d9e7fd;
+		background: #d9e7fd; height: 0.72rem;
 	}
 	
 	.cont_tabel tr {
 		background: #f2f6fe;
+	}
+	.cont_tabel .tabel2 tr:nth-of-type(1){
+		height: 0.8rem;display: flex;
 	}

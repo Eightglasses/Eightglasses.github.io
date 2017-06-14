@@ -359,7 +359,7 @@ body {
 	width: 0.89rem;
 	height: 0.85rem;
 	position: absolute;
-	left: 1rem;
+	left: 1rem;top: 0;
 }
 
 .demo1_borrow li:nth-of-type(even) {
@@ -506,3 +506,5 @@ body {
 	background: #fee4d2;
 	font-size: 0.24rem;color: #222;
 }
+.demo{display: none;}
+.demo1{display: block;}

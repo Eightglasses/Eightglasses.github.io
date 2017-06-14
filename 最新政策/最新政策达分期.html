@@ -7,6 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="css/reset.css" />
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<title></title>
+		<script src="js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/rem_scaler.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 
@@ -17,175 +18,179 @@
 		</div>
 		<div class="newpolicy_nav">
 			<ul>
-				<li class="active">借款服务</li>
-				<li>达分期</li>
-				<li>达飞商城</li>
-				<li>云贷投资</li>
+				<li class="active" val='1'>借款服务</li>
+				<li val='2'>达分期</li>
+				<li val='3'>达飞商城</li>
+				<li val='4'>云贷投资</li>
 			</ul>
 		</div>
-		<div class="demo1">
-			<div class="demo1_introduce">
-				<p>
-					客户无需抵押，就可获得一定的信用额度，在授信期限内， 客户可随借随还，循环使用。用户可选择长期分期还款或短期先息后本还款，适用于随时急需用钱的人群和临时需要资金周转的人群。
-				</p>
-			</div>
-			<div class="demo1_detailed">
-				<div class="demo1_detailed_h2">
-					<img src="img/dfq5.png" />
-				</div>
-				<ul class="demo1_borrow">
-					<li>
-						<img src="img/dfq17.png" />
-						<h3>现金循环贷</h3>
-						<span>一次授信&nbsp;循环使用</span>
-					</li>
-					<li>
-						<img src="img/dfq16.png" />
-						<h3>现金消费贷</h3>
-						<span>急还放款&nbsp;按日计费</span>
-					</li>
-					<li>
-						<img src="img/dfq14.png" />
-						<h3>随心分期贷</h3>
-						<span>分期偿还&nbsp;灵活轻松</span>
-					</li>
-					<li>
-						<img src="img/dfq17.png" />
-						<h3>现金循环贷</h3>
-						<span>免手续费</span>
-						<img class="logo" src="img/dfq24.png" />
-					</li>
-					<li>
-						<img src="img/dfq15.png" />
-						<h3>现金分期贷</h3>
-						<span>一次授信&nbsp;循环使用</span>
-					</li>
-					<li>
-						<img src="img/dfq8.png" />
-						<h3 style="color: #dadada;">敬请期待</h3>
-					</li>
-				</ul>
-				<div class="demo1_detailed_h2">
-					<img class="img_width" src="img/dfq6.png" />
-				</div>
-				<div class="demo1_special">
-					<ul class="">
-						<li><img src="img/li_style.jpg" />更方便 手机操作，快速授信</li>
-						<li><img src="img/li_style.jpg" />更自由 随借随还，循环使用</li>
-						<li><img src="img/li_style.jpg" />更实惠 综合费率低，可借90天</li>
-						<li><img src="img/li_style.jpg" />更贴心 快速到账，方便快捷</li>
-					</ul>
-				</div>
-				<div class="demo1_detailed_h2">
-					<img class="img_width" src="img/dfq7.png" />
-				</div>
-				<div class="demo1_yongtu">
-					<ul class="">
-						<li>
-							<a><img src="img/dfq2.png" /></a><span>个人经营</span></li>
-						<li>
-							<a><img src="img/dfq23.png" /></a><span>资金周转</span></li>
-						<li>
-							<a><img src="img/dfq3.png" /></a><span>个人消费</span></li>
-					</ul>
-				</div>
-				<div class="demo1_detailed_h2">
-					<img class="img_width" src="img/dfq12.png" />
-				</div>
-				<div class="demo1_peoples">
-					<div class="demo1_peoples_list">
-						<p>工薪层</p>
-						<div class="peoples_box">
-							<div class="box_left">
-								<span>年龄：32</span>
-								<span>教育程度：较高</span>
-								<span>每月收入：7000元</span>
-							</div>
-							<div class="box_right">
-								<span>婚姻状况:已婚</span>
-								<span>住房情况：租房或自有</span>
-								<span>心仪商品：家电，家具</span>
-							</div>
-						</div>
-					</div>
-					<div class="demo1_peoples_list">
-						<p>小微企业主</p>
-						<div class="peoples_box">
-							<div class="box_left">
-								<span>年龄：30</span>
-								<span>教育程度：较高</span>
-								<span>每月收入：20000元</span>
-							</div>
-							<div class="box_right">
-								<span>婚姻状况:已婚</span>
-								<span>住房情况：租房或自有</span>
-								<span>心仪商品：家电，家具</span>
-							</div>
-						</div>
-					</div>
-					<div class="demo1_peoples_list">
-						<p>蓝领工人</p>
-						<div class="peoples_box">
-							<div class="box_left">
-								<span>年龄：23</span>
-								<span>教育程度：较低</span>
-								<span>每月收入：3000元</span>
-							</div>
-							<div class="box_right">
-								<span>婚姻状况:单身</span>
-								<span>住房情况：宿舍</span>
-								<span>心仪商品：手机</span>
-							</div>
-						</div>
-					</div>
-					<div class="demo1_peoples_list">
-						<p>年轻夫妇</p>
-						<div class="peoples_box">
-							<div class="box_left">
-								<span>年龄：28</span>
-								<span>教育程度：较低</span>
-								<span>每月收入：5000元</span>
-							</div>
-							<div class="box_right">
-								<span>婚姻状况:已婚</span>
-								<span>住房情况：租房或自由</span>
-								<span>心仪商品：家电、家具</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="demo1_introduce demo1_introduce2">
+		<div class="demobox">
+			<div class="demo1 demo">
+				<div class="demo1_introduce">
 					<p>
 						客户无需抵押，就可获得一定的信用额度，在授信期限内， 客户可随借随还，循环使用。用户可选择长期分期还款或短期先息后本还款，适用于随时急需用钱的人群和临时需要资金周转的人群。
 					</p>
 				</div>
-				<div class="demo1_detailed_h2">
-					<img class="img_width" src="img/dfq1.png" />
-				</div>
-				<div class="demo1_liuc">
-					<div class="liuc_top">
-						<span>登录达飞云贷APP注册</span>
-						<img src="img/dfq19.png" />
-						<span>申请授信</span>
-						<img src="img/dfq19.png" />
-						<span>授信通过</span>
+				<div class="demo1_detailed">
+					<div class="demo1_detailed_h2">
+						<img src="img/dfq5.png" />
 					</div>
-					<div class="liuc_bot">
-						<span>按时还款</span>
-						<img src="img/dfq20.png" />
-						<span>借款到账</span>
-						<img src="img/dfq20.png" />
-						<span>申请借款</span>
-						<img class="img1" src="img/dfq21.png" />
+					<ul class="demo1_borrow">
+						<li>
+							<img src="img/dfq17.png" />
+							<h3>现金循环贷</h3>
+							<span>一次授信&nbsp;循环使用</span>
+						</li>
+						<li>
+							<img src="img/dfq16.png" />
+							<h3>现金消费贷</h3>
+							<span>急还放款&nbsp;按日计费</span>
+						</li>
+						<li>
+							<img src="img/dfq14.png" />
+							<h3>随心分期贷</h3>
+							<span>分期偿还&nbsp;灵活轻松</span>
+						</li>
+						<li>
+							<img src="img/dfq17.png" />
+							<h3>现金循环贷</h3>
+							<span>免手续费</span>
+							<img class="logo" src="img/dfq24.png" />
+						</li>
+						<li>
+							<img src="img/dfq15.png" />
+							<h3>现金分期贷</h3>
+							<span>一次授信&nbsp;循环使用</span>
+						</li>
+						<li>
+							<img src="img/dfq8.png" />
+							<h3 style="color: #dadada;">敬请期待</h3>
+						</li>
+					</ul>
+					<div class="demo1_detailed_h2">
+						<img class="img_width" src="img/dfq6.png" />
+					</div>
+					<div class="demo1_special">
+						<ul class="">
+							<li><img src="img/li_style.jpg" />更方便 手机操作，快速授信</li>
+							<li><img src="img/li_style.jpg" />更自由 随借随还，循环使用</li>
+							<li><img src="img/li_style.jpg" />更实惠 综合费率低，可借90天</li>
+							<li><img src="img/li_style.jpg" />更贴心 快速到账，方便快捷</li>
+						</ul>
+					</div>
+					<div class="demo1_detailed_h2">
+						<img class="img_width" src="img/dfq7.png" />
+					</div>
+					<div class="demo1_yongtu">
+						<ul class="">
+							<li>
+								<a><img src="img/dfq2.png" /></a><span>个人经营</span></li>
+							<li>
+								<a><img src="img/dfq23.png" /></a><span>资金周转</span></li>
+							<li>
+								<a><img src="img/dfq3.png" /></a><span>个人消费</span></li>
+						</ul>
+					</div>
+					<div class="demo1_detailed_h2">
+						<img class="img_width" src="img/dfq12.png" />
+					</div>
+					<div class="demo1_peoples">
+						<div class="demo1_peoples_list">
+							<p>工薪层</p>
+							<div class="peoples_box">
+								<div class="box_left">
+									<span>年龄：32</span>
+									<span>教育程度：较高</span>
+									<span>每月收入：7000元</span>
+								</div>
+								<div class="box_right">
+									<span>婚姻状况:已婚</span>
+									<span>住房情况：租房或自有</span>
+									<span>心仪商品：家电，家具</span>
+								</div>
+							</div>
+						</div>
+						<div class="demo1_peoples_list">
+							<p>小微企业主</p>
+							<div class="peoples_box">
+								<div class="box_left">
+									<span>年龄：30</span>
+									<span>教育程度：较高</span>
+									<span>每月收入：20000元</span>
+								</div>
+								<div class="box_right">
+									<span>婚姻状况:已婚</span>
+									<span>住房情况：租房或自有</span>
+									<span>心仪商品：家电，家具</span>
+								</div>
+							</div>
+						</div>
+						<div class="demo1_peoples_list">
+							<p>蓝领工人</p>
+							<div class="peoples_box">
+								<div class="box_left">
+									<span>年龄：23</span>
+									<span>教育程度：较低</span>
+									<span>每月收入：3000元</span>
+								</div>
+								<div class="box_right">
+									<span>婚姻状况:单身</span>
+									<span>住房情况：宿舍</span>
+									<span>心仪商品：手机</span>
+								</div>
+							</div>
+						</div>
+						<div class="demo1_peoples_list">
+							<p>年轻夫妇</p>
+							<div class="peoples_box">
+								<div class="box_left">
+									<span>年龄：28</span>
+									<span>教育程度：较低</span>
+									<span>每月收入：5000元</span>
+								</div>
+								<div class="box_right">
+									<span>婚姻状况:已婚</span>
+									<span>住房情况：租房或自由</span>
+									<span>心仪商品：家电、家具</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="demo1_introduce demo1_introduce2">
+						<p>
+							客户无需抵押，就可获得一定的信用额度，在授信期限内， 客户可随借随还，循环使用。用户可选择长期分期还款或短期先息后本还款，适用于随时急需用钱的人群和临时需要资金周转的人群。
+						</p>
+					</div>
+					<div class="demo1_detailed_h2">
+						<img class="img_width" src="img/dfq1.png" />
+					</div>
+					<div class="demo1_liuc">
+						<div class="liuc_top">
+							<span>登录达飞云贷APP注册</span>
+							<img src="img/dfq19.png" />
+							<span>申请授信</span>
+							<img src="img/dfq19.png" />
+							<span>授信通过</span>
+						</div>
+						<div class="liuc_bot">
+							<span>按时还款</span>
+							<img src="img/dfq20.png" />
+							<span>借款到账</span>
+							<img src="img/dfq20.png" />
+							<span>申请借款</span>
+							<img class="img1" src="img/dfq21.png" />
 
+							<!--</div>-->
+						</div>
 					</div>
 				</div>
 			</div>
+			<div class="demo2 demo">2</div>
+			<div class="demo3 demo">3</div>
+			<div class="demo4 demo">4</div>
 		</div>
-		<div class="demo2"></div>
-		<div class="demo3"></div>
-		<div class="demo4"></div>
 
 	</body>
+	<script src="js/new_file.js" type="text/javascript" charset="utf-8"></script>
 
 </html>

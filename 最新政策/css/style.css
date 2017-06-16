@@ -663,6 +663,6 @@ medium {
 .demo3_lc{display: flex;padding: 0 0.3rem 0.8rem 0.3rem;}
 .lc_left{display: flex;flex-direction: column;}
 .lc_left img{width: 0.64rem;}
-.lc_left span{height: 0.52rem;line-height: 0.52rem;background: #C6DAFC;display: inline-block;border-radius: 0.2rem;padding: 0 0.3rem;}
+.lc_left span{height: 0.52rem;line-height: 0.52rem;background: #C6DAFC;display: inline-block;border-radius: 0.2rem;padding: 0 0.15rem;}
 .lc_left>div:nth-of-type(1){padding-bottom: 0.5rem;}
-.demo3_lc>img{width: 0.64rem; height: 1.1rem; margin-top: 0.28rem;}
+.demo3_lc>img{width: 0.64rem; height: 1.1rem; margin-top: 0.28rem;padding-left: 2px;}

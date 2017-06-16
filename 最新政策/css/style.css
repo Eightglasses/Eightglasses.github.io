@@ -352,8 +352,8 @@ body {
 	display: flex;
 	flex-direction: column;
 	position: relative;
-	border-bottom: 1px solid #dfeafd;
-	border-right: 1px solid #dfeafd;
+	border-bottom: 1px solid #f1f8fa;
+	border-right: 1px solid #f1f8fa;
 	box-sizing: border-box;
 	/*height: 2.5rem;*/
 	align-items: center;
@@ -388,7 +388,6 @@ body {
 	line-height: 0.6rem;
 	position: relative;
 }
-
 .demo1_special li img {
 	padding-right: 0.25rem;
 	width: 0.14rem;
@@ -474,7 +473,7 @@ body {
 
 .demo1_peoples_list .peoples_box {
 	display: flex;
-	padding-bottom: 0.74rem;
+	padding-bottom: 0.3rem;
 }
 
 .demo1_peoples_list .peoples_box>div {
@@ -488,7 +487,7 @@ body {
 }
 
 .demo1_introduce2 {
-	padding: 0 0.5rem 0.5rem 0.5rem;
+	padding: 0 0.5rem 0.4rem 0.5rem;
 }
 
 .demo1_introduce2 p {
@@ -502,7 +501,9 @@ body {
 	display: flex;
 	flex-direction: column;
 }
-
+.demo1 .demo1_liuc{
+	padding-top: 0;
+}
 .demo1_liuc>div {
 	width: 100%;
 }
@@ -527,7 +528,7 @@ body {
 	border-radius: 30px;
 	background: #fee4d2;
 	font-size: 0.24rem;
-	color: #222;
+	color: #666;
 }
 
 .demo {
@@ -560,7 +561,12 @@ body {
 	height: 0.8rem;
 	padding-bottom: 0.2rem;
 }
-
+.demo2_special ul li:nth-of-type(2) img{
+	width: 0.75rem;height: 0.75rem;
+}
+.demo2_special ul li:nth-of-type(3) img,.demo2_special ul li:nth-of-type(5) img{
+	width: 0.85rem;height: 0.85rem;
+}
 .demo2_special ul li h4 {
 	font-weight: normal;
 	font-family: 'PingFangSC-Medium';
@@ -578,7 +584,7 @@ body {
 	line-height: 0.36rem;
 	font-size: 0.26rem;
 	color: #222;
-	font-size: 'PingFangSC-Light';
+	font-family: 'PingFangSC-Light';
 }
 
 .lc_div {
@@ -682,3 +688,4 @@ medium {
 .demo4_lc .lc_mid {justify-content: flex-end;padding:0.1rem 1rem;}
 .demo4_lc>div{display: flex;align-items: center;justify-content: center;}
 .demo4_lc{padding-bottom: 0.8rem;}
+.demo1_special ul:nth-of-type(2) li{padding-left: 0.7rem;}

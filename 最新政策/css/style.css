@@ -362,6 +362,9 @@ body {
 .demo1_borrow li img {
 	/*width: 1.68rem;*/
 	height: 1.6rem;
+}
+
+.demo1 .demo1_borrow li img {
 	padding-top: 0.2rem;
 }
 
@@ -388,6 +391,7 @@ body {
 	line-height: 0.6rem;
 	position: relative;
 }
+
 .demo1_special li img {
 	padding-right: 0.25rem;
 	width: 0.14rem;
@@ -501,9 +505,11 @@ body {
 	display: flex;
 	flex-direction: column;
 }
-.demo1 .demo1_liuc{
+
+.demo1 .demo1_liuc {
 	padding-top: 0;
 }
+
 .demo1_liuc>div {
 	width: 100%;
 }
@@ -561,12 +567,18 @@ body {
 	height: 0.8rem;
 	padding-bottom: 0.2rem;
 }
-.demo3 .demo2_special ul li:nth-of-type(2) img{
-	width: 0.75rem;height: 0.75rem;
+
+.demo3 .demo2_special ul li:nth-of-type(2) img {
+	width: 0.75rem;
+	height: 0.75rem;
 }
-.demo3 .demo2_special ul li:nth-of-type(3) img,.demo3  .demo2_special ul li:nth-of-type(5) img{
-	width: 0.85rem;height: 0.85rem;
+
+.demo3 .demo2_special ul li:nth-of-type(3) img,
+.demo3 .demo2_special ul li:nth-of-type(5) img {
+	width: 0.85rem;
+	height: 0.85rem;
 }
+
 .demo2_special ul li h4 {
 	font-weight: normal;
 	font-family: 'PingFangSC-Medium';
@@ -665,27 +677,127 @@ medium {
 	padding: 0.4rem 0 0.8rem 0;
 	font-size: 0.28rem;
 }
-.demo3 .demo2_special ul li span:nth-of-type(1){border: none;}
-.demo3_lc{display: flex;padding: 0 0.3rem 0.8rem 0.3rem;}
-.lc_left{display: flex;flex-direction: column;}
-.lc_left img{width: 0.64rem;}
-.lc_left span{height: 0.52rem;line-height: 0.52rem;background: #C6DAFC;display: inline-block;border-radius: 0.2rem;padding: 0 0.15rem;}
-.lc_left>div:nth-of-type(1){padding-bottom: 0.5rem;}
-.demo3_lc>img{width: 0.64rem; height: 1.1rem; margin-top: 0.28rem;padding-left: 2px;}
-.demo4 .demo1_borrow li:nth-of-type(3),.demo4 .demo1_borrow li:nth-of-type(4){border-bottom: none;padding-top: 0.25rem;}
 
-.demo4 .demo1_borrow li img{box-shadow: 0 0 0.25rem #e9e9e9;width: 1rem;height: 1rem;border-radius: 0.2rem;}
-.demo4 .demo1_borrow h3{padding-top: 0.3rem;font-size: 0.3rem;color: #666;}
-.demo4 .demo1_borrow li{padding-bottom: 0.4rem;}
-.demo4 .demo1_borrow li:last-of-type h3,.demo4 .demo1_borrow li:last-of-type span{color: #dadada;}
-.demo4 .demo1_borrow {padding-bottom: 0.1rem;}
-.demo4 .demo1_special ul{width: 100%;display: flex;flex-direction: row;flex-wrap: wrap;}
-.demo4 .demo1_special ul li{display: flex;align-items: center;padding-left:0.9rem;}
-.demo4 .demo1_special ul li img{width: 0.14rem ;height: 0.14rem;}
-.demo4_lc span{padding: 0.14rem;background: #C6DAFC;font-size: 0.24rem;border-radius: 0.2rem;}
-.demo4_lc img{width: 0.6rem; height: 0.2rem;}
-.demo4_lc .lc_mid img{height: 0.5rem;width: 0.2rem;}
-.demo4_lc .lc_mid {justify-content: flex-end;padding:0.1rem 1rem;}
-.demo4_lc>div{display: flex;align-items: center;justify-content: center;}
-.demo4_lc{padding-bottom: 0.8rem;}
-.demo1_special ul:nth-of-type(2) li{padding-left: 0.7rem;}
+.demo3 .demo2_special ul li span:nth-of-type(1) {
+	border: none;
+}
+
+.demo3_lc {
+	display: flex;
+	padding: 0 0.3rem 0.8rem 0.3rem;
+}
+
+.lc_left {
+	display: flex;
+	flex-direction: column;
+}
+
+.lc_left img {
+	width: 0.64rem;
+}
+
+.lc_left span {
+	height: 0.52rem;
+	line-height: 0.52rem;
+	background: #C6DAFC;
+	display: inline-block;
+	border-radius: 0.2rem;
+	padding: 0 0.15rem;
+}
+
+.lc_left>div:nth-of-type(1) {
+	padding-bottom: 0.5rem;
+}
+
+.demo3_lc>img {
+	width: 0.64rem;
+	height: 1.1rem;
+	margin-top: 0.28rem;
+	padding-left: 2px;
+}
+
+.demo4 .demo1_borrow li:nth-of-type(3),
+.demo4 .demo1_borrow li:nth-of-type(4) {
+	border-bottom: none;
+	padding-top: 0.25rem;
+}
+
+.demo4 .demo1_borrow li img {
+	box-shadow: 0 0 0.25rem #e9e9e9;
+	width: 1rem;
+	height: 1rem;
+	border-radius: 0.2rem;
+}
+
+.demo4 .demo1_borrow h3 {
+	padding-top: 0.3rem;
+	font-size: 0.3rem;
+	color: #666;
+}
+
+.demo4 .demo1_borrow li {
+	padding-bottom: 0.4rem;
+}
+
+.demo4 .demo1_borrow li:last-of-type h3,
+.demo4 .demo1_borrow li:last-of-type span {
+	color: #dadada;
+}
+
+.demo4 .demo1_borrow {
+	padding-bottom: 0.1rem;
+}
+
+.demo4 .demo1_special ul {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.demo4 .demo1_special ul li {
+	display: flex;
+	align-items: center;
+	padding-left: 0.9rem;
+}
+
+.demo4 .demo1_special ul li img {
+	width: 0.14rem;
+	height: 0.14rem;
+}
+
+.demo4_lc span {
+	padding: 0.14rem;
+	background: #C6DAFC;
+	font-size: 0.24rem;
+	border-radius: 0.2rem;
+}
+
+.demo4_lc img {
+	width: 0.6rem;
+	height: 0.2rem;
+}
+
+.demo4_lc .lc_mid img {
+	height: 0.5rem;
+	width: 0.2rem;
+}
+
+.demo4_lc .lc_mid {
+	justify-content: flex-end;
+	padding: 0.1rem 1rem;
+}
+
+.demo4_lc>div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.demo4_lc {
+	padding-bottom: 0.8rem;
+}
+
+.demo1_special ul:nth-of-type(2) li {
+	padding-left: 0.7rem;
+}

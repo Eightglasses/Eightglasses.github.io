@@ -330,6 +330,10 @@ body {
 	text-align: center;
 	width: 100%;
 }
+.demo1_detailed_h2_b {
+	padding: 0.4rem 0 0.2rem 0;
+	
+}
 
 .demo1_detailed_h2 img {
 	width: 3rem;
@@ -429,7 +433,7 @@ body {
 	width: 100%;
 	display: flex;
 	flex-direction: row;
-	padding: 0 0.84rem;
+	padding: 0 0.1rem;
 	box-sizing: border-box;
 	justify-content: space-between;
 }

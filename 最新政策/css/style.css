@@ -340,7 +340,7 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	box-sizing: border-box;
-	padding-bottom: 0.55rem;
+	padding-bottom: 0.1rem;
 	border-bottom: 0.1rem solid #EFEFF4;
 	;
 }
@@ -352,8 +352,8 @@ body {
 	display: flex;
 	flex-direction: column;
 	position: relative;
-	border-bottom: 1px solid #c6dafc;
-	border-right: 1px solid #C6DAFC;
+	border-bottom: 1px solid #dfeafd;
+	border-right: 1px solid #dfeafd;
 	box-sizing: border-box;
 	/*height: 2.5rem;*/
 	align-items: center;
@@ -668,7 +668,7 @@ medium {
 .demo3_lc>img{width: 0.64rem; height: 1.1rem; margin-top: 0.28rem;padding-left: 2px;}
 .demo4 .demo1_borrow li:nth-of-type(3),.demo4 .demo1_borrow li:nth-of-type(4){border-bottom: none;padding-top: 0.25rem;}
 
-.demo4 .demo1_borrow li img{box-shadow: 0 0 0.25rem #ccc;width: 1rem;height: 1rem;border-radius: 0.2rem;}
+.demo4 .demo1_borrow li img{box-shadow: 0 0 0.25rem #ddd;width: 1rem;height: 1rem;border-radius: 0.2rem;}
 .demo4 .demo1_borrow h3{padding-top: 0.3rem;font-size: 0.3rem;color: #666;}
 .demo4 .demo1_borrow li{padding-bottom: 0.4rem;}
 .demo4 .demo1_borrow li:last-of-type h3,.demo4 .demo1_borrow li:last-of-type span{color: #dadada;}

@@ -1,20 +1,61 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		 <script src="js/rem_scaler.js" type="text/javascript" charset="utf-8"></script>
-		    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<html lang="zh">
 
- <style type="text/css">
-    	.div1{width:1rem;height: 1rem;border: 1px solid #000000; margin: 1rem;}
-    	.div2{width:1rem;height: 1rem;border: 0.01rem solid #000000; margin: 1rem;}
-    </style>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style type="text/css">
+			ul {
+				list-style: none;
+				height: 150px;
+				align-items: center;
+				border: 1px solid #000;
+				justify-content: flex-start;
+			}
+			
+			.ul1 {
+				display: flex;
+			}
+			
+			.ul2 {
+				-webkit-box-flex: 1;
+				-webkit-flex: 1;
+				-ms-flex: 1;
+				flex: 1;
+				-webkit-box-align: center;
+				-webkit-align-items: center;
+				-ms-flex-align: center;
+				align-items: center;
+			}
+			
+			li {
+				width: 100px;
+				height: 100px;
+				margin: 10px;
+				border: 1px solid #008000;
+			}
+		</style>
 	</head>
+
 	<body>
-		<a href="桌面/index.html">桌面</a>
-		<a href="移动端/index.html">移动端</a>
-		<div class="div1"></div>
-		<div class="div2"></div>
+
+		<ul class="ul1">
+			<li>1</li>
+			<li>1</li>
+			<li>1</li>
+			<li>1</li>
+			<li>1</li>
+		</ul>
+		<ul class="ul2">
+			<li>2</li>
+			<li>2</li>
+			<li>2</li>
+			<li>2</li>
+			<li>2</li>
+		</ul>
+
 	</body>
+
 </html>

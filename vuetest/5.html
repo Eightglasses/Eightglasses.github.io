@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<script src="vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<title>Document</title>
+		<style type="text/css">
+			div {
+				border: 1px solid #000000;
+				padding: 5px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<div class="div1" v-on:click="click1">
+				{{div1}}
+			</div>
+			<div class="div2" v-on:click="touch1">
+				{{div2}}
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript">
+		var vue = new Vue({
+			el: '#box',
+			data: {
+				div1: '1111111!',
+				div2: '2222'
+			},
+			methods: {
+				click1: function() {
+					this.div1 = '3333333333';
+					this.div2 = '44444444444111';
+				},
+				touch1:function(){
+					this.div1 = '55555555';
+					this.div2 = '66666666';
+				}
+			}
+		})
+	</script>
+
+</html>

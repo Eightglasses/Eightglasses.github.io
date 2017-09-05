@@ -100,8 +100,6 @@ Music.init = function() {
  * 设置歌词
  * */
 Music.setLyric = function() {
-	$('.allTime').html(SecToMin(oAudio.duration))
-
 	var nowmusic = state.nowMusicNum;
 	var musicArr = returnTimeLyric(music_list[nowmusic].lyric);
 	Music.musicArr1 = musicArr[1]; //歌词
@@ -174,6 +172,7 @@ Music.jindu = function() {
 	state.progressed = oAudio.buffered.end(0);
 	$('.progressing').css('width', oAudio.currentTime / state.duration * 100 + '%');
 	$('.progressed').css('width', state.progressed / state.duration * 100 + '%');
+	$('.allTime').html(SecToMin(oAudio.duration));
 	if(oAudio.currentTime / state.duration * 100 > 99) {
 		if(state.nowMusicNum == music_list.length - 1) {
 			state.nowMusicNum = 0;

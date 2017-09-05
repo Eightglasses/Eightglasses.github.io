@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>音乐播放器</title>
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+		<script src="" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			#box,
+			.list {
+				display: flex;
+				flex-direction: column;
+				border: 1px solid #111111;
+				width: 500px;
+				margin: 20px auto;
+				padding: 10px;
+			}
+			
+			.control {
+				display: flex;
+			}
+			
+			.lyric,
+			.control {
+				height: 100px;
+				border: 1px solid #615D5C;
+				width: 100%;
+				display: flex;
+			}
+			
+			.control div {
+				text-align: center;
+				width: 33%;
+				border: 1px solid #111111;cursor:pointer
+			}
+			
+			.list {
+				list-style: none;
+			}
+			
+			.list li {
+				border-bottom: 1px solid #82A2B2;
+				height: 30px;line-height: 30px;
+				text-align: center;padding: 10px;cursor: pointer;
+			}
+			.list li.active{
+				background: rgba(0,0,0,0.1);
+			}
+			.lyric {
+				overflow: hidden;
+				position: relative;
+				display: flex;
+			}
+			
+			.lyric ul {
+				position: absolute;
+				width: 100%;
+				transition: 0.5s;
+			}
+			
+			.lyric li {
+				text-align: center;
+				padding-bottom: 5px;
+				font-size: 20px;
+				color: #999;
+				transition: 0.5s;
+				height: 30px;
+				line-height: 30px;
+			}
+			
+			.lyric li.now {
+				font-size: 24px;
+				color: #000;
+			}
+			
+			.control div {
+				text-align: center;
+			}
+			
+			.progress {
+				width: 80%;
+				height: 10px;
+				border: 1px solid #000000;
+				margin: 20px;
+				position: relative;
+				display: flex;
+				align-items: center;
+			}
+			
+			.progress div {
+				position: absolute;
+				height: 8px;
+				transition: 0.2s;
+			}
+			
+			.progress div.progressed {
+				background: #999999;
+			}
+			
+			.progress div.progressing {
+				background: #333;
+				height: 3px;
+			}
+			.list li:last-of-type{border: 0;}
+			.allTime{position: absolute;left: 101%;}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<div class="lyric"></div>
+			<div class="control">
+				<div>上一首</div>
+				<div>播放</div>
+				<div>下一首</div>
+			</div>
+			<div class="progress">
+				<div class="progressed"></div>
+				<div class="progressing"></div>
+				<span class="allTime"></span>
+			</div>
+
+		</div>
+		<ul class="list">
+			
+		</ul>
+		<!--<div style="display:none">-->
+		<audio preload id="audio1" src="http://cool.miaov.com/wangchong/player/mp3/1Angelika%20Vee%20-%20Burn.mp3"></audio>
+		<!--</div>-->
+		<script type="text/javascript">
+		</script>
+	</body>
+	<script src="js/music.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

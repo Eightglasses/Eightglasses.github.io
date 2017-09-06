@@ -124,11 +124,6 @@ Music.action = function() {
 			state.playing = true;
 			oAudio.pause();
 		};
-		if(state.playing == true) {
-			$('.control div').eq(1).html('播放')
-		} else {
-			$('.control div').eq(1).html('暂停')
-		}
 		Music.showLyric();
 	});
 	$('.control div').eq(0).on('click', function() { //上一首

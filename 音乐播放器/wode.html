@@ -8,7 +8,11 @@
 		<script src="" type="text/javascript" charset="utf-8"></script>
 		<script src="js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
 		<style>
-			*{font-size: 24px;color: #333;}
+			* {
+				font-size: 24px;
+				color: #333;
+			}
+			
 			#box,
 			.list {
 				display: flex;
@@ -31,10 +35,16 @@
 				display: flex;
 			}
 			
+			.control {
+				height: 50px;
+				line-height: 50px;
+			}
+			
 			.control div {
 				text-align: center;
 				width: 33%;
-				border: 1px solid #111111;cursor:pointer
+				border: 1px solid #111111;
+				cursor: pointer
 			}
 			
 			.list {
@@ -43,29 +53,35 @@
 			
 			.list li {
 				border-bottom: 1px solid #82A2B2;
-				height: 30px;line-height: 30px;
-				text-align: center;padding: 10px;cursor: pointer;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				padding: 10px;
+				cursor: pointer;
 			}
-			.list li.active{
-				background: rgba(0,0,0,0.1);
+			
+			.list li.active {
+				background: rgba(0, 0, 0, 0.1);
 			}
+			
 			.lyric {
-				overflow: hidden;
 				position: relative;
 				display: flex;
+				overflow:hidden;
 			}
 			
 			.lyric ul {
 				position: absolute;
 				width: 100%;
 				transition: 0.5s;
+				background: #CCCCCC;
 			}
 			
 			.lyric li {
 				text-align: center;
 				padding-bottom: 5px;
 				font-size: 20px;
-				color: #999;
+				color: #fff;
 				transition: 0.5s;
 				height: 30px;
 				line-height: 30px;
@@ -104,8 +120,15 @@
 				background: #333;
 				height: 3px;
 			}
-			.list li:last-of-type{border: 0;}
-			.allTime{position: absolute;left: 101%;}
+			
+			.list li:last-of-type {
+				border: 0;
+			}
+			
+			.allTime {
+				position: absolute;
+				left: 101%;
+			}
 		</style>
 	</head>
 
@@ -125,7 +148,7 @@
 
 		</div>
 		<ul class="list">
-			
+
 		</ul>
 		<!--<div style="display:none">-->
 		<audio preload id="audio1" src="http://cool.miaov.com/wangchong/player/mp3/1Angelika%20Vee%20-%20Burn.mp3"></audio>

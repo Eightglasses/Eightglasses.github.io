@@ -86,7 +86,7 @@ state.nowMusicNum = 0; //当前第几首
 state.playing = true;
 window.onload = function() {
 	setTimeout(function() {
-		Music.init();
+		var KPmusic = new Music.init;
 	}, 100)
 }
 Music.init = function() {
@@ -119,7 +119,6 @@ Music.action = function() {
 			state.playing = false;
 			Music.setLyric();
 			oAudio.play();
-
 		} else {
 			state.playing = true;
 			oAudio.pause();
@@ -152,7 +151,6 @@ Music.action = function() {
 		Music.showLyric();
 		Music.songList();
 		oAudio.play();
-
 	});
 
 };
@@ -193,12 +191,9 @@ Music.jindu = function() {
 Music.showLyric = function() {
 	if(state.playing == false) {
 		var liHeight = parseFloat($('.lyric li').css('height'));
-		console.log(liHeight)
 		state.startMusic = setInterval(function() {
-
 			for(var i = 0; i < Music.musicArr2.length; i++) {
 				Music.jindu();
-
 				if(Music.musicArr2[i] > oAudio.currentTime) {
 					$('.lyric li').eq(i - 1).addClass('now').siblings().removeClass('now');
 					$('.lyric ul').css('top', (-i + 1) * liHeight + liHeight + 'px')

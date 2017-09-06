@@ -86,7 +86,7 @@ state.nowMusicNum = 0; //当前第几首
 state.playing = true;
 window.onload = function() {
 	setTimeout(function() {
-		var KPmusic = new Music.init;
+		Music.init();
 	}, 100)
 }
 Music.init = function() {

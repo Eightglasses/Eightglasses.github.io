@@ -100,6 +100,7 @@ Music.init = function() {
  * 设置歌词
  * */
 Music.setLyric = function() {
+
 	var nowmusic = state.nowMusicNum;
 	var musicArr = returnTimeLyric(music_list[nowmusic].lyric);
 	Music.musicArr1 = musicArr[1]; //歌词
@@ -115,13 +116,19 @@ Music.setLyric = function() {
 Music.action = function() {
 	$('.control div').eq(1).on('click', function() { //播放
 		if(state.playing == true) {
+			state.playing = false;
 			Music.setLyric();
 			oAudio.play();
-			state.playing = false;
+
 		} else {
-			oAudio.pause();
 			state.playing = true;
+			oAudio.pause();
 		};
+		if(state.playing == true) {
+			$('.control div').eq(1).html('播放')
+		} else {
+			$('.control div').eq(1).html('暂停')
+		}
 		Music.showLyric();
 	});
 	$('.control div').eq(0).on('click', function() { //上一首
@@ -190,6 +197,8 @@ Music.jindu = function() {
 /*歌词滚动*/
 Music.showLyric = function() {
 	if(state.playing == false) {
+		var liHeight = parseFloat($('.lyric li').css('height'));
+		console.log(liHeight)
 		state.startMusic = setInterval(function() {
 
 			for(var i = 0; i < Music.musicArr2.length; i++) {
@@ -197,7 +206,7 @@ Music.showLyric = function() {
 
 				if(Music.musicArr2[i] > oAudio.currentTime) {
 					$('.lyric li').eq(i - 1).addClass('now').siblings().removeClass('now');
-					$('.lyric ul').css('top', (-i + 1) * 35 + 35 + 'px')
+					$('.lyric ul').css('top', (-i + 1) * liHeight + liHeight + 'px')
 					break;
 				}
 			}

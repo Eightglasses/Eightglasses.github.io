@@ -2,7 +2,8 @@
 	<!-- 我只是个头 -->
 	<div class="back_box">
 		<div class="back_arrow" @click="back_one">
-			< </div>
+			< 
+		</div>
 				<h3>{{title}}</h3>
 		</div>
 

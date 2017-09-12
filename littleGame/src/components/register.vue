@@ -30,6 +30,7 @@
 			regist() {
 				if(this.userm != this.usermm){
 					alert('请确认密码');
+					return;
 				}
 				var localuserz = localStorage.getItem(this.userz)
 				if(localuserz){

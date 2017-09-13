@@ -28,6 +28,7 @@
 		},
 		methods:{
 			login(){
+				
 				var mima = localStorage.getItem(this.loginz);
 				if(mima){
 					if(mima != this.loginm){
@@ -49,8 +50,6 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-	ul {}
-	
 	li {
 		display: flex;
 		justify-content: center;

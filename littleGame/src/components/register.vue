@@ -29,15 +29,28 @@
 		methods: {
 			regist() {
 				if(this.userm != this.usermm){
-					alert('请确认密码');
+					alert('密码与确认密码必须相同');
 					return;
 				}
-				var localuserz = localStorage.getItem(this.userz)
-				if(localuserz){
-					alert('帐号已存在，请重新输入');
-					return;
+				var account;
+				var localuserZ = localStorage.getItem(account);//获取已存帐号信息
+				localuserZ = JSON.stringify(localuserZ);
+				if(localuserZ){
+					for(item in localuserZ){
+						if(item.lid == this.userz){
+							alert('帐号已存在');
+							return;
+						}
+					};
 				}
-				localStorage.setItem(this.userz, this.userm);
+				
+				localuserZ.push({
+					lid:this.userz,
+					attack:3,
+					health:100,
+					name:''
+				});
+				localStorage.setItem(account, localuserZ);
 				
 				
 			}
@@ -47,7 +60,6 @@
 </script>
 
 <style scoped>
-	ul {}
 	
 	li {
 		display: flex;

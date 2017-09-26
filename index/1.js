@@ -161,7 +161,7 @@ function setBillData() {
 				} else {
 					$("#xianjindaiDiv").show()
 				}
-			}
+			}   
 		}
 	}
 	_shade_layer.hide()

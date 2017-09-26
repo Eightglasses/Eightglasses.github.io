@@ -1,0 +1,52 @@
+h1 {
+  padding-top: 2rem;
+  text-align: center;
+}
+
+h1 img {
+  width: 2.8rem;
+}
+
+.login-ul1 {
+  width: 5.45rem;
+  margin: 1.55rem 0 0 1rem;
+}
+
+.login-ul1 li {
+  margin-bottom: 0.65rem;
+  border-bottom: 2px solid rgba(24, 17, 11, 0.1);
+  padding-bottom: 0.23rem;
+}
+
+.login-ul1 li .img1 {
+  width: 0.23rem;
+}
+
+.login-ul1 li .img2 {
+  width: 0.28rem;
+}
+
+.login-ul1 li input {
+  margin-left: 0.23rem;
+  font-size: 0.34rem;
+  color: #999;
+}
+
+.login-ok {
+  margin: 0.35rem 0 0 0;
+  text-align: center;
+}
+
+.login-ok .login-ok-input {
+  background-image: -moz-linear-gradient(0deg, #4fe0ff 0%, #4285f4 100%);
+  background-image: -webkit-linear-gradient(0deg, #4fe0ff 0%, #4285f4 100%);
+  background-image: -ms-linear-gradient(0deg, #4fe0ff 0%, #4285f4 100%);
+  box-shadow: 0px 0px 13px 0px rgba(66, 133, 244, 0.6);
+  width: 5.54rem;
+  height: 0.88rem;
+  border-radius: 0.44rem;
+  color: #fefeff;
+  font-size: 0.4rem;
+  display: inline-block;
+  line-height: 0.88rem;
+}

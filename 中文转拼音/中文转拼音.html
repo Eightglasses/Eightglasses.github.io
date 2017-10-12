@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<script src="transition.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			console.time()
+
+			var data = ['哈哈', '去', '我', '饿', '人', '他', '一', '哦', '哈哈', '去', '我', '饿', '人', '他', '一', '哦'];
+			var obj = [{
+				username: '哈哈1',
+				userId: '111223',
+				userPhone: '1333333'
+			}, {
+				username: '埃索达',
+				userId: '111223',
+				userPhone: '1333333'
+			}, {
+				username: '请问',
+				userId: '111223',
+				userPhone: '1333333'
+			}, {
+				username: '二伟',
+				userId: '111223',
+				userPhone: '1333333'
+			}, {
+				username: '让人',
+				userId: '111223',
+				userPhone: '1333333'
+			}, {
+				username: '天天',
+				userId: '111223',
+				userPhone: '1333333'
+			}, {
+				username: '一样',
+				userId: '111223',
+				userPhone: '1333333'
+			}, {
+				username: 'uu',
+				userId: '111223',
+				userPhone: '1333333'
+			}, {
+				username: 'ii',
+				userId: '111223',
+				userPhone: '1333333'
+			}, {
+				username: '看看',
+				userId: '111223',
+				userPhone: '1333333'
+			}, {
+				username: '来了',
+				userId: '111223',
+				userPhone: '1333333'
+			}]
+			
+			var d = ['a','b','c','a','f','e','d']
+			d.sort()
+			//console.log(d)
+			for (item in obj) {
+				var firstName = obj[item].username.charAt(0);
+				obj[item].pinyin = pinyin.getCamelChars(firstName)
+			}
+			
+			console.log(obj)
+			console.timeEnd()
+		</script>
+
+	</body>
+
+</html>

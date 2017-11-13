@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" type="text/css" href="../css/public.css" />
+    <link rel="stylesheet" type="text/css" href="../css/top.css" />
+    <link rel="stylesheet" type="text/css" href="rank.css" />
+    <script src="../js/public.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body style="background:rgb(239, 239, 244)">
+
+    <header class="clearfix header headerborder" id="finnalhead">
+        <span id="dataBack_id" class="nav_left">
+            <img src="../img/top/navback.png">
+        </span>
+        <span>
+            <span class="rank-title1">员工排行</span>
+            <span class="rank-title2">团队排行</span>
+        </span>
+    </header>
+    <section>
+        <div class="rank-top">
+            <div class="flex alignc rank-top-div1">
+                <p class="flex alignc justifyc" index="0">
+                    <span>龙鹰队</span>
+                    <img class="img1" src="../img/datacenter/graydown.png" />
+                    <img class="img2" src="../img/datacenter/blueup.png" />
+                </p>
+                <p class="flex alignc justifyc" index="1">
+                    <span>今日</span>
+                    <img class="img1" src="../img/datacenter/graydown.png" />
+                    <img class="img2" src="../img/datacenter/blueup.png" />
+
+                </p>
+                <p class="flex alignc justifyc" index="2">
+                    <span>在库净增</span>
+                    <img class="img1" src="../img/datacenter/graydown.png" />
+                    <img class="img2" src="../img/datacenter/blueup.png" />
+                </p>
+            </div>
+            <div class="rank-top-div2">
+                <ul index="0">
+                    <li>龙鹰队1</li>
+                    <li>龙鹰队2</li>
+                    <li>龙鹰队3</li>
+                    <li>龙鹰队4</li>
+                </ul>
+                <ul index="1">
+                    <li>今日</li>
+                    <li>昨日</li>
+                    <li>本周</li>
+                    <li>上周</li>
+                    <li>本月</li>
+                    <li>上月</li>
+                </ul>
+                <ul index="2">
+                    <li>在库净增</li>
+                    <li>提交单量</li>
+                    <li>新增授信</li>
+                    <li>回款率</li>
+                    <li>商城授信额</li>
+                    <li>达分期销售额</li>
+                </ul>
+            </div>
+        </div>
+        <div class='rank-total flex alignc'>
+            <p>总数
+                <span>40单</span>
+            </p>
+            <p>人均
+                <span>40单</span>
+            </p>
+        </div>
+        <div class='rank-list'>
+            <!-- 往ul里加数据，别忘div里加 -->
+            <ul>
+                <li class="rank-topthree flex justifyb">
+                    <p class="flex alignc">
+                        <span class="span0">
+                            <img src='' />
+                        </span>
+                        <span class="span1">郑木木</span>
+                    </p>
+                    <p class="flex alignc">
+                        <span class="span2">30</span>
+                        <span class="span3">单</span>
+                    </p>
+                </li>
+                <li class=" flex justifyb">
+                    <p class="flex alignc">
+                        <span class="span0">4</span>
+                        <span class="span1">郑木木</span>
+                    </p>
+                    <p class="flex alignc">
+                        <span class="span2">30</span>
+                        <span class="span3">单</span>
+                    </p>
+                </li>
+                <li class=" flex justifyb">
+                    <p class="flex alignc">
+                        <span class="span0">5</span>
+                        <span class="span1">郑木木</span>
+                    </p>
+                    <p class="flex alignc">
+                        <span class="span2">30</span>
+                        <span class="span3">单</span>
+                    </p>
+                </li>
+            </ul>
+            <div class="mask" id="mask_id" style="height: 667px;display: none"></div>
+        </div>
+    </section>
+
+    <!-- 无团队状态noneteam显示，section隐藏 -->
+    <div class="noneTeam">
+        <img src="../img/teamManage/noneteam.png" />
+        <p>您还没有团队</p>
+    </div>
+
+</body>
+<script src="rank.js"></script>
+
+</html>

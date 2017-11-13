@@ -72,7 +72,7 @@
 .tagmanage-new {
   height: 1.5rem;
   width: 100%;
-  padding: 0.35rem 0 0 0.3rem;
+  padding: 0 0 0 0.3rem;
   box-sizing: border-box;
 }
 
@@ -85,4 +85,138 @@
 .tagmanage-new p {
   font-size: 0.3rem;
   color: #444;
+}
+
+.tagmanage-old .old-list {
+  width: 100%;
+  background: #fff;
+  height: 0.9rem;
+  line-height: 0.9rem;
+  padding-left: 0.3rem;
+  margin: 0 0 0.2rem 0;
+}
+
+.tagmanage-old .old-list img {
+  width: 0.38rem;
+  height: 0.38rem;
+  padding-right: 0.2rem;
+}
+
+.tagmanage-old .old-list p {
+  font-size: 0.3rem;
+  color: #444;
+}
+
+.newtag-name {
+  height: 1.85rem;
+  background: #fff;
+  box-sizing: border-box;
+  padding: 0.4rem 0.3rem;
+  margin-top: 0.1rem;
+}
+
+.newtag-name label {
+  font-size: 0.3rem;
+  color: #444;
+}
+
+.newtag-name input {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  color: #444;
+  font-size: 0.28rem;
+  padding-top: 0.1rem;
+  height: 0.61rem;
+}
+
+.newtag-person {
+  background: #fff;
+  margin-top: 0.1rem;
+  width: 100%;
+  padding: 0.4rem 0.3rem;
+  box-sizing: border-box;
+}
+
+.newtag-person h3 {
+  color: #444;
+  font-size: 0.3rem;
+}
+
+.newtag-person .newtag-person-list {
+  margin-top: 0.4rem;
+}
+
+.newtag-person .newtag-person-list .person-list-li {
+  min-width: 2rem;
+  max-width: 2rem;
+  height: 0.9rem;
+  border: 1px solid #ccc;
+  margin-right: 0.39rem;
+  flex: 1;
+  margin-bottom: 0.4rem;
+  position: relative;
+  border-radius: 4px;
+  font-size: 0.28rem;
+  color: #666;
+}
+
+.newtag-person .newtag-person-list .person-list-li img {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  display: none;
+}
+
+.newtag-person .newtag-person-list .person-list-li:nth-of-type(3n) {
+  margin-right: 0;
+}
+
+.newtag-person .newtag-person-list .person-list-li.active {
+  border: 1px solid #4285f4;
+}
+
+.newtag-person .newtag-person-list .person-list-li.active img {
+  display: block;
+}
+
+.newtag-person .img1 {
+  width: 0.58rem;
+  height: 0.58rem;
+  margin-right: 0.9rem;
+}
+
+.newtag-person .alltag-list {
+  margin-top: 0.4rem;
+}
+
+.newtag-person .alltag-list .alltag-li {
+  margin: 0 0.5rem 0.4rem 0;
+  font-size: 0.3rem;
+  color: #444;
+}
+
+.newtag-person .alltag-list div.active {
+  color: #4285f4;
+}
+
+.select {
+  position: absolute;
+  left: 7.5rem;
+  top: 0;
+  transition: 0.3s;
+  width: 100%;
+}
+
+.select header {
+  z-index: 99;
+}
+
+.newtag {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: 0.3s;
+  width: 100%;
 }

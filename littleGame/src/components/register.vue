@@ -32,12 +32,12 @@
 					alert('密码与确认密码必须相同');
 					return;
 				}
-				var account;
-				var localuserZ = localStorage.getItem(account);//获取已存帐号信息
-				localuserZ = JSON.stringify(localuserZ);
+				var localuserZ = localStorage.getItem('account');//获取已存帐号信息
+				localuserZ = JSON.stringify(localuserZ) || new Array;
 				if(localuserZ){
-					for(item in localuserZ){
-						if(item.lid == this.userz){
+					for(index in localuserZ){
+						console.log(index)
+						if(localuserZ[index].lid == this.userz){
 							alert('帐号已存在');
 							return;
 						}
@@ -50,7 +50,7 @@
 					health:100,
 					name:''
 				});
-				localStorage.setItem(account, localuserZ);
+				localStorage.setItem('account', localuserZ);
 				
 				
 			}

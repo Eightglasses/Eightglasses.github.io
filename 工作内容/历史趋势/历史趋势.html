@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" type="text/css" href="../css/public.css" />
+    <link rel="stylesheet" type="text/css" href="../css/top.css" />
+    <link rel="stylesheet" href="trend.css">
+    <script src="../js/public.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+
+    <header class="clearfix header headerborder" id="finnalhead">
+        <span id="dataBack_id" class="nav_left">
+            <img src="../img/top/navback.png">
+        </span>
+        <span class="head_title">历史趋势</span>
+        <span class="nav_right">明细</span>
+    </header>
+
+    <section>
+        <div class="trend-choseTeam" style="background:#efeff4">
+            <p>
+                <span>广东港督营业部</span>
+                <img src="" />
+            </p>
+        </div>
+        <div class="trend-showTable">
+            <div class="trend-showTable-div1 flex">
+                <div id="dayStatistics" class="flex flexdc alignc justifyc active">
+                    <span class="span1 flex1 flex alignc">按日统计</span>
+                    <span class="span2"></span>
+                </div>
+                <div id="monthStatistics" class="flex flexdc alignc justifyc">
+                    <span class="span1 flex1 flex alignc">按月统计</span>
+                    <span class="span2"></span>
+                </div>
+            </div>
+            <div class="trend-showTable-div2">
+                <p>
+                    <span>在库净增</span>
+                    <img src="" />
+                </p>
+            </div>
+            <div id="tab1" class="trend-showTable-div3">
+                <!-- 折线图位置 -->
+            </div>
+            <div class="trend-showTable-div4 month">
+                <img src="#">
+                <div class="div4-1 flex">
+                    <span class="active">近7天</span>
+                    <span>近30天</span>
+                    <span>近90天</span>
+                    <span>近1年</span>
+                </div>
+                <div class="div4-2 flex justifyc">
+                    <span class="active">2017年</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="trend-chosetype" >
+        <ul>
+            <li class="active">在库净增</li>
+            <li>提交单量</li>
+            <li>本金回款率</li>
+            <li>商城销售额</li>
+            <li>新增授信金额</li>
+            <li>达分期销售额</li>
+            <li class="no-chose">取消</li>
+        </ul>
+    </div>
+    <div class="maskAll" id="mask_id" style="display:none"></div>
+
+</body>
+<script src="trend.js"></script>
+
+</html>

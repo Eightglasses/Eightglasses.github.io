@@ -1,0 +1,314 @@
+$c3: #333;
+$c6: #666;
+$margin:0.35rem 0.4rem 0 0.3rem;
+.datacenter-entrance-div1 {
+    img {
+        height: 2.8rem;
+        width: 100%;
+    }
+}
+
+.datacenter-entrance-div2 {
+    margin: 0.2rem 0 0 0;
+    background: #fff;
+    height: 2.15rem;
+    box-sizing: border-box;
+    position: relative;
+    .left {
+        padding: 0.75rem 0 0 0.45rem;
+        h1 {
+            color: #444;
+            font-size: 0.36rem;
+            padding-bottom: 0.15rem;
+        }
+        span {
+            font-size: 0.24rem;
+            color: #999;
+        }
+    }
+    .right {
+        position: absolute;
+        right: 0.45rem;
+    }
+}
+
+// 统计数据
+.statistics1 {
+    margin: $margin;
+    span {
+        color: #333;
+        font-size: 0.3rem;
+    }
+    .statistics1-right {
+        color: $c3;
+        font-size: 0.2rem;
+    }
+}
+
+.statistics2 {
+    margin: $margin;
+    span {
+        color: #fff;
+    }
+    p {
+        color: #fff;
+    }
+    .statistics2-top {
+        background-image: -moz-linear-gradient(top, rgb(79, 224, 255) 0%, rgb(66, 133, 244) 100%);
+        background-image: -webkit-linear-gradient(top, rgb(79, 224, 255) 0%, rgb(66, 133, 244) 100%);
+        background-image: -ms-linear-gradient(top, rgb(79, 224, 255) 0%, rgb(66, 133, 244) 100%);
+        box-shadow: 0px 0px 13px 0px rgba(66, 133, 244, 0.6);
+        border-radius: 0.08rem 0.08rem 0 0;
+        padding: 0.56rem 0 0.3rem 0.36rem;
+        .statistics2-div2 {
+            padding-bottom: 0.4rem;
+            h1 {
+                font-size: 0.66rem;
+                color: #fff;
+                padding-right: 0.05rem;
+            }
+            .span1 {
+                font-size: 0.22rem;
+            }
+            .span2 {
+                font-size: 0.26rem;
+            }
+            div {
+                height: 0.66rem;
+            }
+        }
+        .statistics2-div1 {
+            padding-bottom: 0.12rem;
+            .span1 {
+                font-size: 0.28rem;
+            }
+            .span2 {
+                font-size: 0.3rem;
+            }
+            .p2 {
+                padding-left: 1.5rem
+            }
+        }
+    }
+    .statistics2-bottom {
+        height: 0.88rem;
+        background: rgba(60, 115, 208, 1);
+        border-radius: 0 0 0.08rem 0.08rem;
+        p {
+            padding-left: 0.36rem;
+            font-size: 0.28rem
+        }
+    }
+}
+
+.statistics3 {
+    margin-top: 0.5rem;
+    .statistics3-tag {
+        border-bottom: 1px solid #f2f5f7;
+        span {
+            width: 1.2rem;
+            color: #999;
+            padding-bottom: 0.15rem;
+            text-align: center
+        }
+        .span1 {
+            margin-left: 1.3rem
+        }
+        .span2 {
+            margin-right: 1.3rem
+        }
+        .active {
+            color: #4688F1;
+            border-bottom: 2px solid #4688f1;
+        }
+    }
+    .statistics3-box-now {
+        margin-top: 0.5rem;
+        .now-top {
+            padding: 0.6rem 0.45rem 0.44rem 0.4rem;
+            h1 {
+                color: #444;
+                font-size: 0.36rem;
+            }
+            p {
+                color: #999;
+                font-size: 0.28rem;
+                span {
+                    font-size: 0.3rem;
+                    color: #ff6766
+                }
+                .span2 {
+                    color: #4285f4;
+                }
+            }
+        }
+        .now1 {
+            #now-echart {
+                height: 3.26rem;
+                margin: 0 0.3rem;
+                background: #f4f8ff;
+            }
+        }
+        .now2 {
+            border-top: 1px solid #f2f5f7;
+            margin-top: 0.23rem;
+            padding-bottom: 0.63rem;
+            border-bottom: 1px solid #f2f5f7;
+        }
+        .now-datalist {
+            padding: 0 0.53rem;
+            .datalist1 {
+                p {
+                    font-size: 0.24rem;
+                    color: #888;
+                    span {
+                        font-size: 0.34rem;
+                        color: #444;
+                    }
+                }
+                .p1 {
+                    font-size: 0.26rem;
+                    padding-top: 0.1rem;
+                }
+            }
+        }
+        #now-echart2 {
+            height: 2.5rem;
+            width: 2.5rem;
+            margin: 0 auto;
+        }
+        .now3-bottom {
+            padding: 0.26rem 1rem 1rem 0.5rem;
+            div {
+                .dian {
+                    width: 0.2rem;
+                    height: 0.2rem;
+                    border-radius: 50%;
+                    background: #FFD4B4;
+                    margin-right: 0.15rem;
+                }
+                .dian1 {
+                    background: #FFA15C;
+                }
+                div {
+                    p {
+                        font-size: 0.28rem;
+                        color: #888;
+                        padding-bottom: 0.05rem;
+                        span {
+                            font-size: 0.34rem;
+                            color: #444;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 业务明细
+.detailed1 {
+    padding: 0.3rem;
+    background: #fff;
+    height: 1rem;
+    box-sizing: border-box;
+    p {
+        font-size: 0.22rem;
+        color: #999;
+        span {
+            font-size: 0.3rem;
+            color: #333;
+        }
+    }
+}
+
+.detailed2 {
+    background: #fff;
+    border-top: 1px solid #f2f5f7;
+    box-sizing: border-box;
+    border-bottom: 1px solid #f2f5f7;
+    height: 0.8rem;
+    .detailed2-div1 {
+        width: 50%;
+        margin: 0.15rem 0;
+        img {
+            width: 0.34rem;
+            margin-left: 0.1rem;
+        }
+    }
+    .detailed2-div1:nth-of-type(1) {
+        border-right: 1px solid #f2f5f7
+    }
+}
+
+.relative {
+    position: relative;
+    padding: 0;
+    top: 1rem;
+}
+
+.detailed3 {
+    position: absolute;
+    top: 1.8rem;
+    bottom: 0;
+    width: 100%; //overflow: auto;
+    .detailed3-li {
+        margin: 0.3rem;
+        background: #fff;
+        border-radius: 0.12rem;
+        .top {
+            height: 0.8rem;
+            padding: 0 0.3rem;
+            border-bottom: 1px solid #f2f5f7;
+            h2 {
+                color: #4688f1;
+                font-size: 0.3rem;
+            }
+        }
+        .middle {
+            ul {
+                margin: 0 0.3rem;
+                padding: 0.3rem 0 0 0;
+                border-bottom: 1px solid #f2f5f7;
+                li {
+                    padding-bottom: 0.3rem;
+                    font-size: 0.26rem;
+                    color: #666;
+                    label {
+                        font-size: 0.28rem;
+                        color: #666;
+                    }
+                    p {
+                        font-size: 0.26rem;
+                        color: #666;
+                        span {
+                            font-size: 0.3rem;
+                            color: #222;
+                        }
+                    }
+                }
+            }
+        }
+        .bottom {
+            padding: 0.17rem 0.3rem 0.36rem 0.3rem;
+            p {
+                font-size: 0.28rem;
+                color: #666;
+            }
+            div {
+                text-align: right;
+                p {
+                    font-size: 0.22rem;
+                    color: #666;
+                }
+                .p1 {
+                    padding-bottom: 0.1rem;
+                    span {
+                        font-size: 0.3rem;
+                        color: #ffa15c
+                    }
+                }
+            }
+        }
+    }
+}

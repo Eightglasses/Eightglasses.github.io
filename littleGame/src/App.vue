@@ -10,12 +10,8 @@
 	}
 </script>
 
-<style>
-	#app {
-		
-		
-	}
-</style>
+
 <style scoped>
 	@import '../static/css/public.css';
+	@import '../static/css/top.css';
 </style>

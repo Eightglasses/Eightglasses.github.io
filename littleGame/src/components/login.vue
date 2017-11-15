@@ -17,35 +17,41 @@
 </template>
 
 <script>
-	import navBar from '@/components/navbar'
+	import navBar from "@/components/navbar";
 	export default {
-		name: '',
+		name: "",
 		data() {
 			return {
-				'loginz':this.loginz,
-				'loginm':this.loginm
-			}
+				loginz: this.loginz,
+				loginm: this.loginm
+			};
 		},
-		methods:{
-			login(){
-				
-				var mima = localStorage.getItem(this.loginz);
-				if(mima){
-					if(mima != this.loginm){
-						alert('密码不正确')
-						return;
+		methods: {
+			login() {
+				var localuserZ = localStorage.getItem('account');
+				if(localuserZ) {
+					localuserZ = JSON.parse(localuserZ);
+					for(var i = 0; i < localuserZ.length; i++) {
+						if(localuserZ[i].unm == this.loginz) {
+							if(localuserZ[i].pwd == this.loginm) {
+								    
+								this.$router.replace("/main");
+							} else {
+								alert('密码错误')
+								return;
+							} 
+						} else {
+							alert("没有这个帐号");
+							return; 
+						}
 					}
-				}else{
-					alert('没有这个帐号');
-					return;
 				}
-				this.$router.replace('/main');
 			}
 		},
 		components: {
-			'navBar': navBar
+			navBar: navBar
 		}
-	}
+	};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -55,16 +61,16 @@
 		justify-content: center;
 		margin: 0.3rem 0;
 	}
-	
 	li input {
 		width: 100%;
 		height: 1rem;
 	}
-	
 	p a {
-		color: #007AFF;
+		color: #007aff;
 	}
-	.login-button{
-		width: 2rem;height: 0.7rem;line-height: 0.7rem;
+	.login-button {
+		width: 2rem;
+		height: 0.7rem;
+		line-height: 0.7rem;
 	}
 </style>

@@ -1,0 +1,119 @@
+html,
+body {
+  height: 100%;
+}
+
+.record-list .record-list-ul {
+  position: absolute;
+  top: 1rem;
+  bottom: 0;
+  width: 100%;
+  padding-top: 0.2rem;
+}
+
+.record-list .record-list-ul .record-list-li {
+  background: #fff;
+  padding: 0.3rem 0 0 0.58rem;
+}
+
+.record-list .record-list-ul .record-list-li .record-list-li-top {
+  padding-right: 0.3rem;
+}
+
+.record-list .record-list-ul .record-list-li .record-list-li-top .top-tag {
+  color: #fff;
+  text-align: center;
+  height: 0.34rem;
+  padding: 0 0.22rem;
+  border-radius: 0.06rem;
+  font-size: 0.22rem;
+}
+
+.record-list .record-list-ul .record-list-li .record-list-li-top .green {
+  background: #64D1BE;
+}
+
+.record-list .record-list-ul .record-list-li .record-list-li-top .purple {
+  background: #E876D1;
+}
+
+.record-list .record-list-ul .record-list-li .record-list-li-top .orange {
+  background: #FC9D59;
+}
+
+.record-list .record-list-ul .record-list-li .record-list-li-top .blue {
+  background: #689DF6;
+}
+
+.record-list .record-list-ul .record-list-li .record-list-li-top .top-time {
+  color: #999;
+  font-size: 0.28rem;
+}
+
+.record-list .record-list-ul .record-list-li .record-list-li-bottom {
+  border-bottom: 1px solid #e2e2e2;
+  padding: 0.26rem 0.22rem 0.38rem 0;
+}
+
+.record-list .record-list-ul .record-list-li .record-list-li-bottom p {
+  font-size: 0.3rem;
+  color: #444;
+}
+
+.record-list .record-list-li:last-of-type .record-list-li-bottom {
+  border: 0;
+}
+
+.record-new {
+  font-size: 0.5rem;
+  font-weight: normal;
+  padding: 0 0.3rem;
+  right: 0;
+}
+
+.record-none {
+  text-align: center;
+  position: absolute;
+  top: 3rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.record-none img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.record-none .record-none-p1 {
+  padding-top: 0.8rem;
+  text-align: center;
+  color: #666;
+  font-size: 0.34rem;
+}
+
+.record-none .record-list-new {
+  text-align: center;
+}
+
+.record-none .record-list-new p {
+  width: 5.92rem;
+  height: 0.98rem;
+  background: #fff;
+  color: #4285f4;
+  margin: 1rem auto;
+  border: 1px solid #e2e2e2;
+  border-radius: 0.13rem;
+}
+
+.record-none .record-list-new p span {
+  color: #4285f4;
+}
+
+.record-none .record-list-new p .span1 {
+  font-size: 0.4rem;
+  padding-right: 0.2rem;
+}
+
+.record-none .record-list-new p .span2 {
+  font-size: 0.32rem;
+}

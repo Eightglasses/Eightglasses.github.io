@@ -1,12 +1,12 @@
 <template>
 	<div class="login">
 		<navBar title="home"></navBar>
-		<shadowdiv>
+		<!--<shadowdiv>
 			<div slot="modeldiv">
-				<p>勇士输入你的大名</p>
 				<input type="text"/>
 			</div>
-		</shadowdiv>
+		</shadowdiv>-->
+		
 	</div>
 </template>
 

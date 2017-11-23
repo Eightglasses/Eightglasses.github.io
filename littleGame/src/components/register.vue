@@ -34,7 +34,6 @@
 					alert("密码与确认密码必须相同");
 					return;
 				}
-<<<<<<< HEAD
 				if(this.userm.trim() == '' || this.userz.trim() == '' || this.usermm.trim() == '' || this.username.trim() == '') {
 					alert('请填写完整')
 					return false;
@@ -42,12 +41,6 @@
 				var userInfo = new Array();
 				var localuserZ = localStorage.getItem("account") || ''; //获取已存帐号信息
 				var len = 0;
-=======
-				var userInfo = new Array();
-				var localuserZ = localStorage.getItem("account") || ''; //获取已存帐号信息
-				var len = 0;
-				console.log(localuserZ);
->>>>>>> 4efdfd7cfa65fda6cff42bb443081b2169dbe843
 
 				if(localuserZ) {
 					localuserZ = JSON.parse(localuserZ);
@@ -56,21 +49,15 @@
 					for(var i = 0; i < localuserZ.length; i++) {
 						if(localuserZ[i].unm == this.userz) {
 							alert("帐号已存在");
-<<<<<<< HEAD
 							return;
 						}
 						if(localuserZ[i].username == this.username) {
 							alert("名称已存在");
-=======
->>>>>>> 4efdfd7cfa65fda6cff42bb443081b2169dbe843
 							return;
 						}
 					}
 				}
-<<<<<<< HEAD
 				//用户数据数组
-=======
->>>>>>> 4efdfd7cfa65fda6cff42bb443081b2169dbe843
 				userInfo.push({
 					lid: len + 1,
 					unm: this.userz,
@@ -78,7 +65,6 @@
 					attack: "3",
 					health: "100",
 					username: this.username
-<<<<<<< HEAD
 				});
 				//存下当前用户信息，方便获取
 				var nowInfo = {
@@ -101,12 +87,6 @@
 						userid: this.userz
 					}
 				});
-=======
-				});
-				userInfo = JSON.stringify(userInfo);
-				localStorage.setItem("account", userInfo);
-				this.$router.replace("/main");
->>>>>>> 4efdfd7cfa65fda6cff42bb443081b2169dbe843
 			}
 		}
 	};

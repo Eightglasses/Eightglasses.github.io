@@ -4,7 +4,7 @@
 		<div class="name">勇士:
 			<span>{{username}}</span>
 		</div>
-		<p>选择副本</p>
+		<p class="chose">选择副本</p>
 		<ul class="fb-list">
 			<li v-on:click="chosefb" index="pt">普通副本</li>
 			<li v-on:click="chosefb" index="yx">英雄副本</li>
@@ -53,8 +53,8 @@
 		height: 0.5rem;
 		line-height: 0.5rem;
 	}
-	p {
-		margin-left: 1rem;
+	.chose{ 
+		margin-left: 1rem; 
 	}
 	.name {
 		margin: 1rem;

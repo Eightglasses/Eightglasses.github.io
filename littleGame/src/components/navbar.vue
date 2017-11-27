@@ -29,7 +29,7 @@
 	};
 </script>
 
-<style>
+<style scoped>
 	.back_box {
 		width: 100%;
 		height: 1rem;

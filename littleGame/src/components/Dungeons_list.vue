@@ -22,14 +22,14 @@
 			shadowdiv: shadowdiv
 		},
 		methods: {
-			chosefb(event,num) {
+			chosefb(event, num) {
 				let guanKa = num;
 				this.$router.push({
-					path:'/Dungeons',
-					name:'Dungeons',
-					query:{
-						guanka:num,
-						nandu:this.nandu
+					path: '/Dungeons',
+					name: 'Dungeons',
+					query: {
+						guanka: num,
+						nandu: this.nandu
 					}
 				})
 			}
@@ -40,7 +40,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	input {
 		height: 0.5rem;
 		line-height: 0.5rem;

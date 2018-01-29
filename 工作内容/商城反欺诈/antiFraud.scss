@@ -1,0 +1,256 @@
+.afraud1-nav {
+    background: #fff;
+    border-bottom: 1px solid #eeeeee;
+    ul {
+        li {
+            height: 0.88rem;
+            span {
+                font-size: 0.32rem;
+                color: #333;
+                height: 0.88rem;
+                line-height: 0.88rem;
+                box-sizing: border-box;
+            }
+            .active {
+                color: #4285f4;
+                border-bottom: 2px solid #4285f4;
+            }
+        }
+    }
+}
+
+.afraud1-list {
+    margin-bottom: 0.2rem;
+    background: #fff;
+    padding-bottom: 0.25rem;
+    .list-top {
+        height: 0.72rem;
+        position: relative;
+        margin: 0 0.3rem;
+        border-bottom: 1px dashed #d7d7d7;
+        .bluebar {
+            width: 0.1rem;
+            height: 0.32rem;
+            background: #4285f4;
+            position: absolute;
+            left: -0.3rem;
+            top: 0.22rem;
+        }
+        span {
+            font-size: 0.28rem;
+            color: #333;
+        }
+        .state-box {
+            .state {
+                display: none;
+                img {
+                    width: 0.24rem;
+                    height: 0.24rem;
+                }
+            }
+            .state1 {
+                span {
+                    color: #b7b7b7;
+                }
+            }
+            .state2 {
+                span {
+                    color: #69AC5B;
+                }
+            }
+            span {
+                font-size: 0.24rem;
+            }
+        }
+    }
+    .list-cont {
+        margin: 0.15rem 0.3rem;
+        .p3 {
+            span {
+                display: none;
+            }
+            #chakan {
+                width: 1.16rem;
+                height: 0.48rem;
+                background: #4285f4;
+                color: #fff;
+                font-size: 0.28rem;
+                text-align: center;
+                border-radius: 0.5rem;
+                line-height: 0.48rem;
+            }
+            #shenhe {
+                font-size: 0.28rem;
+                color: #333;
+                img {
+                    height: 0.24rem;
+                }
+            }
+        }
+        .p1 {
+            display: inline-block;
+            width: 48%;
+        }
+        p {
+            height: 0.4rem;
+            line-height: 0.4rem;
+            margin-bottom: 0.04rem;
+            span {
+                font-size: 0.28rem;
+            }
+            .span1 {
+                color: #999;
+            }
+            .span2 {
+                color: #666;
+            }
+        }
+    }
+}
+
+.afraud2-nav {
+    height: 0.8rem;
+    margin: 0 0.3rem;
+    border-bottom: 1px dashed #d7d7d7;
+    p {
+        color: #4285f4;
+        font-size: 0.28rem;
+    }
+    .money {
+        color: #333;
+    }
+}
+
+.afraud2-div1 {
+    padding: 0.2rem 0.3rem;
+    border-bottom: 1px solid #eee;
+    background-image: url('img/line.png');
+    background-repeat: no-repeat;
+    background-position: 0% bottom;
+    background-size: 100% 0.06rem;
+    p {
+        height: 0.4rem;
+        line-height: 0.4rem;
+        padding-bottom: 0.1rem;
+    }
+    span {
+        font-size: 0.28rem;
+    }
+    .span1 {
+        color: #666;
+    }
+    .span2 {
+        color: #333;
+    }
+    .span3 {
+        color: #4285f4;
+        img {
+            width: 0.36rem;
+        }
+    }
+}
+
+.afraud2-div2 {
+    padding: 0.3rem;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    p {
+        height: 0.4rem;
+        line-height: 0.4rem;
+        padding-bottom: 0.1rem;
+        .span1 {
+            color: #666;
+        }
+        .span2 {
+            color: #333;
+        }
+    }
+}
+
+.afraud2-div3 {
+    padding-top: 0.22rem;
+    border-top: 0.2rem #eee solid;
+    .div3-list {
+        padding: 0.3rem 0.3rem 0 0.3rem;
+        .div3-list-li {
+            position: relative;
+            padding-left: 0.36rem;
+            padding-bottom: 0.2rem;
+            img {
+                position: absolute;
+                width: 0.26rem;
+                height: 0.26rem;
+                left: 0;
+            }
+            p {
+                line-height: 0.34rem;
+                font-size: 0.24rem;
+                color: #666;
+            }
+        }
+    }
+}
+
+.div3-top {
+    height: 0.44rem;
+    line-height: 0.44rem;
+    padding: 0 0.3rem;
+    position: relative;
+    .bluebar {
+        width: 0.1rem;
+        height: 0.32rem;
+        background: #4285f4;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    p {
+        color: #333
+    }
+    span {
+        color: #999
+    }
+}
+
+.afraud2-div4 {
+    padding: 0.3rem;
+    border-top: 0.2rem #eee solid;
+    .div4-1 {
+        p {
+            color: #666;
+            font-size: 0.28rem;
+        }
+        span {
+            font-size: 0.28rem;
+        }
+        .blue {
+            color: #4285f4;
+        }
+        .green {
+            color: #6BAD5D;
+        }
+        .red {
+            color: #DC6058;
+        }
+    }
+}
+
+.afraud2-div5 {
+    padding: 0.3rem;
+    .p1 {
+        color: #333;
+        font-size: 0.28rem;
+        padding-bottom: 0.1rem;
+    }
+    .p2 {
+        font-size: 0.28rem;
+        color: #666;
+        line-height: 0.4rem;
+    }
+}
+
+.afraud2-div6 {
+    .span1 {
+        width: 1.4rem;
+    }
+}

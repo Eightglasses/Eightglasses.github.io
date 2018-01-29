@@ -1,0 +1,288 @@
+.afraud1-nav {
+  background: #fff;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.afraud1-nav ul li {
+  height: 0.88rem;
+}
+
+.afraud1-nav ul li span {
+  font-size: 0.32rem;
+  color: #333;
+  height: 0.88rem;
+  line-height: 0.88rem;
+  box-sizing: border-box;
+}
+
+.afraud1-nav ul li .active {
+  color: #4285f4;
+  border-bottom: 2px solid #4285f4;
+}
+
+.afraud1-list {
+  margin-bottom: 0.2rem;
+  background: #fff;
+  padding-bottom: 0.25rem;
+}
+
+.afraud1-list .list-top {
+  height: 0.72rem;
+  position: relative;
+  margin: 0 0.3rem;
+  border-bottom: 1px dashed #d7d7d7;
+}
+
+.afraud1-list .list-top .bluebar {
+  width: 0.1rem;
+  height: 0.32rem;
+  background: #4285f4;
+  position: absolute;
+  left: -0.3rem;
+  top: 0.22rem;
+}
+
+.afraud1-list .list-top span {
+  font-size: 0.28rem;
+  color: #333;
+}
+
+.afraud1-list .list-top .state-box .state {
+  display: none;
+}
+
+.afraud1-list .list-top .state-box .state img {
+  width: 0.24rem;
+  height: 0.24rem;
+}
+
+.afraud1-list .list-top .state-box .state1 span {
+  color: #b7b7b7;
+}
+
+.afraud1-list .list-top .state-box .state2 span {
+  color: #69AC5B;
+}
+
+.afraud1-list .list-top .state-box span {
+  font-size: 0.24rem;
+}
+
+.afraud1-list .list-cont {
+  margin: 0.15rem 0.3rem;
+}
+
+.afraud1-list .list-cont .p3 span {
+  display: none;
+}
+
+.afraud1-list .list-cont .p3 #chakan {
+  width: 1.16rem;
+  height: 0.48rem;
+  background: #4285f4;
+  color: #fff;
+  font-size: 0.28rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  line-height: 0.48rem;
+}
+
+.afraud1-list .list-cont .p3 #shenhe {
+  font-size: 0.28rem;
+  color: #333;
+}
+
+.afraud1-list .list-cont .p3 #shenhe img {
+  height: 0.24rem;
+}
+
+.afraud1-list .list-cont .p1 {
+  display: inline-block;
+  width: 48%;
+}
+
+.afraud1-list .list-cont p {
+  height: 0.4rem;
+  line-height: 0.4rem;
+  margin-bottom: 0.04rem;
+}
+
+.afraud1-list .list-cont p span {
+  font-size: 0.28rem;
+}
+
+.afraud1-list .list-cont p .span1 {
+  color: #999;
+}
+
+.afraud1-list .list-cont p .span2 {
+  color: #666;
+}
+
+.afraud2-nav {
+  height: 0.8rem;
+  margin: 0 0.3rem;
+  border-bottom: 1px dashed #d7d7d7;
+}
+
+.afraud2-nav p {
+  color: #4285f4;
+  font-size: 0.28rem;
+}
+
+.afraud2-nav .money {
+  color: #333;
+}
+
+.afraud2-div1 {
+  padding: 0.2rem 0.3rem;
+  border-bottom: 1px solid #eee;
+  background-image: url("img/line.png");
+  background-repeat: no-repeat;
+  background-position: 0% bottom;
+  background-size: 100% 0.06rem;
+}
+
+.afraud2-div1 p {
+  height: 0.4rem;
+  line-height: 0.4rem;
+  padding-bottom: 0.1rem;
+}
+
+.afraud2-div1 span {
+  font-size: 0.28rem;
+}
+
+.afraud2-div1 .span1 {
+  color: #666;
+}
+
+.afraud2-div1 .span2 {
+  color: #333;
+}
+
+.afraud2-div1 .span3 {
+  color: #4285f4;
+}
+
+.afraud2-div1 .span3 img {
+  width: 0.36rem;
+}
+
+.afraud2-div2 {
+  padding: 0.3rem;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.afraud2-div2 p {
+  height: 0.4rem;
+  line-height: 0.4rem;
+  padding-bottom: 0.1rem;
+}
+
+.afraud2-div2 p .span1 {
+  color: #666;
+}
+
+.afraud2-div2 p .span2 {
+  color: #333;
+}
+
+.afraud2-div3 {
+  padding-top: 0.22rem;
+  border-top: 0.2rem #eee solid;
+}
+
+.afraud2-div3 .div3-list {
+  padding: 0.3rem 0.3rem 0 0.3rem;
+}
+
+.afraud2-div3 .div3-list .div3-list-li {
+  position: relative;
+  padding-left: 0.36rem;
+  padding-bottom: 0.2rem;
+}
+
+.afraud2-div3 .div3-list .div3-list-li img {
+  position: absolute;
+  width: 0.26rem;
+  height: 0.26rem;
+  left: 0;
+}
+
+.afraud2-div3 .div3-list .div3-list-li p {
+  line-height: 0.34rem;
+  font-size: 0.24rem;
+  color: #666;
+}
+
+.div3-top {
+  height: 0.44rem;
+  line-height: 0.44rem;
+  padding: 0 0.3rem;
+  position: relative;
+}
+
+.div3-top .bluebar {
+  width: 0.1rem;
+  height: 0.32rem;
+  background: #4285f4;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.div3-top p {
+  color: #333;
+}
+
+.div3-top span {
+  color: #999;
+}
+
+.afraud2-div4 {
+  padding: 0.3rem;
+  border-top: 0.2rem #eee solid;
+}
+
+.afraud2-div4 .div4-1 p {
+  color: #666;
+  font-size: 0.28rem;
+}
+
+.afraud2-div4 .div4-1 span {
+  font-size: 0.28rem;
+}
+
+.afraud2-div4 .div4-1 .blue {
+  color: #4285f4;
+}
+
+.afraud2-div4 .div4-1 .green {
+  color: #6BAD5D;
+}
+
+.afraud2-div4 .div4-1 .red {
+  color: #DC6058;
+}
+
+.afraud2-div5 {
+  padding: 0.3rem;
+}
+
+.afraud2-div5 .p1 {
+  color: #333;
+  font-size: 0.28rem;
+  padding-bottom: 0.1rem;
+}
+
+.afraud2-div5 .p2 {
+  font-size: 0.28rem;
+  color: #666;
+  line-height: 0.4rem;
+}
+
+.afraud2-div6 .span1 {
+  width: 1.4rem;
+}

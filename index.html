@@ -34,6 +34,14 @@
         123
     </div>
     <div class="div2">321</div>
+    <div class="div3"></div>
 </body>
+<script>
+var userAgent = window.navigator.userAgent; //包含以下属性中所有或一部分的字符串：
+var div3 = document.querySelector(".div3");
+div3.innerHTML = userAgent;
+console.log(userAgent);
 
+
+</script>
 </html>

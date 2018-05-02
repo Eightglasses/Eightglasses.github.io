@@ -95,11 +95,7 @@ body {
 }
 
 .mp-div1 {
-<<<<<<< HEAD
   background-image: url(img/bg3a.png);
-=======
-  background-image: url(img/bg3.png);
->>>>>>> bcb06dd5fa50d7ad1c17c6e95079b52e7cc6d948
   background-position-y: bottom;
   background-size: contain;
   position: absolute;

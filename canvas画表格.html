@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>02Canvas案例-绘制表格</title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			body {
+				background: -webkit-linear-gradient(top, rgb(33, 70, 123), rgb(10, 36, 36));
+				/* Safari 5.1 - 6.0 */
+				background: -o-linear-gradient(top, rgb(33, 70, 123), rgb(10, 36, 36));
+				/* Opera 11.1 - 12.0 */
+				background: -moz-linear-gradient(top, rgb(33, 70, 123), rgb(10, 36, 36));
+				/* Firefox 3.6 - 15 */
+				background: linear-gradient(top, rgb(33, 70, 123), rgb(10, 36, 36));
+				/* 标准的语法 */
+			}
+			
+			html,
+			body {
+				height: 100%;
+			}
+			
+			#container {
+				width: 1200px;
+				margin: 50px;
+				display: flex;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="container">
+			<canvas id="cLeft" height="500">你的浏览器不支持canvas，请升级浏览器</canvas>
+			<canvas id="cavsElem" height="500">
+        		你的浏览器不支持canvas，请升级浏览器
+    		</canvas>
+		</div>
+
+	</body>
+	<script>
+		var jsons = {
+			"timeline": [{
+				"ts": 1,
+				"events": [10]
+			}, {
+				"ts": 5,
+				"events": [7, 4]
+			}, {
+				"ts": 10,
+				"events": [9, 10]
+			}, {
+				"ts": 20,
+				"events": [13, 6]
+			}, {
+				"ts": 40,
+				"events": [8, 7]
+			}]
+		};
+		var arr = [
+			[10, 11, 12],
+			[6],
+			[2, 4],
+			[3, 5],
+			[8],
+			[13],
+			[9, 14, 15],
+			[7],
+			[1]
+		].reverse(); //左侧数据也代表行数
+
+		var maxclos = jsons.timeline[jsons.timeline.length - 1].ts;
+		maxclos = maxclos < 40 ? 40 : (maxclos / 5 + 1) * 5;
+
+		cavInit(); //初始化canvas
+		arit(); //计算方块位置
+		/**
+		 * 初始化canvas
+		 * */
+		function cavInit() {
+			var canvas = document.querySelector('#cavsElem');
+			var cLeft = document.querySelector('#cLeft');
+			var ctx = canvas.getContext('2d');
+			var ctx2 = cLeft.getContext('2d');
+			canvas.width = maxclos * 30;
+			cLeft.width = 100;
+			var rectH = 50;
+			var rectW = 30;
+			ctx.strokeStyle = "dodgerblue";
+			ctx.lineWidth = .5;
+			//绘制表格
+			// 第一步： 绘制竖线
+			for(var i = 0; i < maxclos + 1; i++) {
+				ctx.moveTo(rectW * i, 0);
+				ctx.lineTo(rectW * i, canvas.height - 50);
+			} //第二步：绘制横线
+			for(var i = 0; i < arr.length + 1; i++) {
+				ctx.moveTo(0, rectH * i);
+				ctx.lineTo(canvas.width, rectH * i);
+			}
+			//第三步，写数字
+			for(var i = 0; i < maxclos; i++) {
+				ctx.fillStyle = '#ccc';
+				ctx.font = "18px Arial"
+				ctx.fillText(i * 5, ((i * 5) - 1) * 30, canvas.height - 25);
+			}
+			//左侧canvas
+			for(var i = 0; i < arr.length; i++) {
+				ctx2.fillStyle = '#ccc';
+				ctx2.font = "15px Arial";
+				ctx2.textAlign = "right"
+				ctx2.fillText(arr[i], 90, (i + 1) * 50 - 10);
+			}
+			ctx2.stroke();
+			ctx.stroke();
+		}
+
+		function arit() {
+			var jsonsT = jsons.timeline;
+			var kkk = jsonsT.map(function(item, index) {
+				var ts = item.ts;
+				var events = item.events;
+				return events;
+			});
+			kkk.map(function(item, index) {
+				var _ts = jsons.timeline[index].ts - 1;
+				for(var i = 0; i < arr.length; i++) {
+					if(ExistsSameValues(arr[i], item)) {
+						setTableCss(i, _ts) //画方块
+					}
+				}
+			})
+		}
+
+		function setTableCss(i, k) {
+			var canvas = document.querySelector('#cavsElem');
+			var ctx = canvas.getContext('2d');
+			ctx.beginPath();
+			ctx.lineWidth = 10;
+			ctx.moveTo(30 * k, 50 * i);
+			ctx.lineTo(30 * k, 50 * i + 50);
+			ctx.lineTo(30 * k + 30, 50 * i + 50);
+			ctx.lineTo(30 * k + 30, 50 * i);
+			ctx.fillStyle = "dodgerblue";
+			ctx.fill();
+		}
+		/**
+		 * 找出两个数组有没有相同的
+		 * */
+		function ExistsSameValues(a1,  a2)  {    
+			var  exists  =  false;    
+			if(a1  instanceof  Array  &&  a2  instanceof  Array)  {        
+				for (var  i = 0, iLen = a1.length;  i < iLen;  i++)  {            
+					for (var  j = 0, jLen = a2.length;  j < jLen;  j++) {                
+						if (a1[i] === a2[j]) {                    
+							return  true;                
+						}            
+					}        
+				}    
+			}    
+			return  exists;
+		};
+	</script>
+
+</html>

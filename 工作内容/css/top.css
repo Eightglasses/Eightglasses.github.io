@@ -214,7 +214,10 @@ header#new_header .nav_left {
     flex-wrap:wrap;
 }
 .flex1{-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;}
-
+.flexend{
+	-webkit-justify-content:flex-end;
+	justify-content:flex-end;
+}
 /*flex兼容end*/
 
 
@@ -261,7 +264,9 @@ header#new_header .nav_left {
 	top: 0;
 	left: 0;
 }
-
+#finnalhead .nav_left:active{
+	opacity:0.1;
+}
 #finnalhead .head_title {
 	align-items: center;
 	line-height: 1rem;
@@ -275,7 +280,7 @@ header#new_header .nav_left {
 	width: 5.44rem;
 	text-align: center;
 	border-radius: 0.2rem;
-	background: rgba(239, 239, 244, 1);
+	background:#fff;
 	height: 2.9rem;
 	position: fixed;
 	left: 0;
@@ -313,3 +318,17 @@ header#new_header .nav_left {
 .okBox .okorcancel span:nth-of-type(1) {
 	border-right: 1px solid #d7d7d7;
 }
+
+/* 让元素不可点击，一般放在不可点击的电话上 */
+.notap{
+	pointer-events:none;
+}
+.notap1{-o-user-select: none;
+	user-select: none;
+	pointer-events: none;
+	-webkit-touch-callout: none; /*系统默认菜单被禁用*/
+	-webkit-user-select: none; /*webkit浏览器*/
+	-khtml-user-select: none; /*早期浏览器*/
+	-moz-user-select: none; /*火狐*/
+	-ms-user-select: none; /*IE10*/
+	user-select: none;}

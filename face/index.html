@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="html2canvas.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			#facebox img {
+				width: 200px;
+			}
+			
+			#facebox p {
+				width: 200px;
+			}
+			canvas{width: 200px;}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="facebox">
+			<div class="willcanvas">
+				<img src="img/1.jpg" />
+				<p>{{message}}</p>
+			</div>
+			<input type="text" placeholder="这里输入" v-model="message" />
+			<input type="submit" name="" id="submit" value="走你吧" v-on:click="go" />
+		</div>
+
+	</body>
+	<script type="text/javascript">
+		var d = new Date();
+		var str = d.getFullYear() + "年" + (d.getMonth() + 1) + "月" + d.getDate() + "日,"
+		var app = new Vue({
+			el: '#facebox',
+			data: {
+				message: str
+			},
+			methods: {
+				go: function() {
+					html2canvas(document.querySelector(".willcanvas")).then(canvas => {
+						document.body.appendChild(canvas)
+					});
+				}
+			}
+		})
+	</script>
+
+</html>

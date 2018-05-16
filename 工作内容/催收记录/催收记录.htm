@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" type="text/css" href="../css/public.css" />
+    <link rel="stylesheet" type="text/css" href="../css/top.css" />
+    <link rel="stylesheet" type="text/css" href="cs.css" />
+    <script src="../js/public.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../bd/js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+
+
+<body style="background: #F5F5F5;">
+    <header class="clearfix header headerborder" id="finnalhead">
+        <span id="back" class="nav_left">
+            <img src="../img/top/navback.png" />
+        </span>
+        <span class="head_title">催收记录</span>
+    </header>
+
+    <section>
+        <div class="cs-list">
+
+            <div class="cs-list-li">
+                <div class="cs-list-li-border">
+                    <div class="cs-list-li-top flex justifyb alignc">
+                        <p class="p1">
+                            <span>催收处理时间</span>
+                            <span>2017-09-07 04:30:00</span>
+                        </p>
+                        <p class="p2 more">
+                            详情
+                        </p>
+                    </div>
+                    <div class="cs-list-li-middle">
+                        <p class="flex justifyb alignc">
+                            <span>催收机构</span>
+                            <span>鑫诚达</span>
+                        </p>
+                        <p class="flex justifyb alignc">
+                            <span>本次催收结果</span>
+                            <span>关机</span>
+                        </p>
+                    </div>
+                    <div class="cs-list-li-bottom">
+                        <p class="flex justifyb ">
+                            <span class="span1">借款编号</span>
+                            <span class="span2">328494890，234523455，103848485</span>
+                        </p>
+                        <p class="flex justifyb alignc">
+                            <span>催收形式</span>
+                            <span>线下</span>
+                        </p>
+                        <p class="flex justifyb alignc">
+                            <span>交涉人关系</span>
+                            <span>客户本人</span>
+                        </p>
+                        <p class="flex justifyb alignc">
+                            <span>催收地址类型</span>
+                            <span>身份证地址</span>
+                        </p>
+                        <p class="flex justifyb ">
+                            <span class="span1">催收地址</span>
+                            <span class="span2">河北省保定市常务区新各庄村南里杨店6栋305号</span>
+                        </p>
+                        <p class="flex justifyb alignc">
+                            <span>承诺还款时间</span>
+                            <span>-</span>
+                        </p>
+                        <p class="flex justifyb alignc">
+                            <span>承诺还款金额</span>
+                            <span>-</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="cs-list-li">
+                <div class="cs-list-li-border">
+                    <div class="cs-list-li-top flex justifyb alignc">
+                        <p class="p1">
+                            <span>催收处理时间</span>
+                            <span>2017-09-07 04:30:00</span>
+                        </p>
+                        <p class="p2 more">
+                            详情
+                        </p>
+                    </div>
+                    <div class="cs-list-li-middle">
+                        <p class="flex justifyb alignc">
+                            <span>催收机构</span>
+                            <span>鑫诚达</span>
+                        </p>
+                        <p class="flex justifyb alignc">
+                            <span>本次催收结果</span>
+                            <span>关机</span>
+                        </p>
+                    </div>
+                    <div class="cs-list-li-bottom">
+                        <p class="flex justifyb ">
+                            <span class="span1">借款编号</span>
+                            <span class="span2">328494890，234523455，103848485</span>
+                        </p>
+                        <p class="flex justifyb alignc">
+                            <span>催收形式</span>
+                            <span>线下</span>
+                        </p>
+                        <p class="flex justifyb alignc">
+                            <span>交涉人关系</span>
+                            <span>客户本人</span>
+                        </p>
+                        <p class="flex justifyb alignc">
+                            <span>催收地址类型</span>
+                            <span>身份证地址</span>
+                        </p>
+                        <p class="flex justifyb ">
+                            <span class="span1">催收地址</span>
+                            <span class="span2">河北省保定市常务区新各庄村南里杨店6栋305号</span>
+                        </p>
+                        <p class="flex justifyb alignc">
+                            <span>承诺还款时间</span>
+                            <span>-</span>
+                        </p>
+                        <p class="flex justifyb alignc">
+                            <span>承诺还款金额</span>
+                            <span>-</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </section>
+
+</body>
+<script>
+    $(".cs-list .cs-list-li").each(function (index, item) {
+        console.log($(item));
+        var _item = $(item);
+        _item.find(".more").on("click", function () {
+            _item.find(".cs-list-li-bottom").toggle();
+
+        })
+    })
+</script>
+
+</html>

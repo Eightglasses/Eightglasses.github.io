@@ -1,0 +1,55 @@
+.cs-list {
+  margin-top: 0.3rem;
+}
+
+.cs-list .cs-list-li {
+  margin: 0 0.3rem 0.3rem 0.3rem;
+  border-radius: 0.12rem;
+}
+
+.cs-list .cs-list-li .cs-list-li-border {
+  background-image: url("bar.png");
+  background-repeat: no-repeat;
+  background-size: 100% 0.24rem;
+  background-position: bottom;
+  background-color: #fff;
+}
+
+.cs-list .cs-list-li .cs-list-li-top {
+  border-bottom: 1px solid #e2e2e2;
+  height: 0.8rem;
+  padding: 0 0.3rem;
+}
+
+.cs-list .cs-list-li .cs-list-li-top .p2 {
+  color: #5087E4;
+  font-size: 0.26rem;
+}
+
+.cs-list .cs-list-li .cs-list-li-middle {
+  margin: 0.3rem 0.3rem 0 0.3rem;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.cs-list .cs-list-li .cs-list-li-middle p {
+  padding-bottom: 0.3rem;
+  font-size: 0.28rem;
+  color: #666;
+}
+
+.cs-list .cs-list-li .cs-list-li-bottom {
+  margin: 0.3rem 0.3rem 0 0.3rem;
+  display: none;
+}
+
+.cs-list .cs-list-li .cs-list-li-bottom p {
+  padding-bottom: 0.3rem;
+}
+
+.cs-list .cs-list-li .cs-list-li-bottom .span1 {
+  white-space: nowrap;
+}
+
+.cs-list .cs-list-li .cs-list-li-bottom .span2 {
+  text-align: right;
+}

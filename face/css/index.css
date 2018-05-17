@@ -8,6 +8,10 @@
 #facebox {
 	width: 300px;
 	margin: 20px auto;
+	position: relative;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	height: 100%;
 }
 
 #facebox img {
@@ -15,13 +19,12 @@
 }
 
 #facebox p {
-	width: 300px;
+	width: 290px;
 }
 
 textarea {
-	margin-top:50px;
+	margin-top: 50px;
 }
-
 
 .willcanvas p,
 #uploaderInput,
@@ -37,6 +40,9 @@ textarea,
 input {
 	width: 300px;
 	line-height: 20px;
+	border: 1px solid #ccc;
+	border-left: 0;
+	border-right: 0;
 }
 
 .file-box {

@@ -20,12 +20,11 @@
 			</div>
 			<div class="willcanvas">
 				<img :src="imgSrc" />
-				<p id="showp" v-on:click="moveTo" v-bind:style="{fontSize: fontSize + 'px',fontFamily:fontFamily,color:color}">{{message}}</p>
+				<p id="showp" v-bind:style="{fontSize: fontSize + 'px',fontFamily:fontFamily,color:color}">{{message}}</p>
 			</div>
 			<textarea placeholder="这里输入内容" v-model="message"></textarea>
 			<input type="number" placeholder="这里输入字号" v-model="fontSize" />
 			<input type="text" placeholder="这里输入字体" v-model="fontFamily" />
-			<input type="text" placeholder="这里输入颜色" v-model="color" />
 			<input type="text" placeholder="这里输入颜色" v-model="color" />
 			<input type="submit" name="" id="submit" value="走你吧" v-on:click="go" />
 		</div>
@@ -43,7 +42,7 @@
 				imgSrc: normalImg,
 				fontSize: null,
 				fontFamily: null,
-				color:null
+				color: null
 			},
 			methods: {
 				go: function() {
@@ -68,10 +67,11 @@
 				var positionDiv = $(this).offset();
 				var distenceX = e.pageX - positionDiv.left;
 				var distenceY = e.pageY - positionDiv.top;
+				console.log(distenceX, distenceY);
 				var _this = this;
 				$(document).mousemove(function(e) {
-					var x = e.pageX - distenceX;
-					var y = e.pageY - distenceY;
+					var x = e.pageX - distenceX - $("#facebox").offset().left;
+					var y = e.pageY - distenceY - $("#facebox").offset().top;
 					if(x < 0) {
 						x = 0;
 					} else if(x > $(document).width() - $('#showp').outerWidth(true)) {
@@ -81,7 +81,7 @@
 						y = 0;
 					} else if(y > $(document).height() - $('#showp').outerHeight(true)) {
 						y = $(document).height() - $('#showp').outerHeight(true);
-					}
+					};
 					$('#showp').css({
 						'left': x + 'px',
 						'top': y + 'px'
@@ -90,6 +90,7 @@
 				$(document).mouseup(function() {
 					$(document).off('mousemove'); //移除鼠标移动事件
 				});
+				return false;
 			});
 		});
 	</script>

@@ -37,7 +37,8 @@ textarea {
 }
 
 textarea,
-input {
+input[type=text],
+input[type=number] {
 	width: 300px;
 	line-height: 20px;
 	border: 1px solid #ccc;

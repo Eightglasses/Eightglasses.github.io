@@ -32,9 +32,6 @@ textarea {
 	cursor: pointer;
 }
 
-#showp {
-	position: absolute;
-}
 
 textarea,
 input[type=text],

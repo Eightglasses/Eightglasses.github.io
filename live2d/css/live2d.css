@@ -8,6 +8,7 @@
     z-index: 10000;
     font-size: 0;
     transition: all .3s ease-in-out;
+    top: 100px;
 }
 
 #live2d {

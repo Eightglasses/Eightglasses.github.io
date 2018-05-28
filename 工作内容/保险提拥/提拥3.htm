@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no" />
+		<link rel="stylesheet" type="text/css" href="../css/public.css" />
+		<link rel="stylesheet" type="text/css" href="../css/top.css" />
+		<link rel="stylesheet" type="text/css" href="treasury.css" />
+		<script src="../js/public.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../bd/js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<header class="clearfix header headerborder" id="finnalhead">
+			<span id="back" class="nav_left">
+            <img src="../img/top/navback.png" />
+        </span>
+			<span class="head_title">提拥</span>
+		</header>
+		<section>
+			<div class="bk-page3-div1 flex alignc flexdc">
+				<p class="p1 fs32 c333">短信验证码</p>
+				<p class="p2 fs26 c999">
+					<span class="span1">已发送到手机号</span>
+					<span class="span2 fs28">138****0025</span>
+
+				</p>
+				<p class="p3">
+					<span class="span1 flex alignc justifyc">重新发送</span>
+				</p>
+			</div>
+			<div class="bk-page3-div2 flex justifya c333">
+				<input class="active" type="text" index="1" maxlength="1" />
+				<input type="text" index="2" maxlength="1" />
+				<input type="text" index="3" maxlength="1" />
+				<input type="text" index="4" maxlength="1" />
+			</div>
+			<div class="bk-page3-div3">
+				<p class=" fs26 c4285f4">收不到验证码?</p>
+			</div>
+			<div class="bk-page2-div4">
+				提现
+			</div>
+		</section>
+
+	</body>
+	<script>
+		window.onload = function() {
+
+			$(".bk-page3-div2 input").eq().focus();
+			$(".bk-page3-div1 .p3 .span1").click(function() {
+				$(this).addClass("active").html("59");
+			});
+
+			$(".bk-page3-div2 input").on("keyup", function(e) {
+				var thisIndex = Number($(this).attr("index"));
+				if(e.which == 8) {
+					console.log(thisIndex);
+					if(thisIndex > 1) {
+						$(".bk-page3-div2 input").eq(thisIndex - 2).focus().addClass("active").siblings().removeClass("active");
+					}
+				} else {
+					$(".bk-page3-div2 input").eq(thisIndex).focus().addClass("active").siblings().removeClass("active");
+				}
+
+			})
+		}
+	</script>
+
+</html>

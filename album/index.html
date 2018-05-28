@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<script src="../bd/js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			div {
+				margin-bottom: 20px;
+			}
+			
+			.container {
+				display: flex;
+				justify-content: center;
+				margin: 50px;
+				flex-direction: column;
+				align-items: center;
+			}
+			
+			.btn-primary {
+				width: 300px;
+			}
+			
+			#uploadBox img {
+				width: 200px;
+				position: relative;
+				height: 200px;
+			}
+			
+			#operationBox {
+				position: relative;
+				width: 200px;
+				height: 200px;
+			}
+			
+			#operationBox img {
+				position: absolute;
+				width: 200px;
+				height: 200px;
+			}
+			
+			.okBox {
+				background: #efefef;
+				display: none;
+				position: absolute;
+				z-index: 9;
+			}
+			
+			.okBox p {
+				padding: 10px 20px;
+				border-bottom: 1px solid #000000;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+
+			<div class="btn btn-primary">
+				<input name="files" id="uploaderInput" type="file" accept="image/*" />
+			</div>
+
+			<div id="uploadBox">
+				<div class="okBox">
+					<p>上翻</p>
+					<p>下翻</p>
+					<p>左翻</p>
+					<p>右翻</p>
+				</div>
+			</div>
+			<div class="btn btn-primary" id="build">生成</div>
+			<div id="operationBox"></div>
+		</div>
+
+		<script type="text/javascript">
+			window.onload = function() {
+				var Album = {};
+				setTimeout(function() {
+					Album.init();
+				}, 100)
+
+				Album.init = function() {
+					Album.upLoadFile(); //上传图片
+					Album.imgTap(); //图片点击事件
+					Album.build(); //生成翻页相册
+				}
+				Album.upLoadFile = function() {
+					$("#uploaderInput").on("change", function(e) {
+						var fileIme = e.target.files[0];
+						var fr = new FileReader();
+						fr.readAsDataURL(fileIme);
+						fr.onload = function() {
+							imgSrc = this.result;
+							$("<img>").attr("src", imgSrc).appendTo($("#uploadBox"));
+						};
+					});
+				};
+				Album.imgTap = function() {
+					$("#uploadBox").on("mousedown", 'img', function(e) {
+						var eWhich = e.which;
+						if(eWhich == 3) {
+							var x = e.clientX;
+							var y = e.clientY;
+							$(".okBox").css("left", x)
+							$(".okBox").css("top", y)
+							$(".okBox").show();
+						}
+					});
+				};
+				Album.okBox = function() {
+					$(".okBox p").on("click", function() {
+
+					})
+				};
+				Album.build = function() {
+					$("#build").on("click", function() {
+						$("#operationBox").html("");
+						var imgs = $("#uploadBox img").clone().appendTo($("#operationBox"));
+					})
+				}
+			};
+
+			document.oncontextmenu = function(ev) {
+				return false; //阻止右键菜单的动作  
+				//ev.preventDefault()  
+			};
+		</script>
+	</body>
+
+</html>

@@ -1,127 +1,133 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="UTF-8">
-		<title>表情包制作</title>
-		<link rel="icon" type="image/x-icon" class="js-site-favicon" href="https://assets-cdn.github.com/favicon.ico">
-		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/html2canvas.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/rem_scaler.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../jquery/jquery-1.8.3.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/index.css" />
-		<link rel="stylesheet" href="../live2d/css/live2d.css" />
-	</head>
+<head>
+    <meta charset="UTF-8">
+    <title>表情包制作</title>
+    <link rel="icon" type="image/x-icon" class="js-site-favicon" href="https://assets-cdn.github.com/favicon.ico">
+    <script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/html2canvas.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/rem_scaler.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../jquery/jquery-1.8.3.min.js"></script>
+    <script src="js/jquery-qrcode.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+</head>
 
-	<body>
+<body>
+    <div id="facebox">
+        <div class="file-box">上传你的表情
+            <input name="files" id="uploaderInput" type="file" accept="image/*" v-on:change="uploaderInput" />
+        </div>
+        <div class="willcanvas">
+            <img :src="imgSrc" />
+            <p id="showp" v-bind:style="{fontSize: fontSize + 'px',fontFamily:fontFamily,color:color,position:isPosition}">{{message}}</p>
+            <div id="qrcode">
+            </div>
+        </div>
+        <textarea placeholder="这里输入内容" v-model="message"></textarea>
+        <input type="number" placeholder="这里输入字号" v-model="fontSize" />
+        <input type="text" placeholder="这里输入字体" v-model="fontFamily" />
+        <input type="text" placeholder="这里输入颜色" v-model="color" />
+        <p>文字是否盖住图片</p>
+        <input type="radio" @click="absolute" name="p">盖<input type="radio" @click="isStatic" name="p">不盖
+        <input type="submit" name="" id="submit" value="走你吧" v-on:click="go" />
+    </div>
 
-		<div id="facebox">
-			<div class="file-box">上传你的表情
-				<input name="files" id="uploaderInput" type="file" accept="image/*" v-on:change="uploaderInput" />
-			</div>
-			<div class="willcanvas">
-				<img :src="imgSrc" />
-				<p id="showp" v-bind:style="{fontSize: fontSize + 'px',fontFamily:fontFamily,color:color,position:isPosition}">{{message}}</p>
-			</div>
-			<textarea placeholder="这里输入内容" v-model="message"></textarea>
-			<input type="number" placeholder="这里输入字号" v-model="fontSize" />
-			<input type="text" placeholder="这里输入字体" v-model="fontFamily" />
-			<input type="text" placeholder="这里输入颜色" v-model="color" />
-			<p>文字是否盖住图片</p>
-			<input type="radio" @click="absolute" name="p">盖<input type="radio" @click="isStatic" name="p">不盖
-			<input type="submit" name="" id="submit" value="走你吧" v-on:click="go" />
-		</div>
-
-		<div id="landlord">
-			<div class="message" style="opacity:0"></div>
-			<canvas id="live2d" width="280" height="250" class="live2d"></canvas>
-			<div class="hide-button">隐藏</div>
-		</div>
+    
 
 
-	</body>
-	<script type="text/javascript">
-		var normalImg = "";
-		var d = new Date();
-		var str = d.getFullYear() + "年" + (d.getMonth() + 1) + "月" + d.getDate() + "日,"
-		var app = new Vue({
-			el: '#facebox',
-			data: {
-				picFlag: true,
-				message: str,
-				imgSrc: normalImg,
-				fontSize: null,
-				fontFamily: null,
-				color: null,
-				isPosition: "static"
-			},
-			methods: {
-				go: function() {
-					html2canvas(document.querySelector(".willcanvas")).then(canvas => {
-						document.body.appendChild(canvas)
-					});
-				},
-				uploaderInput: function(e) {
-					var fileIme = e.target.files[0];
-					var fr = new FileReader();
-					fr.readAsDataURL(fileIme);
-					fr.onload = function() {
-						imgSrc = this.result;
-						app.$set(app.$data, "imgSrc", imgSrc);
-					};
-				},
-				absolute: function() {
-					isPosition = "absolute";
-					app.$set(app.$data, "isPosition", isPosition);
-				},
-				isStatic: function() {
-					isPosition = "static";
-					app.$set(app.$data, "isPosition", isPosition);
-				}
-			}
-		});
 
-		$(function() {
-			$('#showp').mousedown(function(e) {
-				var positionDiv = $(this).offset();
-				var distenceX = e.pageX - positionDiv.left;
-				var distenceY = e.pageY - positionDiv.top;
-				console.log(distenceX, distenceY);
-				var _this = this;
-				$(document).mousemove(function(e) {
-					var x = e.pageX - distenceX - $("#facebox").offset().left;
-					var y = e.pageY - distenceY - $("#facebox").offset().top;
-					if(x < 0) {
-						x = 0;
-					} else if(x > $(document).width() - $('#showp').outerWidth(true)) {
-						x = $(document).width() - $('#showp').outerWidth(true);
-					}
-					if(y < 0) {
-						y = 0;
-					} else if(y > $(document).height() - $('#showp').outerHeight(true)) {
-						y = $(document).height() - $('#showp').outerHeight(true);
-					};
-					$('#showp').css({
-						'left': x + 'px',
-						'top': y + 'px'
-					});
-				});
-				$(document).mouseup(function() {
-					$(document).off('mousemove'); //移除鼠标移动事件
-				});
-				return false;
-			});
-		});
-	</script>
+</body>
+<script type="text/javascript">
+     jQuery(function () {
+         jQuery('#qrcode').qrcode("http://www.baidu.com");
+     })
+
+    var normalImg = "";
+    var d = new Date();
+    var str = d.getFullYear() + "年" + (d.getMonth() + 1) + "月" + d.getDate() + "日,"
+    var app = new Vue({
+        el: '#facebox',
+        data: {
+            picFlag: true,
+            message: str,
+            imgSrc: normalImg,
+            fontSize: null,
+            fontFamily: null,
+            color: null,
+            isPosition: "static"
+        },
+        methods: {
+            go: function () {
+                html2canvas(document.querySelector("#facebox")).then(canvas => {
+
+                    document.body.appendChild(canvas);
+                    
+                    var cav = document.querySelector("canvas");
+                    var tempSrc = cav.toDataURL("image/png");
+                    var aImg = document.createElement("img");
+                    console.log(aImg);
+                    
+                    aImg.src = tempSrc;
+                    document.body.appendChild(aImg);
+
+                });
+            },
+            uploaderInput: function (e) {
+                var fileIme = e.target.files[0];
+                var fr = new FileReader();
+                fr.readAsDataURL(fileIme);
+                fr.onload = function () {
+                    imgSrc = this.result;
+                    app.$set(app.$data, "imgSrc", imgSrc);
+                };
+            },
+            absolute: function () {
+                isPosition = "absolute";
+                app.$set(app.$data, "isPosition", isPosition);
+            },
+            isStatic: function () {
+                isPosition = "static";
+                app.$set(app.$data, "isPosition", isPosition);
+            }
+        }
+    });
+
+    $(function () {
+        $('#showp').mousedown(function (e) {
+            var positionDiv = $(this).offset();
+            var distenceX = e.pageX - positionDiv.left;
+            var distenceY = e.pageY - positionDiv.top;
+            console.log(distenceX, distenceY);
+            var _this = this;
+            $(document).mousemove(function (e) {
+                var x = e.pageX - distenceX - $("#facebox").offset().left;
+                var y = e.pageY - distenceY - $("#facebox").offset().top;
+                if (x < 0) {
+                    x = 0;
+                } else if (x > $(document).width() - $('#showp').outerWidth(true)) {
+                    x = $(document).width() - $('#showp').outerWidth(true);
+                }
+                if (y < 0) {
+                    y = 0;
+                } else if (y > $(document).height() - $('#showp').outerHeight(true)) {
+                    y = $(document).height() - $('#showp').outerHeight(true);
+                };
+                $('#showp').css({
+                    'left': x + 'px',
+                    'top': y + 'px'
+                });
+            });
+            $(document).mouseup(function () {
+                $(document).off('mousemove'); //移除鼠标移动事件
+            });
+            return false;
+        });
+    });
+</script>
 
 
-	<script type="text/javascript">
-		var message_Path = '/live2d/'
-		var home_Path = 'https://haremu.com/' //此处修改为你的域名，必须带斜杠
-	</script>
-	<script type="text/javascript" src="../live2d/js/live2d.js"></script>
-	<script type="text/javascript" src="../live2d/js/message.js"></script>
-	<script type="text/javascript">
-		loadlive2d("live2d", "../live2d/model/tia/model.json");
-	</script>
+
+
+
 </html>

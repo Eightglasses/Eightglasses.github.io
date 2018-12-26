@@ -1,0 +1,44 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#app {
+    width: 500px;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+}
+
+#app-box {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    overflow: auto;
+}
+
+#app-box>div {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+
+.food span {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.action>div {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    
+    border-radius: 50%;
+}

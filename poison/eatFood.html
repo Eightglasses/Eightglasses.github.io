@@ -13,18 +13,22 @@
 <body>
     <!-- :style="{width:this.appWidth + 'px',height:this.appHeight + 'px'}" -->
     <div id="app">
-        <span @click="start">开始</span>
+        <p class="controller">
+            <span class="start" @click="start">第一步点开始</span>
+            <span class="ballautorun" @click="autorun">自动</span>
+        </p>
+
         <div id="app-box" ref="box" @mousedown="persondown" @mousemove="personmove" @mouseup="personup">
             <div class="bg"></div>
             <div class="food">
 
-                <span v-for="(item,index) in foodList" :style="{left:item.left + 'px',top:item.top + 'px',background:item.bgColor}">
+                <span v-for="(item,index) in foodList" v-if="item != null" :style="{width:item.width + 'px',height:item.height + 'px',left:item.left + 'px',top:item.top + 'px',background:item.bgColor}">
                 </span>
 
             </div>
             <div class="action">
 
-                <div class="person" :style="{width:person.width,height:person.height,background:person.bgColor,left:person.left,top:person.top}"></div>
+                <div class="person" :style="{width:person.width + 'px',height:person.height  + 'px',background:person.bgColor,left:person.left + 'px',top:person.top  + 'px'}"></div>
 
             </div>
 

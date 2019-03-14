@@ -7,10 +7,39 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="../jquery/jquery-1.8.3.min.js"></script>
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            flex-direction: column
+        }
+        div{
+        margin-top: 30px;
+        }
+        .box span{
+            cursor: pointer;
+            margin-right: 20px;
+        }
+        .start{
+            width: 100px;
+            height: 30px;
+            border-radius: 5px;
+            margin-top: 10px;
+            background: #fff;
+        }
+        </style>
 </head>
 
+
+
 <body>
+
     <div class="box"></div>
+    <div>
+        <span>临时添加</span>
+        <input class="appval" type="text">
+        <button class="append">添加</button>
+    </div>
     <button class="start">开始随机</button>
     <div>
         <span>结果是：</span>
@@ -28,18 +57,65 @@
         "华堂",
         "庆丰"
     ];
+    htmlShow();
 
+    addMoreFood();
 
-    var str = '';
+    randomFood();
 
-    for (let i = 0; i < foodArr.length; i++) {
-        str += '<span>' + foodArr[i] + '，' + '</span>';
+    deleteFood();
+    /**
+     * 删菜
+     * 
+     */
+    function deleteFood() {
+        $(".box").on("click", 'span', function () {
+            var val = $(this).html();
+            console.log(val)
+            var index = foodArr.indexOf(val);
+            console.log(index)
+            foodArr.splice(index, 1);
+            htmlShow()
+        })
     }
-    $(".box").html(str);
-    $(".start").on("click", function () {
-        var num = parseInt(Math.random() * foodArr.length + 1);
-        $(".result").html(foodArr[num])
-    })
+    /**
+     * 随机选菜
+     * 
+     */
+    function randomFood() {
+        $(".start").on("click", function () {
+            var num = parseInt(Math.random() * foodArr.length);
+            console.log(num)
+            $(".result").html(foodArr[num])
+        })
+    }
+    /**
+     * 加载菜
+     * 
+     */
+    function htmlShow() {
+        $(".box").html('');
+        var str = '';
+        for (let i = 0; i < foodArr.length; i++) {
+            str += '<span>' + foodArr[i] + '</span>';
+        }
+        $(".box").html(str);
+    }
+    /**
+     * 添加菜单
+     * 
+     */
+    function addMoreFood() {
+
+        $(".append").on("click", function () {
+            var val = $(".appval").val();
+            if (val.trim() != "") {
+                foodArr.push(val);
+                htmlShow();
+            }
+        })
+
+    }
 </script>
 
 </html>

@@ -8,26 +8,44 @@
     <title>Document</title>
     <script src="../jquery/jquery-1.8.3.min.js"></script>
     <style>
-        body{
+        body {
             display: flex;
             align-items: center;
             flex-direction: column
         }
-        div{
-        margin-top: 30px;
+
+        div {
+            margin-top: 30px;
         }
-        .box span{
+
+        .box span {
             cursor: pointer;
             margin-right: 20px;
         }
-        .start{
+
+        .start,
+        .stop {
             width: 100px;
             height: 30px;
             border-radius: 5px;
             margin-top: 10px;
             background: #fff;
         }
-        </style>
+
+        .cube {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            transform-style: preserve-3d;
+        }
+
+        .side {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+        }
+
+    </style>
 </head>
 
 
@@ -41,21 +59,26 @@
         <button class="append">添加</button>
     </div>
     <button class="start">开始随机</button>
+    <button class="stop">停止</button>
+
     <div>
         <span>结果是：</span>
         <span class="result"></span>
     </div>
+
+
+
+
 </body>
 
 <script>
     var foodArr = [
-        "学校东门",
-        "肉夹馍",
-        "田老师",
-        "左右手",
+        "学校",
+        "便利蜂",
         "新疆",
+        "左右手",
         "华堂",
-        "庆丰"
+        "雪俊"
     ];
     htmlShow();
 
@@ -83,12 +106,20 @@
      * 
      */
     function randomFood() {
+        // var timer = null;
         $(".start").on("click", function () {
-            var num = parseInt(Math.random() * foodArr.length);
-            console.log(num)
-            $(".result").html(foodArr[num])
+            timer = setInterval(function () {
+                var num = parseInt(Math.random() * foodArr.length);
+                $(".result").html(foodArr[num])
+            }, 6)
+
+        })
+        $(".stop").on("click", function () {
+            clearInterval(timer)
         })
     }
+
+
     /**
      * 加载菜
      * 

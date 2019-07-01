@@ -39,7 +39,7 @@
             transform-style: preserve-3d;
         }
 
-        .side {  
+        .side {
             position: absolute;
             width: 200px;
             height: 200px;
@@ -65,7 +65,7 @@
         <span class="result"></span>
     </div>
 
-
+    <audio src="4031.mp3" preload="preload" id="shakingAudio"></audio>
 
 
 </body>
@@ -146,7 +146,8 @@
         })
 
     }
-console.log(123)
+    var shakingAudio = document.querySelector("#shakingAudio");
+
     var color = new Array('#fff', '#ff0', '#f00', '#000', '#00f', '#0ff');
     if (window.DeviceMotionEvent) {
         var speed = 25;
@@ -157,6 +158,11 @@ console.log(123)
             y = acceleration.y;
             if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
                 document.body.style.backgroundColor = color[Math.round(Math.random() * 10) % 6];
+                shakingAudio.play();
+                //处理iphone不能自动播放
+                document.addEventListener('WeixinJSBridgeReady', function () {
+                    shakingAudio.play();
+                }, false);
             }
             lastX = x;
             lastY = y;

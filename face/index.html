@@ -64,13 +64,14 @@
         methods: {
             go: function () {
                 html2canvas(document.querySelector(".willcanvas")).then(canvas => {
+                    $("canvas").remove()
+                    $(".aimg").remove()
 
                     document.body.appendChild(canvas);
-
                     var cav = document.querySelector("canvas");
                     var tempSrc = cav.toDataURL("image/png");
                     var aImg = document.createElement("img");
-
+                    aImg.setAttribute("class", "aimg")
                     aImg.src = tempSrc;
                     document.body.appendChild(aImg);
                     cav.style.display = "none"

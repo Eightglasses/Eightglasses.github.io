@@ -21,8 +21,8 @@
         <div class="willcanvas">
             <img :src="imgSrc" />
             <p id="showp" v-bind:style="{fontSize: fontSize + 'px',fontFamily:fontFamily,color:color,position:isPosition}">{{message}}</p>
-            <div id="qrcode">
-            </div>
+            <!-- <div id="qrcode">
+            </div> -->
         </div>
         <textarea placeholder="这里输入内容" v-model="message"></textarea>
         <input type="number" placeholder="这里输入字号" v-model="fontSize" />
@@ -39,9 +39,9 @@
 
 </body>
 <script type="text/javascript">
-     jQuery(function () {
-         jQuery('#qrcode').qrcode("http://www.baidu.com");
-     })
+    //  jQuery(function () {
+    //      jQuery('#qrcode').qrcode("http://www.baidu.com");
+    //  })
 
     var normalImg = "";
     var d = new Date();

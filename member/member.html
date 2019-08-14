@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>会员魔方</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="member.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment-with-locales.js"></script>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.js"></script>
+
+    <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <style>
+        .fade.show {
+            opacity: 0.5;
+        }
+
+        .modal.show {
+            opacity: 1;
+        }
+
+        .modal-body {
+            height: 400px;
+            overflow: auto;
+        }
+
+        .modal.fade .modal-dialog {
+            transform: translate(0, 0%)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="memberbox">
+        <h3 class="bg-primary">新建魔方规则</h3>
+        <div class="member-li">
+            <label>名称</label>
+            <input type="text" class="form-control" placeholder="输入名称">
+        </div>
+
+        <div class="member-li">
+            <label>选择品牌</label>
+            <select class="form-control">
+                <option value="">西贝莜面村</option>
+                <option value="">小贝肉夹馍</option>
+                <option value="">超级肉夹馍</option>
+                <option value="">西贝酸奶屋</option>
+            </select>
+        </div>
+        <div class="member-li">
+            <input type="time">
+        </div>
+        <div class="member-li">
+            <label>选择门店</label>
+            <div style="display: flex;flex-direction: column">
+                <div style="display: flex">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="option1"> 有
+                    </label>
+
+                    <p>全部门店</p>
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </div>
+                <div>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="member-li">
+            <label>筛选条件</label>
+            <p class="append-btn " data-toggle="modal" data-target="#myModal">
+                + 添加
+            </p>
+        </div>
+        <div class="member-li member-border" showtemp="phone">
+            <label>手机号</label>
+            <div class="member-border-right">
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="option1" needtakedata="checkbox"> <span>有</span>
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="option1" needtakedata="checkbox"> <span>无</span>
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="option1" needtakedata="checkbox"> <span>电信</span>
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="option1" needtakedata="checkbox"> <span>移动</span>
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="option1" needtakedata="checkbox"> <span>联通</span>
+                </label>
+                <div class="right"><span class="append-btn app-del">- 删除</span></div>
+            </div>
+        </div>
+        <div class="member-li member-border" showtemp="sex">
+            <label>性别</label>
+            <div class="member-border-right">
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="option1"> 男
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="option1"> 女
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="option1"> 未知
+                </label>
+                <div class="right"><span class="append-btn app-del">- 删除</span></div>
+            </div>
+        </div>
+        <div class="member-li member-border" showtemp="age">
+            <label>年龄</label>
+            <div class="member-border-right alignc">
+                <input class="form-control" type="number">
+                &nbsp至&nbsp
+                <input class="form-control" type="number">&nbsp
+                岁
+                <div class="right"><span class="append-btn app-add">+ 添加</span><span class="append-btn app-del">-
+                        删除</span></div>
+            </div>
+        </div>
+        <div class="member-li member-border" showtemp="birthday">
+            <label>生日</label>
+            <div class="member-border-right alignc">
+                <div class='input-group date datetimepicker1' id=''>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+                &nbsp至&nbsp
+                <div class='input-group date datetimepicker1' id=''>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+                <div class="right"><span class="append-btn app-add">+ 添加</span><span class="append-btn app-del">-
+                        删除</span></div>
+            </div>
+        </div>
+        <div class="member-li member-border" showtemp="source">
+            <label>来源</label>
+            <div class="member-border-right">
+                <div class="sourcebtn">
+                    <p class="sourcebtn-p">请选择</p>
+                    <input class="sourcebtn-input" type="hidden" value="">
+                    <div class="source-shadow" style="display: none">
+                        <ul>
+                            <li class="source-click">微信点餐</li>
+                            <li class="source-click">微信排号</li>
+                            <li class="source-click">西贝甄选</li>
+                            <li class="source-click">微信外卖</li>
+                            <li class="source-click">美团外卖</li>
+                            <li class="source-click">饿了么</li>
+                            <li class="source-click">微信点餐</li>
+                            <li>其他</li>
+                            <li class="source-click">其他1</li>
+                            <li class="source-click">其他2</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="xd-time alignc timeSelect">
+                    <div class='input-group date datetimepicker1' id=''>
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                    至
+                    <div class='input-group date datetimepicker1' id=''>
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                    <p>固定时间</p>
+                </div>
+                <div class="gd-time alignc dinput timeSelect" style="display: none">
+                    最近<input type="text" class="form-control">
+                    <select class="form-control">
+                        <option value="">月</option>
+                        <option value="">天</option>
+                    </select>
+                    <p>相对时间</p>
+                </div>
+
+                <div class="right"><span class="append-btn app-add">+ 添加</span><span class="append-btn app-del">-
+                        删除</span></div>
+            </div>
+        </div>
+        <div class="member-li member-border" showtemp="follow">
+            <label>是否关注</label>
+            <div class="member-border-right">
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="option1"> 是
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="option1"> 否
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="option1"> 关注后取消
+                </label>
+                <div class="right"><span class="append-btn app-add">+ 添加</span><span class="append-btn app-del">-
+                        删除</span></div>
+            </div>
+        </div>
+        <div class="member-li member-border" showtemp="card">
+            <label>开卡</label>
+            <div class="member-border-right">
+                <div class="xd-time alignc timeSelect">
+                    <div class='input-group date datetimepicker1' id=''>
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                    至
+                    <div class='input-group date datetimepicker1' id=''>
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                    <p>固定时间</p>
+                </div>
+                <div class="gd-time alignc dinput timeSelect" style="display: none">
+                    最近<input type="text" class="form-control">
+                    <select class="form-control">
+                        <option value="">月</option>
+                        <option value="">天</option>
+                    </select>
+                    <p>相对时间</p>
+                </div>
+                <div class="right"><span class="append-btn app-add">+ 添加</span><span class="append-btn app-del">-
+                        删除</span></div>
+            </div>
+        </div>
+        <div class="member-li member-border" showtemp="level">
+            <label>等级</label>
+            <div class="member-border-right">
+                <select class="form-control" id="level-select">
+                    <option index="1" value="">
+                        请选择
+                    </option>
+                    <option index="1" value="">
+                        VIP会员
+                    </option>
+                    <option index="2" value="">
+                        储值会员
+                    </option>
+                    <option index="3" value="">
+                        普通会员
+                    </option>
+                </select>
+                <select indexshow="1" class="form-control" style="display: flex">
+                    <option value="">
+                        首次办理会员
+                    </option>
+                    <option value="">
+                        续费会员
+                    </option>
+                    <option value="">
+                        即将过期会员
+                    </option>
+                </select>
+                <select indexshow="3" class="form-control" style="display: none">
+                    <option value="">
+                        普通会员
+                    </option>
+                    <option value="">
+                        原储值会员
+                    </option>
+                    <option value="">
+                        过期vip会员
+                    </option>
+                </select>
+                <div class="jjguoqi alignc">最近<input type="text" class="form-control">天</div>
+                <div class="right"><span class="append-btn app-add">+ 添加</span><span class="append-btn app-del">-
+                        删除</span></div>
+
+            </div>
+
+        </div>
+        <div class="member-li member-border" showtemp="belong">
+            <label>归属</label>
+            <div class="member-border-right">
+                <select class="form-control">
+                    <option value="">VIP会员归属</option>
+                    <option value="">第一次关注归属</option>
+                    <option value="">VIP续费归属</option>
+                </select>
+                <p>全部门店</p>
+                <div class="right"><span class="append-btn app-add">+ 添加</span><span class="append-btn app-del">-
+                        删除</span></div>
+            </div>
+        </div>
+        <div class="member-li member-border" showtemp="dishroll">
+            <label>菜品卷</label>
+            <div class="member-border-right">
+                <select class="form-control">
+                    <option value="">可用卷</option>
+                    <option value="">即将过期卷</option>
+                </select>
+                <select class="form-control">
+                    <option value="">通用卷</option>
+                    <option value="">外卖卷</option>
+                    <option value="">堂食卷</option>
+                </select>
+                <div class="keyong alignc">达到<input type="text" class="form-control">张</div>
+                <div class="jjguoqi alignc">最近<input type="text" class="form-control">天</div>
+                <div class="right"><span class="append-btn app-add">+ 添加</span><span class="append-btn app-del">-
+                        删除</span></div>
+            </div>
+        </div>
+        <div class="member-li member-border" showtemp="moneyroll">
+            <label>代金券</label>
+            <div class="member-border-right">
+                <select class="form-control">
+                    <option value="">可用卷</option>
+                    <option value="">即将过期卷</option>
+                </select>
+                <select class="form-control">
+                    <option value="">通用卷</option>
+                    <option value="">外卖卷</option>
+                    <option value="">堂食卷</option>
+                </select>
+                <div class="keyong alignc">
+                    达到<input type="text" class="form-control">
+                    <select class="form-control">
+                        <option value="">张</option>
+                        <option value="">金额</option>
+                    </select>
+                </div>
+                <div class="jjguoqi alignc">最近<input type="text" class="form-control">天</div>
+                <div class="right"><span class="append-btn app-add">+ 添加</span><span class="append-btn app-del">-
+                        删除</span></div>
+            </div>
+        </div>
+        <div class="member-li member-border" showtemp="zxroll">
+            <label>甄选卷</label>
+            <div class="member-border-right">
+                <select class="form-control">
+                    <option value="">可用卷</option>
+                    <option value="">即将过期卷</option>
+                </select>
+                <p class="keyong alignc">
+                    达到<input type="text" class="form-control">
+                    <select class="form-control">
+                        <option value="">张</option>
+                        <option value="">金额</option>
+                    </select>
+                </p>
+                <p class="jjguoqi alignc">最近<input type="text" class="form-control">天</p>
+                <div class="right"><span class="append-btn app-add">+ 添加</span><span class="append-btn app-del">-
+                        删除</span></div>
+            </div>
+        </div>
+        <div class="member-li member-border" showtemp="integral">
+            <label>积分</label>
+            <div class="member-right">
+                <div class="member-border-right-box" cloneTemp='all'>
+                    <div class="member-border-right alignc">
+                        <input type="text" class="form-control">至<input type="text" class="form-control">积分
+                        <div class="right">
+                            <span class="append-btn app-add">+ 添加</span>
+                            <span class="append-btn app-del">- 删除</span>
+                        </div>
+                    </div>
+                    <div class="member-border-right1">1111111111111111</div>
+                </div>
+            </div>
+        </div>
+        <div class="member-li member-border" showtemp="surplus">
+            <label>余额</label>
+            <div class="member-right">
+                <div class="member-border-right-box" cloneTemp='single'>
+                    <div class="member-border-right alignc">
+                        <input type="text" class="form-control">至<input type="text" class="form-control">积分
+                        <div class="right">
+                            <span class="append-btn app-add">+ 添加</span>
+                            <span class="append-btn app-del">- 删除</span>
+                        </div>
+                    </div>
+                    <div class="member-border-right1">1111111111111111</div>
+                </div>
+            </div>
+        </div>
+        <div class="member-li member-border" showtemp="order">
+            <label>点餐</label>
+            <div class="member-border-right">
+                <select class="form-control" needtakedata="select">
+                    <option value="">堂食</option>
+                    <option value="">外卖</option>
+                </select>
+                <select class="form-control" id="order-select" needtakedata="select">
+                    <option index="1" value="">消费总数</option>
+                    <option index="3">最高消费</option>
+                    <option index="2" value="">累计金额</option>
+                    <option index="3">第n次消费</option>
+                    <option index="4">最近一次消费</option>
+                    <option index="5">距离最近一次消费</option>
+                    <option index="2" value="">平均消费</option>
+                </select>
+
+                <div indexshow="1" class="xfzongshu" style="display:flex">
+                    <input type="text" class="form-control" needtakedata="input"><span needtakedata="text">至</span>
+                    <input type="text" class="form-control" needtakedata="input"><span
+                          needtakedata="text">次</span>，<span needtakedata="text">最近</span>
+                    <input type="text" class="form-control" needtakedata="input">
+                    <select class="form-control" needtakedata="select">
+                        <option value="">天</option>
+                        <option value="">月</option>
+                    </select>
+                </div>
+                <div indexshow="2" class="xfzongshu">
+                    <input type="text" class="form-control" needtakedata="input">至
+                    <input type="text" class="form-control" needtakedata="input">元，最近
+                    <input type="text" class="form-control" needtakedata="input">
+                    <select class="form-control" needtakedata="select">
+                        <option value="">天</option>
+                        <option value="">月</option>
+                    </select>
+                </div>
+                <div indexshow="4" class="zjyici dinput">
+                    <input type="text" class="form-control" needtakedata="input">元
+                </div>
+                <div indexshow="3" class="dinci dinput">
+                    <input type="text" class="form-control" needtakedata="input">次
+                </div>
+                <div indexshow="5" class="jlzuijin dinput">
+                    <input type="text" class="form-control" needtakedata="input">天
+                </div>
+
+                <div class="right"><span class="append-btn app-add">+ 添加</span><span class="append-btn app-del">-
+                        删除</span></div>
+            </div>
+        </div>
+        <div class="member-li member-border" showtemp="takefood">
+            <label>外卖</label>
+            <div class="member-border-right">
+                <select class="form-control">
+                    <option value="">堂食</option>
+                    <option value="">外卖</option>
+                </select>
+                <select class="form-control" id="order-select">
+                    <option index="1" value="">消费总数</option>
+                    <option index="3">最高消费</option>
+                    <option index="2" value="">累计金额</option>
+                    <option index="3">第n次消费</option>
+                    <option index="4">最近一次消费</option>
+                    <option index="5">距离最近一次消费</option>
+                    <option index="2" value="">平均消费</option>
+                </select>
+
+                <div indexshow="1" class="xfzongshu" style="display:flex">
+                    <input type="text" class="form-control">至
+                    <input type="text" class="form-control">次，最近
+                    <input type="text" class="form-control">
+                    <select class="form-control">
+                        <option value="">天</option>
+                        <option value="">月</option>
+                    </select>
+                </div>
+                <div indexshow="2" class="xfzongshu">
+                    <input type="text" class="form-control">至
+                    <input type="text" class="form-control">元，最近
+                    <input type="text" class="form-control">
+                    <select class="form-control">
+                        <option value="">天</option>
+                        <option value="">月</option>
+                    </select>
+                </div>
+                <div indexshow="4" class="zjyici dinput">
+                    <input type="text" class="form-control">元
+                </div>
+                <div indexshow="3" class="dinci dinput">
+                    <input type="text" class="form-control">次
+                </div>
+                <div indexshow="5" class="jlzuijin dinput">
+                    <input type="text" class="form-control">天
+                </div>
+
+                <div class="right"><span class="append-btn app-add">+ 添加</span><span class="append-btn app-del">-
+                        删除</span></div>
+            </div>
+        </div>
+        <div class="member-li member-border" showtemp="xbzx">
+            <label>甄选</label>
+            <div class="member-border-right">
+                <select class="form-control">
+                    <option value="">堂食</option>
+                    <option value="">外卖</option>
+                </select>
+                <select class="form-control" id="order-select">
+                    <option index="1" value="">消费总数</option>
+                    <option index="3">最高消费</option>
+                    <option index="2" value="">累计金额</option>
+                    <option index="3">第n次消费</option>
+                    <option index="4">最近一次消费</option>
+                    <option index="5">距离最近一次消费</option>
+                    <option index="2" value="">平均消费</option>
+                </select>
+
+                <div indexshow="1" class="xfzongshu" style="display:flex">
+                    <input type="text" class="form-control">至
+                    <input type="text" class="form-control">次，最近
+                    <input type="text" class="form-control">
+                    <select class="form-control">
+                        <option value="">天</option>
+                        <option value="">月</option>
+                    </select>
+                </div>
+                <div indexshow="2" class="xfzongshu">
+                    <input type="text" class="form-control">至
+                    <input type="text" class="form-control">元，最近
+                    <input type="text" class="form-control">
+                    <select class="form-control">
+                        <option value="">天</option>
+                        <option value="">月</option>
+                    </select>
+                </div>
+                <div indexshow="4" class="zjyici dinput">
+                    <input type="text" class="form-control">元
+                </div>
+                <div indexshow="3" class="dinci dinput">
+                    <input type="text" class="form-control">次
+                </div>
+                <div indexshow="5" class="jlzuijin dinput">
+                    <input type="text" class="form-control">天
+                </div>
+
+                <div class="right"><span class="append-btn app-add">+ 添加</span><span class="append-btn app-del">-
+                        删除</span></div>
+            </div>
+        </div>
+        <div class="member-li member-border" showtemp="discount">
+            <label>优免</label>
+            <div class="member-border-right">
+                <select class="form-control">
+                    <option value="">堂食</option>
+                    <option value="">外卖</option>
+                    <option value="">微信外卖</option>
+                    <option value="">美团外卖</option>
+                    <option value="">饿了么</option>
+                    <option value="">商城</option>
+                    <option value="">拼团</option>
+                </select>
+                <select class="form-control" id="discount-select">
+                    <option index="1" value="">优免次数未超过</option>
+                    <option index="2" value="">累计优免额未超过</option>
+                    <option index="3" value="">距离最近一次优免大于</option>
+                    <option index="4" value="">最近一次优免额小于</option>
+                </select>
+
+                <div indexshow="1" class="xfzongshu" style="display: flex">
+                    <input type="text" class="form-control">至
+                    <input type="text" class="form-control">次，最近
+                    <input type="text" class="form-control">
+                    <select class="form-control">
+                        <option value="">天</option>
+                        <option value="">月</option>
+                    </select>
+                </div>
+                <div indexshow="2" class="xfzongshu">
+                    <input type="text" class="form-control">至
+                    <input type="text" class="form-control">元，最近
+                    <input type="text" class="form-control">
+                    <select class="form-control">
+                        <option value="">天</option>
+                        <option value="">月</option>
+                    </select>
+                </div>
+                <div indexshow="4" class="zjyici dinput">
+                    <input type="text" class="form-control">元
+                </div>
+                <div indexshow="3" class="jlzuijin dinput">
+                    <input type="text" class="form-control">天
+                </div>
+
+                <div class="right"><span class="append-btn app-add">+ 添加</span><span class="append-btn app-del">-
+                        删除</span></div>
+            </div>
+        </div>
+        <div class="member-li member-border" showtemp="under">
+            <label>线下活动</label>
+            <div class="member-border-right">
+                <select class="form-control">
+                    <option value="">亲自活动</option>
+                    <option value="">2.14活动</option>
+                    <option value="">西贝体验官</option>
+                </select>
+                <select class="form-control" id="unber-select">
+                    <option index="1" value="">参与次数</option>
+                    <option index="2" value="">最近一次参与</option>
+                    <option index="2" value="">距离最近一次参与</option>
+
+                </select>
+
+                <div indexshow="1" class="xfzongshu" style="display: flex">
+                    <input type="text" class="form-control">至
+                    <input type="text" class="form-control">最近
+                    <input type="text" class="form-control">
+                    <select class="form-control">
+                        <option value="">天</option>
+                        <option value="">月</option>
+                    </select>
+                </div>
+                <div indexshow="2" class="jlzuijin dinput">
+                    <input type="text" class="form-control">天
+                </div>
+
+                <div class="right"><span class="append-btn app-add">+ 添加</span><span class="append-btn app-del">-
+                        删除</span></div>
+            </div>
+        </div>
+        <div class="member-li member-border" showtemp="member">
+            <label>会员活动</label>
+            <div class="member-border-right">
+                <select class="form-control">
+                    <option value="">亲自活动</option>
+                    <option value="">2.14活动</option>
+                    <option value="">西贝体验官</option>
+                </select>
+                <select class="form-control" id="unber-select">
+                    <option index="1" value="">参与次数</option>
+                    <option index="2" value="">最近一次参与</option>
+                    <option index="2" value="">距离最近一次参与</option>
+
+                </select>
+
+                <div indexshow="1" class="xfzongshu" style="display: flex">
+                    <input type="text" class="form-control">至
+                    <input type="text" class="form-control">最近
+                    <input type="text" class="form-control">
+                    <select class="form-control">
+                        <option value="">天</option>
+                        <option value="">月</option>
+                    </select>
+                </div>
+                <div indexshow="2" class="jlzuijin dinput">
+                    <input type="text" class="form-control">天
+                </div>
+
+                <div class="right"><span class="append-btn app-add">+ 添加</span><span class="append-btn app-del">-
+                        删除</span></div>
+            </div>
+        </div>
+        <div class="member-li member-border" showtemp="marketing">
+            <label>营销活动</label>
+            <div class="member-border-right">
+                <select class="form-control">
+                    <option value="">亲自活动</option>
+                    <option value="">2.14活动</option>
+                    <option value="">西贝体验官</option>
+                </select>
+                <select class="form-control" id="unber-select">
+                    <option index="1" value="">参与次数</option>
+                    <option index="2" value="">最近一次参与</option>
+                    <option index="2" value="">距离最近一次参与</option>
+
+                </select>
+
+                <div indexshow="1" class="xfzongshu" style="display: flex">
+                    <input type="text" class="form-control">至
+                    <input type="text" class="form-control">最近
+                    <input type="text" class="form-control">
+                    <select class="form-control">
+                        <option value="">天</option>
+                        <option value="">月</option>
+                    </select>
+                </div>
+                <div indexshow="2" class="jlzuijin dinput">
+                    <input type="text" class="form-control">天
+                </div>
+
+                <div class="right"><span class="append-btn app-add">+ 添加</span><span class="append-btn app-del">-
+                        删除</span></div>
+            </div>
+        </div>
+        <div class="member-li member-border" showtemp="comment">
+            <label>点评</label>
+            <div class="member-border-right dinput">
+                <select class="form-control">
+                    <option value="">点餐点评</option>
+                    <option value="">微信外卖点评</option>
+                    <option value="">美团外卖点评</option>
+                    <option value="">饿了么点评</option>
+                </select>
+                <input class="form-control" type="number">至<input class="form-control" type="number">分,最近<input
+                       class="form-control" type="number">
+                <select class="form-control">
+                    <option value="">天</option>
+                    <option value="">月</option>
+                </select>
+                <div class="right"><span class="append-btn app-add">+ 添加</span><span class="append-btn app-del">-
+                        删除</span></div>
+            </div>
+        </div>
+        <div class="member-li ">
+            <label>分析规则</label>
+            <div class="member-border-right">
+                <select class="form-control">
+                    <option value="">满足以上全部条件的用户</option>
+                    <option value="">满足以上任意一个条件的用户</option>
+                </select>
+            </div>
+        </div>
+        <div class="member-li ">
+            <label>分析规则</label>
+            <div class="member-border-right">
+
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="option1"> 统计总人数
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="option1"> 按门店统计总人数
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="option1"> 统计每一项筛选条件的人数
+                </label>
+            </div>
+        </div>
+        <div class="member-li ">
+
+            <button class="btn back">返回</button>
+            <button class="btn ok btn-primary">生成数据</button>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">筛选条件</h4>
+                </div>
+                <div class="modal-body">
+                    <h4>会员资料</h4>
+                    <ul>
+                        <li show="phone">手机号</li>
+                        <li show="sex">性别</li>
+                        <li show="age">年龄</li>
+                        <li show="birthday">生日</li>
+                        <li show="source">来源</li>
+                        <li show="level">等级</li>
+                        <li show="card">开卡</li>
+                        <li show="follow">是否关注</li>
+                        <li show="child">是否有孩子</li>
+                        <li show="belong">归属</li>
+                    </ul>
+                    <h4>会员金库</h4>
+                    <ul>
+                        <li show="integral">积分</li>
+                        <li show="surplus">余额</li>
+                        <li show="zxroll">甄选卷</li>
+                        <li show="dishroll">菜品卷</li>
+                        <li show="moneyroll">代金券</li>
+                    </ul>
+                    <h4>会员交易</h4>
+                    <ul>
+                        <li show="order">点餐</li>
+                        <li show="takefood">外卖</li>
+                        <li show="xbzx">西贝甄选</li>
+                        <li show="discount">优免</li>
+                        <li show="other">其他</li>
+                    </ul>
+                    <h4>会员互动</h4>
+                    <ul>
+                        <li show="under">线下活动</li>
+                        <li show="member">会员活动</li>
+                        <li show="marketing">营销活动</li>
+                        <li show="comment">点评</li>
+                    </ul>
+                    <h4>会员未来</h4>
+                    <ul>
+                        <li show="forecast">预测消费</li>
+                        <li show="loss">即将流失</li>
+
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> -->
+                    <button type="button" class="btn btn-primary" id="showbtn">确定</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+
+</body>
+<script src="member.js"></script>
+
+
+</html>

@@ -20,20 +20,23 @@
         </div>
         <div class="willcanvas">
             <img :src="imgSrc" />
-            <p id="showp" v-bind:style="{fontSize: fontSize + 'px',fontFamily:fontFamily,color:color,position:isPosition}">{{message}}</p>
+            <p id="showp"
+               v-bind:style="{fontSize: fontSize + 'px',fontFamily:fontFamily,color:color,position:isPosition,background:background}">
+                {{message}}</p>
             <!-- <div id="qrcode">
             </div> -->
         </div>
         <textarea placeholder="这里输入内容" v-model="message"></textarea>
         <input type="number" placeholder="这里输入字号" v-model="fontSize" />
         <input type="text" placeholder="这里输入字体" v-model="fontFamily" />
-        <input type="text" placeholder="这里输入颜色" v-model="color" />
-        <p>文字是否盖住图片</p>
-        <input type="radio" @click="absolute" name="p">盖<input type="radio" @click="isStatic" name="p">不盖
-        <input type="submit" name="" id="submit" value="走你吧" v-on:click="go" />
+        <input type="text" placeholder="这里输入文字颜色" v-model="color" />
+        <input type="text" placeholder="这里输入文字背景颜色" v-model="background" />
+        <p>文字是否置于图片上（置于图片上，可以拖动）</p>
+        <input type="radio" @click="absolute" name="p">是<input type="radio" @click="isStatic" name="p">否
+        <input type="submit" name="" id="submit" value="生成" v-on:click="go" />
     </div>
 
-    
+
 
 
 
@@ -43,7 +46,7 @@
     //      jQuery('#qrcode').qrcode("http://www.baidu.com");
     //  })
 
-    var normalImg = "";
+    var normalImg = "img/1.jpg";
     var d = new Date();
     var str = d.getFullYear() + "年" + (d.getMonth() + 1) + "月" + d.getDate() + "日,"
     var app = new Vue({
@@ -55,22 +58,22 @@
             fontSize: null,
             fontFamily: null,
             color: null,
+            background: null,
             isPosition: "static"
         },
         methods: {
             go: function () {
-                html2canvas(document.querySelector("#facebox")).then(canvas => {
+                html2canvas(document.querySelector(".willcanvas")).then(canvas => {
 
                     document.body.appendChild(canvas);
-                    
+
                     var cav = document.querySelector("canvas");
                     var tempSrc = cav.toDataURL("image/png");
                     var aImg = document.createElement("img");
-                    console.log(aImg);
-                    
+
                     aImg.src = tempSrc;
                     document.body.appendChild(aImg);
-
+                    cav.style.display = "none"
                 });
             },
             uploaderInput: function (e) {

@@ -303,7 +303,7 @@
 }
 
 .archive_new .archive_div2 .uploadimg .upload input {
-    display: none;
+    /* display: none; */
 }
 
 .archive_new .archive_div2 .uploadimg .imgli {

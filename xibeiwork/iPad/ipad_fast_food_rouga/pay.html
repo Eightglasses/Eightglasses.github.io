@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!--移动端页面设置视口宽度等于设备宽度，并禁止缩放。-->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<!--禁止将页面中的数字识别为电话号码-->
+	<meta name="format-detection" content="telephone=no" />
+	<!--忽略Android平台中对邮箱地址的识别-->
+	<meta name="format-detection" content="email=no" />
+	<!--当网站添加到主屏幕快速启动方式，可隐藏地址栏-->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<!--UC强制全屏-->
+	<meta name="x5-fullscreen" content="true">
+	<!--将网站添加到主屏幕快速启动方式-->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/base.js"></script>
+	<link href="css/basic.css" rel="stylesheet" />
+	<link href="css/pay.css" rel="stylesheet" />
+	<title>西贝员工手册</title>
+</head>
+<body>
+	<div class="xb-pay-header">
+		<div>西贝莜面村（未来广场店）</div>
+		<div class="xb-pay-return"></div>
+		<div class="xb-pay-back-text">返回加菜</div>
+	</div>
+	<img src="./image/pay-process.png" alt="" class="xb-pay-process">
+	<div class="xb-ticket-wrap">
+		<div class="xb-ticket-header"></div>
+		<div class="xb-ticket-body">
+			<img class="xb-code" src="./image/qr-code.png" alt="">
+			<div class="xb-pay-text">
+				<div>您的订单已生成，需支付</div>
+				<div>¥<span>123456</span>.00</div>
+				<div>请在3分钟内完成支付，</div>
+				<div>3分钟内未完成支付的订单自动作废</div>
+			</div>
+			<div class="xb-count-down">
+				<div class="xb-item">
+					0
+				</div>
+				<div class="xb-item xb-minute">
+					3
+				</div>
+				<div class="xb-symbol">:</div>
+				<div class="xb-item xb-second-ten">
+					0
+				</div>
+				<div class="xb-item xb-second-one">
+					0
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="xb-pay-btn-wrap">
+		<div class="xb-pay-btn">重新点餐</div>
+		<div class="xb-pay-btn-active">支付完成</div>
+	</div>
+	<!-- 重新点餐弹出层 -->
+	<div class="xb-mark" style="display: none;">
+		<div class="xb-reminder-tip-box">
+			<div class="xb-reminder-tip-icon"></div>
+			<div class="xb-exit-tip-text">
+				<div>温馨提示</div>
+				<div>您当前订单还未支付，</div>
+				<div>您确认需要重新点餐下单吗？</div>
+			</div>
+			<div class="xb-reminder-tip-btn-wrap">
+				<div class="xb-reminder-tip-small-btn xb-active">重新点餐</div>
+				<div class="xb-reminder-tip-small-btn">留在当前页</div>
+			</div>
+		</div>
+	</div>
+	<!-- 支付完成提示 -->
+	<div class="xb-mark" style="display: none;">
+		<div class="xb-reminder-tip-box">
+			<div class="xb-reminder-tip-icon"></div>
+			<div class="xb-exit-tip-text">
+				<div>温馨提示</div>
+				<div>很抱歉，我们还没有收到您的付款信息。如果未</div>
+				<div>支付或支付异常，请重新扫码支付或刷新支付。</div>
+			</div>
+			<div class="xb-reminder-tip-btn-wrap">
+				<div class="xb-reminder-tip-small-btn xb-active">重新点餐</div>
+				<div class="xb-reminder-tip-small-btn">我知道了</div>
+			</div>
+		</div>
+	</div>
+	<!-- 支付完成提示 -->
+	<div class="xb-mark" style="display: none;">
+		<div class="xb-reminder-tip-box">
+			<div class="xb-reminder-tip-icon"></div>
+			<div class="xb-exit-tip-text">
+				<div>温馨提示</div>
+				<div>您长时间没有支付，订单即将作废。您是</div>
+				<div>继续支付，还是重新点餐？</div>
+			</div>
+			<div class="xb-reminder-tip-btn-wrap">
+				<div class="xb-reminder-tip-small-btn xb-active">重新点餐（<span id="countDownFive">5</span>s）</div>
+				<div class="xb-reminder-tip-small-btn">继续支付</div>
+			</div>
+		</div>
+	</div>
+	<!-- 加菜提示 -->
+	<div class="xb-mark" style="display: none;">
+		<div class="xb-reminder-tip-box">
+			<div class="xb-reminder-tip-icon"></div>
+			<div class="xb-exit-tip-text">
+				<div>温馨提示</div>
+				<div>当前订单已支付成功，您需要再加个菜，</div>
+				<div>还是查看支付信息？</div>
+			</div>
+			<div class="xb-reminder-tip-btn-wrap">
+				<div class="xb-reminder-tip-small-btn xb-active">加个菜</div>
+				<div class="xb-reminder-tip-small-btn">查看支付</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+	var timer = '';
+	var countDown = function(second){
+		var s = second % 60;
+		var s1 = Math.floor(s / 10);
+		var s2 = s % 10;
+		var m = Math.floor(second / 60);
+		$('.xb-count-down .xb-minute').text(m);
+		$('.xb-count-down .xb-second-ten').text(s1);
+		$('.xb-count-down .xb-second-one').text(s2);
+	};
+
+	var time = 3 * 60 -1;
+	// 3分倒计时
+	var openInterval = function(){
+		$('.xb-count-down').removeClass('xb-gray');
+		closeInterval();
+		timer = setInterval(function(){
+			countDown(time--);
+			if(time < 0) {
+				console.log('倒计时结束！');
+				$('.xb-count-down').addClass('xb-gray');
+				closeInterval();
+			}
+		}, 1000);
+	};
+
+	var closeInterval = function(){
+		clearInterval(timer);
+	};
+
+	console.log(Math.ceil($('.xb-ticket-wrap').width()));
+	var xbTicketBodyHeight = Math.ceil($('.xb-ticket-wrap').width()) + 100;
+	// 小票动画效果
+	$('.xb-ticket-body').animate({height:xbTicketBodyHeight},2000,function(){
+		openInterval();
+		$('.xb-pay-btn-wrap').show();
+	});
+
+
+
+	// 5S倒计时
+	var countdownFn = function(ele, val){
+		var tempTimer = setInterval(function(){
+			val--;
+			if(val < 0) {
+				clearInterval(tempTimer);
+			}else{
+				ele.text(val);
+			}
+		}, 1000);
+	};
+
+	countdownFn($('#countDownFive'), 5);
+</script>
+</body>
+</html>

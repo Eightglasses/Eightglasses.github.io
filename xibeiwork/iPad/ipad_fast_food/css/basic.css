@@ -1,0 +1,148 @@
+@charset "utf-8";
+/* 禁用iPhone中Safari的字号自动调整 */
+/* html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+
+} */
+/* 去除iPhone中默认的input样式  清除苹果浏览器的圆角表单*/
+input[type="submit"],
+
+input[type="reset"],
+
+input[type="button"],
+
+/* input{-webkit-appearance:none; resize: none;} */
+/* 取消链接高亮  */
+body,div,ul,li,ol,h1,h2,h3,h4,h5,h6,input,textarea,select,p,dl,dt,dd,a,img,button,form,table,th,tr,td,tbody,article, 
+aside, details,figcaption,figure,footer,header,hgroup, menu,nav,section{ -webkit-tap-highlight-color:rgba(0, 0, 0, 0); }
+/* 设置HTML5元素为块 */
+article, aside, details,figcaption,figure,footer,header,hgroup, menu,nav,section {
+display: block;
+}
+a{outline:none;blr:expression(this.onFocus=this.blur());}
+/* 图片自适应 */
+img {
+max-width: 100%;
+height: auto;
+width:auto\9; /* ie8 */
+-ms-interpolation-mode:bicubic;/*为了照顾ie图片缩放失真*/
+}
+/* 初始化 */
+body,div,ul,li,ol,h1,h2,h3,h4,h5,h6,input,textarea,select,p,dl,dt,dd,a,img,button,form,table,th,tr,td,tbody,article, 
+aside, details,figcaption,figure,footer,header,hgroup, menu,nav,section{margin:0; padding:0; border:none;}
+/* reset */
+body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select{margin:0;padding:0;}
+body,input,textarea,select,button,table{/* font-size:16px;line-height:1.25em; */}
+body{/* min-width:320px;font-size:1em; */font-family:'microsoft yahei',Verdana,Arial,Helvetica,sans-serif;/* color:#666; */-webkit-text-size-adjust:none;}
+img,fieldset{border:0;}
+ul,ol{list-style:none;}
+em,address{font-style:normal;}
+a{color:#000;text-decoration:none;outline:none;}
+table{border-collapse:collapse;}
+input{
+  outline:none;
+}
+
+
+/**********
+ * reset
+ *********/
+* {box-sizing: border-box; -webkit-tap-highlight-color: rgba(0,0,0,0);}
+body,
+dl, dt, dd, ul, ol, li,
+h1, h2, h3, h4, h5, h6,
+pre, code, form, fieldset, legend, input, textarea,
+p, blockquote, th, td, hr, button,
+article, aside, details, figcaption, figure, footer, header, menu, nav, section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+/* 默认不要下划线 */
+a {text-decoration: none;}
+/* 按钮文本不可选 */
+button {user-select: none;}
+img {vertical-align: middle;}
+/* 加载不出来的图片不要显示灰色边框 */
+img:not([src]),img[src=""] {opacity: 0;}
+ul, ol {list-style: none;}
+table {border-collapse: collapse; border-spacing: 0;}
+input, select, button, textarea {font-size: 100%; font: inherit;}
+html, body {height: 100%; overflow-x: hidden;}
+body{
+	overflow:hidden;
+	background-color: #ffffff;
+	width:100%;
+	height:100%;
+	margin:0;
+	padding:0;
+}
+
+/*弹出窗口*/
+.g-plugin-confirm {
+	position: fixed;
+	z-index: 9999999999999;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	/*background: rgba(0, 0, 0, 0.1);*/
+	background-color: rgba(0 ,0, 0, 0.35);
+	justify-content: center;
+	align-items: center;
+}
+/* line 397, global.sass */
+.g-plugin-confirm > div {
+	background: rgba(255, 255, 255, 0.9);
+	width: 80%;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+}
+/* line 402, global.sass */
+.g-plugin-confirm > div > div:nth-child(1) {
+	text-align: center;
+	color: black;
+	padding: 22px;
+}
+/* line 406, global.sass */
+.g-plugin-confirm > div > div:nth-child(2) {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	border-top: 1px solid #cbcbd1;
+}
+/* line 409, global.sass */
+.g-plugin-confirm > div > div:nth-child(2) a {
+	-moz-box-flex: 1;
+	-webkit-box-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	border-right: 1px solid #cbcbd1;
+	text-align: center;
+	padding: 8px 0;
+	color: #3bbec0;
+	font-size: 22px;
+	text-decoration: none;
+}
+/* line 416, global.sass */
+.g-plugin-confirm > div > div:nth-child(2) a:last-child {
+	border-right: 0;
+}
+
+.xb-swiper-wrap,#xb-scan-login,.xb-menu-food-span,.xb-column-wrap-forbid,.xb-login{
+	-webkit-touch-callout:none;
+	-webkit-user-select:none;
+	-khtml-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
+}

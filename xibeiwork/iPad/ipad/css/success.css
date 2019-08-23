@@ -1,0 +1,58 @@
+/*头部*/
+.xb-success-header{
+	width: 100%;
+	height: 1rem;
+	line-height: 1rem;
+	font-size: 0.3rem;
+	background: #f7f7f7;
+	text-align: center;
+	color: #333;
+	position: relative;
+}
+
+.xb-success-header .xb-success-return{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 1.5rem;
+	height: 1rem;
+	background: url(../image/success-return.png);
+	background-size: 100% 100%;
+}
+
+.xb-success-wrap{
+	padding-top: 1.5rem;
+}
+
+.xb-success-wrap .xb-success-img{
+	width: 4rem;
+	height: 4rem;
+	background: url(../image/xb-success-img.png);
+	background-size: 100% 100%;
+	margin: 0 auto;
+}
+
+.xb-success-wrap .xb-success-text{
+	margin: 0 auto;
+	font-size: 0.42rem;
+	line-height: 0.9rem;
+	color: #819337;
+	text-align: center;
+	margin-bottom: 0.4rem;
+}
+
+.xb-success-wrap .xb-success-btn{
+	color: #819337;
+	text-align: center;
+	border: 1px solid #819337;
+	border-radius: 0.5rem;
+	font-size: 0.32rem;
+	line-height: 0.7rem;
+	width: 3rem;
+	margin: 0 auto 0.5rem;
+}
+
+.xb-success-wrap .xb-success-btn.active{
+	color: #ab692c;
+	border: 1px solid #ab692c;
+}

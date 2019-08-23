@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!--移动端页面设置视口宽度等于设备宽度，并禁止缩放。-->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<!--禁止将页面中的数字识别为电话号码-->
+	<meta name="format-detection" content="telephone=no" />
+	<!--忽略Android平台中对邮箱地址的识别-->
+	<meta name="format-detection" content="email=no" />
+	<!--当网站添加到主屏幕快速启动方式，可隐藏地址栏-->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<!--UC强制全屏-->
+	<meta name="x5-fullscreen" content="true">
+	<!--将网站添加到主屏幕快速启动方式-->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/swiper.min.js"></script>
+	<script type="text/javascript" src="js/base.js"></script>
+	<link href="css/basic.css" rel="stylesheet" />
+	<link href="css/login.css" rel="stylesheet" />
+	<link href="css/swiper.css" rel="stylesheet" />
+	<title>西贝员工手册</title>
+</head>
+<body style="position: absolute; left: 0; top: 0; right: 0; bottom: 0;">
+	<div class="xb-header">
+		<img class="xb-logo" src="./image/logo.png" alt="">
+		<div class="xb-title">西贝莜面村</div>
+	</div>
+	<div class="xb-content-wrap">
+		<!-- <div class="xb-page-bg"></div> -->
+		<div class="xb-mode-index">
+			<img src="./image/logo-index.png" alt="" class="xb-index-logo">
+			<div class="xb-item-wrap xb-item-wrap-active">
+				<div class="xb-left">桌台号：</div>
+				<div class="xb-right">
+					雅间1号桌
+				</div>
+			</div>
+			<div class="xb-item-wrap">
+				<div class="xb-left">用餐人数：</div>
+				<div class="xb-right">
+					<!-- 雅间1号桌 -->
+					<div class="xb-tip">请选择正确的用餐人数点餐</div>
+				</div>
+			</div>
+			<div class="xb-order-btn"></div>
+			<div class="xb-index-bottom">
+				<div>2013年11月11日至15日，</div>
+				<div>西贝莜面村代表中国美食走进美国纽约联合国总部，</div>
+				<div>联合国秘书长、各国驻联合国代表以及联合国官员等五百多位嘉宾</div>
+				<div>一起品尝了西贝的小笼莜面。</div>
+			</div>
+		</div>
+	</div>
+	<!-- 桌台号搜索 -->
+	<div class="xb-mark" style="display:none;">
+		<div class="xb-table-box">
+			<div class="xb-input-wrap">
+				<img class="xb-back-icon" src="./image/table-box-back-icon.png" alt="">
+				<div class="xb-left">桌台号：
+				</div>
+				<input type="text" id="testInput">
+				<img src="./image/index-seach-icon.png" alt="" class="xb-iocn">
+			</div>
+			<div class="xb-content">
+				<!-- 有数据时的样式 -->
+				<div>
+					<div class="xb-list-title">大厅</div>
+					<div class="xb-list">
+						<div class="xb-item">02</div>
+						<div class="xb-item">002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+					</div>
+					<div class="xb-list-title">包间</div>
+					<div class="xb-list">
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+						<div class="xb-item">圆桌A002</div>
+					</div>
+				</div>
+				<!-- 无数据时的样式 -->
+				<!-- <div class="xb-no-data">没有找到您要的桌台号，试着输入数字看看～</div> -->
+			</div>
+		</div>
+	</div>
+
+	<!-- 用餐人数选择 -->
+	<div class="xb-mark" style="display: none;" id="xb-mark-test">
+		<div class="xb-number-box" style="display: none;">
+			<div class="xb-title">成人用餐人数</div>
+			<div class="xb-list">
+				<div class="xb-item">1</div>
+				<div class="xb-item xb-active">2</div>
+				<div class="xb-item">3</div>
+				<div class="xb-item">4</div>
+				<div class="xb-item">5</div>
+				<div class="xb-item">6</div>
+				<div class="xb-item">7</div>
+				<div class="xb-item">8</div>
+				<div class="xb-item">9</div>
+				<div class="xb-item">10</div>
+				<div class="xb-item">11</div>
+				<div class="xb-item">12</div>
+				<div class="xb-item">13</div>
+				<div class="xb-item">14</div>
+				<div class="xb-item">15</div>
+				<div class="xb-item">16</div>
+				<div class="xb-item">17</div>
+				<div class="xb-item">18</div>
+			</div>
+			<div class="xb-title">儿童用餐人数<span>（8岁以下）</span></div>
+			<div class="xb-list">
+				<div class="xb-item">0</div>
+				<div class="xb-item">1</div>
+				<div class="xb-item">2</div>
+				<div class="xb-item">3</div>
+				<div class="xb-item">4</div>
+				<div class="xb-item">5</div>
+				<div class="xb-item">6</div>
+				<div class="xb-item">7</div>
+				<div class="xb-item">8</div>
+			</div>
+			<div class="xb-btn">确定</div>
+		</div>
+		<div class="xb-swiper-wrap" style="display: none;">
+			<div class="xb-swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<div class="xb-phone-bg">
+							<div class="title">微信扫一扫，享会员优惠</div>
+							<div class="xb-code-wrap">
+								<img class="xb-code" src="./image/qr-code.png" alt="">
+							</div>
+							<div class="xb-code-btn">直接进入点餐</div>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="xb-input-no-data">请输入顾客卡号（会员卡号或手机号）</div>
+						<!-- <div class="xb-input-wrap">
+							<div class="xb-text">123-4567-8900</div>
+							<div class="xb-del-btn"></div>
+						</div> -->
+						<div class="xb-list">
+							<div class="xb-item">1</div>
+							<div class="xb-item xb-active">2</div>
+							<div class="xb-item">3</div>
+							<div class="xb-item">4</div>
+							<div class="xb-item">5</div>
+							<div class="xb-item">6</div>
+							<div class="xb-item">7</div>
+							<div class="xb-item">8</div>
+							<div class="xb-item">9</div>
+							<div class="xb-item">0</div>
+						</div>
+						<div class="xb-swiper-btn">确认顾客卡号并点餐</div>
+						<div class="xb-swiper-btn xb-yellow">直接进入点餐</div>
+					</div>
+				</div>
+				<div class="xb-swiper-pagination"></div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<!-- 加载过程中 开始 -->
+	<div class="xb-mark" style="display:block;">
+		<div class="xb-lyerl">
+			<div class="xb-yun"></div>
+			<p class="xb-weig">正在下载菜品信息，需等待<span class="xb-fb">1-20分钟</span></p>
+		</div>	
+	</div>
+	<!-- 加载过程中 结束 -->
+	
+<script type="text/javascript">
+	var currentSwiperPaginationBulletActiveIndex = 0;
+	var swiperInit = function(){
+		var swiper = new Swiper('.xb-swiper-container', {
+			pagination:'.xb-swiper-pagination', /*分页按钮*/
+			paginationClickable: true,       /*是否可点击分页按钮切换*/
+			spaceBetween: 0,                 /*分页间隔*/
+			centeredSlides: true,
+			loop:false,                       /*是否循环，loop不可以和animated一起使用*/
+			autoplayDisableOnInteraction: false,
+			slidesPerView: 1,
+			onInit: function(swiper){
+				$('.swiper-pagination-bullet').removeClass('swiper-pagination-bullet-active').eq(currentSwiperPaginationBulletActiveIndex).addClass('swiper-pagination-bullet-active');
+		    },
+			onTransitionEnd: function(swiper){
+				currentSwiperPaginationBulletActiveIndex = swiper.activeIndex;
+				$('.swiper-pagination-bullet').removeClass('swiper-pagination-bullet-active').eq(currentSwiperPaginationBulletActiveIndex).addClass('swiper-pagination-bullet-active');
+			}
+		});
+	}
+
+
+	$('.xb-order-btn').on('click', function(){
+		$('#xb-mark-test').show();
+		$('.xb-swiper-wrap').show();
+		swiperInit();
+	})
+
+	$('#xb-mark-test').on('click', function(){
+		$('#xb-mark-test').hide();
+		$('.xb-swiper-wrap').hide();
+	})
+
+	$('#testInput').on('focus', function(){
+		var winHeight = $(window).height();
+     	$("body").height(winHeight);
+	})
+
+	$('#testInput').on('blur', function(){
+		var winHeight = $(window).height();
+     	$("body").height(winHeight);
+	})
+
+
+
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,633 @@
+/* 登录 */
+
+.archive_login {
+    padding: 6.55rem 1.25rem 0 1.25rem;
+    background-image: url(../image/bg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.archive_login .line {
+    height: 1rem;
+    width: 5rem;
+    font-size: 0.32rem;
+    border-bottom: 1px solid #BCBCBC;
+    display: flex;
+    align-items: center;
+}
+
+.line input {
+    font-size: 0.32rem;
+    color: #000;
+    flex: 1;
+}
+
+.archive_login .line .bg {
+    width: 0.34rem;
+    height: 0.45rem;
+    margin-right: 0.5rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+    flex-shrink: 0;
+}
+
+.archive_login .line .clear {
+    width: 0.35rem;
+    height: 0.35rem;
+    background-image: url(../image/close.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+    margin-left: 0.1rem;
+}
+
+.archive_login .line .see {
+    width: 0.4rem;
+    height: 0.3rem;
+    background-image: url(../image/see.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+    margin-left: 0.1rem;
+}
+
+.archive_login .line .see2 {
+    width: 0.4rem;
+    height: 0.3rem;
+    background-image: url(../image/see2.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+    margin-left: 0.1rem;
+}
+
+.username .bg {
+    background-image: url(../image/username.png)
+}
+
+.password .bg {
+    background-image: url(../image/password.png)
+}
+
+.archive_login .login {
+    width: 5rem;
+    height: 0.8rem;
+    background: linear-gradient(90deg, rgba(246, 119, 100, 1) 0%, rgba(220, 62, 61, 1) 100%);
+    border-radius: 0.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.07rem;
+    font-size: 0.3rem;
+    color: #fff;
+    line-height: 0;
+}
+
+.archive_login .login.notap {
+    background: linear-gradient(90deg, rgba(220, 220, 220, 1) 0%, rgba(191, 190, 190, 1) 100%);
+    pointer-events: none;
+}
+
+/* end */
+
+/* header */
+
+.wrap {
+    position: absolute;
+    top: 1rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.archive_header {
+    display: flex;
+    align-items: center;
+    height: 1rem;
+    width: 7.5rem;
+    justify-content: center;
+    background: rgba(245, 87, 74, 1);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.archive_header .title {
+    color: #fff;
+    font-size: 0.3rem;
+    line-height: 0;
+}
+
+.archive_header .back {
+    width: 0.33rem;
+    height: 100%;
+    background: url(../image/back.png) no-repeat right center;
+    background-size: 0.33rem 0.33rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0 0 0 0.18rem;
+    box-sizing: content-box;
+}
+
+.archive_header .archive_header_search {
+    width: 5.6rem;
+    height: 0.6rem;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 0.3rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.archive_header .archive_header_search input {
+    height: 100%;
+    flex: 1;
+    padding: 0 0.3rem;
+    color: #000;
+    font-size: 0.28rem;
+}
+
+.archive_header .archive_header_search .clear {
+    width: 0.3rem;
+    height: 0.3rem;
+    background-image: url(../image/inputclose.png);
+    background-size: 0.3rem 0.3rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 0.15rem 0.3rem;
+    box-sizing: content-box;
+}
+
+.archive_header .archive_header_right {
+    color: #fff;
+    font-size: 0.3rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0.3rem 0.2rem;
+}
+
+/* headerend */
+
+/* 选择标签 */
+
+.archive_chose {
+    padding-top: 2.4rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.archive_chose .new, .archive_chose .check {
+    width: 5.8rem;
+    height: 2rem;
+    font-size: 0.45rem;
+    box-sizing: border-box;
+    padding: 0.75rem 0 0 0.7rem;
+    border-radius: 0.2rem;
+    margin-bottom: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.archive_chose .new {
+    background: linear-gradient(270deg, rgba(243, 99, 77, 1) 0%, rgba(236, 56, 53, 1) 100%);
+}
+
+.archive_chose .check {
+    background: linear-gradient(90deg, rgba(252, 134, 60, 1) 0%, rgba(255, 173, 106, 1) 100%);
+}
+
+/* end */
+
+/* 新建 */
+
+.archive_new {
+    padding-bottom: 1rem;
+}
+
+.archive_new .archive_label {
+    width: 1.34rem;
+    height: 0.3rem;
+    font-size: 0.3rem;
+    font-family: PingFangSC;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 1);
+    line-height: 0.3rem;
+    margin-right: 0.3rem;
+}
+
+.archive_new>div {
+    margin: 0 0 0.9rem 0;
+    padding: 0 0.2rem;
+}
+
+.archive_new .archive_div1 {
+    height: 1.2rem;
+    display: flex;
+    align-items: center;
+    box-sizing: content-box;
+    border-bottom: 1px solid #ddd;
+}
+
+.archive_new .archive_div1 div {
+    flex: 1;
+}
+
+.archive_new .archive_div1 input {
+    color: #4a4a4a;
+    font-size: 0.28rem;
+    width: 100%;
+}
+
+.archive_new .archive_div2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.archive_new .archive_div2 .archive_label {
+    margin-bottom: 0.3rem;
+}
+
+.archive_new .archive_div2 .archive_type {
+    display: flex;
+    flex-direction: row;
+}
+
+.archive_new .archive_div2 .archive_type p {
+    margin-right: 1.2rem;
+    background-image: url(../image/check.png);
+    background-repeat: no-repeat;
+    background-size: 0.35rem 0.35rem;
+    padding-left: 0.55rem;
+    height: 0.35rem;
+    line-height: 0.35rem
+}
+
+.archive_new .archive_div2 .archive_type p.active {
+    background-image: url(../image/checked.png);
+    background-repeat: no-repeat;
+    background-size: 0.35rem 0.35rem;
+}
+
+.archive_new .archive_div2 .archive_select select {
+    width: 7.1rem;
+    height: 0.7rem;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 0.1rem;
+    border: 0.01rem solid rgba(153, 153, 153, 1);
+    padding-left: 0.3rem
+}
+
+.archive_new .archive_div2 .uploadimg {
+    display: flex;
+}
+
+.archive_new .archive_div2 .uploadimg .upload {
+    width: 2.2rem;
+    height: 2.58rem;
+    background-color: #DFDFDF;
+    background-image: url(../image/add.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1rem 1rem;
+    margin-bottom: 0.3rem;
+    border-radius: 0.2rem;
+    border: 1px dashed rgba(223, 223, 223, 1);
+    margin-right: 0.2rem
+}
+
+.archive_new .archive_div2 .uploadimg .upload input {
+    display: none;
+}
+
+.archive_new .archive_div2 .uploadimg .imgli {
+    width: 2.2rem;
+    height: 2.58rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 0.2rem;
+    margin-right: 0.2rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.archive_new .archive_div2 .uploadimg .imgli .delete {
+    width: 0.35rem;
+    height: 0.35rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url(../image/imgdelete.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.archive_new .archive_div2 .uploadimg .imgli img {
+    width: 2.2rem;
+    height: 2.58rem;
+}
+
+.archive_new .archive_div2 .uploadfile .file {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.3rem
+}
+
+.archive_new .archive_div2 .uploadfile .file .file_bg {
+    width: 0.33rem;
+    height: 0.3rem;
+    background: linear-gradient(270deg, rgba(142, 142, 142, 1) 0%, rgba(163, 163, 163, 1) 100%);
+    margin-right: 0.1rem;
+}
+
+.archive_new .archive_div2 .uploadfile .file .file_name {
+    margin-right: 0.4rem;
+}
+
+.archive_new .archive_div2 .uploadfile .file .file_down {
+    width: 0.94rem;
+    height: 0.3rem;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 0.15rem;
+    border: 1px solid rgba(74, 144, 226, 1);
+    text-align: center;
+    margin-right: 0.2rem;
+}
+
+.archive_new .archive_div2 .uploadfile .file .file_delete {
+    width: 0.94rem;
+    height: 0.3rem;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 15px;
+    border: 1px solid rgba(237, 60, 57, 1);
+    text-align: center;
+}
+
+.archive_new .archive_div2 .uploadfile .to_upload {
+    width: 2.18rem;
+    height: 0.45rem;
+    line-height: 0.42rem;
+    background: linear-gradient(90deg, rgba(247, 104, 82, 1) 0%, rgba(236, 56, 53, 1) 100%);
+    border-radius: 0.25rem;
+    border-image: linear-gradient(90deg, rgba(247, 104, 82, 1), rgba(236, 56, 53, 1)) 1 1;
+    text-align: center;
+    color: #fff;
+    font-size: 0.24rem;
+}
+
+.archive_new .archive_div2 .archive_textarea textarea {
+    width: 7.1rem;
+    height: 2rem;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 0.2rem;
+    border: 1px solid rgba(221, 221, 221, 1);
+    padding: 0.2rem;
+}
+
+.archive_new .save {
+    width: 7.5rem;
+    height: 1rem;
+    background: linear-gradient(90deg, rgba(247, 104, 82, 1) 0%, rgba(236, 56, 53, 1) 100%);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    margin: 0;
+    font-size: 0.3rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* end */
+
+/* 列表 */
+
+.gray {
+    background: #F6F7FB;
+}
+
+.archive_list_title {
+    width: 7.1rem;
+    margin: 0.2rem auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.archive_list_title p {
+    font-size: 0.22rem;
+    color: #bcbcbc;
+    padding: 0 0.2rem;
+    flex-shrink: 0;
+}
+
+.archive_list_title span {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, #eee 0%, #ddd 100%);
+}
+
+.archive_list_title span:last-of-type {
+    background: linear-gradient(90deg, #ddd 0%, #eee 100%);
+}
+
+.archive_list {
+    width: 7.1rem;
+    margin: 0.2rem auto 1rem;
+}
+
+.archive_list .archive_li {
+    display: flex;
+    flex-direction: column;
+    width: 7.1rem;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.08);
+    border-radius: 0.3rem;
+    margin-bottom: 0.2rem;
+    padding: 0.3rem 0.2rem 0.15rem 0.2rem;
+}
+
+.archive_list .archive_li .archive_li1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 0.3rem
+}
+
+.archive_list .archive_li .archive_li2 {
+    padding-bottom: 0.15rem;
+    display: flex;
+    font-size: 0.26rem;
+    color: #7b7b7b;
+}
+
+.archive_list .archive_li .archive_li1 p {
+    font-size: 0.3rem;
+    color: #000;
+}
+
+.archive_list .archive_li .archive_li1 span {
+    width: 0.7rem;
+    height: 0.3rem;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 0.15rem;
+    border: 1px solid rgba(74, 144, 226, 1);
+    text-align: center;
+    line-height: 0.28rem;
+    font-size: 0.22rem;
+    color: #4A90E2;
+}
+
+.archive_list_tab {
+    position: fixed;
+    bottom: 0;
+    height: 1rem;
+    width: 7.5rem;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background: #fff;
+    display: flex;
+    box-shadow: 0px -1px 6px 0px rgba(120, 121, 145, 0.1);
+}
+
+.archive_list_tab .archive_list_tab_li {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    font-size: 0.27rem;
+}
+
+.archive_list_tab .archive_list_tab_li.active {
+    color: #ED3A36;
+}
+
+.archive_list_tab .archive_list_tab_li .icon_ht {
+    background-image: url(../image/icon_ht.png);
+    background-size: contain;
+    width: 0.56rem;
+    height: 0.56rem;
+}
+
+.archive_list_tab .archive_list_tab_li.active .icon_ht {
+    background-image: url(../image/icon_ht_active.png);
+}
+
+.archive_list_tab .archive_list_tab_li .icon_zx {
+    background-image: url(../image/icon_zx.png);
+    background-size: contain;
+    width: 0.56rem;
+    height: 0.56rem;
+}
+
+.archive_list_tab .archive_list_tab_li.active .icon_zx {
+    background-image: url(../image/icon_zx_active.png);
+}
+
+.archive_list_nodata {
+    padding: 2rem 2.3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    background: #fff;
+}
+
+.archive_list_nodata .nodata_bg {
+    background-image: url(../image/nodata.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 2.88rem;
+    height: 2.88rem;
+}
+
+.archive_list_nodata p {
+    color: #F17478;
+    font-size: 0.3rem;
+    padding: 0.3rem 0 0 0;
+}
+
+/* end */
+
+/* success */
+
+.success_bg {
+    padding: 2rem 2.3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.success_bg span {
+    background-image: url(../image/success.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 2.88rem;
+    height: 2.88rem;
+}
+
+.success_bg p {
+    color: #F17478;
+    font-size: 0.3rem;
+    padding: 0.3rem 0 0 0;
+    font-weight: bold;
+}
+
+.success_back {
+    width: 4rem;
+    height: 0.7rem;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 0.35rem;
+    border: 1px solid #606577;
+    text-align: center;
+    line-height: 0.65rem;
+    margin: 0 auto;
+    color: #4a4a4a;
+    font-size: 0.3rem;
+}
+
+.fail_bg {
+    padding: 2rem 2.3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fail_bg span {
+    background-image: url(../image/fail.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 2.88rem;
+    height: 2.88rem;
+}
+
+.fail_bg p {
+    color: #000;
+    font-size: 0.3rem;
+    padding: 0.3rem 0 0 0;
+    font-weight: bold;
+}
+
+.fail_back {
+    width: 4rem;
+    height: 0.7rem;
+    background: linear-gradient(90deg, rgba(246, 119, 100, 1) 0%, rgba(220, 62, 61, 1) 100%);
+    border-radius: 0.35rem;
+    text-align: center;
+    line-height: 0.65rem;
+    margin: 0 auto;
+    color: #fff;
+    font-size: 0.3rem;
+}
+
+/* end */

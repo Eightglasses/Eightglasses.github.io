@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!--移动端页面设置视口宽度等于设备宽度，并禁止缩放。-->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<!--禁止将页面中的数字识别为电话号码-->
+	<meta name="format-detection" content="telephone=no" />
+	<!--忽略Android平台中对邮箱地址的识别-->
+	<meta name="format-detection" content="email=no" />
+	<!--当网站添加到主屏幕快速启动方式，可隐藏地址栏-->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<!--UC强制全屏-->
+	<meta name="x5-fullscreen" content="true">
+	<!--将网站添加到主屏幕快速启动方式-->
+	<meta name="apple-mobile-web-app-status-bar-style" content="bla ck" />
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/swiper.min.js"></script>
+	<script type="text/javascript" src="js/base.js"></script>
+	<link href="css/basic.css" rel="stylesheet" />
+	<link href="css/index.css" rel="stylesheet" />
+	<link href="css/swiper.css" rel="stylesheet" />
+	<title>西贝员工手册</title>
+</head>
+<body>
+	<div class="xb-header">
+		<img class="xb-logo" src="./image/logo.png" alt="">
+		<div class="xb-title">未来广场店 - 雅间001</div>
+		<!-- 已登录 -->
+		<!-- <div class="xb-right">
+			<img class="xb-star" src="./image/star.png" alt="">
+			<img class="xb-star" src="./image/star.png" alt="">
+			<img class="xb-star" src="./image/star.png" alt="">
+			<img class="xb-star" src="./image/star.png" alt="">
+			<img class="xb-star" src="./image/star.png" alt="">
+			欢迎<span>lily</span>光临！
+			<div class="xb-exit">退出</div>
+		</div> -->
+		<!-- 未登录 -->
+		<div class="xb-right xb-sign-in">
+			欢迎光临，登录了解VIP会员等优惠～
+			<div class="xb-exit">登录</div>
+		</div>
+	</div>
+	<div class="xb-swiper-wrap">
+		<div class="xb-swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide" style="width: 100% !important">
+					<div class="page1 pages">
+						<div class="xb-mode-one">
+							<img src="./image/mode1.png" alt="">
+							<!-- 无数据时的图片 -->
+							<!-- <img src="./image/no-img.png" alt="" class="xb-no-img"> -->
+							<div class="xb-mark-white"></div>
+							<div class="xb-info-wrap">
+								<div class="xb-info-box">
+									<div class="xb-top">
+										<img src="./image/new.png" alt="" class="xb-icon">
+										<div class="xb-rigth">
+											<div class="xb-name-wrap">
+												<div class="xb-name">
+													烤羊排烤羊排烤羊排烤羊排烤羊排烤羊排烤羊烤羊排
+												</div>
+												<div class="xb-name-two">
+													Grilled Lamb ChopGrilled Lamb ChopGrilled Lamb ChopGrilled Lamb
+												</div>
+											</div>
+										</div>
+										<div class="xb-hot-wrap">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+										</div>
+									</div>
+									<div class="xb-bottom">
+										<span class="xb-symbol">¥</span>
+										<div class="xb-price">139</div>
+										<div class="xb-unit-wrap">
+											<div class="xb-vip-icon-wrap">
+												<div class="xb-vip-icon">VIP</div>
+												<span class="xb-vip-price">
+													¥123
+												</span>
+											</div>
+											<span class="xb-unit">/份</span>
+											<span class="xb-price-old">¥149/份</span>
+										</div>
+										<!-- <div class="xb-btn-wrap">
+											<div class="xb-reduce-btn"></div>
+											<div class="xb-number">10</div>
+											<div class="xb-plus-btn"></div>
+										</div> -->
+										<div class="xb-off-shelf" id="testId">已下架</div>
+									<!-- <div class="xb-off-shelf">已售罄</div> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="page2 pages">
+						<div class="xb-mode-two">
+							<div class="xb-dishes-wrap">
+								<div class="xb-img-wrap">
+									<img src="./image/mode2.png" alt="">
+									<!-- <img src="./image/no-img.png" alt="" class="xb-no-img"> -->
+									<div class="xb-mark-white"></div>
+								</div>
+								<div class="xb-info-wrap">
+									<img src="./image/new.png" alt="" class="xb-icon">
+									<div class="xb-name-wrap">
+										<div class="xb-name-box">
+											<div class="xb-name">
+												烤羊排烤羊排烤羊排烤羊排烤羊排烤羊排烤羊烤羊排
+											</div>
+											<div class="xb-hot-wrap">
+												<img src="./image/hot.png" alt="" class="xb-hot">
+												<img src="./image/hot.png" alt="" class="xb-hot">
+												<img src="./image/hot.png" alt="" class="xb-hot">
+											</div>
+											<div class="xb-price-wrap">
+												<span class="xb-symbol">¥</span>
+												<div class="xb-price">139</div>
+												<div class="xb-unit-wrap">
+													<div class="xb-vip-icon-wrap">
+														<div class="xb-vip-icon">VIP</div>
+														<span class="xb-vip-price">
+															¥123
+														</span>
+													</div>
+													<div class="xb-unit-price-old">
+														<span class="xb-unit">/份</span>
+														<span class="xb-price-old">¥149/份</span>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="xb-name-two">
+											Grilled Lamb ChopGrilled Lamb ChopGrilled Lamb ChopGrilled Lamb
+										</div>
+									</div>
+									<!-- <div class="xb-btn-wrap">
+										<div class="xb-reduce-btn"></div>
+										<div class="xb-number">10</div>
+										<div class="xb-plus-btn"></div>
+									</div> -->
+									<div class="xb-off-shelf">已下架</div>
+									<!-- <div class="xb-off-shelf">已售罄</div> -->
+								</div>
+							</div>
+							<div class="xb-dishes-wrap">
+								<div class="xb-img-wrap">
+									<!-- <img src="./image/mode2.png" alt=""> -->
+									<img src="./image/no-img.png" alt="" class="xb-no-img">
+								</div>
+								<div class="xb-info-wrap">
+									<img src="./image/new.png" alt="" class="xb-icon">
+									<div class="xb-name-wrap">
+										<div class="xb-name-box">
+											<div class="xb-name">
+												烤羊排烤羊排烤羊排烤羊排烤羊排烤羊排烤羊烤羊排
+											</div>
+											<div class="xb-hot-wrap">
+												<img src="./image/hot.png" alt="" class="xb-hot">
+												<img src="./image/hot.png" alt="" class="xb-hot">
+												<img src="./image/hot.png" alt="" class="xb-hot">
+											</div>
+											<div class="xb-price-wrap">
+												<span class="xb-symbol">¥</span>
+												<div class="xb-price">139</div>
+												<div class="xb-unit-wrap">
+													<div class="xb-vip-icon-wrap">
+														<div class="xb-vip-icon">VIP</div>
+														<span class="xb-vip-price">
+															¥123
+														</span>
+													</div>
+													<div class="xb-unit-price-old">
+														<span class="xb-unit">/份</span>
+														<span class="xb-price-old">¥149/份</span>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="xb-name-two">
+											Grilled Lamb ChopGrilled Lamb ChopGrilled Lamb ChopGrilled Lamb
+										</div>
+									</div>
+									<div class="xb-btn-wrap">
+										<div class="xb-reduce-btn"></div>
+										<div class="xb-number">10</div>
+										<div class="xb-plus-btn"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="page3 pages">
+						<div class="xb-page-bg"></div>
+						<div class="xb-mode-three">
+							<div class="xb-dishes-wrap">
+								<div class="xb-img-wrap">
+									<img src="./image/mode2.png" alt="">
+									<!-- <img src="./image/no-img.png" alt="" class="xb-no-img"> -->
+									<div class="xb-mark-white"></div>
+								</div>
+								<div class="xb-info-wrap">
+									<img src="./image/new.png" alt="" class="xb-icon">
+									<div class="xb-name-wrap">
+										<div class="xb-name-box">
+											<div class="xb-name">
+												烤羊排烤羊排烤羊排烤羊排烤羊排烤羊排烤羊烤羊排
+											</div>
+											<div class="xb-hot-wrap">
+												<img src="./image/hot.png" alt="" class="xb-hot">
+												<img src="./image/hot.png" alt="" class="xb-hot">
+												<img src="./image/hot.png" alt="" class="xb-hot">
+											</div>
+											<div class="xb-price-wrap">
+												<span class="xb-symbol">¥</span>
+												<div class="xb-price">139</div>
+												<div class="xb-unit-wrap">
+													<div class="xb-vip-icon-wrap">
+														<div class="xb-vip-icon">VIP</div>
+														<span class="xb-vip-price">
+															¥123
+														</span>
+													</div>
+													<div class="xb-unit-price-old">
+														<span class="xb-unit">/份</span>
+														<span class="xb-price-old">¥149/份</span>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="xb-name-two">
+											Grilled Lamb ChopGrilled Lamb ChopGrilled Lamb ChopGrilled Lamb
+										</div>
+									</div>
+									<!-- <div class="xb-btn-wrap">
+										<div class="xb-reduce-btn"></div>
+										<div class="xb-number">10</div>
+										<div class="xb-plus-btn"></div>
+									</div> -->
+									<div class="xb-off-shelf">已下架</div>
+									<!-- <div class="xb-off-shelf">已售罄</div> -->
+								</div>
+							</div>
+							<div class="xb-two-dishes-wrap">
+								<div class="xb-left">
+									<div class="xb-img-wrap">
+										<img src="./image/mode3.png" alt="">
+										<!-- <img src="./image/no-img.png" alt="" class="xb-no-img"> -->
+										<img src="./image/new.png" alt="" class="xb-icon">
+										<div class="xb-mark-white"></div>
+									</div>
+									<div class="xb-two-info-wrap">
+										<div class="xb-left">
+											<div class="xb-name">
+												烤羊排烤羊排烤羊排烤羊排烤羊排烤羊排烤羊烤羊排
+											</div>
+											<div class="xb-name-two">
+												Grilled Lamb ChopGrilled Lamb ChopGrilled Lamb ChopGrilled Lamb
+											</div>
+											<div class="xb-clear">
+												<div class="xb-hot-wrap">
+													<img src="./image/hot.png" alt="" class="xb-hot">
+													<img src="./image/hot.png" alt="" class="xb-hot">
+													<img src="./image/hot.png" alt="" class="xb-hot">
+												</div>
+												<div class="xb-price-wrap">
+													<span class="xb-symbol">¥</span>
+													<div class="xb-price">139</div>
+													<div class="xb-unit-wrap">
+														<div class="xb-vip-icon-wrap">
+															<div class="xb-vip-icon">VIP</div>
+															<span class="xb-vip-price">
+																¥123
+															</span>
+														</div>
+														<div class="xb-unit-price-old">
+															<span class="xb-unit">/份</span>
+															<span class="xb-price-old">¥149/份</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- <div class="xb-btn-wrap">
+											<div class="xb-reduce-btn"></div>
+											<div class="xb-number">10</div>
+											<div class="xb-plus-btn"></div>
+										</div> -->
+										<div class="xb-off-shelf">已下架</div>
+									<!-- <div class="xb-off-shelf">已售罄</div> -->
+									</div>
+								</div>
+								<div class="xb-right">
+									<div class="xb-img-wrap">
+										<!-- <img src="./image/mode3.png" alt=""> -->
+										<img src="./image/no-img.png" alt="" class="xb-no-img">
+										<img src="./image/new.png" alt="" class="xb-icon">
+									</div>
+									<div class="xb-two-info-wrap">
+										<div class="xb-left">
+											<div class="xb-name">
+												烤羊排烤羊排烤羊排烤羊排烤羊排烤羊排烤羊烤羊排
+											</div>
+											<div class="xb-name-two">
+												Grilled Lamb ChopGrilled Lamb ChopGrilled Lamb ChopGrilled Lamb
+											</div>
+											<div class="xb-clear">
+												<div class="xb-hot-wrap">
+													<img src="./image/hot.png" alt="" class="xb-hot">
+													<img src="./image/hot.png" alt="" class="xb-hot">
+													<img src="./image/hot.png" alt="" class="xb-hot">
+												</div>
+												<div class="xb-price-wrap">
+													<span class="xb-symbol">¥</span>
+													<div class="xb-price">139</div>
+													<div class="xb-unit-wrap">
+														<div class="xb-vip-icon-wrap">
+															<div class="xb-vip-icon">VIP</div>
+															<span class="xb-vip-price">
+																¥123
+															</span>
+														</div>
+														<div class="xb-unit-price-old">
+															<span class="xb-unit">/份</span>
+															<span class="xb-price-old">¥149/份</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="xb-btn-wrap">
+											<div class="xb-reduce-btn"></div>
+											<div class="xb-number">10</div>
+											<div class="xb-plus-btn"></div>
+										</div>
+									<!-- <div class="xb-off-shelf">已下架</div> -->
+									<!-- <div class="xb-off-shelf">已售罄</div> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<!-- 模板四 -->
+					<div class="page4 pages">
+						<div class="xb-page-bg"></div>
+						<div class="xb-mode-three">
+							<div class="xb-two-dishes-wrap">
+								<div class="xb-left">
+									<div class="xb-img-wrap">
+										<img src="./image/mode3.png" alt="">
+										<!-- <img src="./image/no-img.png" alt="" class="xb-no-img"> -->
+										<img src="./image/new.png" alt="" class="xb-icon">
+										<div class="xb-mark-white"></div>
+									</div>
+									<div class="xb-two-info-wrap">
+										<div class="xb-left">
+											<div class="xb-name">
+												烤羊排烤羊排烤羊排烤羊排烤羊排烤羊排烤羊烤羊排
+											</div>
+											<div class="xb-name-two">
+												Grilled Lamb ChopGrilled Lamb ChopGrilled Lamb ChopGrilled Lamb
+											</div>
+											<div class="xb-clear">
+												<div class="xb-hot-wrap">
+													<img src="./image/hot.png" alt="" class="xb-hot">
+													<img src="./image/hot.png" alt="" class="xb-hot">
+													<img src="./image/hot.png" alt="" class="xb-hot">
+												</div>
+												<div class="xb-price-wrap">
+													<span class="xb-symbol">¥</span>
+													<div class="xb-price">139</div>
+													<div class="xb-unit-wrap">
+														<div class="xb-vip-icon-wrap">
+															<div class="xb-vip-icon">VIP</div>
+															<span class="xb-vip-price">
+																¥123
+															</span>
+														</div>
+														<div class="xb-unit-price-old">
+															<span class="xb-unit">/份</span>
+															<span class="xb-price-old">¥149/份</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- <div class="xb-btn-wrap">
+											<div class="xb-reduce-btn"></div>
+											<div class="xb-number">10</div>
+											<div class="xb-plus-btn"></div>
+										</div> -->
+										<div class="xb-off-shelf">已下架</div>
+									<!-- <div class="xb-off-shelf">已售罄</div> -->
+									</div>
+								</div>
+								<div class="xb-right">
+									<div class="xb-img-wrap">
+										<img src="./image/mode3.png" alt="">
+										<!-- <img src="./image/no-img.png" alt="" class="xb-no-img"> -->
+										<img src="./image/new.png" alt="" class="xb-icon">
+									</div>
+									<div class="xb-two-info-wrap">
+										<div class="xb-left">
+											<div class="xb-name">
+												烤羊排烤羊排烤羊排烤羊排烤羊排烤羊排烤羊烤羊排
+											</div>
+											<div class="xb-name-two">
+												Grilled Lamb ChopGrilled Lamb ChopGrilled Lamb ChopGrilled Lamb
+											</div>
+											<div class="xb-clear">
+												<div class="xb-hot-wrap">
+													<img src="./image/hot.png" alt="" class="xb-hot">
+													<img src="./image/hot.png" alt="" class="xb-hot">
+													<img src="./image/hot.png" alt="" class="xb-hot">
+												</div>
+												<div class="xb-price-wrap">
+													<span class="xb-symbol">¥</span>
+													<div class="xb-price">139</div>
+													<div class="xb-unit-wrap">
+														<div class="xb-vip-icon-wrap">
+															<div class="xb-vip-icon">VIP</div>
+															<span class="xb-vip-price">
+																¥123
+															</span>
+														</div>
+														<div class="xb-unit-price-old">
+															<span class="xb-unit">/份</span>
+															<span class="xb-price-old">¥149/份</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="xb-btn-wrap">
+											<div class="xb-reduce-btn"></div>
+											<div class="xb-number">10</div>
+											<div class="xb-plus-btn"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="xb-two-dishes-wrap">
+								<div class="xb-left">
+									<div class="xb-img-wrap">
+										<img src="./image/mode3.png" alt="">
+										<!-- <img src="./image/no-img.png" alt="" class="xb-no-img"> -->
+										<img src="./image/new.png" alt="" class="xb-icon">
+									</div>
+									<div class="xb-two-info-wrap">
+										<div class="xb-left">
+											<div class="xb-name">
+												烤羊排烤羊排烤羊排烤羊排烤羊排烤羊排烤羊烤羊排
+											</div>
+											<div class="xb-name-two">
+												Grilled Lamb ChopGrilled Lamb ChopGrilled Lamb ChopGrilled Lamb
+											</div>
+											<div class="xb-clear">
+												<div class="xb-hot-wrap">
+													<img src="./image/hot.png" alt="" class="xb-hot">
+													<img src="./image/hot.png" alt="" class="xb-hot">
+													<img src="./image/hot.png" alt="" class="xb-hot">
+												</div>
+												<div class="xb-price-wrap">
+													<span class="xb-symbol">¥</span>
+													<div class="xb-price">139</div>
+													<div class="xb-unit-wrap">
+														<div class="xb-vip-icon-wrap">
+															<div class="xb-vip-icon">VIP</div>
+															<span class="xb-vip-price">
+																¥123
+															</span>
+														</div>
+														<div class="xb-unit-price-old">
+															<span class="xb-unit">/份</span>
+															<span class="xb-price-old">¥149/份</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="xb-btn-wrap">
+											<div class="xb-reduce-btn"></div>
+											<div class="xb-number">10</div>
+											<div class="xb-plus-btn"></div>
+										</div>
+									</div>
+								</div>
+								<div class="xb-right">
+									<div class="xb-img-wrap">
+										<!-- <img src="./image/mode3.png" alt=""> -->
+										<img src="./image/no-img.png" alt="" class="xb-no-img">
+										<img src="./image/new.png" alt="" class="xb-icon">
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<!-- 模板五 -->
+					<div class="page5 pages">
+						<div class="xb-page-bg"></div>
+						<div class="xb-mode-six xb-clear">
+							<div class="xb-left">
+								<div class="xb-img-wrap">
+									<img src="./image/mode6.png" alt="">
+									<!-- <img src="./image/no-img.png" alt="" class="xb-no-img"> -->
+									<img src="./image/new.png" alt="" class="xb-icon">
+									<!-- <div class="xb-mark-white"></div> -->
+								</div>
+								<div class="xb-info-wrap">
+									<div class="xb-info-box">
+										<div class="xb-name">
+											烤羊排烤羊排烤羊排烤羊排烤羊排烤羊排烤羊烤羊排
+										</div>
+										<div class="xb-name-two">
+											Grilled Lamb ChopGrilled Lamb ChopGrilled Lamb ChopGrilled Lamb
+										</div>
+									</div>
+									<div class="xb-six-price">
+										<div class="xb-hot-wrap">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+										</div>
+										<div class="xb-price-wrap">
+											<span class="xb-symbol">¥</span>
+											<div class="xb-price">139</div>
+											<div class="xb-unit-wrap">
+												<div class="xb-vip-icon-wrap">
+													<div class="xb-vip-icon">VIP</div>
+													<span class="xb-vip-price">
+														¥123
+													</span>
+												</div>
+												<div class="xb-unit-price-old">
+													<span class="xb-unit">/份</span>
+													<span class="xb-price-old">¥149/份</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="xb-btn-wrap">
+										<div class="xb-reduce-btn"></div>
+										<div class="xb-number">10</div>
+										<div class="xb-plus-btn"></div>
+									</div>
+								</div>
+							</div>
+							<div class="xb-left">
+								<div class="xb-img-wrap">
+									<img src="./image/mode6.png" alt="">
+									<!-- <img src="./image/no-img.png" alt="" class="xb-no-img"> -->
+									<img src="./image/new.png" alt="" class="xb-icon">
+									<div class="xb-mark-white"></div>
+								</div>
+								<div class="xb-info-wrap">
+									<div class="xb-info-box">
+										<div class="xb-name">
+											烤羊排烤羊排烤羊排烤羊排烤羊排烤羊排烤羊烤羊排
+										</div>
+										<div class="xb-name-two">
+											Grilled Lamb ChopGrilled Lamb ChopGrilled Lamb ChopGrilled Lamb
+										</div>
+									</div>
+									<div class="xb-six-price">
+										<div class="xb-hot-wrap">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+										</div>
+										<div class="xb-price-wrap">
+											<span class="xb-symbol">¥</span>
+											<div class="xb-price">139</div>
+											<div class="xb-unit-wrap">
+												<div class="xb-vip-icon-wrap">
+													<div class="xb-vip-icon">VIP</div>
+													<span class="xb-vip-price">
+														¥123
+													</span>
+												</div>
+												<div class="xb-unit-price-old">
+													<span class="xb-unit">/份</span>
+													<span class="xb-price-old">¥149/份</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- <div class="xb-btn-wrap">
+										<div class="xb-reduce-btn"></div>
+										<div class="xb-number">10</div>
+										<div class="xb-plus-btn"></div>
+									</div> -->
+									<div class="xb-off-shelf">已下架</div>
+									<!-- <div class="xb-off-shelf">已售罄</div> -->
+								</div>
+							</div>
+							<div class="xb-left">
+								<div class="xb-img-wrap">
+									<img src="./image/mode6.png" alt="">
+									<!-- <img src="./image/no-img.png" alt="" class="xb-no-img"> -->
+									<img src="./image/new.png" alt="" class="xb-icon">
+									<div class="xb-mark-white"></div>
+								</div>
+								<div class="xb-info-wrap">
+									<div class="xb-info-box">
+										<div class="xb-name">
+											烤羊排烤羊排烤羊排烤羊排烤羊排烤羊排烤羊烤羊排
+										</div>
+										<div class="xb-name-two">
+											Grilled Lamb ChopGrilled Lamb ChopGrilled Lamb ChopGrilled Lamb
+										</div>
+									</div>
+									<div class="xb-six-price">
+										<div class="xb-hot-wrap">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+										</div>
+										<div class="xb-price-wrap">
+											<span class="xb-symbol">¥</span>
+											<div class="xb-price">139</div>
+											<div class="xb-unit-wrap">
+												<div class="xb-vip-icon-wrap">
+													<div class="xb-vip-icon">VIP</div>
+													<span class="xb-vip-price">
+														¥123
+													</span>
+												</div>
+												<div class="xb-unit-price-old">
+													<span class="xb-unit">/份</span>
+													<span class="xb-price-old">¥149/份</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="xb-btn-wrap">
+										<div class="xb-reduce-btn"></div>
+										<div class="xb-number">10</div>
+										<div class="xb-plus-btn"></div>
+									</div>
+								</div>
+							</div>
+							<div class="xb-left">
+								<div class="xb-img-wrap">
+									<img src="./image/mode6.png" alt="">
+									<!-- <img src="./image/no-img.png" alt="" class="xb-no-img"> -->
+									<img src="./image/new.png" alt="" class="xb-icon">
+									<div class="xb-mark-white"></div>
+								</div>
+								<div class="xb-info-wrap">
+									<div class="xb-info-box">
+										<div class="xb-name">
+											烤羊排烤羊排烤羊排烤羊排烤羊排烤羊排烤羊烤羊排
+										</div>
+										<div class="xb-name-two">
+											Grilled Lamb ChopGrilled Lamb ChopGrilled Lamb ChopGrilled Lamb
+										</div>
+									</div>
+									<div class="xb-six-price">
+										<div class="xb-hot-wrap">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+										</div>
+										<div class="xb-price-wrap">
+											<span class="xb-symbol">¥</span>
+											<div class="xb-price">139</div>
+											<div class="xb-unit-wrap">
+												<div class="xb-vip-icon-wrap">
+													<div class="xb-vip-icon">VIP</div>
+													<span class="xb-vip-price">
+														¥123
+													</span>
+												</div>
+												<div class="xb-unit-price-old">
+													<span class="xb-unit">/份</span>
+													<span class="xb-price-old">¥149/份</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="xb-btn-wrap">
+										<div class="xb-reduce-btn"></div>
+										<div class="xb-number">10</div>
+										<div class="xb-plus-btn"></div>
+									</div>
+								</div>
+							</div>
+							<div class="xb-left">
+								<div class="xb-img-wrap">
+									<img src="./image/mode6.png" alt="">
+									<!-- <img src="./image/no-img.png" alt="" class="xb-no-img"> -->
+									<img src="./image/new.png" alt="" class="xb-icon">
+									<div class="xb-mark-white"></div>
+								</div>
+								<div class="xb-info-wrap">
+									<div class="xb-info-box">
+										<div class="xb-name">
+											烤羊排烤羊排烤羊排烤羊排烤羊排烤羊排烤羊烤羊排
+										</div>
+										<div class="xb-name-two">
+											Grilled Lamb ChopGrilled Lamb ChopGrilled Lamb ChopGrilled Lamb
+										</div>
+									</div>
+									<div class="xb-six-price">
+										<div class="xb-hot-wrap">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+										</div>
+										<div class="xb-price-wrap">
+											<span class="xb-symbol">¥</span>
+											<div class="xb-price">139</div>
+											<div class="xb-unit-wrap">
+												<div class="xb-vip-icon-wrap">
+													<div class="xb-vip-icon">VIP</div>
+													<span class="xb-vip-price">
+														¥123
+													</span>
+												</div>
+												<div class="xb-unit-price-old">
+													<span class="xb-unit">/份</span>
+													<span class="xb-price-old">¥149/份</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="xb-btn-wrap">
+										<div class="xb-reduce-btn"></div>
+										<div class="xb-number">10</div>
+										<div class="xb-plus-btn"></div>
+									</div>
+								</div>
+							</div>
+							<div class="xb-left">
+								<div class="xb-img-wrap">
+									<!-- <img src="./image/mode6.png" alt=""> -->
+									<img src="./image/no-img.png" alt="" class="xb-no-img">
+									<!-- <img src="./image/new.png" alt="" class="xb-icon"> -->
+									<div class="xb-mark-white"></div>
+								</div>
+								<div class="xb-info-wrap">
+									<div class="xb-info-box">
+										<div class="xb-name">
+											烤羊排烤羊排烤羊排烤羊排烤羊排烤羊排烤羊烤羊排
+										</div>
+										<div class="xb-name-two">
+											Grilled Lamb ChopGrilled Lamb ChopGrilled Lamb ChopGrilled Lamb
+										</div>
+									</div>
+									<div class="xb-six-price">
+										<div class="xb-hot-wrap">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+										</div>
+										<div class="xb-price-wrap">
+											<span class="xb-symbol">¥</span>
+											<div class="xb-price">139</div>
+											<div class="xb-unit-wrap">
+												<div class="xb-vip-icon-wrap">
+													<div class="xb-vip-icon">VIP</div>
+													<span class="xb-vip-price">
+														¥123
+													</span>
+												</div>
+												<div class="xb-unit-price-old">
+													<span class="xb-unit">/份</span>
+													<span class="xb-price-old">¥149/份</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="xb-btn-wrap">
+										<div class="xb-reduce-btn"></div>
+										<div class="xb-number">10</div>
+										<div class="xb-plus-btn"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<!-- 模板六 -->
+					<div class="page6 pages">
+						<div class="xb-page-bg"></div>
+						<div class="xb-mode-six xb-clear xb-mode-ad">
+							<div class="xb-advertising-wrap">
+								<img src="./image/ad.png" alt="" class="xb-ad">
+							</div>
+							<div class="xb-left">
+								<div class="xb-img-wrap">
+									<img src="./image/mode6.png" alt="">
+									<!-- <img src="./image/no-img.png" alt="" class="xb-no-img"> -->
+									<img src="./image/new.png" alt="" class="xb-icon">
+									<div class="xb-mark-white"></div>
+								</div>
+								<div class="xb-info-wrap">
+									<div class="xb-info-box">
+										<div class="xb-name">
+											烤羊排烤羊排烤羊排烤羊排烤羊排烤羊排烤羊烤羊排
+										</div>
+										<div class="xb-name-two">
+											Grilled Lamb ChopGrilled Lamb ChopGrilled Lamb ChopGrilled Lamb
+										</div>
+									</div>
+									<div class="xb-six-price">
+										<div class="xb-hot-wrap">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+										</div>
+										<div class="xb-price-wrap">
+											<span class="xb-symbol">¥</span>
+											<div class="xb-price">139</div>
+											<div class="xb-unit-wrap">
+												<div class="xb-vip-icon-wrap">
+													<div class="xb-vip-icon">VIP</div>
+													<span class="xb-vip-price">
+														¥123
+													</span>
+												</div>
+												<div class="xb-unit-price-old">
+													<span class="xb-unit">/份</span>
+													<span class="xb-price-old">¥149/份</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- <div class="xb-btn-wrap">
+										<div class="xb-reduce-btn"></div>
+										<div class="xb-number">10</div>
+										<div class="xb-plus-btn"></div>
+									</div> -->
+									<div class="xb-off-shelf">已下架</div>
+									<!-- <div class="xb-off-shelf">已售罄</div> -->
+								</div>
+							</div>
+							<div class="xb-left">
+								<div class="xb-img-wrap">
+									<img src="./image/mode6.png" alt="">
+									<!-- <img src="./image/no-img.png" alt="" class="xb-no-img"> -->
+									<img src="./image/new.png" alt="" class="xb-icon">
+									<div class="xb-mark-white"></div>
+								</div>
+								<div class="xb-info-wrap">
+									<div class="xb-info-box">
+										<div class="xb-name">
+											烤羊排烤羊排烤羊排烤羊排烤羊排烤羊排烤羊烤羊排
+										</div>
+										<div class="xb-name-two">
+											Grilled Lamb ChopGrilled Lamb ChopGrilled Lamb ChopGrilled Lamb
+										</div>
+									</div>
+									<div class="xb-six-price">
+										<div class="xb-hot-wrap">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+										</div>
+										<div class="xb-price-wrap">
+											<span class="xb-symbol">¥</span>
+											<div class="xb-price">139</div>
+											<div class="xb-unit-wrap">
+												<div class="xb-vip-icon-wrap">
+													<div class="xb-vip-icon">VIP</div>
+													<span class="xb-vip-price">
+														¥123
+													</span>
+												</div>
+												<div class="xb-unit-price-old">
+													<span class="xb-unit">/份</span>
+													<span class="xb-price-old">¥149/份</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="xb-btn-wrap">
+										<div class="xb-reduce-btn"></div>
+										<div class="xb-number">10</div>
+										<div class="xb-plus-btn"></div>
+									</div>
+								</div>
+							</div>
+							<div class="xb-left">
+								<div class="xb-img-wrap">
+									<img src="./image/mode6.png" alt="">
+									<!-- <img src="./image/no-img.png" alt="" class="xb-no-img"> -->
+									<img src="./image/new.png" alt="" class="xb-icon">
+									<div class="xb-mark-white"></div>
+								</div>
+								<div class="xb-info-wrap">
+									<div class="xb-info-box">
+										<div class="xb-name">
+											烤羊排烤羊排烤羊排烤羊排烤羊排烤羊排烤羊烤羊排
+										</div>
+										<div class="xb-name-two">
+											Grilled Lamb ChopGrilled Lamb ChopGrilled Lamb ChopGrilled Lamb
+										</div>
+									</div>
+									<div class="xb-six-price">
+										<div class="xb-hot-wrap">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+										</div>
+										<div class="xb-price-wrap">
+											<span class="xb-symbol">¥</span>
+											<div class="xb-price">139</div>
+											<div class="xb-unit-wrap">
+												<div class="xb-vip-icon-wrap">
+													<div class="xb-vip-icon">VIP</div>
+													<span class="xb-vip-price">
+														¥123
+													</span>
+												</div>
+												<div class="xb-unit-price-old">
+													<span class="xb-unit">/份</span>
+													<span class="xb-price-old">¥149/份</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="xb-btn-wrap">
+										<div class="xb-reduce-btn"></div>
+										<div class="xb-number">10</div>
+										<div class="xb-plus-btn"></div>
+									</div>
+								</div>
+							</div>
+							<div class="xb-left">
+								<div class="xb-img-wrap">
+									<!-- <img src="./image/mode6.png" alt=""> -->
+									<img src="./image/no-img.png" alt="" class="xb-no-img">
+									<!-- <img src="./image/new.png" alt="" class="xb-icon"> -->
+									<div class="xb-mark-white"></div>
+								</div>
+								<div class="xb-info-wrap">
+									<div class="xb-info-box">
+										<div class="xb-name">
+											烤羊排烤羊排烤羊排烤羊排烤羊排烤羊排烤羊烤羊排
+										</div>
+										<div class="xb-name-two">
+											Grilled Lamb ChopGrilled Lamb ChopGrilled Lamb ChopGrilled Lamb
+										</div>
+									</div>
+									<div class="xb-six-price">
+										<div class="xb-hot-wrap">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+											<img src="./image/hot.png" alt="" class="xb-hot">
+										</div>
+										<div class="xb-price-wrap">
+											<span class="xb-symbol">¥</span>
+											<div class="xb-price">139</div>
+											<div class="xb-unit-wrap">
+												<div class="xb-vip-icon-wrap">
+													<div class="xb-vip-icon">VIP</div>
+													<span class="xb-vip-price">
+														¥123
+													</span>
+												</div>
+												<div class="xb-unit-price-old">
+													<span class="xb-unit">/份</span>
+													<span class="xb-price-old">¥149/份</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="xb-btn-wrap">
+										<div class="xb-reduce-btn"></div>
+										<div class="xb-number">10</div>
+										<div class="xb-plus-btn"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="xb-footer">
+		<div class="xb-menu-btn">
+			餐单
+			<div class="xb-tip-number">99</div>
+		</div>
+		<div class="xb-seach-btn"></div>
+		<div class="xb-column-wrap">
+			<div class="xb-item">1招牌莜面</div>
+			<div class="xb-item">招牌莜面</div>
+			<div class="xb-item">招牌莜面</div>
+			<div class="xb-item">招牌莜面</div>
+			<div class="xb-item">招牌莜面</div>
+			<div class="xb-item">招牌莜面</div>
+			<div class="xb-item">招牌莜面</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var swiper = new Swiper('.xb-swiper-container', {
+		paginationClickable: true,       /*是否可点击分页按钮切换*/
+		spaceBetween: 0,                 /*分页间隔*/
+		centeredSlides: true,
+		loop:false,                       /*是否循环，loop不可以和animated一起使用*/
+		autoplayDisableOnInteraction: false,
+		slidesPerView: 1,
+	});
+	var innerWidth = $(window).width();  
+	var innerHeight = $(window).height();  
+	$('.swiper-slide ').css({"width":innerHeight})
+</script>
+</body>
+</html>

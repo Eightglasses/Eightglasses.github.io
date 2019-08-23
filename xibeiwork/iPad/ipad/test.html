@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="UTF-8">
+      <!--移动端页面设置视口宽度等于设备宽度，并禁止缩放。-->
+      <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+      <!--禁止将页面中的数字识别为电话号码-->
+      <meta name="format-detection" content="telephone=no" />
+      <!--忽略Android平台中对邮箱地址的识别-->
+      <meta name="format-detection" content="email=no" />
+      <!--当网站添加到主屏幕快速启动方式，可隐藏地址栏-->
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <!--UC强制全屏-->
+      <meta name="x5-fullscreen" content="true">
+      <!--将网站添加到主屏幕快速启动方式-->
+      <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+      <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <title>1</title>
+    <style>
+      html, body{
+        height: 100%;
+        width: 100%;
+      }
+      body{
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+      }
+      #book{
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 90%;
+        width: 100%;
+      }
+      #book .page{
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        line-height: 600px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform-origin: left;
+        transition: 1s;
+        transform: rotateY(0deg);
+      }
+      #book .xb-active-animation{
+        transform: rotateY(180deg);  
+      }
+
+      #book div:nth-of-type(odd){
+        background: orange;       
+      }
+
+      #book div:nth-of-type(even){
+        background: yellow;
+      }
+      .footer{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        height: 10%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="book">
+      <div class="page">1</div>
+      <div class="page">2</div>
+      <div class="page">3</div>
+      <div class="page">4</div>
+      <div class="page">5</div>
+    </div>
+    <div class="footer">第3页</div>
+    <script type="text/javascript">
+      var screenWidth = $(window).width();
+      var pages=$('.page');
+      var pageNumbers = pages.length;
+      var currentPageNumber = 1;
+      var state = false;
+
+      $.each($('.page'),function(i, item){
+        $(item).css("z-index", pageNumbers - i);
+      });
+
+
+
+      
+      console.log(currentPageNumber);
+      $('.page').on('touchstart', function(e){
+        if(state) return;
+        state = true;
+        var clientX = e.touches[0].clientX;
+        // 下一页
+        if(currentPageNumber < pageNumbers && clientX >= screenWidth/2){
+          $(this).addClass('xb-active-animation');
+          currentPageNumber++;
+        }
+        // 上一页
+        if(currentPageNumber > 1 && clientX < screenWidth/2){
+          currentPageNumber--;
+          $(pages[currentPageNumber - 1]).removeClass('xb-active-animation');
+        }
+        console.log(currentPageNumber);
+        $('.page').removeClass('current-page');
+        $(pages[currentPageNumber - 1]).addClass('current-page');
+        setTimeout(function(){
+          state = false;
+        }, 500);
+      })
+      /**$('.page').on('click', function(e){
+        // 下一页
+        if(currentPageNumber < pageNumbers && e.clientX >= screenWidth/2){
+          $(this).addClass('xb-active-animation');
+          currentPageNumber++;
+        }
+        // 上一页
+        if(currentPageNumber > 1 && e.clientX < screenWidth/2){
+          currentPageNumber--;
+          $(pages[currentPageNumber - 1]).removeClass('xb-active-animation');
+        }
+        console.log(currentPageNumber);
+        $('.page').removeClass('current-page');
+        $(pages[currentPageNumber - 1]).addClass('current-page');
+      })**/
+      
+      var init = function() {
+        $('.page').eq(0).addClass('current-page');
+      }
+      init();
+
+      var jumpPage = function(jPage) {
+        currentPageNumber = jPage;
+        $('.page').removeClass('current-page');
+        $(pages[currentPageNumber - 1]).addClass('current-page');
+
+        $.each($('.page'),function(i, item){
+          if(i < currentPageNumber - 1){
+            $(pages[i]).addClass('xb-active-animation');
+          }else{
+            $(pages[i]).removeClass('xb-active-animation');
+          }
+        });
+      }
+
+      $('.footer').on('click', function() {
+        jumpPage(3);
+      })
+    </script>
+  </body>
+</html>

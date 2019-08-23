@@ -1,0 +1,208 @@
+/*头部*/
+.xb-pay-header{
+	width: 100%;
+	height: 1rem;
+	line-height: 1rem;
+	font-size: 0.3rem;
+	background: #f7f7f7;
+	text-align: center;
+	color: #333;
+	position: relative;
+}
+
+.xb-pay-header .xb-pay-return{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 1.5rem;
+	height: 1rem;
+	background: url(../image/success-return.png);
+	background-size: 100% 100%;
+}
+
+.xb-pay-header .xb-pay-back-text{
+	position: absolute;
+	left: 1rem;
+	top: 0;
+}
+
+.xb-pay-process{
+	width: 100%;
+	margin-bottom: 0.5rem;
+}
+
+.xb-ticket-wrap{
+	width: 5.4rem;
+	margin: 0 auto 0.3rem;
+	/*height: 6.6rem;*/
+}
+
+.xb-ticket-wrap .xb-ticket-header{
+	height: 0.5rem;
+	background: url(../image/ticket-header.png);
+	background-size: 100% 100%;
+}
+
+.xb-ticket-wrap .xb-ticket-body{
+	height: 0;
+	background: url(../image/ticket-body.png);
+	background-size: 100% 100%;
+	position: relative;
+	top: -0.3rem;
+	padding-top: 0.6rem;
+}
+
+.xb-ticket-wrap .xb-code{
+	width: 200px;
+	height: 200px;
+	display: block;
+	margin: 0 auto 0.2rem;
+}
+
+.xb-ticket-wrap .xb-pay-text{
+	font-size: 0.26rem;
+	color: #333;
+	text-align: center;
+	line-height: 0.4rem;
+}
+
+.xb-ticket-wrap .xb-pay-text span{
+	font-size: 0.4rem;
+}
+
+.xb-ticket-wrap .xb-count-down{
+	padding-top: 0.3rem;
+	display: flex;
+	justify-content:center;
+}
+
+.xb-ticket-wrap .xb-count-down .xb-item{
+	font-size: 0.4rem;
+	color: #fff;
+	background: #e70012;
+	width: 0.6rem;
+	height: 0.72rem;
+	line-height: 0.72rem;
+	text-align: center;
+	margin: 0 0.04rem;
+	border-radius: 0.06rem;
+}
+
+.xb-ticket-wrap .xb-count-down.xb-gray .xb-item{
+	background: #ccc;
+}
+
+.xb-ticket-wrap .xb-count-down .xb-symbol{
+	color: #e70012;
+	font-size: 0.4rem;
+	height: 0.72rem;
+	line-height: 0.72rem;
+	font-weight: bold;
+	position: relative;
+	top: -0.06rem;
+}
+
+.xb-ticket-wrap .xb-count-down.xb-gray .xb-symbol{
+	color: #ccc;
+}
+
+.xb-pay-btn-wrap{
+	display: none;
+	text-align: center;
+}
+
+.xb-pay-btn-wrap .xb-pay-btn{
+	color: #ab692c;
+	font-size: 0.3rem;
+	border: 1px solid #ab692c;
+	border-radius: 0.5rem;
+	width: 3.1rem;
+	line-height: 0.78rem;
+	display: inline-block;
+	margin: 0 0.1rem;
+}
+
+.xb-pay-btn-wrap .xb-pay-btn-active{
+	color: #fff;
+	font-size: 0.3rem;
+	border-radius: 0.5rem;
+	width: 3.1rem;
+	line-height: 0.8rem;
+	display: inline-block;
+	background: #2aa339;
+	margin: 0 0.1rem;
+}
+
+.xb-mark{
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100vh;
+	background: rgba(0,0,0,0.4);
+	z-index: 1001;
+}
+
+/*退出弹出层*/
+.xb-mark .xb-reminder-tip-box{
+	background: #ddc6a6;
+	width: 7rem;
+	height: 4.6rem;
+	padding-top: 0.3rem;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -2.3rem 0 0 -3.5rem;
+	border-radius: 5px;
+}
+
+.xb-mark .xb-reminder-tip-box .xb-reminder-tip-icon{
+	width: 0.8rem;
+	height: 0.8rem;
+	background: url(../image/reminder-tip-icon.png);
+	background-size: 100% 100%;
+	margin: 0 auto;
+}
+
+.xb-mark .xb-reminder-tip-box .xb-exit-tip-text{
+	font-size: 0.28rem;
+	color: #333;
+	text-align: center;
+	padding: 0.2rem 0 0.4rem;
+	line-height: 0.46rem;
+}
+
+.xb-mark .xb-reminder-tip-box .xb-reminder-tip-btn-wrap{
+	height: 1.2rem;
+	padding: 0.02rem 0.4rem 0;
+	display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.xb-mark .xb-reminder-tip-box .xb-reminder-tip-btn{
+	font-size: 0.3rem;
+	color: #fff;
+	background: #e70012;
+	line-height: 0.8rem;
+	height: 0.8rem;
+	width: 5.3rem;
+	border-radius: 0.5rem;
+	text-align: center;
+}
+
+.xb-mark .xb-reminder-tip-box .xb-reminder-tip-small-btn{
+	font-size: 0.3rem;
+	color: #fff;
+	background: #2aa339;
+	line-height: 0.8rem;
+	height: 0.8rem;
+	width: 2.6rem;
+	border-radius: 0.5rem;
+	text-align: center;
+}
+
+.xb-mark .xb-reminder-tip-box .xb-reminder-tip-small-btn.xb-active{
+	background: #d2a558;
+	margin-right: 0.6rem;
+}

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!--移动端页面设置视口宽度等于设备宽度，并禁止缩放。-->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<!--禁止将页面中的数字识别为电话号码-->
+	<meta name="format-detection" content="telephone=no" />
+	<!--忽略Android平台中对邮箱地址的识别-->
+	<meta name="format-detection" content="email=no" />
+	<!--当网站添加到主屏幕快速启动方式，可隐藏地址栏-->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<!--UC强制全屏-->
+	<meta name="x5-fullscreen" content="true">
+	<!--将网站添加到主屏幕快速启动方式-->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/base.js"></script>
+	
+	<link href="css/basic.css" rel="stylesheet" />
+	<link href="css/mystyle.css" rel="stylesheet" />
+	
+	<title>西贝员工手册</title>
+	<style>
+		body{background:#eff1f6;height:100%;}
+	</style>
+</head>
+<body>
+	<div class="xb-set-zhi">
+		<div class="return"></div>
+		<div class="">设置</div>
+	</div>
+	<div class="xb-set-bg">
+		<div class="relb">
+			<div class="logo"></div>
+		</div>
+		<div class="ming">西贝智能点餐</div>
+		<div class="ban">当前版本V14.4</div>
+		<div class="store">
+			<div class="store-name">西贝莜面村(未来广场店)</div>
+			<button class="change">更换门店</button>
+		</div>
+		<div class="peopler"></div>
+	</div>
+	<div class="xb-card-bg">
+		<div class="xb-img xb-tong"></div>
+		<div class="xb-img xb-clear"></div>
+		<div class="xb-img xb-reset"></div>
+	</div>
+	<div class="xb-detail-box">
+		<div class="dll">
+			<div class="tu icon-yu"></div>
+			<div class="det">
+				<div class="xb-con">
+					<p class="xb-pa">是否开启预点功能</p>
+				</div>
+				<div class="bgg">
+					<div class="switch-bg turn-off" id="xxx">
+						<p class="switch-block"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="dll">
+			<div class="tu icon-show"></div>
+			<div class="det">
+				<div class="xb-con">
+					<p class="xb-pa">是否显示英文名称</p>
+					<p class="xb-pb">关闭后，英文名称栏显示菜品描述</p>
+				</div>
+				<div class="bgg">
+					<div class="switch-bg">
+						<div class="switch-block" ></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="dll">
+			<div class="tu icon-sure"></div>
+			<div class="det">
+				<div class="xb-con">
+					<p class="xb-pa">顾客下单是否需要和服务员确认</p>
+					<p class="xb-pb">开启后，操作「确认下单」时需要输入服务员密码</p>
+				</div>
+				<div class="bgg">
+					<div class="switch-bg" >
+						<div class="switch-block" ></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="dll">
+			<div class="tu icon-login"></div>
+			<div class="det">
+				<div class="xb-con">
+					<p class="xb-pa">点餐前是否必须登录</p>
+				</div>
+				<div class="bgg">
+					<div class="switch-bg" >
+						<div class="switch-block" ></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="dlt" style="display:block;">
+			<div class="tu icon-da"></div>
+			<div class="det">
+				<div class="xb-con">
+					<p class="xb-pa">呼叫服务员打印提醒设置</p>
+				</div>
+				<div class="bgh">
+					<div class="rig"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+<script type="text/javascript">
+//	window.onload = function(){
+//		//var aDiv = aWitch.getElementsByTagName('div');
+//		
+//		var aDiv = document.getElementById('xxx');
+//		
+//		//var aDiv = document.getElementsByClassName('switch-bg');		console.log(0);
+//		
+//		aDiv.onclick= function(){ console.log(111);
+//			if(aDiv.getAttribute("class")=='turn-off'){ console.log(222);
+//				aDiv.classList.remove('turn-off');
+//				return false;
+//			}else{
+//				aDiv.classList.add('turn-off');
+//			}
+//		}
+//	}
+	
+	
+	$(".switch-bg").click(function(){
+	    if($(this).hasClass("turn-off")){
+	        $(this).removeClass("turn-off");
+	        return;
+	    }else{
+	    	$(this).addClass("turn-off");
+	    }
+	});
+	
+</script>
+</body>
+</html>

@@ -193,14 +193,16 @@
     margin-bottom: 1.2rem;
     font-weight: bold;
     color: #fff;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .archive_chose .new {
-    background: linear-gradient(270deg, rgba(243, 99, 77, 1) 0%, rgba(236, 56, 53, 1) 100%);
+    background-image: url(../image/new.png);
 }
 
 .archive_chose .check {
-    background: linear-gradient(90deg, rgba(252, 134, 60, 1) 0%, rgba(255, 173, 106, 1) 100%);
+    background-image: url(../image/cha.png);
 }
 
 /* end */
@@ -341,7 +343,8 @@
 .archive_new .archive_div2 .uploadfile .file .file_bg {
     width: 0.33rem;
     height: 0.3rem;
-    background: linear-gradient(270deg, rgba(142, 142, 142, 1) 0%, rgba(163, 163, 163, 1) 100%);
+    background: url(../image/work.png) no-repeat;
+    background-size: contain;
     margin-right: 0.1rem;
 }
 
@@ -352,20 +355,17 @@
 .archive_new .archive_div2 .uploadfile .file .file_down {
     width: 0.94rem;
     height: 0.3rem;
-    background: rgba(255, 255, 255, 1);
-    border-radius: 0.15rem;
-    border: 1px solid rgba(74, 144, 226, 1);
-    text-align: center;
+    background: url(../image/download.png) no-repeat;
     margin-right: 0.2rem;
+    background-size: contain;
 }
 
 .archive_new .archive_div2 .uploadfile .file .file_delete {
     width: 0.94rem;
     height: 0.3rem;
-    background: rgba(255, 255, 255, 1);
-    border-radius: 15px;
-    border: 1px solid rgba(237, 60, 57, 1);
-    text-align: center;
+    background: url(../image/delete.png) no-repeat;
+    margin-right: 0.2rem;
+    background-size: contain;
 }
 
 .archive_new .archive_div2 .uploadfile .to_upload {

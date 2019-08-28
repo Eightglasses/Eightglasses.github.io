@@ -211,7 +211,7 @@
             var scrollTop = $(".wrap").scrollTop();
             var offsetTop = $(".wrap").offset().top;
             var height = $(".wrap").height();
-            if (scrollTop + offsetTop > height) {
+            if (scrollTop + offsetTop > height - 20) {
                 console.log("加载数据中");
                 alert("加载")
             }
@@ -219,5 +219,12 @@
 
         }, 200);
     });
+
+    document.body.addEventListener('touchmove', function (e) {
+        if (e._isScroller) return;
+        e.preventDefault();
+    }, {
+            passive: false
+        });
 
 </script>

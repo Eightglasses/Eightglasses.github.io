@@ -99,7 +99,7 @@
     left: 0;
     right: 0;
     overflow: scroll;
-    -webkit-overflow-scrolling: touch;
+    /* -webkit-overflow-scrolling: touch; */
 }
 
 .archive_header {

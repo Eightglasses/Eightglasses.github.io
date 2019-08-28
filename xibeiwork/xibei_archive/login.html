@@ -35,12 +35,13 @@
 
 <script>
     var h = window.innerHeight;
-
     $("input").click(function () {
         handler()
     })
     function handler() {
-        $('body').height(h);
+        setTimeout(function () {
+            $('body').height(h);
+        },200)
     }
 
 

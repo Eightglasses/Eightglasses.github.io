@@ -240,33 +240,38 @@
     // });
 
 
-    //定义的全局变量
-    var disY, startY, endY;
-    //触摸事件开始时触发
-    $('.wrap').on('touchstart', function (e) {
-        startY = e.changedTouches[0].pageY;
-    });
+    var isiOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    if (isiOS) {
+        touchSport()
+    }
+    function touchSport() {
 
-    // //触摸事件移动中时触发
-    $('.wrap').on('touchmove', function (e) {
-        endY = e.changedTouches[0].pageY;
-        disY = endY - startY;
-        console.log(disY)
-        if (disY > 30) {
-            $('.status').css({
-                display: 'block',
-                height: disY + 'px',
-            });
-        }
-    });
+        //定义的全局变量
+        var disY, startY, endY;
+        //触摸事件开始时触发
+        $('.wrap').on('touchstart', function (e) {
+            startY = e.changedTouches[0].pageY;
+        });
 
-    //触摸事件结束时触发
-    $('.wrap').on('touchend', function (e) {
-        endY = e.changedTouches[0].pageY;
-        disY = endY - startY;
-        if (disY > 72) {
-            //定义一个定时器，返回下拉到一定的高度
-            // var timer = setInterval(function () {
+        // //触摸事件移动中时触发
+        $('.wrap').on('touchmove', function (e) {
+            endY = e.changedTouches[0].pageY;
+            disY = endY - startY;
+            if (disY > 30) {
+                $('.status').css({
+                    display: 'block',
+                    height: disY + 'px',
+                });
+            }
+        });
+
+        //触摸事件结束时触发
+        $('.wrap').on('touchend', function (e) {
+            endY = e.changedTouches[0].pageY;
+            disY = endY - startY;
+            if (disY > 72) {
+                //定义一个定时器，返回下拉到一定的高度
+                // var timer = setInterval(function () {
                 disY -= 13;
                 if (disY <= 60) {
                     // clearInterval(timer);
@@ -276,17 +281,14 @@
                     height: 0,
                     display: 'none',
                 });
-            // }, 10);
-        }
-    });
+                // }, 10);
+            }
+        });
+    }
+
 
     function getScrollTop() {
-        var scrollTop = 0;
-        if (document.documentElement && document.documentElement.scrollTop) {
-            scrollTop = document.documentElement.scrollTop;
-        } else if (document.body) {
-            scrollTop = document.body.scrollTop;
-        }
+        var scrollTop = $(".wrap").scrollTop();
         return scrollTop;
     }
 
@@ -303,15 +305,17 @@
 
     //获取文档完整的高度
     function getScrollHeight() {
-        return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+        var h = document.querySelector(".wrap").scrollHeight;
+        var hh = $(".archive_header").height()
+        return h + hh;
     }
 
     //滚动事件触发
-    window.onscroll = function () {
+    $(".wrap").scroll(function () {
         if (getScrollTop() + getClientHeight() === getScrollHeight()) {
             load(true)
         }
-    };
+    });
 
 
     $('.archive_header_search').find('.clear').click(function () {

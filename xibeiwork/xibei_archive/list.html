@@ -306,13 +306,17 @@
     //获取文档完整的高度
     function getScrollHeight() {
         var h = document.querySelector(".wrap").scrollHeight;
-        var hh = $(".archive_header").height()
+        var hh = parseInt($(".archive_header").height());
         return h + hh;
     }
 
     //滚动事件触发
     $(".wrap").scroll(function () {
+        console.log(getScrollTop() + getClientHeight(), getScrollHeight());
+
         if (getScrollTop() + getClientHeight() === getScrollHeight()) {
+            console.log(1);
+
             load(true)
         }
     });

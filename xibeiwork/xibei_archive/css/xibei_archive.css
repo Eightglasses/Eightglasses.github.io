@@ -92,6 +92,10 @@
 
 /* header */
 
+html,body{
+    height: 100vh;
+    overflow: hidden;
+}
 .wrap {
     position: absolute;
     top: 1rem;
@@ -99,7 +103,8 @@
     left: 0;
     right: 0;
     overflow: scroll;
-    /* -webkit-overflow-scrolling: touch; */
+    bottom: 0;
+    -webkit-overflow-scrolling: touch;
 }
 
 .archive_header {

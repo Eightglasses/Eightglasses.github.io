@@ -313,6 +313,7 @@
     //滚动事件触发
     $(".wrap").scroll(function () {
         if (getScrollTop() + getClientHeight() === getScrollHeight()) {
+            alert("1111111111")
             load(true)
         }
     });

@@ -28,6 +28,7 @@
             <p>当前共100条记录</p>
             <span></span>
         </div>
+        <div class="status" style="display: none">数据加载中</div>
         <div class="archive_list">
             <div class="archive_li">
                 <div class="archive_li1">
@@ -205,26 +206,201 @@
 </html>
 
 <script>
-    $(".wrap").scroll(function () {
-        clearTimeout(this.timer);
-        this.timer = setTimeout(function () {
-            var scrollTop = $(".wrap").scrollTop();
-            var offsetTop = $(".wrap").offset().top;
-            var height = $(".wrap").height();
-            if (scrollTop + offsetTop > height - 20) {
-                console.log("加载数据中");
-                alert("加载")
-            }
+    $(function () {
+        load(true);
+    })
+    //
+    // $(".wrap").scroll(function () {
+    //     clearTimeout(this.timer);
+    //     this.timer = setTimeout(function () {
+    //         var scrollTop = $(".wrap").scrollTop();
+    //         var offsetTop = $(".wrap").offset().top;
+    //         var height = $(".wrap").height();
+    //         if (scrollTop + offsetTop > height) {
+    //             //alert('111');
+    //             load(true);
+    //         }
+    //     }, 200);
+    // });----------------------------------
+
+    // $(window).scroll(function () {
+    //     var scrollTop = $(this).scrollTop();
+    //     var scrollHeight = $(document).height();
+    //     var windowHeight = $(this).height();
+    //
+    //     // if (scrollTop === 0) {
+    //     //     load(false);
+    //     // }
+    //
+    //     console.log(scrollTop,scrollHeight,windowHeight)
+    //     if (scrollTop + windowHeight == scrollHeight) {
+    //         //加载数据的函数
+    //         load(true);
+    //     }
+    // });
 
 
-        }, 200);
+    //定义的全局变量
+    var disY, startY, endY;
+    //触摸事件开始时触发
+    $('.wrap').on('touchstart', function (e) {
+        startY = e.changedTouches[0].pageY;
     });
 
-    document.body.addEventListener('touchmove', function (e) {
-        if (e._isScroller) return;
-        e.preventDefault();
-    }, {
-            passive: false
-        });
+    // //触摸事件移动中时触发
+    $('.wrap').on('touchmove', function (e) {
+        endY = e.changedTouches[0].pageY;
+        disY = endY - startY;
+        console.log(disY)
+        if (disY > 30) {
+            $('.status').css({
+                display: 'block',
+                height: disY + 'px',
+            });
+        }
+    });
+
+    //触摸事件结束时触发
+    $('.wrap').on('touchend', function (e) {
+        endY = e.changedTouches[0].pageY;
+        disY = endY - startY;
+        if (disY > 72) {
+            //定义一个定时器，返回下拉到一定的高度
+            // var timer = setInterval(function () {
+                disY -= 13;
+                if (disY <= 60) {
+                    // clearInterval(timer);
+                    load(false)
+                }
+                $('.status').css({
+                    height: 0,
+                    display: 'none',
+                });
+            // }, 10);
+        }
+    });
+
+    function getScrollTop() {
+        var scrollTop = 0;
+        if (document.documentElement && document.documentElement.scrollTop) {
+            scrollTop = document.documentElement.scrollTop;
+        } else if (document.body) {
+            scrollTop = document.body.scrollTop;
+        }
+        return scrollTop;
+    }
+
+    //获取当前可视范围的高度
+    function getClientHeight() {
+        var clientHeight = 0;
+        if (document.body.clientHeight && document.documentElement.clientHeight) {
+            clientHeight = Math.min(document.body.clientHeight, document.documentElement.clientHeight);
+        } else {
+            clientHeight = Math.max(document.body.clientHeight, document.documentElement.clientHeight);
+        }
+        return clientHeight;
+    }
+
+    //获取文档完整的高度
+    function getScrollHeight() {
+        return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+    }
+
+    //滚动事件触发
+    window.onscroll = function () {
+        if (getScrollTop() + getClientHeight() === getScrollHeight()) {
+            load(true)
+        }
+    };
+
+
+    $('.archive_header_search').find('.clear').click(function () {
+        if ($('input[name="search-title"]').val() !== '') {
+            $('input[name="search-title"]').val('');
+        }
+        load(false);
+    })
+
+    $('.archive_list_tab_li').click(function () {
+        if (!$(this).hasClass('active')) {
+            $(this).addClass('active');
+            var type = $(this).data('type');
+            var container = $('.type_' + type);
+            container.show();
+            container.siblings('.archive_list').hide();
+            $(this).siblings().removeClass('active');
+            $('input[name="search-title"]').val('');
+
+            load(false);
+        }
+    });
+
+    $('.archive_header_right').click(function () {
+        load(false);
+        $('.archive_list_nodata').find('p').html('未搜索到相关内容');
+    });
+
+
+    function load(append) {
+        var cat = $('.archive_list_tab').find('.active').data('type');
+        var container = $('.type_' + cat);
+        var empty = $('.archive_list_nodata');
+        var header = $('.archive_list_title');
+        var page = 1;
+        if (append) {
+            page = container.attr('data-page');
+        }
+        var title = $('input[name="search-title"]').val();
+        $.post(common.archive_list, { cat: cat, page: page, title: title }, function (response) {
+
+            if (response.code == 1) {
+                var data = response.data;
+                var listHtml = '';
+                header.find('p').html('当前共' + data.total.toString() + '条记录');
+                var archiveList = data.list;
+                for (var i = 0, len = archiveList.length; i < len; i++) {
+                    var editUrl = common.update_archive_url + '?ar_id=' + archiveList[i].ar_id;
+                    listHtml += ' <div class="archive_li" data-url="' + editUrl + '">' +
+                        '<div class="archive_li1">' +
+                        '<p>' + archiveList[i].title + '</p>' +
+                        '<span><a href="' + editUrl + '">详情</a></span></div>' +
+                        '<div class="archive_li2">' +
+                        '<p>提交门店：</p>' +
+                        '<span>' + archiveList[i].store_name + '</span>' +
+                        '</div>' +
+                        '<div class="archive_li2">' +
+                        '<p>更新时间：</p>' +
+                        '<span>' + archiveList[i].update_time + '</span>' +
+                        '</div></div>';
+                }
+                container.show();
+                header.show();
+                empty.hide();
+                if (append) {
+                    container.append(listHtml);
+                } else {
+                    if (listHtml === '') {
+                        empty.show();
+                        container.hide();
+                        header.hide();
+                    } else {
+                        container.html(listHtml);
+                    }
+
+                }
+                $('.archive_li').click(function () {
+                    location.href = $(this).data('url');
+                })
+                if (append) {
+                    container.attr('data-page', parseInt(page) + 1);
+                } else {
+                    container.attr('data-page', '2');
+                }
+
+            }
+        })
+
+        empty.find('p').html('没有相关内容');
+    }
 
 </script>

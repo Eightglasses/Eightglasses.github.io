@@ -105,6 +105,7 @@ html, body {
     right: 0;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    z-index: 10;
 }
 
 .archive_header {
@@ -491,6 +492,10 @@ html, body {
     color: #4A90E2;
 }
 
+body>iframe {
+    display: none;
+}
+
 .archive_list_tab {
     position: fixed;
     bottom: 0;
@@ -498,7 +503,7 @@ html, body {
     width: 7.5rem;
     left: 0;
     right: 0;
-    z-index: 2;
+    z-index: 99;
     background: #fff;
     display: flex;
     box-shadow: 0px -1px 6px 0px rgba(120, 121, 145, 0.1);

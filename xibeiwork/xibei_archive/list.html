@@ -307,7 +307,8 @@
     function getScrollHeight() {
         var h = document.querySelector(".wrap").scrollHeight;
         var hh = parseInt($(".archive_header").height());
-        return h + hh;
+        var hhh = parseInt($(".archive_list_tab").height());
+        return h + hh + hhh;
     }
 
     //滚动事件触发

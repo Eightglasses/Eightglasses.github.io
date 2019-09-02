@@ -58,7 +58,10 @@
     $("input").blur(function () {
 
         $('body').height(h);
-        $("body").css("bottom", 0)
+        setTimeout(function () {
+            $("body").css("top", 0)
+
+        }, 1000)
 
 
     })

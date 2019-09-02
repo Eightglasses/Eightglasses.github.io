@@ -53,8 +53,12 @@
 
         setTimeout(function () {
             $('body').height(h);
+            $("body").scrollTop(0)
+            $(document).scrollTop(0)
+            alert($("body").scrollTop())
+            alert($(document).scrollTop())
         }, 16)
-        
+
     })
 
 

@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="css/xibei_archive.css">
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/rem.min.js"></script>
+    <style>
+        body {
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -53,11 +59,8 @@
 
         setTimeout(function () {
             $('body').height(h);
-            $("body").scrollTop(0)
-            $(document).scrollTop(0)
-            alert($("body").scrollTop())
-            alert($(document).scrollTop())
-        }, 16)
+            $("body").css("bottom", 0)
+        }, 106)
 
     })
 

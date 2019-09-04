@@ -17,7 +17,7 @@
     <div class="archive_header">
         <span class="back"></span>
         <div class="archive_header_search">
-            <input name="search-title" type="text">
+            <input type="text">
             <span class="clear"></span>
         </div>
         <p class="archive_header_right">搜索</p>
@@ -58,7 +58,132 @@
                     <span>2019/06/10 23:59:32</span>
                 </div>
             </div>
-
+            <div class="archive_li">
+                <div class="archive_li1">
+                    <p>机器维修档案</p>
+                    <span>详情</span>
+                </div>
+                <div class="archive_li2">
+                    <p>提交门店：</p>
+                    <span>重庆万象城店</span>
+                </div>
+                <div class="archive_li2">
+                    <p>更新时间：</p>
+                    <span>2019/06/10 23:59:32</span>
+                </div>
+            </div>
+            <div class="archive_li">
+                <div class="archive_li1">
+                    <p>机器维修档案</p>
+                    <span>详情</span>
+                </div>
+                <div class="archive_li2">
+                    <p>提交门店：</p>
+                    <span>重庆万象城店</span>
+                </div>
+                <div class="archive_li2">
+                    <p>更新时间：</p>
+                    <span>2019/06/10 23:59:32</span>
+                </div>
+            </div>
+            <div class="archive_li">
+                <div class="archive_li1">
+                    <p>机器维修档案</p>
+                    <span>详情</span>
+                </div>
+                <div class="archive_li2">
+                    <p>提交门店：</p>
+                    <span>重庆万象城店</span>
+                </div>
+                <div class="archive_li2">
+                    <p>更新时间：</p>
+                    <span>2019/06/10 23:59:32</span>
+                </div>
+            </div>
+            <div class="archive_li">
+                <div class="archive_li1">
+                    <p>机器维修档案</p>
+                    <span>详情</span>
+                </div>
+                <div class="archive_li2">
+                    <p>提交门店：</p>
+                    <span>重庆万象城店</span>
+                </div>
+                <div class="archive_li2">
+                    <p>更新时间：</p>
+                    <span>2019/06/10 23:59:32</span>
+                </div>
+            </div>
+            <div class="archive_li">
+                <div class="archive_li1">
+                    <p>机器维修档案</p>
+                    <span>详情</span>
+                </div>
+                <div class="archive_li2">
+                    <p>提交门店：</p>
+                    <span>重庆万象城店</span>
+                </div>
+                <div class="archive_li2">
+                    <p>更新时间：</p>
+                    <span>2019/06/10 23:59:32</span>
+                </div>
+            </div>
+            <div class="archive_li">
+                <div class="archive_li1">
+                    <p>机器维修档案</p>
+                    <span>详情</span>
+                </div>
+                <div class="archive_li2">
+                    <p>提交门店：</p>
+                    <span>重庆万象城店</span>
+                </div>
+                <div class="archive_li2">
+                    <p>更新时间：</p>
+                    <span>2019/06/10 23:59:32</span>
+                </div>
+            </div>
+            <div class="archive_li">
+                <div class="archive_li1">
+                    <p>机器维修档案</p>
+                    <span>详情</span>
+                </div>
+                <div class="archive_li2">
+                    <p>提交门店：</p>
+                    <span>重庆万象城店</span>
+                </div>
+                <div class="archive_li2">
+                    <p>更新时间：</p>
+                    <span>2019/06/10 23:59:32</span>
+                </div>
+            </div>
+            <div class="archive_li">
+                <div class="archive_li1">
+                    <p>机器维修档案</p>
+                    <span>详情</span>
+                </div>
+                <div class="archive_li2">
+                    <p>提交门店：</p>
+                    <span>重庆万象城店</span>
+                </div>
+                <div class="archive_li2">
+                    <p>更新时间：</p>
+                    <span>2019/06/10 23:59:32</span>
+                </div>
+            </div>
+            <div class="archive_li">
+                <div class="archive_li1">
+                    <p>机器维修档案</p>
+                    <span>详情</span>
+                </div>
+                <div class="archive_li2">
+                    <p>提交门店：</p>
+                    <span>重庆万象城店</span>
+                </div>
+                <div class="archive_li2">
+                    <p>更新时间：</p>
+                    <span>2019/06/10 23:59:32</span>
+                </div>
+            </div>
         </div>
         <div class="archive_list_nodata" style="display: none">
             <span class="nodata_bg"></span>
@@ -193,12 +318,6 @@
         }
     });
 
-    $("input[name=search-title]").focus(function () {
-        $(".archive_list_tab").hide();
-    })
-    $("input[name=search-title]").blur(function () {
-        $(".archive_list_tab").show();
-    })
 
     $('.archive_header_search').find('.clear').click(function () {
         if ($('input[name="search-title"]').val() !== '') {
@@ -289,6 +408,24 @@
 
         empty.find('p').html('没有相关内容');
     }
+    fixedKeyboard();
+    function fixedKeyboard() {
+        var client_h = document.documentElement.clientHeight;
+        $(window).on("resize", function () {
 
+            //安卓触发window.resize
+            var body_h = document.documentElement.clientHeight;
+            alert(client_h,body_h)
+            if (client_h > body_h) {
+                $('.donwload-btn_fix').hide()
+                console.log("ad小了");
+            } else {
+                $('.donwload-btn_fix').show()
+                console.log("ad正常")
+            }
+
+
+        })
+    }
 
 </script>

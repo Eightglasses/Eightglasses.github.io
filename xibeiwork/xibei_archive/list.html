@@ -412,18 +412,19 @@
     function fixedKeyboard() {
         var client_h = document.documentElement.clientHeight;
         $(window).on("resize", function () {
-
-            //安卓触发window.resize
-            var body_h = document.documentElement.clientHeight;
-            alert(client_h,body_h)
-            if (client_h > body_h) {
-                $('.donwload-btn_fix').hide()
-                console.log("ad小了");
+            if (/iphone|ipad/i.test(navigator.userAgent.toLowerCase())) {
+                //ios这块什么都不用做
             } else {
-                $('.donwload-btn_fix').show()
-                console.log("ad正常")
+                //安卓触发window.resize
+                var body_h = document.documentElement.clientHeight;
+                if (client_h > body_h) {
+                    $('.donwload-btn_fix').hide()
+                    console.log("ad小了");
+                } else {
+                    $('.donwload-btn_fix').show()
+                    console.log("ad正常")
+                }
             }
-
 
         })
     }

@@ -17,7 +17,7 @@
     <div class="archive_header">
         <span class="back"></span>
         <div class="archive_header_search">
-            <input type="text">
+            <input name="search-title" type="text">
             <span class="clear"></span>
         </div>
         <p class="archive_header_right">搜索</p>
@@ -58,7 +58,7 @@
                     <span>2019/06/10 23:59:32</span>
                 </div>
             </div>
-           
+
         </div>
         <div class="archive_list_nodata" style="display: none">
             <span class="nodata_bg"></span>
@@ -193,6 +193,12 @@
         }
     });
 
+    $("input[name=search-title]").focus(function () {
+        $(".archive_list_tab").hide();
+    })
+    $("input[name=search-title]").blur(function () {
+        $(".archive_list_tab").show();
+    })
 
     $('.archive_header_search').find('.clear').click(function () {
         if ($('input[name="search-title"]').val() !== '') {
@@ -283,25 +289,6 @@
 
         empty.find('p').html('没有相关内容');
     }
-    fixedKeyboard() 
-    function fixedKeyboard() {
-        var client_h = document.documentElement.clientHeight;
-        $(window).on("resize", function () {
-            if (/iphone|ipad/i.test(navigator.userAgent.toLowerCase())) {
-                //ios这块什么都不用做
-            } else {
-                //安卓触发window.resize
-                var body_h = document.documentElement.clientHeight;
-                if (client_h > body_h) {
-                    $('.donwload-btn_fix').hide()
-                    console.log("ad小了");
-                } else {
-                    $('.donwload-btn_fix').show()
-                    console.log("ad正常")
-                }
-            }
 
-        })
-    }
 
 </script>

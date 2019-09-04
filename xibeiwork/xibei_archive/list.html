@@ -58,132 +58,7 @@
                     <span>2019/06/10 23:59:32</span>
                 </div>
             </div>
-            <div class="archive_li">
-                <div class="archive_li1">
-                    <p>机器维修档案</p>
-                    <span>详情</span>
-                </div>
-                <div class="archive_li2">
-                    <p>提交门店：</p>
-                    <span>重庆万象城店</span>
-                </div>
-                <div class="archive_li2">
-                    <p>更新时间：</p>
-                    <span>2019/06/10 23:59:32</span>
-                </div>
-            </div>
-            <div class="archive_li">
-                <div class="archive_li1">
-                    <p>机器维修档案</p>
-                    <span>详情</span>
-                </div>
-                <div class="archive_li2">
-                    <p>提交门店：</p>
-                    <span>重庆万象城店</span>
-                </div>
-                <div class="archive_li2">
-                    <p>更新时间：</p>
-                    <span>2019/06/10 23:59:32</span>
-                </div>
-            </div>
-            <div class="archive_li">
-                <div class="archive_li1">
-                    <p>机器维修档案</p>
-                    <span>详情</span>
-                </div>
-                <div class="archive_li2">
-                    <p>提交门店：</p>
-                    <span>重庆万象城店</span>
-                </div>
-                <div class="archive_li2">
-                    <p>更新时间：</p>
-                    <span>2019/06/10 23:59:32</span>
-                </div>
-            </div>
-            <div class="archive_li">
-                <div class="archive_li1">
-                    <p>机器维修档案</p>
-                    <span>详情</span>
-                </div>
-                <div class="archive_li2">
-                    <p>提交门店：</p>
-                    <span>重庆万象城店</span>
-                </div>
-                <div class="archive_li2">
-                    <p>更新时间：</p>
-                    <span>2019/06/10 23:59:32</span>
-                </div>
-            </div>
-            <div class="archive_li">
-                <div class="archive_li1">
-                    <p>机器维修档案</p>
-                    <span>详情</span>
-                </div>
-                <div class="archive_li2">
-                    <p>提交门店：</p>
-                    <span>重庆万象城店</span>
-                </div>
-                <div class="archive_li2">
-                    <p>更新时间：</p>
-                    <span>2019/06/10 23:59:32</span>
-                </div>
-            </div>
-            <div class="archive_li">
-                <div class="archive_li1">
-                    <p>机器维修档案</p>
-                    <span>详情</span>
-                </div>
-                <div class="archive_li2">
-                    <p>提交门店：</p>
-                    <span>重庆万象城店</span>
-                </div>
-                <div class="archive_li2">
-                    <p>更新时间：</p>
-                    <span>2019/06/10 23:59:32</span>
-                </div>
-            </div>
-            <div class="archive_li">
-                <div class="archive_li1">
-                    <p>机器维修档案</p>
-                    <span>详情</span>
-                </div>
-                <div class="archive_li2">
-                    <p>提交门店：</p>
-                    <span>重庆万象城店</span>
-                </div>
-                <div class="archive_li2">
-                    <p>更新时间：</p>
-                    <span>2019/06/10 23:59:32</span>
-                </div>
-            </div>
-            <div class="archive_li">
-                <div class="archive_li1">
-                    <p>机器维修档案</p>
-                    <span>详情</span>
-                </div>
-                <div class="archive_li2">
-                    <p>提交门店：</p>
-                    <span>重庆万象城店</span>
-                </div>
-                <div class="archive_li2">
-                    <p>更新时间：</p>
-                    <span>2019/06/10 23:59:32</span>
-                </div>
-            </div>
-            <div class="archive_li">
-                <div class="archive_li1">
-                    <p>机器维修档案</p>
-                    <span>详情</span>
-                </div>
-                <div class="archive_li2">
-                    <p>提交门店：</p>
-                    <span>重庆万象城店</span>
-                </div>
-                <div class="archive_li2">
-                    <p>更新时间：</p>
-                    <span>2019/06/10 23:59:32</span>
-                </div>
-            </div>
+           
         </div>
         <div class="archive_list_nodata" style="display: none">
             <span class="nodata_bg"></span>
@@ -271,17 +146,13 @@
             disY = endY - startY;
             if (disY > 72) {
                 //定义一个定时器，返回下拉到一定的高度
-                // var timer = setInterval(function () {
                 disY -= 13;
-                if (disY <= 60) {
-                    // clearInterval(timer);
-                    load(false)
-                }
+                load(false)
+
                 $('.status').css({
                     height: 0,
                     display: 'none',
                 });
-                // }, 10);
             }
         });
     }
@@ -360,6 +231,7 @@
             page = container.attr('data-page');
         }
         var title = $('input[name="search-title"]').val();
+        return
         $.post(common.archive_list, { cat: cat, page: page, title: title }, function (response) {
 
             if (response.code == 1) {
@@ -410,6 +282,26 @@
         })
 
         empty.find('p').html('没有相关内容');
+    }
+
+    function fixedKeyboard() {
+        var client_h = document.documentElement.clientHeight;
+        $(window).on("resize", function () {
+            if (/iphone|ipad/i.test(navigator.userAgent.toLowerCase())) {
+                //ios这块什么都不用做
+            } else {
+                //安卓触发window.resize
+                var body_h = document.documentElement.clientHeight;
+                if (client_h > body_h) {
+                    $('.donwload-btn_fix').hide()
+                    console.log("ad小了");
+                } else {
+                    $('.donwload-btn_fix').show()
+                    console.log("ad正常")
+                }
+            }
+
+        })
     }
 
 </script>

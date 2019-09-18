@@ -30,7 +30,7 @@
         </div>
         <div class="status" style="display: none">数据加载中</div>
         <div class="archive_list">
-            <div class="archive_li">
+            <!-- <div class="archive_li">
                 <div class="archive_li1">
                     <p>机器维修档案</p>
                     <span>详情</span>
@@ -183,9 +183,9 @@
                     <p>更新时间：</p>
                     <span>2019/06/10 23:59:32</span>
                 </div>
-            </div>
+            </div> -->
         </div>
-        <div class="archive_list_nodata" style="display: none">
+        <div class="archive_list_nodata">
             <span class="nodata_bg"></span>
             <p>未搜索到相关内容</p>
         </div>
@@ -413,20 +413,14 @@
         var client_h = document.documentElement.clientHeight;
         $(window).on("resize", function () {
             if (/iphone|ipad/i.test(navigator.userAgent.toLowerCase())) {
-                //ios这块什么都不用做
             } else {
-                //安卓触发window.resize
                 var body_h = document.documentElement.clientHeight;
-                
                 if (client_h > body_h) {
-                    $('.donwload-btn_fix').hide()
-                    console.log("ad小了");
+                    $('.archive_list_tab,.nodata_bg').hide()
                 } else {
-                    $('.donwload-btn_fix').show()
-                    console.log("ad正常")
+                    $('.archive_list_tab,.nodata_bg').show()
                 }
             }
-
         })
     }
 

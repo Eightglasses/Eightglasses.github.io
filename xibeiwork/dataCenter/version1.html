@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/dataCenter.css">
+    <script src="js/rem_scaler.js"></script>
+</head>
+
+<body>
+    <!-- 顶 -->
+    <div class="dc-header">
+        <div class="dc-header-time">
+            <p>2019-08-21</p>
+        </div>
+        <!-- 搜索，文字根据设计图二选一显示 -->
+        <div class="dc-header-search">
+            <input type="text" placeholder="搜索门店(23个门店)">
+            <span class="bg"></span>
+        </div>
+        <div class="dc-header-text" style="display: none">
+            <p>门店排行榜</p>
+        </div>
+    </div>
+
+    <!-- 总内容，局部滚动 -->
+    <div class="wrap">
+
+        <div class="dc-v1-top">
+            <div class="div1">
+                <p class="p1">
+                    营收
+                </p>
+                <p class="p2">获取数据时间 2019-03-29 12:32</p>
+            </div>
+
+            <div class="div2">
+                <p class="p1">当前营收总额(元)</p>
+                <p class="p2">22234567.00</p>
+            </div>
+
+            <div class="div3">
+                <div class="left">
+                    <p class="p1">
+                        <span class="span1">昨</span>
+                        <span class="span2 up">8.78%</span>
+                    </p>
+                    <p class="p2">34567.00</p>
+                    <p class="p3">日均营收(元)</p>
+                </div>
+                <div class="right">
+                    <p class="p1">
+                        <span class="span1">昨</span>
+                        <span class="bg"></span>
+                        <span class="span2 down">8.78%</span>
+                    </p>
+                    <p class="p2">34567.00</p>
+                    <p class="p3">日均营收(元)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="dc-v1-modal">
+
+            <div class="modal-header">
+                <h3>堂食</h3>
+                <p class="p1">
+                    <span class="span1">昨</span>
+                    <span class="span2 up">8.78%</span>
+                </p>
+                <p class="p2">
+                    <span class="span1">周</span>
+                    <span class="span2 down">8.78%</span>
+                </p>
+                <span class="more"></span>
+            </div>
+
+            <ul class="modal-list">
+                <li>
+                    <p class="p1">102127.00</p>
+                    <p class="p2">当前营收(元)</p>
+                </li>
+                <li>
+                    <p class="p1">102127.00</p>
+                    <p class="p2">日均营收(元)</p>
+                </li>
+                <li>
+                    <p class="p1">102127.00</p>
+                    <p class="p2">月累计营收(元)</p>
+                </li>
+            </ul>
+            <div class="modal-header">
+
+                <h3>外带</h3>
+                <p class="p1">
+                    <span class="span1">昨</span>
+                    <span class="span2 up">8.78%</span>
+                </p>
+                <p class="p2">
+                    <span class="span1">周</span>
+                    <span class="span2 down">8.78%</span>
+                </p>
+                <span class="more"></span>
+            </div>
+
+            <ul class="modal-list">
+                <li>
+                    <p class="p1">102127.00</p>
+                    <p class="p2">当前营收(元)</p>
+                </li>
+                <li>
+                    <p class="p1">102127.00</p>
+                    <p class="p2">日均营收(元)</p>
+                </li>
+                <li>
+                    <p class="p1">102127.00</p>
+                    <p class="p2">月累计营收(元)</p>
+                </li>
+            </ul>
+            <div class="modal-header">
+
+                <h3>外卖</h3>
+                <p class="p1">
+                    <span class="span1">昨</span>
+                    <span class="span2 up">8.78%</span>
+                </p>
+                <p class="p2">
+                    <span class="span1">周</span>
+                    <span class="span2 down">8.78%</span>
+                </p>
+                <span class="more"></span>
+            </div>
+
+            <ul class="modal-list">
+                <li>
+                    <p class="p1">102127.00</p>
+                    <p class="p2">当前营收(元)</p>
+                </li>
+                <li>
+                    <p class="p1">102127.00</p>
+                    <p class="p2">日均营收(元)</p>
+                </li>
+                <li>
+                    <p class="p1">102127.00</p>
+                    <p class="p2">月累计营收(元)</p>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!-- 底部导航，fixed定位 -->
+    <div class="dc-bottom">
+        <ul>
+            <li class="active">首页</li>
+            <li>菜品</li>
+            <li>用户</li>
+            <li>工具</li>
+            <li>我的</li>
+        </ul>
+    </div>
+</body>
+
+<script>
+
+
+    var li = document.getElementsByTagName("li");
+    console.log(li);
+
+    for (var i = 0; i < li.length; i++) {
+        var _i = i;
+        li[_i].addEventListener("click", function () {
+            console.log(_i);
+
+        })
+    }
+</script>
+
+</html>

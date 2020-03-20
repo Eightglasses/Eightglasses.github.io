@@ -146,10 +146,12 @@ function setEcharts(element, dataList, labelShow) {
         }]
     };
     if (labelShow) {
-        option.series.radius = ['50%', '70%']
+        option.series[0].radius = ['55%', '70%']
     } else {
-        option.series.radius = ['70%', '90%']
+        option.series[0].radius = ['70%', '90%']
     }
+    console.log(option);
+
     myChart.setOption(option);
 
 }

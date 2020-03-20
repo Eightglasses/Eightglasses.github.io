@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="css/reset.css" rel="stylesheet" />
+    <link href="css/common.css" rel="stylesheet" />
+    <!-- <link href="css/model.css" rel="stylesheet" /> -->
+    <link href="css/statistics.css" rel="stylesheet" />
+    <script src="js/jquery.min.js"></script>
+    <script src="js/rem.min.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <title>会员信息统计</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="head">
+            <p>会员信息统计</p>
+            <span>2020-01-01</span>
+        </div>
+
+        <div class="content">
+            <!-- 累计办卡数量（个） -->
+            <div class="statistics">
+                <div class="nav">
+                    <p>累计办卡数量（个）</p>
+                    <span>20000</span>
+                </div>
+                <div class="statistics-bottom">
+                    <div class="echart">
+                        <div class="echartbox" id="echart1">
+                            <canvas id="canvas"></canvas>
+                        </div>
+                        <div class="center">
+                            <p class="p1 A4A8FE">
+                                <span class="number">75</span>
+                                <span>%</span>
+                            </p>
+                            <p class="p2">现存占比</p>
+                        </div>
+                        <p class="bottom">现存数量<span>1555个</span></p>
+                    </div>
+                    <div class="echart">
+                        <div class="echartbox" id="echart2"></div>
+                        <div class="center">
+                            <p class="p1 FF7370">
+                                <span class="number">75</span>
+                                <span>%</span>
+                            </p>
+                            <p class="p2">续费占比</p>
+                        </div>
+                        <p class="bottom">续费次数<span>1555个</span></p>
+                    </div>
+                </div>
+            </div>
+            <!-- VIP总实收（元） -->
+            <div class="statistics">
+                <div class="nav">
+                    <p>VIP总实收（元）</p>
+                    <span>20000</span>
+                </div>
+                <div class="tab">
+                    <span class="active">月</span>
+                    <span>周</span>
+                    <span>日</span>
+                </div>
+                <div class="statistics-bottom statistics-bottom1">
+                    <div class="echart">
+                        <div class="echartbox2 echartbox" id="echart5"></div>
+                        <div class="center center2">
+                            <p class="p1 FFD158">
+                                <img src="../images/icon-up.png" alt="">
+                                <span class="number">50</span>
+                                <span>%</span>
+                            </p>
+                            <p class="p2">比上月</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="statistics">
+                <div class="nav">
+                    <p>VIP开台占比（%）</p>
+                    <span>20000</span>
+                </div>
+                <div class="statistics-bottom statistics-bottom1">
+                    <div class="echart">
+                        <div class="echartbox" id="echart3"></div>
+                        <div class="center">
+                            <p class="p1 A4A8FE">
+                                <span class="number">75</span>
+                                <span>%</span>
+                            </p>
+                            <p class="p2">VIP开台占比</p>
+                        </div>
+                        <p class="bottom">现存数量<span>1555个</span></p>
+                    </div>
+                    <div class="echart">
+                        <div class="echartbox" id="echart4"></div>
+                        <div class="center">
+                            <p class="p1 FF7370">
+                                <span class="number">75</span>
+                                <span>%</span>
+                            </p>
+                            <p class="p2">VIP开台占比</p>
+                        </div>
+                        <p class="bottom">续费次数<span>1555个</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class='index active'>
+                <img src="images/icon-index2.png" alt="" srcset="">
+                <span>首页</span>
+            </div>
+            <div class='task''>
+                <img src="images/icon-task1.png" alt="" srcset="">
+                <span>每日任务</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="js/circel.js"></script>
+<script src="js/statistics.js"></script>

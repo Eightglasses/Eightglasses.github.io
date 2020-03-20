@@ -15,6 +15,20 @@
 .head span {
     font-size: 0.3rem;
     color: #212763;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-right: 0.3rem;
+}
+
+.head span.date::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 0.14rem;
+    height: 0.06rem;
+    background: url(../images/icon-date.png) no-repeat;
+    background-size: contain;
 }
 
 .content {
@@ -102,9 +116,11 @@
 .content .statistics .statistics-bottom .echart .center2 {
     top: 1.2rem;
 }
-.content .statistics .statistics-bottom .echart .center2 img{
+
+.content .statistics .statistics-bottom .echart .center2 img {
     width: 0.14rem;
 }
+
 .A4A8FE {
     color: #A4A8FE;
     font-family: Helvetica;

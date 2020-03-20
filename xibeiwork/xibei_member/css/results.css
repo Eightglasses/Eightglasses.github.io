@@ -1,0 +1,137 @@
+.head {
+    position: absolute;
+    top: 0;
+    height: 1rem;
+    width: 7.5rem;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #EAEDF9;
+}
+
+.head .back {
+    padding-left: 0.3rem;
+    color: #212763;
+    font-size: 0.36rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.head .back .icon-back {
+    width: 0.08rem;
+    height: 0.16rem;
+    background: url(../images/icon-back.png) no-repeat;
+    background-size: contain;
+    margin-right: 0.18rem;
+}
+
+.nav {
+    position: absolute;
+    top: 1rem;
+    width: 7.5rem;
+    background-color: #fff;
+    color: #7F84B4;
+    font-size: 0.36rem;
+    display: flex;
+    align-items: center;
+    height: 1rem;
+}
+
+.nav p {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    box-sizing: border-box;
+    justify-content: center;
+    height: 100%;
+    border-bottom: 0.06rem solid #fff;
+}
+
+.nav p.active {
+    color: #7C83FF;
+    font-weight: bold;
+    border-bottom: 0.06rem solid #7C83FF;
+}
+
+.list {
+    position: absolute;
+    top: 2rem;
+    bottom: 0;
+    width: 7.5rem;
+    overflow: auto;
+    background-color: #F8F9FD;
+}
+
+.list .title {
+    background: #EAEDF9;
+    height: 0.7rem;
+    width: 7.5rem;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding-left: 0.3rem;
+}
+
+.list .list-li {
+    width: 6.9rem;
+    height: 1.74rem;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0rem 0.05rem 0.16rem 0rem rgba(181, 190, 216, 0.5);
+    border-radius: 0.2rem;
+    margin: 0.3rem;
+    box-sizing: border-box;
+    padding: 0.3rem 0 0 0.3rem;
+    display: flex;
+}
+
+.list .list-li .left {
+    font-size: 0.3rem;
+    width: 4.3rem;
+}
+
+.list .list-li .left .span1 {
+    color: #464C86;
+    margin-right: 0.3rem;
+}
+
+.list .list-li .left .span2 {
+    color: #464C86;
+    font-weight: bold;
+}
+
+.list .list-li .left .p1 {
+    padding-bottom: 0.3rem;
+}
+
+.list .list-li .right {
+    display: flex;
+}
+
+.list .list-li .right>div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: #464C86;
+    font-size: 0.2rem;
+}
+
+.list .list-li .right .bg {
+    width: 0.6rem;
+    height: 0.6rem;
+    margin-bottom: 0.1rem;
+}
+
+.list .list-li .right .userinfo .bg {
+    background: url(../images/icon-userinfo.png) no-repeat;
+    background-size: contain;
+}
+
+.list .list-li .right .talk .bg {
+    background: url(../images/icon-wechat1.png) no-repeat;
+    background-size: contain;
+}
+
+.list .list-li .right .userinfo {
+    margin-right: 0.3rem;
+}

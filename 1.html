@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <video></video>
+
+    <script>
+        navigator.getUserMedia = navigator.getUserMedia ||
+            navigator.webkitGetUserMedia ||
+            navigator.mozGetUserMedia ||
+            navigator.msGetUserMedia;
+
+        if (navigator.getUserMedia) {
+            // 支持
+            alert('支持摄像头')
+        } else {
+            // 不支持
+            alert('不支持摄像头')
+        }
+        // 想要获取一个最接近 1280x720 的相机分辨率
+        var constraints = {
+            audio: true,
+            video: {
+                width: 1280,
+                height: 720
+            }
+        };
+
+        navigator.mediaDevices.getUserMedia(constraints)
+            .then(function(mediaStream) {
+                alert("摄像头已开启")
+                var video = document.querySelector('video');
+                video.srcObject = mediaStream;
+                video.onloadedmetadata = function(e) {
+                    video.play();
+                };
+            })
+            .catch(function(err) {
+                alert('摄像头开启失败')
+                console.log(err.name + ": " + err.message);
+            }); // 总是在最后检查错误    
+    </script>
+</body>
+
+</html>

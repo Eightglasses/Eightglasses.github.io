@@ -1,0 +1,80 @@
+[
+  {
+    "ename": "ABIN.WANG",
+    "name": "王阿彬",
+    "distributor": "广州宝泽",
+    "sex": "男",
+    "coursesNum": 5,
+    "LearningDuration": "2617.2",
+    "BMWAge": "8.7",
+    "Elite": "无",
+    "f2f": "0",
+    "certificationName": "无",
+    "certificationNum": "0"
+  },
+  {
+    "ename": "ABO.ZHANG",
+    "name": "张阿柏",
+    "distributor": "厦门星德宝",
+    "sex": "男",
+    "coursesNum": 54,
+    "LearningDuration": "11538.0",
+    "BMWAge": "2.4",
+    "Elite": "无",
+    "f2f": 5,
+    "certificationName": "无",
+    "certificationNum": "0"
+  },
+  {
+    "ename": "ACHAO.WU",
+    "name": "吴阿超",
+    "distributor": "泉州福宝",
+    "sex": "女",
+    "coursesNum": 13,
+    "LearningDuration": "1738.8",
+    "BMWAge": "1.9",
+    "Elite": "无",
+    "f2f": "0",
+    "certificationName": "无",
+    "certificationNum": "0"
+  },
+  {
+    "ename": "AFANG.DING",
+    "name": "丁阿芳",
+    "distributor": "天津运通宝翔",
+    "sex": "女",
+    "coursesNum": 9,
+    "LearningDuration": "975.6",
+    "BMWAge": "5.3",
+    "Elite": "无",
+    "f2f": "0",
+    "certificationName": "无",
+    "certificationNum": "0"
+  },
+  {
+    "ename": "AHONGCHENG.PENG",
+    "name": "彭忠诚",
+    "distributor": "赣州宝晋",
+    "sex": "男",
+    "coursesNum": 1,
+    "LearningDuration": "10.8",
+    "BMWAge": "3.5",
+    "Elite": "无",
+    "f2f": "0",
+    "certificationName": "无",
+    "certificationNum": "0"
+  },
+  {
+    "ename": "AI.LIU.2",
+    "name": "刘爱",
+    "distributor": "北京华德宝",
+    "sex": "女",
+    "coursesNum": 16,
+    "LearningDuration": "3585.6",
+    "BMWAge": "7.2",
+    "Elite": "无",
+    "f2f": "0",
+    "certificationName": "无",
+    "certificationNum": "0"
+  }
+]

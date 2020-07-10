@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div id="printing" @mouseup='onmouseup'>
+        <div id="model-list">
+            <h2>预设组件</h2>
+            <ul ref='model'>
+                <li v-for='(item,index) in modelList' @click='modelListClick(item)'>{{item.name}}</li>
+
+            </ul>
+
+        </div>
+
+        <div id="show" ref="componentBox" @mousemove="onmousermoves">
+
+            <div v-for='(item,index) in showList' @mousedown="onmousedowns($event,index,item)">
+                <!-- 二维码 -->
+                <div v-if='item.name=="二维码"' class="qrcode" :class="{'left':item.format==1,
+                'center':item.format==2,
+                'right':item.format==3,
+                'size1':item.size==1,
+                'size2':item.size==2,
+                'size3':item.size==3}">
+                    <img src="qr.png">
+                </div>
+                <!-- 条形码 -->
+                <div v-if='item.name=="条形码"' class="qrcode" :class="{'left':item.format==1,
+                'center':item.format==2,
+                'right':item.format==3,
+                'size1':item.size==1,
+                'size2':item.size==2,
+                'size3':item.size==3}">
+                    <img src="cnaidc.png">
+                </div>
+                <!-- 字符串 -->
+                <div v-if='item.name =="字符串"' class="text" :class="{'left':item.format==1,
+                'center':item.format==2,
+                'right':item.format==3,
+                'fontsize1':item.size==1,
+                'fontsize2':item.size==2,
+                'fontsize3':item.size==3}">
+                    <input v-model='item.value' type="text" placeholder="请输入字符串">
+                </div>
+            </div>
+
+        </div>
+        <div id="config">
+            <ul>
+                <li>二维码</li>
+                <li>条形码</li>
+                <li>字符串</li>
+                <li>菜品列表</li>
+                <li>线</li>
+            </ul>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+<script src="vue.min.js"></script>
+
+<script>
+    var app = new Vue({
+        el: '#printing',
+        methods: {
+            modelListClick(item) {
+                const items = JSON.parse(JSON.stringify(item));
+                this.showList.push(items);
+            },
+            // 鼠标移动时
+            onmousermoves(event) {
+                if (this.mousedownInfo.name) {
+                    const e = event || window.event
+                    console.log(e.clientY);
+
+                    const stateIndex = ((e.clientY + document.documentElement.scrollTop) - this.offset_top) / 88
+                    this.insertIndex = (stateIndex.toFixed(0)) - 1
+                    console.log(this.insertIndex);
+
+
+                }
+            },
+            // 鼠标按下临时保存
+            onmousedowns(event, index, item) {
+                // 获取移动父盒子的坐标，大小
+                this.mousedownInfo.name = item.name
+
+            },
+            onmouseup() {
+                this.mousedownInfo.name = ''
+            }
+        },
+        data() {
+            return {
+                mousedownInfo: {},
+                offset_top: 0,
+                offsetLeft: 0,
+                offsetParent: null,
+                modelList: [{
+                    name: "二维码",
+                    size: 1,
+                    format: 2, //1左2中3右
+                    type: 1
+                }, {
+                    name: "条形码",
+                    size: 1,
+                    format: 2, //1左2中3右
+                    type: 2
+                }, {
+                    name: "字符串",
+                    size: 2,
+                    format: 3, //1左2中3右
+                    value: "",
+                    type: 3
+                }, {
+                    name: "菜品列表",
+                    size: 1,
+                    format: 1, //1左2中3右
+                    type: 4
+                }, {
+                    name: "线",
+                    size: 1,
+                    format: 1, //1左2中3右
+                    type: 5
+                }],
+                showList: [],
+            }
+        }
+    })
+</script>

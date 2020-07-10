@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="../bd/js/jquery-1.8.3.min.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div1 {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            perspective: 1000px;
+            /* 景深 面的 (宽+高)*2 */
+            display: flex;
+            align-items: center;
+        }
+
+        .box {
+            margin: 50px;
+            width: 700px;
+            transform-origin: 50% 50%;
+            position: absolute;
+            /* 旋转中心 */
+            display: flex;
+            border: 1px solid #000;
+            height: 150px;
+            align-items: flex-end;
+            transform-style: preserve-3d;
+            background-color: #f9f9f9;
+            /*景深相当于眼睛距离元素的位置距离*/
+
+        }
+
+        .box img {
+            border: 1px solid red;
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+            position: absolute;
+            transform: translateZ(30deg);
+            box-shadow: 010px 4px 5px #eee;
+            background-color: #fff;
+            z-index: 2;
+        }
+
+        .box img:first-of-type {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div1">
+        <div class="box">
+            <img src="1.png" alt="">
+            <img src="2.png" alt="">
+            <img src="3.png" alt="">
+            <img src="4.png" alt="">
+            <img src="5.png" alt="">
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    var flag = true
+
+    $('img').each(function (index, item) {
+        $(item).click(function () {
+            var siblings = $(this).siblings();
+            var that = this;
+            $(that).animate({ 'left': 0, 'width': '200px', 'height': "200px" }, 1000);
+
+
+            siblings.each(function (i, v) {
+
+                var left = parseFloat($(v).css("left"));
+
+
+                var thatLeft = parseFloat($(that).css("left"));
+                console.log(left, thatLeft);
+                if (thatLeft > 0) {
+                    if (left == '0') {
+                        $(v).animate({ "left": '500px', 'width': '100px', 'height': '100px', 'z-index': 3 }, 1000)
+                    } else {
+                        $(v).animate({ "left": Math.abs(thatLeft - left) + 100 + 'px', 'z-index': 2 }, 1000)
+                    }
+                }
+            })
+
+
+
+        })
+    })
+    positionImg()
+    function positionImg() {
+        $('img').each(function (index, item) {
+            if (index == 0) {
+                $(item).css({ 'left': 0 })
+            } else {
+                $(item).css('left', 100 * index + 100)
+            }
+        })
+    }
+
+</script>

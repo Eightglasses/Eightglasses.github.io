@@ -1,0 +1,102 @@
+#printing {
+    display: flex;
+    padding: 10px;
+}
+
+#printing>div {
+    border: 1px solid rgba(0, 0, 200, 0.5);
+    margin-right: 30px;
+
+}
+
+#model-list h2 {
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid #333;
+    padding: 0 30px;
+}
+
+#model-list ul {
+    padding: 10px;
+}
+
+#model-list ul li {
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #ccc;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#show {
+    width: 300px;
+    min-height: 500px;
+    padding: 10px;
+    overflow: hidden;
+}
+
+#show>div {
+    margin-bottom: 10px;
+}
+
+#show .qrcode,
+#show .text {
+    display: flex;
+}
+
+#show .size1 img {
+    width: 33%;
+}
+
+#show .size2 img {
+    width: 66%;
+}
+
+#show .size3 img {
+    width: 99%;
+}
+
+#show .fontsize1 input {
+    font-size: 20px;
+}
+
+#show .fontsize2 input {
+    font-size: 30px;
+}
+
+#show .fontsize3 input {
+    font-size: 40px;
+}
+
+#show .text input {
+    width: 100%;
+}
+
+#show .text.center input {
+    text-align: center;
+}
+
+#show .text.right input {
+    text-align: right;
+}
+
+#show input {
+    border: none;
+}
+
+.left {
+    justify-content: flex-start;
+}
+
+.center {
+    justify-content: center;
+}
+
+.right {
+    justify-content: flex-end;
+}
+
+#config {
+    width: 200px;
+    padding: 10px;
+}

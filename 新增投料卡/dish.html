@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>预制品关联菜品</title>
+    <meta name="description" content="">
+    <meta name="author" content="caiweiming">
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=0">
+
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/layout.css">
+</head>
+
+<body>
+
+    <div class="layout_content">
+        <div class="layout-title">
+            <h3>新增菜品</h3>
+        </div>
+        <div class="layout-box">
+            <div class="tab-box">
+                <!-- 搜索 -->
+                <div class="search-box">
+                    <div class="input-box">
+                        <input value="2001600000003" id="dishInput" type="text" class="form-input" placeholder="菜品名称" />
+                    </div>
+                    <!-- <div class="btn-search">
+                        <button class="btn-primary">查询</button>
+                    </div> -->
+                    <div class="btn-search" id="select">
+                        <button class="btn-primary">请选择</button>
+                    </div>
+                    <div class='input-group date' id='datetimepicker1'>
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="showDish">
+                    <p>
+                        <label>收入类型:</label>
+                        <span class="income_name"></span>
+                    </p>
+                    <p>
+                        <label>总导师:</label>
+                        <span class="tutor_name"></span>
+                    </p>
+                    <p>
+                        <label>菜品类型:</label>
+                        <span class="type_name"></span>
+                    </p>
+                </div>
+                <div class="tab-content" style="display: none;">
+                    <table>
+                        <thead>
+                            <th></th>
+                            <th>原料编码</th>
+                            <th>原料</th>
+                            <th>原料组</th>
+                            <th>组成员</th>
+                            <th>投量</th>
+                            <th>出成率%</th>
+                            <th>成本单位</th>
+                            <th>绑定加工品</th>
+                            <th>是否共享包</th>
+                            <th>锁定原料</th>
+                            <th>主料</th>
+                            <th>操作</th>
+                        </thead>
+                        <tbody id="data-table">
+
+                        </tbody>
+                        <tbody id="bottom">
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="flex">
+                                    <input class="searchMaterialInput" value="3001600000001" type="text" placeholder="请输入编码">
+                                    <span class="more-group" style="display: none;"></span>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- <div class="layout-bottom">
+                    <div class="text-box">
+                        <p>
+                            <span>烤羊排</span>
+                            <em>X</em>
+                        </p>
+                        <p>
+                            <span>烤羊排</span>
+                            <em>X</em>
+                        </p>
+                    </div>
+
+                </div> -->
+            </div>
+            <div class="bottom">
+                <div class="btn-search">
+                    <button class="btn btn-cancel">取消</button>
+                </div>
+                <div class="btn-search">
+                    <button class="btn btn-primary">保存</button>
+                </div>
+                <div class="btn-search" id="saveAll">
+                    <button class="btn btn-primary">提交</button>
+                </div>
+                <div class="input-box">
+                    <input id="remark" value="" id="" type="text" class="form-input" placeholder="备注">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 选择菜品弹框 -->
+    <div class="searchDishShadow">
+        <div class="container">
+            <div class="title">
+                <span>添加批次</span>
+                <span class="close">x</span>
+            </div>
+            <div class="content">
+                <div class="search-box">
+                    <div class="input-box">
+                        <input type="text" id="searchDishInput" class="form-input" placeholder="请输入菜品名称/菜品编码" />
+                    </div>
+                    <div class="btn-search">
+                        <button class="btn-primary" id="searchDishBtn">查询</button>
+                    </div>
+                </div>
+                <div class="tableBox" id="dish-table">
+                    <table>
+                        <thead>
+                            <th>请选择</th>
+                            <th>菜品编码</th>
+                            <th>菜品名称</th>
+                            <th>编写</th>
+                            <th>单位</th>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="page-div">
+                    <div class="page"></div>
+                </div>
+                <div>
+                    <div class="btn-search">
+                        <button class="btn btn-primary" id="setChoseDish">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 选择原料组弹框 -->
+    <div class="searchMaterialShadow" style="display: none;">
+        <div class="container">
+            <div class="title">
+                <span>添加批次</span>
+                <span class="close">x</span>
+            </div>
+            <div class="content">
+                <div class="search-box">
+                    <div class="input-box">
+                        <input type="text" id="searchMaterialListInput" class="form-input" placeholder="请输入菜品名称/菜品编码" />
+                    </div>
+                    <div class="btn-search">
+                        <button class="btn-primary" id="searchMaterialListBtn">查询</button>
+                    </div>
+                    <!-- <div class="select-div">
+                        <span class="label">分类</span>
+                        <p class="open">请选择</p>
+                        <ul>
+                            <li>原料类</li>
+                            <li>加工品类</li>
+                            <li>低价类</li>
+                        </ul>
+                    </div>
+                    <div class="select-div">
+                        <span class="label">分类</span>
+                        <p class="open">请选择</p>
+                        <ul>
+                            <li>粮油类</li>
+                            <li>水产类</li>
+                            <li>蛋类</li>
+                        </ul>
+                    </div>
+                    <div class="select-div">
+                        <span class="label">分类</span>
+                        <p class="open">请选择</p>
+                        <ul>
+                            <li>猪肉类</li>
+                            <li>羊肉类</li>
+                            <li>禽肉类</li>
+                        </ul>
+                    </div> -->
+                </div>
+                <div class="tableBox" id="material-table">
+                    <table>
+                        <thead>
+                            <th>选择</th>
+                            <th>原料编码</th>
+                            <th>原料名称</th>
+                            <th>基本单位</th>
+                            <th>默认原料</th>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="page-div">
+                    <div class="page"></div>
+                </div>
+                <div class="checkDiv" style="display: none;">
+                    <ul></ul>
+                    <p class="clear">清空所有</p>
+                </div>
+                <div>
+                    <div class="btn-search">
+                        <button class="btn btn-primary" id="setCheckDiv">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.pagination.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.26.0/moment.js"></script>
+
+<script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+<script>
+    $('#datetimepicker1').datetimepicker({
+        format: 'YYYY-MM-DD HH:mm:ss',
+        locale: moment.locale('zh-cn'),
+    });
+
+
+    var _N = {};
+    _N.init = function () {
+        this.pageType = 'edit'
+        this.canEdit = false;
+        this.dish_code = null; //当前选择菜品id
+        this.dish_name = null; //当前菜品名
+        this.dishList = null; //菜品搜索列表
+        this.dishData = null; //当前选择了哪个菜
+        this.materialListIndex = 1; //原料列表当前页
+        this.materialListPage = 10; //原料列表每页10条
+        this.searchDishPage = 1; //菜品列表当前页
+        this.searchDishSize = 10; //菜品列表每页多少条
+        this.materialCheckList = [];
+        this.finalList = [];
+        this.nowClickMaterialId = null; //当前选择的原料组id
+        this.nowClickMaterialName = null;
+        this.nowClickMaterial = null;
+        this.nowClickMaterialEdit = false; //原料列表编辑模式
+        if (this.pageType == 'edit') {
+            if (this.canEdit == false) {
+                $("#dishInput").attr("readonly", "readonly");
+                $("#select").hide();
+            }
+            this.getFeeding();
+        }
+        _N.bindEvent();
+    };
+
+    _N.bindEvent = function () {
+        var that = this;
+        //显示选择菜品框
+        $("#select").click(function () {
+            $('.searchDishShadow').show()
+        });
+        $(".close").click(function () {
+            $('.searchDishShadow').hide()
+        });
+
+        $("#setChoseDish").click(function () {
+            that.dish_code = $("#dish-table .active").attr("dishid");
+            if (that.dishList) {
+                that.dishData = that.dishList.filter(_ => {
+                    return _.dish_code == that.dish_code
+                })[0]
+            }
+            that.loadDishHtml(); //加载菜品信息
+            that.loadTable(); //加载列表
+            $('.searchDishShadow').hide();
+        });
+        //选择菜品框内搜索菜品
+        $("#searchDish").on("keydown", function (e) {
+            _N.searchDish();
+        })
+        //选择菜品框内搜索菜品
+        $("#searchDishBtn").on("click", function () {
+            _N.searchDish();
+        })
+        //原料组搜索
+        $(".searchMaterialInput").on("blur", function () {
+            var val = $(this).val();
+            if (val == '') {
+                return
+            }
+            var para = {
+                title: val
+            }
+            var url = 'http://mdc.xibeidev.com/index.php/food/index/getRaw'
+            getData(url, para, function (data) {
+                var type = data.type;
+                if (type) {
+                    // 加工品 3001600000001
+                    if (type == 'PRODUCT') {
+
+                        var b = that.finalList.filter(item => {
+                            return item.dish_code == data.dish_code
+                        })
+
+                        if (b.length > 0) {
+                            return
+                        }
+                        $(".searchMaterialInput").val(data.dish_name);
+                        that.finalList.push(data)
+                        _N.loadDishTable();
+                    } else {
+                        that.nowClickMaterialId = data.raw_code;
+                        that.nowClickMaterialName = data.raw_name;
+                        that.nowClickMaterial = data;
+                        $(".searchMaterialInput").val(data.raw_name);
+
+                        var b = that.finalList.filter(_ => {
+                            if (_.raw && _.type.toLocaleUpperCase() == 'RAW') {
+                                return _.raw.raw_code == data.raw_code
+                            }
+                        });
+
+                        if (b.length > 0) {
+                            $('#bottom .more-group').hide();
+                        } else {
+                            $("#bottom .more-group").show();
+                        }
+                    }
+
+
+                } else {
+                    $('.more-group').hide();
+                }
+            }, function (res) {
+                alert(res.message)
+            })
+        });
+        //原料组列表搜索
+        $("#searchMaterialListBtn").on("click", function () {
+            that.materListSearch();
+        })
+        //多选
+        $('#dish-table').on('click', '.yuan', function () {
+            $('#dish-table .yuan').removeClass("active");
+            $(this).addClass("active");
+        });
+        //选择菜品组弹框显示
+        $(document).on("click", ".more-group", function () {
+            var nowclickmaterialid = $(this).attr("nowclickmaterialid");
+
+            if (nowclickmaterialid) {
+                that.nowClickMaterialId = nowclickmaterialid;
+                that.finalList.map(_ => {
+                    if (_.raw && _.type.toLocaleUpperCase() == 'RAW') {
+
+                        var raw_code = _.raw.raw_code;
+                        if (raw_code == nowclickmaterialid) {
+                            that.materialCheckList = _.material
+                        }
+
+                    }
+                })
+                that.nowClickMaterialEdit = true;
+            } else {
+                that.nowClickMaterialEdit = false;
+            }
+            if (that.nowClickMaterialId) {
+                that.materListSearch();
+                $(".searchMaterialShadow").show();
+            }
+        });
+        // 三级分类显示
+        $(".select-div .open").on("click", function () {
+            $(".select-div ul").hide();
+            $(this).parent().find('ul').show()
+        })
+        //保存选择的原料组
+        $("#setCheckDiv").on('click', function () {
+            if (that.materialCheckList.length > 0) {
+                var b = that.materialCheckList.filter(_ => {
+                    return _.default == 'Y'
+                })
+                if (b.length > 0) {
+                    if (that.nowClickMaterialEdit == false) {
+                        var data = {
+                            raw: that.nowClickMaterial,
+                            material: that.materialCheckList,
+                            type: 'raw'
+                        }
+                        that.finalList.push(data);
+                    } else {
+                        that.finalList.map(function (item, index) {
+
+                            if (item.raw && item.type.toLocaleUpperCase() == 'RAW') {
+                                var raw_code = item.raw.raw_code;
+                                if (raw_code == that.nowClickMaterialId) {
+                                    item.material = that.materialCheckList
+                                }
+                            }
+                        })
+                    }
+                    _N.loadDishTable();
+                } else {
+                    alert("请选择默认原料");
+                    return;
+                }
+            }
+            $(".searchMaterialShadow").hide();
+            that.materialCheckList = []
+        });
+        //清空所有
+        $(".checkDiv .clear").on("click", function () {
+            that.materialCheckList = [];
+            $(".fang,.yuan").removeClass("active");
+            _N.dataToCheck()
+        })
+        //大表格，多选框
+        $("#data-table").on("click", '.fang', function () {
+            var parent = $(this).parents('tr')[0];
+            var dish_code = $(parent).attr("dish_code");
+            var raw_code = $(parent).attr("raw_code");
+            var type = $(parent).attr("type");
+            var itemType = $(this).attr("type");
+            var gou;
+
+            if ($(this).hasClass('active')) {
+                gou = 'N'
+            } else {
+                gou = 'Y'
+            };
+            that.finalList.map(function (item, index) {
+                if (type.toLocaleUpperCase() == 'PRODUCT' && item.type == 'PRODUCT' && (item.dish_code == dish_code || item.product.dish_code == dish_code)) {
+                    item[itemType] = gou;
+                } else if (type.toLocaleUpperCase() == 'RAW' && item.type.toLocaleUpperCase() == 'RAW' && item.raw.raw_code == raw_code) {
+                    item[itemType] = gou;
+                };
+            });
+            that.loadDishTable();
+
+        })
+        //第一个搜索框，精准搜索菜品
+        $("#dishInput").blur(function () {
+            var val = $("#dishInput").val();
+            var para = {
+                title: val,
+            }
+            var url = 'http://mdc.xibeidev.com/index.php/food/index/getFood';
+            getData(url, para, function (data) {
+
+                if (data) {
+                    that.dishData = data;
+                    that.loadDishHtml();
+                    that.loadTable();
+                }
+            }, function () {
+
+            })
+        });
+        $(".searchMaterialShadow .close").on('click', function () {
+            $(".searchMaterialShadow").hide();
+        });
+        // 整体保存
+        $("#saveAll").on("click", function () {
+            // 日期
+            var date = $("#datetimepicker1 input").val();
+            var list = JSON.parse(JSON.stringify(that.finalList));
+            var remark = $("#remark").val();
+
+            //数组重组
+            list.map(function (item, index) {
+                if (item.type.toLocaleUpperCase() == 'RAW') {
+                    item.is_share == 'Y' ? item.is_share = 'Y' : item.is_share = 'N';
+                    item.is_lock == 'Y' ? item.is_lock = 'Y' : item.is_lock = 'N';
+                    item.is_main == 'Y' ? item.is_main = 'Y' : item.is_main = 'N';
+                    item.yield_rate = item.yield_rate || 0;
+                    item.dosage = item.dosage || 0;
+                    var material = item.material;
+                    material.map(function (item2, index2, arr) {
+                        if (item2.default == 'Y') {
+                            var mat_code = item2.mat_code;
+                            item.material = arr.filter(_ => {
+                                if (_.default == 'Y') {
+                                    return _
+                                } else {
+                                    return _.mat_code != mat_code
+                                }
+
+                            })
+                        }
+                    })
+                } else if (item.type.toLocaleUpperCase() == "PRODUCT" && that.pageType != 'edit') {
+                    var is_share = item.is_share;
+                    var dish_code = item.dish_code;
+                    var dish_name = item.dish_name;
+                    item.list.map(function (items, i) {
+                        items.product = {}
+                        items.product.dish_code = dish_code;
+                        items.product.dish_name = dish_name;
+                        items.product.version = item.version;
+                        items.type = 'PRODUCT';
+                        items.is_share = is_share;
+                        var raw_code = items.raw.raw_code;
+                        items.is_lock == 'Y' ? items.is_lock = 'Y' : items.is_lock = 'N';
+                        items.is_main == 'Y' ? items.is_main = 'Y' : items.is_main = 'N';
+                        list.push(items);
+                        item.list = item.list.filter(_ => {
+                            return _.id != items.id;
+                        })
+                    })
+                }
+            })
+
+            list = list.filter(_ => {
+                if (_.list == undefined) {
+                    return _
+                };
+            });
+            var testing;
+            $("#data-table [type=number]").map(function () {
+                var readonly = $(this).attr("readonly")
+                if (($(this).val() == '' || parseFloat($(this).val())) == 0 && readonly != 'readonly') {
+                    testing = $(this)
+                }
+            })
+            if (testing) {
+                alert('输入框不能为空  ')
+                return
+            }
+
+            if (that.dishData == undefined || that.dishData == null || that.dishData == '' || !that.dishData) {
+                alert('请选择一个菜品')
+            }
+            if (!date || date == '') {
+                alert("请选择时间")
+                return
+            }
+            if (remark == '' || (remark && remark.trim() == '')) {
+                alert("请填写备注")
+                return
+            }
+            var para = {
+                data: {
+                    dish: that.dishData,
+                    effect_time: date,
+                    list: list,
+                    remark: remark
+                }
+            }
+
+            var url = 'http://mdc.xibeidev.com/index.php/food/index/saveFeeding'
+            getData(url, para, function (data) {
+                // 成功
+                // alert(data.msg)
+            }, function () {
+                // 失败
+                // alert(data.msg)
+
+            })
+        });
+
+        $(document).on("click", '.del', function () {
+
+            var parent = $(this).parents('tr')[0];
+            var dish_code = $(parent).attr("dish_code");
+            var raw_code = $(parent).attr("raw_code");
+            var type = $(parent).attr("type");
+            var itemType = $(this).attr("type");
+
+            if (dish_code) {
+
+                that.finalList = that.finalList.filter(_ => {
+                    if (_.type.toLocaleUpperCase() == 'PRODUCT') {
+                        if (_.product && _.product.dish_code) {
+                            return _.product.dish_code != dish_code
+
+                        } else {
+                            return _.dish_code != dish_code
+
+                        }
+                    } else {
+                        return _
+                    }
+                })
+            } else {
+                that.finalList = that.finalList.filter(_ => {
+                    if (_.type.toLocaleUpperCase() == 'RAW') {
+                        return _.raw.raw_code != raw_code
+                    } else {
+                        return _
+                    }
+                })
+            }
+            that.loadDishTable();
+        });
+        // 出成率
+        $(document).on("blur", '.yield_rate', function () {
+            var parent = $(this).parents('tr')[0];
+            var dish_code = $(parent).attr("dish_code");
+            var raw_code = $(parent).attr("raw_code");
+            var type = $(parent).attr("type");
+            var val = $(this).val();
+
+            that.finalList.map(function (item, index) {
+                if (item.type.toLocaleUpperCase() == 'RAW' && item.raw.raw_code == raw_code) {
+                    item.yield_rate = val
+                }
+            })
+            that.loadDishTable();
+        })
+        // 投量
+        $(document).on("blur", '.dosage', function () {
+            var parent = $(this).parents('tr')[0];
+            var dish_code = $(parent).attr("dish_code");
+            var raw_code = $(parent).attr("raw_code");
+            var type = $(parent).attr("type");
+            var val = $(this).val();
+
+            that.finalList.map(function (item, index) {
+                if (item.type.toLocaleUpperCase() == 'RAW' && item.raw.raw_code == raw_code) {
+                    item.dosage = val
+                }
+            })
+            that.loadDishTable();
+        })
+    };
+
+
+
+    _N.getFeeding = function () {
+        var that = this;
+        var url = 'http://mdc.xibeidev.com/index.php/food/index/getFeedings'
+        var para = {
+            dish_code: '1200010000008',
+            version: "V1"
+        }
+
+        getData(url, para, function (data) {
+            that.dishData = data.dish;
+            that.finalList = data.list;
+            $("#datetimepicker1 input").val(data.effect_time)
+            that.loadTable();
+            that.loadDishTable();
+            that.loadDishHtml()
+        }, function () {
+
+        })
+    }
+
+
+    //选择菜品后，开始加载底部内容
+    _N.loadTable = function () {
+        var that = this;
+        if (!that.dishData) {
+            return
+        };
+        $(".tab-content").show();
+    };
+    // 搜索框内，搜索菜品
+    _N.searchDish = function () {
+        var that = this;
+        var code = $("#searchDishInput").val();
+        var para = {
+            title: code,
+            size: that.searchDishSize,
+            page: that.searchDishPage
+        }
+        var url = 'http://mdc.xibeidev.com/index.php/food/index/getFoodDishList'
+        getData(url, para, function (res) {
+            var callbackData = res.list;
+            var total_page = res.total_page
+            var html = '';
+
+            if (callbackData) {
+                that.dishList = callbackData
+                $.each(callbackData, function (i, item) {
+                    html += '<tr>'
+                    html += '   <td class="text-center btn-lable" >'
+                    html += '       <span class="yuan" dishid=' + item.dish_code + ' dishname=' + item.dish_name + ' income_name=' + item.income_name + ' tutor_name=' + item.tutor_name + ' type_name=' + item.type_name + '></span>'
+                    html += '   </td>'
+                    html += '   <td class="dish-id">' + item.dish_code + '</td>'
+                    html += '   <td class="dish-name">' + item.dish_name + '</td>'
+                    html += '   <td>' + item.dish_cname + '</td>'
+                    html += '   <td>' + item.unit_name + '</td>'
+                    html += '</tr>'
+                })
+                $("#dish-table tbody").html(html);
+
+                //分页器加载
+                $(".searchDishShadow .page-div .page").pagination({
+                    currentPage: that.searchDishPage, //当前页数
+                    totalPage: total_page, //总页数
+                    isShow: true, //是否显示尾页
+                    count: 5, //显示个数
+                    prevPageText: "< 上一页",
+                    nextPageText: "下一页 >",
+                    homePageText: "首页",
+                    endPageText: "尾页",
+                    callback: function (current) {
+                        that.searchDishPage = current
+                        that.searchDish()
+                    }
+                });
+
+                // 点击页面跳转
+                $(".searchDishShadow [page]").click(function () {
+                    that.searchDishPage = $(this).attr("page");
+                    _N.searchDish();
+                })
+            } else {
+                $("#dish-table tbody").html('')
+            }
+        },
+            function (res) {
+                console.log(res);
+            })
+    }
+    //原料组列表加载
+    _N.materListSearch = function () {
+        var that = this;
+        var url = 'http://mdc.xibeidev.com/index.php/food/index/getRawMaterial';
+        var val = $('#searchMaterialListInput').val();
+        var para = {
+            title: val,
+            raw_code: that.nowClickMaterialId,
+            size: that.materialListPage,
+            page: that.materialListIndex
+        }
+
+        getData(url, para, function (data) {
+            var html;
+            var list = data.list;
+            var total_page = data.total_page
+            if (list) {
+                $(".searchMaterialShadow .page-div").pagination({
+                    currentPage: that.materialListIndex, //当前页数
+                    totalPage: total_page, //总页数
+                    isShow: true, //是否显示尾页
+                    count: 5, //显示个数
+                    prevPageText: "< 上一页",
+                    nextPageText: "下一页 >",
+                    homePageText: "首页",
+                    endPageText: "尾页",
+                    callback: function (current) {
+                        that.materialListIndex = current
+                        that.materListSearch()
+                    }
+                });
+
+                //列表加载
+                if (list) {
+                    $.each(list, function (i, item) {
+                        html += '<tr class="tr">'
+                        html += '   <td><span class="fang" mat_code=' + item.mat_code + ' name=' + item.mat_name + '  cost_unit_code=' + item.cost_unit_code + ' cost_unit_name=' + item.cost_unit_name + '></span></td>'
+                        html += '   <td class="dish-id">' + item.mat_code + '</td>'
+                        html += '   <td class="text-center btn-lable">' + item.mat_name + '</td>'
+                        html += '   <td>' + item.cost_unit_name + '</td>'
+                        html += '   <td><span class="yuan" mat_code=' + item.mat_code + ' name=' + item.mat_name + '  cost_unit_code=' + item.cost_unit_code + ' cost_unit_name=' + item.cost_unit_name + '></span></td>'
+                        html += '</tr>'
+                    })
+                    $("#material-table tbody").html(html)
+                } else {
+                    $("#material-table tbody").html('')
+                };
+
+                that.dataToCheck();
+                //原料多选
+                $("#material-table .fang").on('click', function () {
+                    $(this).toggleClass("active");
+                    var mat_code = $(this).attr("mat_code");
+                    var mat_name = $(this).attr("name");
+                    var cost_unit_code = $(this).attr("cost_unit_code")
+                    var cost_unit_name = $(this).attr("cost_unit_name")
+                    if ($(this).hasClass("active")) {
+                        var data = {
+                            mat_code: mat_code,
+                            mat_name: mat_name,
+                            cost_unit_code: cost_unit_code,
+                            cost_unit_name: cost_unit_name,
+                            default: 'N'
+                        }
+                        that.materialCheckList.push(data)
+                    } else {
+                        $(".yuan[mat_code=" + mat_code + "]").removeClass('active');
+                        that.materialCheckList = that.materialCheckList.filter(_ => {
+                            return _.mat_code != mat_code
+                        })
+                    }
+                    _N.dataToCheck(that.materialCheckList)
+                })
+                //默认原料单选
+                $("#material-table .yuan").on('click', function () {
+                    // 数据获取
+
+                    // var fang = $(this).parents('tr').eq(0).find(".fang");
+                    var mat_code = $(this).attr("mat_code");
+                    var mat_name = $(this).attr("name")
+                    var cost_unit_code = $(this).attr("cost_unit_code")
+                    var cost_unit_name = $(this).attr("cost_unit_name")
+                    var b = that.materialCheckList.filter(_ => {
+                        return _.mat_code == mat_code
+                    })
+                    if (b.length == 0) {
+                        return
+                    }
+                    //样式处理
+                    // fang.addClass("active")
+                    $("#material-table .yuan").removeClass("active")
+                    $(this).addClass("active");
+
+                    that.materialCheckList.map((item, index) => {
+                        item.default = 'N'
+                    })
+                    that.materialCheckList.map((item, index) => {
+                        if (item.mat_code == mat_code) {
+                            item.default = 'Y'
+                        }
+                    })
+                    //数据处理
+                    //去除默认原料数据
+                    // that.materialCheckList = that.materialCheckList.filter(_ => {
+                    //     return _.default != 'Y'
+                    // })
+                    // //添加默认原料数据
+                    // var data = {
+                    //     mat_code: mat_code,
+                    //     mat_name: mat_name,
+                    //     cost_unit_code: cost_unit_code,
+                    //     cost_unit_name: cost_unit_name,
+                    //     default: 'Y'
+                    // }
+                    // that.materialCheckList.push(data);
+                    // var data = {
+                    //     mat_code: mat_code,
+                    //     mat_name: mat_name,
+                    //     cost_unit_code: cost_unit_code,
+                    //     cost_unit_name: cost_unit_name,
+                    //     default: 'N'
+                    // }
+                    // var b = that.materialCheckList.filter(_ => {
+                    //     return _.mat_code == mat_code && _.default == 'N'
+                    // })
+                    // if (b.length == 0) {
+                    //     that.materialCheckList.push(data);
+                    // }
+
+                    _N.dataToCheck()
+                })
+            }
+        }, function () {
+
+        })
+    }
+
+
+    _N.dataToCheck = function () {
+        var that = this;
+        var html = '';
+        console.log(that.materialCheckList);
+
+        that.materialCheckList.map(function (item, index) {
+            var mat_code = item.mat_code;
+            var type = item.default;
+            var mat_name = item.mat_name
+            if (type == 'N') {
+                $(".fang[mat_code=" + mat_code + "]").addClass("active")
+                html += '<li mat_code=' + mat_code + '>' + mat_name + '</li>'
+            } else {
+                $(".yuan[mat_code=" + mat_code + "]").addClass("active");
+                $(".fang[mat_code=" + mat_code + "]").addClass("active")
+                html += '<li mat_code=' + mat_code + '>' + mat_name + '</li>';
+            }
+        })
+        if (html == '') {
+            $(".checkDiv").hide();
+        } else {
+            $(".checkDiv").show();
+        }
+        $(".checkDiv ul").html(html);
+
+        $(".checkDiv li").on("click", function () {
+            $(".fang,.yuan").removeClass("active");
+            var mat_code = $(this).attr("mat_code");
+            that.materialCheckList = that.materialCheckList.filter(_ => {
+                return _.mat_code != mat_code;
+            })
+            _N.dataToCheck();
+        })
+    }
+    // 根据原料组加载大表格
+    _N.loadDishTable = function () {
+        var that = this;
+        var html = '';
+        var data = that.finalList;
+        var trs = '';
+        for (var index = 0; index < data.length; index++) {
+            var list = data[index].list;
+            var type = data[index].type;
+            if (list && type == 'PRODUCT') {
+                list = data[index].list;
+                // list = data[index].material;
+                var dish_code = data[index].dish_code;
+                var dish_name = data[index].dish_name;
+                var is_share = data[index].is_share;
+                var is_lock = data[index].is_lock;
+                var is_main = data[index].is_main;
+                for (var i = 0; i < list.length; i++) {
+                    var item = list[i]
+                    var material = list[i].material;
+                    var raw_code = item.raw.raw_code;
+                    var raw_name = item.raw.raw_name;
+                    var cost_unit_name;
+                    var cost_unit_code;
+                    trs += "<tr type='product' dish_code=" + dish_code + ">";
+                    trs += "<td>" + (index + 1) + "</td>";
+                    for (var j = 0; j < material.length; j++) {
+                        var items = material[j];
+                        if (items.default == 'Y') {
+                            trs += "<td>" + items.mat_code + "</td>"
+                            trs += "<td>" + items.mat_name + "</td>"
+                            cost_unit_name = items.cost_unit_name;
+                            cost_unit_code = items.cost_unit_code
+                        }
+                    };
+
+                    var len = item.material.filter(function (item) {
+                        return item.default == 'N'
+                    })
+                    var dosage = item.dosage || 0;
+                    var yield_rate = item.yield_rate || 0;
+                    trs += "<td dish_code=" + item.raw.dish_code + ">" + item.raw.raw_name + "</td>"
+                    trs += "<td>" + len.length + "</td>"
+                    trs += "<td><input readonly value=" + dosage + "  class='dosage' type='number'/></td>"
+                    trs += "<td><input readonly value=" + yield_rate + " class='yield_rate' type='number'/></td>"
+                    trs += "<td cost_unit_code=" + cost_unit_code + ">" + cost_unit_name + "</td>"
+                    trs += "<td>" + data[index].dish_name + "</td>"
+
+
+                    //是否共享包不能改
+                    if (is_share == 'Y') {
+                        trs += "<td><span type='is_share' class='active is_share fang notap'></span></td>"
+                    } else {
+                        trs += "<td><span type='is_share' class='is_share fang notap'></span></td>"
+                    }
+                    if (is_lock == 'Y') {
+                        trs += "<td><span type='is_lock' class='active is_lock fang'></span></td>"
+                    } else {
+                        trs += "<td><span type='is_lock' class='is_lock fang'></span></td>"
+                    }
+                    if (is_main == 'Y') {
+                        trs += "<td><span type='is_main' class='active is_main fang'></span></td>"
+                    } else {
+                        trs += "<td><span type='is_main' class='is_main fang'></span></td>"
+                    }
+                    trs += "<td><span type='del' class='del' ></span></td>"
+                    trs += "</tr>"
+                }
+            } else if (list == undefined && type == 'PRODUCT') {
+                // list = data[index].list;
+
+                var item = data[index];
+                console.log(item);
+
+                var dish_code = item.product.dish_code;
+                var dish_name = item.product.dish_name;
+                var is_share = item.is_share;
+                var is_lock = item.is_lock;
+                var is_main = item.is_main;
+                // for (var i = 0; i < list.length; i++) {
+                var material = item.material;
+                var raw_code = item.raw.raw_code;
+                var raw_name = item.raw.raw_name;
+                var cost_unit_name;
+                var cost_unit_code;
+                var dish_name = item.product.dish_name;
+                trs += "<tr type='product' dish_code=" + dish_code + ">";
+                trs += "<td>" + (index + 1) + "</td>";
+                for (var j = 0; j < material.length; j++) {
+                    var items = material[j];
+                    if (items.default == 'Y') {
+                        trs += "<td>" + items.mat_code + "</td>"
+                        trs += "<td>" + items.mat_name + "</td>"
+                        cost_unit_name = items.cost_unit_name;
+                        cost_unit_code = items.cost_unit_code
+                    }
+                };
+
+                var len = item.material.filter(function (item) {
+                    return item.default == 'N'
+                })
+
+
+                var dosage = item.dosage || 0;
+                var yield_rate = item.yield_rate || 0;
+                trs += "<td dish_code=" + item.raw.dish_code + ">" + item.raw.raw_name + "</td>"
+                trs += "<td>" + len.length + "</td>"
+                trs += "<td><input readonly value=" + dosage + "  class='dosage' type='number'/></td>"
+                trs += "<td><input readonly value=" + yield_rate + " class='yield_rate' type='number'/></td>"
+                trs += "<td cost_unit_code=" + cost_unit_code + ">" + cost_unit_name + "</td>"
+                trs += "<td>" + dish_name + "</td>"
+
+
+                //是否共享包不能改
+                if (is_share == 'Y') {
+                    trs += "<td><span type='is_share' class='active is_share fang notap'></span></td>"
+                } else {
+                    trs += "<td><span type='is_share' class='is_share fang notap'></span></td>"
+                }
+                if (is_lock == 'Y') {
+                    trs += "<td><span type='is_lock' class='active is_lock fang'></span></td>"
+                } else {
+                    trs += "<td><span type='is_lock' class='is_lock fang'></span></td>"
+                }
+                if (is_main == 'Y') {
+                    trs += "<td><span type='is_main' class='active is_main fang'></span></td>"
+                } else {
+                    trs += "<td><span type='is_main' class='is_main fang'></span></td>"
+                }
+                trs += "<td><span type='del' class='del' ></span></td>"
+                trs += "</tr>"
+                // }
+            } else if (data[index].type.toLocaleUpperCase() == 'RAW') {
+                var item = data[index];
+                var is_share = item.is_share;
+                var is_lock = item.is_lock;
+                var is_main = item.is_main;
+                list = item.material;
+                var cost_unit_name;
+                var raw_code = item.raw.raw_code
+                trs += "<tr type='raw' raw_code=" + raw_code + ">";
+                trs += "<td>" + (index + 1) + "</td>";
+                for (var i = 0; i < list.length; i++) {
+                    var items = list[i];
+                    if (items.default == 'Y') {
+                        cost_unit_name = items.cost_unit_name;
+                        trs += "<td>" + items.mat_code + "</td>"
+                        trs += "<td>" + items.mat_name + "</td>"
+                    }
+                };
+                var len = list.filter(function (item) {
+                    return item.default == 'N'
+                })
+                var dosage = item.dosage || 0;
+                var yield_rate = item.yield_rate || 0;
+
+                trs += "<td class='flex' raw_code=" + item.raw.raw_code + "><input readonly value=" + item.raw.raw_name + "> <span class='more-group' nowClickMaterialId=" + item.raw.raw_code + "></span> </td>"
+                trs += "<td>" + len.length + "</td>"
+                trs += "<td><input value=" + dosage + "  class='dosage' type='number'/></td>"
+                trs += "<td><input value=" + yield_rate + " class='yield_rate' type='number'/></td>"
+                trs += "<td>" + cost_unit_name + "</td>"
+                trs += "<td></td>"
+                if (is_share == 'Y') {
+                    trs += "<td><span type='is_share' class='active is_share fang'></span></td>"
+                } else {
+                    trs += "<td><span type='is_share' class='is_share fang'></span></td>"
+                }
+                if (is_lock == 'Y') {
+                    trs += "<td><span type='is_lock' class='active is_lock fang'></span></td>"
+                } else {
+                    trs += "<td><span type='is_lock' class='is_lock fang'></span></td>"
+                }
+                if (is_main == 'Y') {
+                    trs += "<td><span type='is_main' class='active is_main fang'></span></td>"
+                } else {
+                    trs += "<td><span type='is_main' class='is_main fang'></span></td>"
+                }
+                trs += "<td><span type='del' class='del'></span></td>"
+                trs += "</tr>"
+            }
+        }
+        $(".searchMaterialInput").val("")
+        $('.more-group').hide();
+        $("#data-table").html(trs)
+    };
+
+    _N.loadDishHtml = function () {
+        var that = this;
+        if (that.dishData) {
+            $(".type_name").html(that.dishData.type_name)
+            $(".tutor_name").html(that.dishData.tutor_name)
+            $(".income_name").html(that.dishData.income_name)
+            $("#dishInput").val(that.dishData.dish_name)
+        }
+    }
+
+    function getData(url, para, success, error) {
+        $.ajax({
+            'url': url,
+            'data': para,
+            'type': 'POST',
+            'dataType': 'json',
+            success: function (res) {
+                if (res.code == 0) {
+                    success(res.data);
+                } else {
+                    alert(res.msg)
+                    error(res)
+                }
+            }
+        })
+    }
+
+
+    _N.init();
+</script>
+
+</html>

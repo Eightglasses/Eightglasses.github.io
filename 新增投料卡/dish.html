@@ -67,6 +67,8 @@
                             <th>组成员</th>
                             <th>投量</th>
                             <th>出成率%</th>
+                            <th>加工品投量</th>
+                            <th>加工品出成率%</th>
                             <th>成本单位</th>
                             <th>绑定加工品</th>
                             <th>是否共享包</th>
@@ -86,6 +88,8 @@
                                     <input class="searchMaterialInput" value="3001600000001" type="text" placeholder="请输入编码">
                                     <span class="more-group" style="display: none;"></span>
                                 </td>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -242,6 +246,44 @@
 
     </div>
 
+    <!-- 选择菜品弹框 -->
+    <div class="searchDishShadow">
+        <div class="container">
+            <div class="title">
+                <span>添加批次</span>
+                <span class="close">x</span>
+            </div>
+            <div class="content">
+                <div class="search-box">
+                    <div class="input-box">
+                        <input type="text" id="searchDishInput" class="form-input" placeholder="请输入菜品名称/菜品编码" />
+                    </div>
+                    <div class="btn-search">
+                        <button class="btn-primary" id="searchDishBtn">查询</button>
+                    </div>
+                </div>
+                <div class="tableBox" id="dish-table">
+                    <table>
+                        <thead>
+                            <th>请选择</th>
+                            <th>菜品编码</th>
+                            <th>菜品名称</th>
+                            <th>编写</th>
+                            <th>单位</th>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                
+                <div>
+                    <div class="btn-search">
+                        <button class="btn btn-primary" id="setChoseDish">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.pagination.min.js"></script>
@@ -332,13 +374,21 @@
 
                         var b = that.finalList.filter(item => {
                             return item.dish_code == data.dish_code
-                        })
+                        });
+                        var c = that.finalList.filter(_ => {
+                            if (_.product && _.type.toLocaleUpperCase() == 'PRODUCT') {
+                                return _.product.dish_code == data.dish_code
+                            }
+                        });
 
-                        if (b.length > 0) {
+                        if (b.length > 0 || c.length > 0) {
                             return
                         }
                         $(".searchMaterialInput").val(data.dish_name);
-                        that.finalList.push(data)
+                        data.list.map(item => {
+                            that.finalList.push(item)
+                        })
+                        // that.finalList.push(data)
                         _N.loadDishTable();
                     } else {
                         that.nowClickMaterialId = data.raw_code;
@@ -351,6 +401,8 @@
                                 return _.raw.raw_code == data.raw_code
                             }
                         });
+
+
 
                         if (b.length > 0) {
                             $('#bottom .more-group').hide();
@@ -520,25 +572,28 @@
                             })
                         }
                     })
-                } else if (item.type.toLocaleUpperCase() == "PRODUCT" && that.pageType != 'edit') {
-                    var is_share = item.is_share;
-                    var dish_code = item.dish_code;
-                    var dish_name = item.dish_name;
-                    item.list.map(function (items, i) {
-                        items.product = {}
-                        items.product.dish_code = dish_code;
-                        items.product.dish_name = dish_name;
-                        items.product.version = item.version;
-                        items.type = 'PRODUCT';
-                        items.is_share = is_share;
-                        var raw_code = items.raw.raw_code;
-                        items.is_lock == 'Y' ? items.is_lock = 'Y' : items.is_lock = 'N';
-                        items.is_main == 'Y' ? items.is_main = 'Y' : items.is_main = 'N';
-                        list.push(items);
-                        item.list = item.list.filter(_ => {
-                            return _.id != items.id;
-                        })
-                    })
+                } else if (item.type.toLocaleUpperCase() == "PRODUCT") {
+                    item.is_share == 'Y' ? item.is_share = 'Y' : item.is_share = 'N';
+                    item.is_lock == 'Y' ? item.is_lock = 'Y' : item.is_lock = 'N';
+                    item.is_main == 'Y' ? item.is_main = 'Y' : item.is_main = 'N';
+                    // var is_share = item.is_share;
+                    // var dish_code = item.product.dish_code;
+                    // var dish_name = item.product.dish_name;
+                    // item.material.map(function (items, i) {
+                    //     items.product = {}
+                    //     items.product.dish_code = dish_code;
+                    //     items.product.dish_name = dish_name;
+                    //     items.product.version = item.version;
+                    //     items.type = 'PRODUCT';
+                    //     items.is_share = is_share;
+                    //     var raw_code = item.raw.raw_code;
+                    //     items.is_lock == 'Y' ? items.is_lock = 'Y' : items.is_lock = 'N';
+                    //     items.is_main == 'Y' ? items.is_main = 'Y' : items.is_main = 'N';
+                    //     list.push(items);
+                    //     item.list = item.list.filter(_ => {
+                    //         return _.id != items.id;
+                    //     })
+                    // })
                 }
             })
 
@@ -578,7 +633,7 @@
                     remark: remark
                 }
             }
-
+            console.log(para);
             var url = 'http://mdc.xibeidev.com/index.php/food/index/saveFeeding'
             getData(url, para, function (data) {
                 // 成功
@@ -637,6 +692,22 @@
                     item.yield_rate = val
                 }
             })
+
+            that.loadDishTable();
+        })
+        // 出成率
+        $(document).on("blur", '.product_yield_rate', function () {
+            var parent = $(this).parents('tr')[0];
+            var dish_code = $(parent).attr("dish_code");
+            var raw_code = $(parent).attr("raw_code");
+            var type = $(parent).attr("type");
+            var val = $(this).val();
+
+            that.finalList.map(function (item, index) {
+                if (item.type.toLocaleUpperCase() == 'PRODUCT' && item.product && item.product.dish_code == dish_code) {
+                    item.product_yield_rate = val
+                }
+            })
             that.loadDishTable();
         })
         // 投量
@@ -646,13 +717,32 @@
             var raw_code = $(parent).attr("raw_code");
             var type = $(parent).attr("type");
             var val = $(this).val();
-
             that.finalList.map(function (item, index) {
                 if (item.type.toLocaleUpperCase() == 'RAW' && item.raw.raw_code == raw_code) {
                     item.dosage = val
                 }
             })
+
             that.loadDishTable();
+        })
+        // 投量
+        $(document).on("blur", '.product_dosage', function () {
+            var parent = $(this).parents('tr')[0];
+            var dish_code = $(parent).attr("dish_code");
+            var raw_code = $(parent).attr("raw_code");
+            var type = $(parent).attr("type");
+            var val = $(this).val();
+            that.finalList.map(function (item, index) {
+                if (item.type.toLocaleUpperCase() == 'PRODUCT' && item.product && item.product.dish_code == dish_code) {
+                    item.product_dosage = val
+                }
+            })
+            that.loadDishTable();
+        });
+        $(document).on("click", '#data-table', function () {
+            var dish_code = $(this).attr("dish_code");
+            var raw_code = $(this).attr("raw_code");
+
         })
     };
 
@@ -662,8 +752,8 @@
         var that = this;
         var url = 'http://mdc.xibeidev.com/index.php/food/index/getFeedings'
         var para = {
-            dish_code: '1200010000008',
-            version: "V1"
+            dish_code: '2001600000003',
+            version: "V7"
         }
 
         getData(url, para, function (data) {
@@ -923,6 +1013,7 @@
         var that = this;
         var html = '';
         var data = that.finalList;
+        console.log(that.finalList);
         var trs = '';
         for (var index = 0; index < data.length; index++) {
             var list = data[index].list;
@@ -959,10 +1050,14 @@
                     })
                     var dosage = item.dosage || 0;
                     var yield_rate = item.yield_rate || 0;
+                    var product_dosage = item.product_dosage || 0;
+                    var product_yield_rate = item.product_yield_rate || 0;
                     trs += "<td dish_code=" + item.raw.dish_code + ">" + item.raw.raw_name + "</td>"
                     trs += "<td>" + len.length + "</td>"
-                    trs += "<td><input readonly value=" + dosage + "  class='dosage' type='number'/></td>"
-                    trs += "<td><input readonly value=" + yield_rate + " class='yield_rate' type='number'/></td>"
+                    trs += "<td><input   value=" + dosage + "  class='dosage' type='number'/></td>"
+                    trs += "<td><input   value=" + yield_rate + " class='yield_rate' type='number'/></td>"
+                    trs += "<td><input   value=" + product_dosage + "  class='product_dosage' type='number'/></td>"
+                    trs += "<td><input   value=" + product_yield_rate + " class='product_yield_rate' type='number'/></td>"
                     trs += "<td cost_unit_code=" + cost_unit_code + ">" + cost_unit_name + "</td>"
                     trs += "<td>" + data[index].dish_name + "</td>"
 
@@ -1023,10 +1118,14 @@
 
                 var dosage = item.dosage || 0;
                 var yield_rate = item.yield_rate || 0;
+                var product_dosage = item.product_dosage || 0;
+                var product_yield_rate = item.product_yield_rate || 0;
                 trs += "<td dish_code=" + item.raw.dish_code + ">" + item.raw.raw_name + "</td>"
                 trs += "<td>" + len.length + "</td>"
-                trs += "<td><input readonly value=" + dosage + "  class='dosage' type='number'/></td>"
-                trs += "<td><input readonly value=" + yield_rate + " class='yield_rate' type='number'/></td>"
+                trs += "<td><input   value=" + dosage + "  class='dosage' type='number'/></td>"
+                trs += "<td><input   value=" + yield_rate + " class='yield_rate' type='number'/></td>"
+                trs += "<td><input   value=" + product_dosage + "  class='product_dosage' type='number'/></td>"
+                trs += "<td><input   value=" + product_yield_rate + " class='product_yield_rate' type='number'/></td>"
                 trs += "<td cost_unit_code=" + cost_unit_code + ">" + cost_unit_name + "</td>"
                 trs += "<td>" + dish_name + "</td>"
 
@@ -1078,6 +1177,8 @@
                 trs += "<td>" + len.length + "</td>"
                 trs += "<td><input value=" + dosage + "  class='dosage' type='number'/></td>"
                 trs += "<td><input value=" + yield_rate + " class='yield_rate' type='number'/></td>"
+                trs += "<td> </td>"
+                trs += "<td> </td>"
                 trs += "<td>" + cost_unit_name + "</td>"
                 trs += "<td></td>"
                 if (is_share == 'Y') {
@@ -1099,7 +1200,7 @@
                 trs += "</tr>"
             }
         }
-        $(".searchMaterialInput").val("")
+        $(".searchMaterialInput").val("3200010000033")
         $('.more-group').hide();
         $("#data-table").html(trs)
     };

@@ -7,9 +7,31 @@
     <title>Document</title>
     <script src="./jquery/jquery-1.8.3.min.js"></script>
 </head>
+<style>
+    .div1 {
+        text-align: right;
+        display: flex;
+        align-items: baseline;
+        height: 150px;
+    }
+
+    .span1 {
+        font-size: 20px;
+        line-height: 1em;
+    }
+
+    .span2 {
+        font-size: 66px;
+        line-height: 1em;
+    }
+</style>
 
 <body>
 
+    <div class="div1">
+        <span class="span1">999</span>
+        <span class="span2">233</span>
+    </div>
 
 
 </body>
@@ -17,7 +39,18 @@
 </html>
 
 <script>
-    let [x, y = 'b'] = ['a', 'c']; // x='a', y='b'
-    console.log([y]);
-    
+    var obj = { process_type_id: '14', stall_dish: [{ stall_code: 111, stall_name: '123' }] };
+    // obj = JSON.stringify(obj)
+    console.log(obj);
+
+    $.ajax({
+        url: "http://hr.xibeidev.com/api/prefab/getProcessList",
+        type: 'POST',
+        data: obj,
+        success: function (result) {
+            console.log(result);
+
+        }
+    });
+
 </script>

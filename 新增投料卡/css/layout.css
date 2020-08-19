@@ -62,6 +62,7 @@ th {
 
 .search-box .input-box {
     /* width: 50%; */
+    position: relative;
 }
 
 .search-box .input-box input {
@@ -78,6 +79,33 @@ th {
     box-shadow: none;
     -webkit-transition: all 0.15s ease-out;
     transition: all 0.15s ease-out;
+}
+
+.search-box .search-dropdown{
+    min-width: 200px;
+    position: absolute;
+    left: 0;
+    top: 33px;
+    border: 1px solid #e6e6e6;
+    border-top: none;
+    background: #fff;
+    display: none;
+}
+
+.search-box .search-dropdown li{
+    padding: 6px;
+    width: 188px;
+    font-size: 14px;
+    color: #646464;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.search-box .search-dropdown li:hover{
+    color: #fff;
+    background: #ff6b6b;
 }
 
 .search-box .btn-search {
@@ -360,7 +388,16 @@ tbody span.active {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 9;
     /* display: none; */
+}
 
+.groupNameShadow{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9;
 }
 
 .searchMaterialShadow .container {

@@ -5,33 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="./jquery/jquery-1.8.3.min.js"></script>
+    <script src="/jquery/jquery-1.8.3.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/three.js/10/three.js"></script>
 </head>
-<style>
-    .div1 {
-        text-align: right;
-        display: flex;
-        align-items: baseline;
-        height: 150px;
-    }
-
-    .span1 {
-        font-size: 20px;
-        line-height: 1em;
-    }
-
-    .span2 {
-        font-size: 66px;
-        line-height: 1em;
-    }
-</style>
 
 <body>
 
-    <div class="div1">
-        <span class="span1">999</span>
-        <span class="span2">233</span>
-    </div>
+
+
+    <a id="logo" href="http://www.mzh.ren/">码中人</a>
+    <div id="WebGL-output"></div>
 
 
 </body>
@@ -39,18 +22,216 @@
 </html>
 
 <script>
-    var obj = { process_type_id: '14', stall_dish: [{ stall_code: 111, stall_name: '123' }] };
-    // obj = JSON.stringify(obj)
-    console.log(obj);
+    (function () {
+        function init() {
+            //自适应屏幕
+            window.addEventListener('resize', onWindowResize, false);
+            function onWindowResize() {
+                var height = document.body.clientHeight;
+                var width = document.body.clientWidth;
+                camera.aspect = width / height;
+                camera.updateProjectionMatrix();
+                renderer.setSize(width, height);
+            }
 
-    $.ajax({
-        url: "http://hr.xibeidev.com/api/prefab/getProcessList",
-        type: 'POST',
-        data: obj,
-        success: function (result) {
-            console.log(result);
+            var group = new THREE.Group();
+            var group2 = new THREE.Group();
+            var group3 = new THREE.Group();
+            var groupD = new THREE.Group();
+            var groupDD = new THREE.Group();
+            groupD.add(group2);
+            group.add(groupD);
+            groupDD.add(group3);
+            group.add(groupDD);
 
+            //自适应屏幕
+            // window.addEventListener( 'resize', onWindowResize, false );
+            // function onWindowResize() {
+            //     camera.aspect = window.innerWidth / window.innerHeight;
+            //     camera.updateProjectionMatrix();
+            //     renderer.setSize( window.innerWidth, window.innerHeight );
+            // }
+
+            var scene = new THREE.Scene();
+            //scene.fog = new THREE.Fog(0xffffff,68,700);//雾化的颜色，近，远
+            scene.fog = new THREE.FogExp2(0x000000, 0.0052);//雾化的颜色，浓度
+
+            var camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 1, 1000);
+            // antialias 抗锯齿
+            var renderer = new THREE.WebGLRenderer({ alpha: false, antialias: false });
+            renderer.setClearColor(0x000000, 0);
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.shadowMapEnabled = true;//渲染器支持阴影
+
+            function pm() {
+                for (var jiaodu = 0; jiaodu <= 360; jiaodu++) {
+                    dx = Math.cos(jiaodu) * 10 * 2.5;
+                    dy = -0.5 * jiaodu * Math.PI;//互相垂直
+                    //dy = -0.5*Math.PI; //互相平行
+                    dz = Math.sin(jiaodu) * 25;
+                    var planeGeometryX = new THREE.PlaneGeometry(0.6, 10, 0);
+                    planeMaterialX = new THREE.MeshPhongMaterial();
+                    planeMaterialX.opacity = 1;
+                    planeMaterialX.side = THREE.DoubleSide;
+                    //planeMaterialX.wireframe =true;
+                    planeMaterialX.transparent = true;
+                    planeMaterialX.color = new THREE.Color(0xffffff);
+                    var dd1 = new THREE.Mesh(planeGeometryX, planeMaterialX);
+                    dd1.position.x = dx;
+                    dd1.rotation.y = dy;
+                    dd1.position.z = dz;
+                    dd1.position.y = -Math.random() * 220;
+                    dd1.scale.y = Math.random() * 1;
+                    dd1.scale.x = Math.random() * 1;
+                    dd1.scale.z = Math.random() * 1;
+                    group2.add(dd1);
+                    group2.position.set(0, 0, 0);
+                }
+
+                for (var jiaodu = 0; jiaodu <= 360; jiaodu++) {
+                    dx = Math.cos(jiaodu) * 10 * 2.5;
+                    dy = -0.5 * jiaodu * Math.PI;//互相垂直
+                    //dy = 0.5*Math.PI; //互相平行
+                    dz = Math.sin(jiaodu) * 25;
+                    var planeGeometryX = new THREE.PlaneGeometry(0.5, 10, 0);
+                    planeMaterialX = new THREE.MeshPhongMaterial();
+                    planeMaterialX.opacity = 0.7;
+                    planeMaterialX.side = THREE.DoubleSide;
+                    //planeMaterialX.wireframe =true;
+                    planeMaterialX.transparent = true;
+                    planeMaterialX.color = new THREE.Color(0xffffff);
+                    var dd1 = new THREE.Mesh(planeGeometryX, planeMaterialX);
+                    dd1.position.x = dx;
+                    dd1.rotation.y = dy;
+                    dd1.position.z = dz;
+                    dd1.position.y = -Math.random() * 220;
+                    dd1.scale.y = Math.random() * 4;
+                    dd1.scale.x = Math.random() * 2;
+                    dd1.scale.z = Math.random() * 1;
+                    group3.add(dd1);
+                    group3.position.set(0, 0, 0);
+                }
+
+                for (var jiaodu2 = 0; jiaodu2 <= 60; jiaodu2++) {
+                    dx2 = Math.cos(jiaodu2) * 10;
+                    dz2 = Math.sin(jiaodu2) * 10;
+                    dy2 = Math.cos(Math.random() * jiaodu2) * 0.5;
+                    var planeGeometryX2 = new THREE.SphereGeometry(Math.cos(jiaodu2) * 2, Math.sin(jiaodu2), 0);
+                    planeMaterialX2 = new THREE.MeshLambertMaterial();
+                    planeMaterialX2.side = THREE.DoubleSide;
+                    //planeMaterialX2.wireframe =true;
+                    planeMaterialX2.transparent = true;
+                    planeMaterialX2.opacity = 0.5;
+                    planeMaterialX2.color = new THREE.Color(0xffffff);
+                    var dd2 = new THREE.Mesh(planeGeometryX2, planeMaterialX2);
+                    dd2.position.x = dx2 * 2.5;
+                    dd2.position.z = dz2 * 2.5;
+
+                    dd2.rotation.y = 0.5 * jiaodu2 * Math.PI;
+                    dd2.position.y = -Math.random() * 240;
+
+                    group2.add(dd2);
+                    group2.position.set(0, 0, 0);
+
+                }
+
+                for (var jiaodu2 = 0; jiaodu2 <= 60; jiaodu2++) {
+                    dx2 = Math.cos(jiaodu2) * 10;
+                    dz2 = Math.sin(jiaodu2) * 10;
+                    dy2 = Math.cos(Math.random() * jiaodu2) * 0.5;
+                    var planeGeometryX2 = new THREE.SphereGeometry(Math.cos(jiaodu2) * 2, Math.sin(jiaodu2), 0);
+                    planeMaterialX2 = new THREE.MeshLambertMaterial();
+                    planeMaterialX2.side = THREE.DoubleSide;
+                    //planeMaterialX2.wireframe =true;
+                    planeMaterialX2.transparent = true;
+                    planeMaterialX2.opacity = 0.5;
+                    planeMaterialX2.color = new THREE.Color(0xffffff);
+                    var dd2 = new THREE.Mesh(planeGeometryX2, planeMaterialX2);
+                    dd2.position.x = dx2 * 2.5;
+                    dd2.position.z = dz2 * 2.5;
+
+                    dd2.rotation.y = 0.5 * jiaodu2 * Math.PI;
+                    dd2.position.y = -Math.random() * 240;
+
+                    group3.add(dd2);
+                    group3.position.set(0, 0, 0);
+
+                }
+            }
+            pm();
+
+            // 设置摄像机
+            camera.position.set(-30, 30, 30);
+            camera.lookAt(scene.position);// 摄像机指向场景中心
+
+            //设置光源
+            var spotLight = new THREE.SpotLight();
+            spotLight.position.set(0, 10, 50);
+            //spotLight.castShadow = true;
+            spotLight.intensity = 10;
+            scene.add(spotLight);
+
+            var spotLight2 = new THREE.SpotLight(0x00C1DE);
+            spotLight2.position.set(0, 50, 0);
+            spotLight2.intensity = 4;
+            scene.add(spotLight2);
+
+            var spotLight3 = new THREE.SpotLight();
+            spotLight3.position.set(50, 10, -50);
+            spotLight3.intensity = 5;
+            scene.add(spotLight3);
+
+            //设置环境光
+            var ambientLight = new THREE.AmbientLight(0x222222);
+            scene.add(ambientLight);
+
+            // 将渲染输出到叫"WebGL-output"的div中
+            document.getElementById("WebGL-output").appendChild(renderer.domElement);
+            //renderer.render(scene, camera);
+
+            var step = 0;
+            renderScene();
+            scene.add(group);
+
+            group3.position.y = -240;
+            function renderScene() {
+                step += 0.005;
+                r = 0.2 * Math.abs(Math.cos(step));
+                g = 0.1 * Math.abs(Math.sin(step));
+                b = 0.4 * Math.abs(Math.cos(step));
+                spotLight.color = new THREE.Color(r, g, b * 2);
+
+                spotLight3.color = new THREE.Color(b, r * 2, g);
+                groupD.rotation.x = 0.5 * Math.PI;
+                groupD.rotation.z = 0.25 * Math.PI;
+                groupD.rotation.y = -0.25 * Math.PI;
+                groupDD.rotation.x = .5 * Math.PI;
+                groupDD.rotation.z = 0.25 * Math.PI;
+                groupDD.rotation.y = -0.25 * Math.PI;
+                // group2.rotation.y = -0.57*Math.PI;
+                // group3.rotation.y = -0.57*Math.PI;
+                group2.rotation.y -= 0.0025;
+                group3.rotation.y -= 0.0025;
+                if (group2.position.y < 270) {
+                    group2.position.y += 0.5;
+                } else {
+                    group2.position.y = -200;
+                }
+                if (group3.position.y < 290) {
+                    group3.position.y += 0.5;
+                } else {
+                    //scene.remove(group);
+                    group3.position.y = -210;
+                }
+                //spotLight.position.x =20*Math.abs(Math.cos(step));
+                requestAnimationFrame(renderScene);//循环执行某动作
+                renderer.render(scene, camera);// 渲染这个场景          
+            }
+            //end
+
+            onWindowResize();
         }
-    });
+        init();
+    })();
 
 </script>

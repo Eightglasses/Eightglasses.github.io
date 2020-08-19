@@ -29,6 +29,9 @@
                 <div class="search-box">
                     <div class="input-box">
                         <input value="2001600000003" id="dishInput" type="text" class="form-input" placeholder="菜品名称" />
+                        <div class="search-dropdown" id="searchDish">
+                            <ul></ul>
+                        </div>
                     </div>
                     <!-- <div class="btn-search">
                         <button class="btn-primary">查询</button>
@@ -183,8 +186,17 @@
             </div>
             <div class="content">
                 <div class="search-box">
+                    <div class="input-box" style="margin-right: 10px;">
+                        <input type="text" id="searchMaterialListInput" class="form-input" placeholder="请输入原料名称/编码" />
+                        <div class="search-dropdown" id="searchMaterial1">
+                            <ul></ul>
+                        </div>
+                    </div>
                     <div class="input-box">
-                        <input type="text" id="searchMaterialListInput" class="form-input" placeholder="请输入菜品名称/菜品编码" />
+                        <input type="text" id="searchMaterialListInput2" class="form-input" placeholder="请输入标准原料名称/菜品编码" />
+                        <div class="search-dropdown" id="searchMaterial2">
+                            <ul></ul>
+                        </div>
                     </div>
                     <div class="btn-search">
                         <button class="btn-primary" id="searchMaterialListBtn">查询</button>
@@ -223,6 +235,8 @@
                             <th>选择</th>
                             <th>原料编码</th>
                             <th>原料名称</th>
+                            <th>标准原料编码</th>
+                            <th>标准原料名称</th>
                             <th>基本单位</th>
                             <th>默认原料</th>
                         </thead>
@@ -274,7 +288,7 @@
                         <tbody></tbody>
                     </table>
                 </div>
-                
+
                 <div>
                     <div class="btn-search">
                         <button class="btn btn-primary" id="setChoseDish">确认</button>
@@ -282,6 +296,29 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- 点击成员组弹框 -->
+    <div class="groupNameShadow" style="display: none;">
+        <div class="container">
+            <div class="title">
+                <span>组成员</span>
+                <span class="close">x</span>
+            </div>
+            <div class="content">
+                <div class="tableBox" id="material-table">
+                    <table>
+                        <thead>
+                            <th>原料编码</th>
+                            <th>原料名称</th>
+                            <th>基本单位</th>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </body>
@@ -301,7 +338,7 @@
 
     var _N = {};
     _N.init = function () {
-        this.pageType = 'edit'
+        // this.pageType = 'edit'
         this.canEdit = false;
         this.dish_code = null; //当前选择菜品id
         this.dish_name = null; //当前菜品名
@@ -356,6 +393,93 @@
         $("#searchDishBtn").on("click", function () {
             _N.searchDish();
         })
+
+        //选择菜品框模糊搜索
+        $('#dishInput').on('input', function () {
+            var dishVal = $(this).val();
+            if (dishVal == '') {
+                $('#searchDish').hide();
+                return
+            }
+
+            var url = 'http://mdc.xibeidev.com/index.php/food/index/getDishList'
+            var para = {
+                dish: dishVal,
+            }
+            getData(url, para, function (data) {
+                var html = ''
+                $.each(data, function (i, item) {
+                    html += '<li data-code="' + item.dish_code + '">' + item.dish_code + ' ' + item.dish_name + '</li>';
+                })
+                $('#searchDish').show();
+                $('#searchDish ul').html(html)
+            })
+        });
+
+        //选择原料框模糊搜索
+        $('#searchMaterialListInput').on('input', function () {
+            var dishVal = $(this).val();
+            if (dishVal == '') {
+                $('#searchMaterial1').hide();
+                return
+            }
+
+            var url = 'http://mdc.xibeidev.com/index.php/food/index/getRawMaterialList'
+            var para = {
+                title: dishVal,
+                raw_code: that.nowClickMaterialId,
+            }
+            getData(url, para, function (data) {
+                var html = ''
+                $.each(data, function (i, item) {
+                    html += '<li mat-code="' + item.mat_code + '">' + item.mat_code + ' ' + item.mat_name + '</li>';
+                })
+                $('#searchMaterial1').show();
+                $('#searchMaterial1 ul').html(html)
+            })
+        });
+
+        //选择原料框模糊搜索
+        $('#searchMaterialListInput2').on('input', function () {
+            var dishVal = $(this).val();
+
+            if (dishVal == '') {
+                $('#searchMaterial2').hide();
+                return
+            }
+
+            var url = 'http://mdc.xibeidev.com/index.php/food/index/getRawStandardList'
+            var para = {
+                title: dishVal,
+                raw_code: that.nowClickMaterialId,
+            }
+            getData(url, para, function (data) {
+                var html = ''
+                $.each(data, function (i, item) {
+                    html += '<li standard-code="' + item.standard_code + '">' + item.standard_code + ' ' + item.standard_name + '</li>';
+                })
+                $('#searchMaterial2').show();
+                $('#searchMaterial2 ul').html(html)
+            })
+        });
+
+        $('#searchDish').on('click', 'li', function () {
+            var dataCode = $(this).data('code');
+            $('#dishInput').val(dataCode);
+            $('#searchDish').hide();
+            $('#dishInput').blur();
+        })
+        $('#searchMaterial1').on('click', 'li', function () {
+            var dataCode = $(this).attr('mat-code');
+            $('#searchMaterialListInput').val(dataCode);
+            $('#searchMaterial1').hide();
+        })
+        $('#searchMaterial2').on('click', 'li', function () {
+            var dataCode = $(this).attr('standard-code');
+            $('#searchMaterialListInput2').val(dataCode);
+            $('#searchMaterial2').hide();
+        })
+
         //原料组搜索
         $(".searchMaterialInput").on("blur", function () {
             var val = $(this).val();
@@ -739,11 +863,33 @@
             })
             that.loadDishTable();
         });
-        $(document).on("click", '#data-table', function () {
-            var dish_code = $(this).attr("dish_code");
-            var raw_code = $(this).attr("raw_code");
 
+        //点击组成员事见
+        $('#data-table').on("click", '.group_name', function () {
+            var dish_code = $(this).parent().attr("dish_code");
+            var raw_code = $(this).parent().attr("raw_code");
+            var type = $(this).parent().attr("type");
+            $.each(that.finalList, function (i, item) {
+                if (raw_code == item.raw.raw_code) {
+                    var groupHtml = '';
+                    $.each(item.material, function (k, val) {
+                        groupHtml += '<tr>';
+                        groupHtml += '  <td>' + val.mat_code + '</td>';
+                        groupHtml += '  <td>' + val.mat_name + '</td>';
+                        groupHtml += '  <td>' + val.cost_unit_name + '</td>';
+                        groupHtml += '</tr>'
+                    });
+                    $('.groupNameShadow tbody').html(groupHtml);
+                    $('.groupNameShadow').show();
+                }
+
+            });
         })
+
+        //组成员弹框关闭
+        $('.groupNameShadow').on('click', '.close', function () {
+            $('.groupNameShadow').hide();
+        });
     };
 
 
@@ -842,12 +988,18 @@
         var url = 'http://mdc.xibeidev.com/index.php/food/index/getRawMaterial';
         var val = $('#searchMaterialListInput').val();
         var para = {
-            title: val,
             raw_code: that.nowClickMaterialId,
             size: that.materialListPage,
             page: that.materialListIndex
         }
-
+        var standard_code = $("#searchMaterialListInput2").val();
+        var mat_code = $("#searchMaterialListInput").val();
+        if (standard_code) {
+            para.standard_code = standard_code
+        }
+        if (mat_code) {
+            para.mat_code = mat_code
+        }
         getData(url, para, function (data) {
             var html;
             var list = data.list;
@@ -867,14 +1019,19 @@
                         that.materListSearch()
                     }
                 });
-
+                if (list.length == 0) {
+                    $("#material-table tbody").html('')
+                    return
+                }
                 //列表加载
                 if (list) {
                     $.each(list, function (i, item) {
                         html += '<tr class="tr">'
                         html += '   <td><span class="fang" mat_code=' + item.mat_code + ' name=' + item.mat_name + '  cost_unit_code=' + item.cost_unit_code + ' cost_unit_name=' + item.cost_unit_name + '></span></td>'
-                        html += '   <td class="dish-id">' + item.mat_code + '</td>'
-                        html += '   <td class="text-center btn-lable">' + item.mat_name + '</td>'
+                        html += '   <td class="dish-id">' + item.mat_code + '</td>';
+                        html += '   <td class="text-center btn-lable">' + item.mat_name + '</td>';
+                        html += '   <td class="dish-id">' + item.standard_code + '</td>'
+                        html += '   <td class="text-center btn-lable">' + item.standard_name + '</td>'
                         html += '   <td>' + item.cost_unit_name + '</td>'
                         html += '   <td><span class="yuan" mat_code=' + item.mat_code + ' name=' + item.mat_name + '  cost_unit_code=' + item.cost_unit_code + ' cost_unit_name=' + item.cost_unit_name + '></span></td>'
                         html += '</tr>'
@@ -1018,7 +1175,7 @@
         for (var index = 0; index < data.length; index++) {
             var list = data[index].list;
             var type = data[index].type;
-            if (list && type == 'PRODUCT') {
+            if (list && type == 'PRODUCT') {  //加工品
                 list = data[index].list;
                 // list = data[index].material;
                 var dish_code = data[index].dish_code;
@@ -1045,15 +1202,16 @@
                         }
                     };
 
-                    var len = item.material.filter(function (item) {
-                        return item.default == 'N'
-                    })
+                    // var len = item.material.filter(function (item) {
+                    //     return item.default == 'N'
+                    // })
+                    var len = item.material
                     var dosage = item.dosage || 0;
                     var yield_rate = item.yield_rate || 0;
                     var product_dosage = item.product_dosage || 0;
                     var product_yield_rate = item.product_yield_rate || 0;
                     trs += "<td dish_code=" + item.raw.dish_code + ">" + item.raw.raw_name + "</td>"
-                    trs += "<td>" + len.length + "</td>"
+                    trs += "<td class='group_name'>" + len.length + "</td>"
                     trs += "<td><input   value=" + dosage + "  class='dosage' type='number'/></td>"
                     trs += "<td><input   value=" + yield_rate + " class='yield_rate' type='number'/></td>"
                     trs += "<td><input   value=" + product_dosage + "  class='product_dosage' type='number'/></td>"
@@ -1081,7 +1239,7 @@
                     trs += "<td><span type='del' class='del' ></span></td>"
                     trs += "</tr>"
                 }
-            } else if (list == undefined && type == 'PRODUCT') {
+            } else if (list == undefined && type == 'PRODUCT') {  //加工品
                 // list = data[index].list;
 
                 var item = data[index];
@@ -1099,7 +1257,7 @@
                 var cost_unit_name;
                 var cost_unit_code;
                 var dish_name = item.product.dish_name;
-                trs += "<tr type='product' dish_code=" + dish_code + ">";
+                trs += "<tr type='product' dish_code=" + dish_code + " raw_code=" + raw_code + ">";
                 trs += "<td>" + (index + 1) + "</td>";
                 for (var j = 0; j < material.length; j++) {
                     var items = material[j];
@@ -1111,17 +1269,17 @@
                     }
                 };
 
-                var len = item.material.filter(function (item) {
-                    return item.default == 'N'
-                })
-
+                // var len = item.material.filter(function (item) {
+                //     return item.default == 'N'
+                // })
+                var len = item.material
 
                 var dosage = item.dosage || 0;
                 var yield_rate = item.yield_rate || 0;
                 var product_dosage = item.product_dosage || 0;
                 var product_yield_rate = item.product_yield_rate || 0;
                 trs += "<td dish_code=" + item.raw.dish_code + ">" + item.raw.raw_name + "</td>"
-                trs += "<td>" + len.length + "</td>"
+                trs += "<td class='group_name'>" + len.length + "</td>"
                 trs += "<td><input   value=" + dosage + "  class='dosage' type='number'/></td>"
                 trs += "<td><input   value=" + yield_rate + " class='yield_rate' type='number'/></td>"
                 trs += "<td><input   value=" + product_dosage + "  class='product_dosage' type='number'/></td>"
@@ -1149,7 +1307,7 @@
                 trs += "<td><span type='del' class='del' ></span></td>"
                 trs += "</tr>"
                 // }
-            } else if (data[index].type.toLocaleUpperCase() == 'RAW') {
+            } else if (data[index].type.toLocaleUpperCase() == 'RAW') {  //原料组
                 var item = data[index];
                 var is_share = item.is_share;
                 var is_lock = item.is_lock;
@@ -1158,7 +1316,8 @@
                 var cost_unit_name;
                 var raw_code = item.raw.raw_code
                 trs += "<tr type='raw' raw_code=" + raw_code + ">";
-                trs += "<td>" + (index + 1) + "</td>";
+   
+                    trs += "<td>" + (index + 1) + "</td>";
                 for (var i = 0; i < list.length; i++) {
                     var items = list[i];
                     if (items.default == 'Y') {
@@ -1167,14 +1326,15 @@
                         trs += "<td>" + items.mat_name + "</td>"
                     }
                 };
-                var len = list.filter(function (item) {
-                    return item.default == 'N'
-                })
+                // var len = list.filter(function (item) {
+                //     return item.default == 'N'
+                // })
+                var len = list
                 var dosage = item.dosage || 0;
                 var yield_rate = item.yield_rate || 0;
 
                 trs += "<td class='flex' raw_code=" + item.raw.raw_code + "><input readonly value=" + item.raw.raw_name + "> <span class='more-group' nowClickMaterialId=" + item.raw.raw_code + "></span> </td>"
-                trs += "<td>" + len.length + "</td>"
+                trs += "<td class='group_name'>" + len.length + "</td>"
                 trs += "<td><input value=" + dosage + "  class='dosage' type='number'/></td>"
                 trs += "<td><input value=" + yield_rate + " class='yield_rate' type='number'/></td>"
                 trs += "<td> </td>"
@@ -1200,7 +1360,7 @@
                 trs += "</tr>"
             }
         }
-        $(".searchMaterialInput").val("3200010000033")
+        $(".searchMaterialInput").val("姜片组")
         $('.more-group').hide();
         $("#data-table").html(trs)
     };

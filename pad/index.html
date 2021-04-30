@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--移动端页面设置视口宽度等于设备宽度，并禁止缩放。-->
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <!--禁止将页面中的数字识别为电话号码-->
+    <meta name="format-detection" content="telephone=no"/>
+    <!--忽略Android平台中对邮箱地址的识别-->
+    <meta name="format-detection" content="email=no"/>
+    <!--当网站添加到主屏幕快速启动方式，可隐藏地址栏-->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!--UC强制全屏-->
+    <meta name="x5-fullscreen" content="true">
+    <!--将网站添加到主屏幕快速启动方式-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>pad</title>
+    <script src="js/rem.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.12/lib/index.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vant@2.12/lib/vant.min.js"></script>
+
+    <link href="css/index.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div id="xibei-ipad">
+    <!--    顶部导航-->
+    <div class="header">
+        <div class="header-slogan">
+            闭着眼睛点 道道都好吃
+        </div>
+        <div class="header-detail">
+            <p class="header-table">
+                上海联洋店-88桌
+            </p>
+            <p class="header-login">
+                登录
+            </p>
+        </div>
+    </div>
+    <!--    左导航-->
+    <div class="nav">
+        <div class="logo">
+            <img src="./images/pad-logo.png"/>
+        </div>
+        <div class="nav-list-mask-top"></div>
+        <div class="nav-list">
+            <div class="nav-li" @click="typeListClick(item)" :class="{active:item.id===typeItem.id}"
+                 v-for="(item,index) in classify" :key="index">
+                <p class="nav-li-name">{{item.name}}</p>
+                <span class="nav-li-count">1</span>
+            </div>
+        </div>
+        <div class="nav-list-mask-bottom"></div>
+    </div>
+    <!--    菜品列表区域-->
+    <div class="section">
+        <div class="dish-list" v-for="(item,index) in dish_list"
+             :ref="'dishList'+index" :id="'dishList'+index" :key="index">
+            <div class="dish-li" :class="typeClass[dish.image_type] ||'ad'" v-for="(dish,dishIndex) in item"
+                 :key="dishIndex">
+                <!-- 菜品图-->
+                <div class="image" v-show="dish.block==='dish'">
+                    <img class="dish-img" src="./images/big.png" v-show="dish.image_type==8">
+                    <img class="dish-img" src="./images/middle.png" v-show="dish.image_type==9">
+                    <img class="dish-img" src="./images/small.png" v-show="dish.image_type==10">
+                    <img class="dish-gif" :src="dish.image_5" v-show="dish.image_type==8&&dish.image_5">
+                </div>
+                <!--广告图-->
+                <div class="ad-image" v-show="dish.block==='ad'">
+                    <img class="dish-img" src="./images/big.png">
+                </div>
+
+                <!--底部详细信息-->
+                <div class="dish-li-bottom" v-show="dish.block==='dish'">
+                    <!--规格-->
+                    <div class="specs-list" v-show="dish.block === 'dish'">
+                        <div class="specs-li active">小份</div>
+                        <div class="specs-li">中份</div>
+                        <div class="specs-li">大份</div>
+                        <div class="specs-li active">罚恶风我唯粉</div>
+                    </div>
+
+                    <div class="dish-li-bottom-left">
+                        <p class="name">{{dish.name}}</p>
+                        <span class="describe">Yellow Tomato juice drink (318ml)</span>
+                    </div>
+                    <div class="dish-li-bottom-right">
+                        <!-- 普通价-->
+                        <div class="price">
+                            <span class="span1">¥</span>
+                            <span class="span2">26</span>
+                            <span class="span3">/杯(200ml)</span>
+                        </div>
+                        <!--会员价-->
+                        <div class="member-price">
+                            <span class="span1">¥22</span>
+                            <span class="span2"></span>
+                        </div>
+                        <!--加减购物车-->
+                        <div class="car">
+                            <span class="del"></span>
+                            <span class="count">1</span>
+                            <span class="add"></span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    菜品列表区域-->
+    <!--    已选菜品，已下单菜品按钮-->
+    <div class="bottom-btn">
+        <div class="bottom-btn-dish" @click="cartClick">
+            <p>已选菜品</p>
+            <span>99</span>
+        </div>
+        <div class="bottom-btn-order">
+            <p>已下单菜品</p>
+        </div>
+    </div>
+    <!--    已选菜品，已下单菜品按钮-->
+    <van-popup v-model="cartShow" position="right" :style="{ height: '100%' ,width:'7.55rem'}">
+        <div class="shopping-cart">
+            <div class="shopping-cart-header">
+                88号桌：2人用餐
+            </div>
+            <div class="shopping-cart-h4">
+                <span class="line1"></span>
+                <p>待叫起</p>
+                <span class="line2"></span>
+            </div>
+            <div class="shopping-cart-h5">
+                <p class="p1">荤菜</p>
+                <span class="border-bottom"></span>
+                <p class="p2">3道菜(3份)</p>
+            </div>
+            <!--不能加减的菜品列表-->
+            <div class="cart-dish-list">
+                <div class="cart-dish-li">
+                    <div class="cart-dish-li-top">
+                        <p class="name">油泼香椿莜面油泼香椿莜面油香椿莜面/份</p>
+                        <p class="remarks-btn">备注</p>
+                        <p class="price">
+                            <span class="span1">¥222</span>
+                            <span class="span2">.99</span>
+                        </p>
+                        <p class="type">
+                            <span>待叫起</span>
+                            <span class="tip">12</span>
+                        </p>
+                    </div>
+                    <div class="cart-dish-li-bottom">
+                        <p class="specs">大份</p>
+                        <p class="remark">·微辣、免香葱、少盐</p>
+                    </div>
+                </div>
+                <div class="cart-dish-li">
+                    <div class="cart-dish-li-top">
+                        <p class="name">油泼香椿莜面油泼香椿莜面油香椿莜面/份</p>
+                        <p class="remarks-btn active">备注</p>
+                        <p class="price">
+                            <span class="span1">¥222</span>
+                            <span class="span2">.99</span>
+                        </p>
+                        <p class="type">待叫起</p>
+                    </div>
+                    <div class="cart-dish-li-bottom">
+                        <p class="specs">大份</p>
+                        <p class="remark">·微辣、免香葱、少盐</p>
+                    </div>
+                </div>
+            </div>
+            <!--不能加减的菜品列表-->
+
+            <div class="shopping-cart-h4">
+                <span class="line1"></span>
+                <p>已选菜品</p>
+                <span class="line2"></span>
+            </div>
+
+            <div class="shopping-cart-h5">
+                <p class="p1">荤菜</p>
+                <span class="border-bottom"></span>
+                <p class="p2">3道菜(3份)</p>
+            </div>
+            <!--可以加减的菜品列表-->
+            <div class="cart-dish-list cart-dish-list2">
+                <div class="cart-dish-li">
+                    <div class="cart-dish-li-top">
+                        <p class="name">油泼香椿莜面油泼香椿莜面油香椿莜面/份</p>
+                        <p class="pack">
+                            <span class="active">冷打包</span>
+                            <span>热打包</span>
+                        </p>
+                        <p class="remarks-btn">备注</p>
+                        <p class="price">
+                            <span class="span1">¥222</span>
+                            <span class="span2">.99</span>
+                        </p>
+                        <!--加减购物车-->
+                        <div class="car">
+                            <span class="del"></span>
+                            <span class="count">1</span>
+                            <span class="add"></span>
+                        </div>
+                    </div>
+                    <div class="cart-dish-li-bottom">
+                        <p class="specs">大份</p>
+                        <p class="remark">·微辣、免香葱、少盐</p>
+                    </div>
+                </div>
+                <div class="cart-dish-li">
+                    <div class="cart-dish-li-top">
+                        <p class="name">油泼香椿莜面油泼香椿莜面油香椿莜面/份</p>
+
+                        <p class="remarks-btn">备注</p>
+                        <p class="price">
+                            <span class="span1">¥222</span>
+                            <span class="span2">.99</span>
+                        </p>
+                        <!--加减购物车-->
+                        <div class="car">
+                            <span class="del"></span>
+                            <span class="count">1</span>
+                            <span class="add"></span>
+                        </div>
+                    </div>
+                    <div class="cart-dish-li-bottom">
+                        <p class="specs">大份</p>
+                        <p class="remark">·微辣、免香葱、少盐</p>
+                    </div>
+                </div>
+            </div>
+            <!--可以加减的菜品列表-->
+            <!--订单备注-->
+            <div class="remark-div">
+                <div class="remark-header">
+                    <span class="line1"></span>
+                    <p>订单备注</p>
+                    <span class="line2"></span>
+                </div>
+                <div class="remark-h5">请问您有什么菜品忌口吗？</div>
+                <div class="remark-nav">
+                    <div class="remark-nav-li active">免</div>
+                    <div class="remark-nav-li">免</div>
+                    <div class="remark-nav-li">免</div>
+                    <div class="remark-nav-li">免</div>
+                    <div class="remark-nav-li">免</div>
+                    <div class="remark-nav-li">免</div>
+                    <div class="remark-nav-li">免</div>
+                </div>
+                <div class="remark-fast">
+                    <div class="remark-fast-li active">免姜</div>
+                    <div class="remark-fast-li">免姜</div>
+                    <div class="remark-fast-li">免姜</div>
+                    <div class="remark-fast-li">免姜</div>
+                    <div class="remark-fast-li">免姜</div>
+                    <div class="remark-fast-li">免姜</div>
+                    <div class="remark-fast-li">免姜</div>
+                    <div class="remark-fast-li">免姜</div>
+                    <div class="remark-fast-li">免姜</div>
+                </div>
+                <div class="remark-textarea">
+                    <textarea></textarea>
+                </div>
+            </div>
+            <div class="shopping-cart-bottom">
+                <div class="cart">
+                    <div class="bg">
+                        <p class="num">7</p>
+                    </div>
+                    <div class="div2">
+                        <span class="span1">¥</span>
+                        <span class="span2">2666</span>
+                        <span class="span1">.99</span>
+                        <span class="span3">(不含称重菜金额)</span>
+                    </div>
+                </div>
+                <div class="btn">
+                    <p class="yd">预点</p>
+                    <p class="qrxd">确认下单</p>
+                    <!--<p class="jz">结账</p>-->
+                </div>
+            </div>
+        </div>
+
+
+        <!--    补充备注-->
+        <van-popup v-model="cartShow" position="center" :style="{ height: '5.45rem' ,width:'4.83rem'}">
+            <div class="supple-remark-header">
+                补充备注
+            </div>
+            <div class="supple-remark-nav">
+                <div class="supple-remark-nav-li active">免</div>
+                <div class="supple-remark-nav-li">免</div>
+                <div class="supple-remark-nav-li">免</div>
+                <div class="supple-remark-nav-li">免</div>
+                <div class="supple-remark-nav-li">免</div>
+                <div class="supple-remark-nav-li">免</div>
+                <div class="supple-remark-nav-li">免</div>
+                <div class="supple-remark-nav-li">免</div>
+                <div class="supple-remark-nav-li">免</div>
+            </div>
+            <div class="supple-remark-list">
+                <div class="supple-remark-li">少姜</div>
+                <div class="supple-remark-li">少姜</div>
+                <div class="supple-remark-li">少姜</div>
+                <div class="supple-remark-li">少姜</div>
+                <div class="supple-remark-li">少姜</div>
+                <div class="supple-remark-li">少姜</div>
+                <div class="supple-remark-li">少姜</div>
+                <div class="supple-remark-li">少姜</div>
+            </div>
+            <div class="supple-remark-textarea">
+                <textarea placeholder="请输入备注内容～"></textarea>
+            </div>
+            <div class="supple-btn">
+                <div class="btn1">取消</div>
+                <div class="btn2">保存</div>
+            </div>
+        </van-popup>
+        <!--    补充备注-->
+    </van-popup>
+    <!--    已选菜品，已下单菜品按钮-->
+    <!--    下单成功-->
+    <div class="success">
+
+    </div>
+    <!--    下单成功-->
+
+
+</div>
+
+</body>
+</html>
+<script src="./js/data.js"></script>
+<script src="./js/dish.js"></script>
+<script>
+
+
+    var dish_list = dish.page;
+    var classify = dish.classify;
+    new Vue({
+        el: "#xibei-ipad",
+        data() {
+            return {
+                classify: classify,
+                typeItem: '',//当前选择的菜品分类
+                dish_list: dish_list,
+                typeClass: {8: 'big', 9: 'middle', 10: 'small'},//image_type对应大中小图
+                cartShow: true
+            }
+        },
+        created() {
+
+
+        },
+        mounted() {
+            this.typeListClick(this.classify[0]);
+        },
+        methods: {
+            typeListClick(item) {
+
+                this.typeItem = item;
+                var id = item.id;
+                var ref = this.$refs['dishList' + id];
+
+                this.$el.querySelector(`#dishList${id}`).scrollIntoView({
+                    behavior: "smooth",  // 平滑过渡
+                    block: "start"  // 上边框与视窗顶部平齐。默认值
+                });
+                // ref.scrollIntoView({
+                //     behavior: "smooth",  // 平滑过渡
+                //     block: "start"  // 上边框与视窗顶部平齐。默认值
+                // });
+
+            },
+            cartClick() {
+                this.cartShow = true;
+            }
+        }
+    })
+
+    Vue.use(vant.Popup);
+
+</script>

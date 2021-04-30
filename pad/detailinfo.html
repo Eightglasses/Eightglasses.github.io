@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--移动端页面设置视口宽度等于设备宽度，并禁止缩放。-->
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <!--禁止将页面中的数字识别为电话号码-->
+    <meta name="format-detection" content="telephone=no"/>
+    <!--忽略Android平台中对邮箱地址的识别-->
+    <meta name="format-detection" content="email=no"/>
+    <!--当网站添加到主屏幕快速启动方式，可隐藏地址栏-->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!--UC强制全屏-->
+    <meta name="x5-fullscreen" content="true">
+    <!--将网站添加到主屏幕快速启动方式-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>pad</title>
+    <script src="js/rem.min.js"></script>
+    <link href="css/detailinfo.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div class="xb-head">
+    <div class="xb-back"></div>
+    <div class="xb-title">
+        账单详情
+    </div>
+</div>
+<div class="xb-content">
+    <!--    账单信息-->
+    <div class="xb-content-order">
+        <div class="xb-content-top">
+            账单信息
+        </div>
+        <!--paid已支付，unpaid未支付-->
+        <div class="paid"></div>
+        <div class="unpaid"></div>
+        <div class="xb-content-order-info">
+            <div class="xb-content-order-info-div">
+                <p class="p1">
+                    <span class="span1">桌台号</span>
+                    <span class="span2">104</span>
+                </p>
+                <span class="line"></span>
+                <p class="p2">
+                    <span class="span1">开台人数</span>
+                    <span class="span2">5</span>
+                </p>
+                <span class="line"></span>
+                <p class="p3">
+                    <span class="span1">会员卡号</span>
+                    <span class="span2">109202938932</span>
+                </p>
+                <span class="line"></span>
+                <p class="p4">
+                    <span class="span1">下单时间</span>
+                    <span class="span2">2020-55-18 09:56:43</span>
+                </p>
+            </div>
+            <div class="xb-content-order-info-div">
+                <p class="p1">
+                    <span class="span1">账单号</span>
+                    <span class="span2">109202938932</span>
+                </p>
+                <span class="line"></span>
+                <p class="p2">
+                    <span class="span1">结账人</span>
+                    <span class="span2">张文东</span>
+                </p>
+                <span class="line"></span>
+                <p class="p3">
+                    <span class="span1">结账流水号</span>
+                    <span class="span2">109202938932</span>
+                </p>
+                <span class="line"></span>
+                <p class="p4">
+                    <span class="span1">结账时间</span>
+                    <span class="span2">2020-11-18 09:56:43</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--    菜品详情-->
+    <div class="xb-content-dish">
+        <div class="xb-content-top">
+            菜品详情
+        </div>
+        <div class="xb-content-dish-list">
+            <!--xb-content-dish-li菜品信息列表-->
+            <div class="xb-content-dish-li">
+                <div class="xb-content-dish-li-info">
+                    <p class="left">
+                        <span class="check"></span>
+                        <span class="dish-name">张爷爷手工空心挂面(酸汤)/碗</span>
+                        <span class="return">退菜</span>
+                    </p>
+                    <span class="num">x 1</span>
+                    <p class="money">
+                        <span class="span1">¥</span>
+                        <span class="span2">300.00</span>
+                    </p>
+                </div>
+
+            </div>
+            <div class="xb-content-dish-li">
+                <div class="xb-content-dish-li-info">
+                    <p class="left">
+                        <span class="check"></span>
+                        <span class="dish-name">张爷爷手工空心挂面(酸汤)/碗</span>
+                        <span class="return">退菜</span>
+                    </p>
+                    <span class="num">x 1.123</span>
+                    <p class="money">
+                        <span class="span1">¥</span>
+                        <span class="span2">300.00</span>
+                    </p>
+                </div>
+                <div class="xb-content-dish-li-tips">
+                    <span>备注：</span>
+                    <span>不要辣，不要辣不要辣，不要辣不要辣</span>
+                </div>
+            </div>
+            <div class="xb-content-dish-bottom">
+                <div>
+                    <p class="p1">共6份</p>
+                    <p class="p2">
+                        <span class="span1">¥</span>
+                        <span class="span2">570.00</span>
+                    </p>
+                </div>
+                <div>
+                    <p class="p1">附加项金额</p>
+                    <p class="p2">
+                        <span class="span1">¥</span>
+                        <span class="span2">570.00</span>
+                    </p>
+                </div>
+                <div>
+                    <p class="p1">合计总金额</p>
+                    <p class="p2">
+                        <span class="span1">¥</span>
+                        <span class="span2">570.00</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    优惠信息-->
+    <div class="xb-content-free">
+        <div class="xb-content-top">
+            优惠信息
+        </div>
+        <div class="xb-content-bottom">
+            <div class="xb-content-bottom-li">
+                <p class="p1">员工8折</p>
+                <p class="p2">
+                    <span class="span1">-¥</span>
+                    <span class="span2">50.00</span>
+                </p>
+            </div>
+            <div class="xb-content-bottom-li">
+                <p class="p1">执行会员价</p>
+                <p class="p2">
+                    <span class="span1">-¥</span>
+                    <span class="span2">50.00</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--    支付信息-->
+    <div class="xb-content-free">
+        <div class="xb-content-top">
+            支付信息
+        </div>
+        <div class="xb-content-bottom">
+            <div class="xb-content-bottom-li">
+                <p class="p1">微信支付</p>
+                <p class="p2">
+                    <span class="span1">-¥</span>
+                    <span class="span2">50.00</span>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--    底部导航-->
+<div class="xb-bottom">
+    <div class="xb-bottom-li ">
+        <span class="bg dayin"></span>
+        <p>打印结账单</p>
+    </div>
+    <div class="xb-bottom-li ">
+        <span class="bg buchong"></span>
+        <p>补充备注</p>
+    </div>
+    <div class="xb-bottom-li ">
+        <span class="bg fapiao"></span>
+        <p>电子发票</p>
+    </div>
+</div>
+
+<!--补充备注-->
+<div class="shadow">
+    <div class="xb-dialog">
+        <div class="xb-dialog-head">
+            <span class="bg"></span>
+            <p>补充备注</p>
+        </div>
+        <div class="xb-dialog-nav">
+            <p class="active">免</p>
+            <p>少</p>
+            <p>多</p>
+            <p>其他</p>
+        </div>
+        <div class="xb-dialog-list">
+            <div class="xb-dialog-li active">少姜</div>
+            <div class="xb-dialog-li">少姜</div>
+            <div class="xb-dialog-li">少姜</div>
+            <div class="xb-dialog-li">少姜</div>
+            <div class="xb-dialog-li">少姜</div>
+            <div class="xb-dialog-li">少姜</div>
+            <div class="xb-dialog-li">少姜</div>
+            <div class="xb-dialog-li">少姜</div>
+        </div>
+        <div class="xb-dialog-textarea">
+            <textarea placeholder="请输入备注内容～"></textarea>
+        </div>
+        <div class="xb-dialog-bottom">
+            <div class="cancel">取消</div>
+            <div class="submit">保存</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<script>
+
+</script>

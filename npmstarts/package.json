@@ -1,0 +1,28 @@
+{
+  "name": "npmstarts",
+  "version": "1.0.0",
+  "description": "NPM项目启动器",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --mac"
+  },
+  "devDependencies": {
+    "electron": "32.1.2",
+    "electron-builder": "^25.1.8"
+  },
+  "dependencies": {
+    "fs-extra": "^11.2.0"
+  },
+  "build": {
+    "appId": "com.npmstarts",
+    "productName": "NPM启动器",
+    "mac": {
+      "target": "dir"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ]
+  }
+}

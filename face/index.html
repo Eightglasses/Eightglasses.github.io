@@ -12,34 +12,31 @@
     <script src="js/rem_scaler.js" type="text/javascript" charset="utf-8"></script>
     <script src="../jquery/jquery-1.8.3.min.js"></script>
     <script src="js/jquery-qrcode.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
 </head>
 
 <body>
-    <div id="facebox">
-        <div class="file-box">上传你的表情
-            <input name="files" id="uploaderInput" type="file" accept="image/*" v-on:change="uploaderInput" />
-        </div>
-        <div class="willcanvas">
-            <img :src="imgSrc" />
-            <p id="showp"
-               v-bind:style="{fontSize: fontSize + 'px',fontFamily:fontFamily,color:color,position:isPosition,background:background}">
-                {{message}}</p>
-            <!-- <div id="qrcode">
-            </div> -->
-        </div>
-        <textarea placeholder="这里输入内容" v-model="message"></textarea>
-        <input type="number" placeholder="这里输入字号" v-model="fontSize" />
-        <input type="text" placeholder="这里输入字体" v-model="fontFamily" />
-        <input type="text" placeholder="这里输入文字颜色" v-model="color" />
-        <input type="text" placeholder="这里输入文字背景颜色" v-model="background" />
-        <p>文字是否置于图片上（置于图片上，可以拖动）</p>
-        <input type="radio" @click="absolute" name="p">是<input type="radio" @click="isStatic" name="p">否
-        <input type="submit" name="" id="submit" value="生成" v-on:click="go" />
+<div id="facebox">
+    <div class="file-box">上传你的表情
+        <input name="files" id="uploaderInput" type="file" accept="image/*" v-on:change="uploaderInput"/>
     </div>
-
-
-
+    <div class="willcanvas">
+        <img :src="imgSrc"/>
+        <p id="showp"
+           v-bind:style="{fontSize: fontSize + 'px',fontFamily:fontFamily,color:color,position:isPosition,background:background}">
+            {{message}}</p>
+        <!-- <div id="qrcode">
+        </div> -->
+    </div>
+    <textarea placeholder="这里输入内容" v-model="message"></textarea>
+    <input type="number" placeholder="这里输入字号" v-model="fontSize"/>
+    <input type="text" placeholder="这里输入字体" v-model="fontFamily"/>
+    <input type="text" placeholder="这里输入文字颜色" v-model="color"/>
+    <input type="text" placeholder="这里输入文字背景颜色" v-model="background"/>
+    <p>文字是否置于图片上（置于图片上，可以拖动）</p>
+    <input type="radio" @click="absolute" name="p">是<input type="radio" @click="isStatic" name="p">否
+    <input type="submit" name="" id="submit" value="生成" v-on:click="go"/>
+</div>
 
 
 </body>
@@ -104,7 +101,7 @@
             var positionDiv = $(this).offset();
             var distenceX = e.pageX - positionDiv.left;
             var distenceY = e.pageY - positionDiv.top;
-            console.log(distenceX, distenceY);
+ 
             var _this = this;
             $(document).mousemove(function (e) {
                 var x = e.pageX - distenceX - $("#facebox").offset().left;
@@ -118,7 +115,8 @@
                     y = 0;
                 } else if (y > $(document).height() - $('#showp').outerHeight(true)) {
                     y = $(document).height() - $('#showp').outerHeight(true);
-                };
+                }
+                ;
                 $('#showp').css({
                     'left': x + 'px',
                     'top': y + 'px'
@@ -131,9 +129,6 @@
         });
     });
 </script>
-
-
-
 
 
 </html>

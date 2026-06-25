@@ -130,6 +130,7 @@
         .pose-figure svg {
             max-width: 90%;
             max-height: 90%;
+            overflow: visible;
         }
 
         .pose-title {
@@ -254,7 +255,7 @@
     </div>
 
     <script>
-        // 姿势数据
+        // 人体关节坐标：在 200x240 的 viewBox 内定义每个姿势的关键点
         const poses = [
             {
                 id: 1,
@@ -263,7 +264,14 @@
                 tag: '自拍',
                 desc: '手机挡住半边脸，身体微微侧向一边，营造不经意的高级感。',
                 tips: ['手机高度与眉毛齐平', '身体侧 45°', '腿往前伸'],
-                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="45" r="18"/><path d="M100 63 L100 110"/><path d="M100 75 L75 95 L60 85"/><path d="M100 75 L125 60 L140 50"/><path d="M100 110 L80 160 L70 200"/><path d="M100 110 L120 160 L130 200"/><rect x="120" y="30" width="50" height="70" rx="4" stroke-dasharray="4 4" opacity="0.6"/></svg>`
+                joints: {
+                    head: {x: 95, y: 52}, neck: {x: 100, y: 72},
+                    shoulder: {x: 100, y: 78}, hip: {x: 100, y: 125},
+                    leftElbow: {x: 72, y: 98}, leftHand: {x: 60, y: 75},
+                    rightElbow: {x: 128, y: 90}, rightHand: {x: 145, y: 58},
+                    leftKnee: {x: 88, y: 165}, leftFoot: {x: 78, y: 205},
+                    rightKnee: {x: 115, y: 162}, rightFoot: {x: 132, y: 198}
+                }
             },
             {
                 id: 2,
@@ -272,7 +280,14 @@
                 tag: '自拍',
                 desc: '单手或双手托住下巴，眼睛看向镜头上方，显脸小又可爱。',
                 tips: ['手指轻轻贴合脸颊', '不要真的用力压', '嘴巴微张更自然'],
-                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="50" r="18"/><path d="M100 68 L100 115"/><path d="M100 80 L70 100 L68 85"/><path d="M100 80 L130 100 L132 85"/><path d="M100 115 L80 165 L75 205"/><path d="M100 115 L120 165 L125 205"/><path d="M72 98 L72 70"/><path d="M128 98 L128 70"/></svg>`
+                joints: {
+                    head: {x: 100, y: 55}, neck: {x: 100, y: 75},
+                    shoulder: {x: 100, y: 80}, hip: {x: 100, y: 128},
+                    leftElbow: {x: 70, y: 105}, leftHand: {x: 78, y: 60},
+                    rightElbow: {x: 130, y: 105}, rightHand: {x: 122, y: 60},
+                    leftKnee: {x: 88, y: 168}, leftFoot: {x: 82, y: 208},
+                    rightKnee: {x: 112, y: 168}, rightFoot: {x: 118, y: 208}
+                }
             },
             {
                 id: 3,
@@ -281,16 +296,30 @@
                 tag: '自拍',
                 desc: '用手背轻遮嘴巴，笑眼弯弯，拍出害羞又温柔的感觉。',
                 tips: ['手背朝向镜头', '眼睛要有笑意', '头稍微歪一点'],
-                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="50" r="18"/><path d="M100 68 L100 115"/><path d="M100 80 L70 100 L85 120 L100 115"/><path d="M100 80 L130 100 L115 120 L100 115"/><path d="M100 115 L80 165 L75 205"/><path d="M100 115 L120 165 L125 205"/></svg>`
+                joints: {
+                    head: {x: 100, y: 55}, neck: {x: 100, y: 75},
+                    shoulder: {x: 100, y: 80}, hip: {x: 100, y: 126},
+                    leftElbow: {x: 72, y: 100}, leftHand: {x: 92, y: 62},
+                    rightElbow: {x: 130, y: 105}, rightHand: {x: 128, y: 130},
+                    leftKnee: {x: 88, y: 168}, leftFoot: {x: 82, y: 208},
+                    rightKnee: {x: 112, y: 168}, rightFoot: {x: 118, y: 208}
+                }
             },
             {
                 id: 4,
                 category: 'standing',
                 title: '侧身回眸',
                 tag: '站姿',
-                desc: '身体侧对镜头，头转回来看镜头， shoulder line 拉长身形。',
+                desc: '身体侧对镜头，头转回来看镜头，肩线拉长身形。',
                 tips: ['肩膀一前一后', '下巴微收', '眼神看向镜头下方'],
-                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="105" cy="50" r="16"/><path d="M110 66 L115 115"/><path d="M115 78 L140 100 L150 95"/><path d="M115 78 L95 95 L85 85"/><path d="M115 115 L100 165 L95 205"/><path d="M115 115 L130 165 L135 205"/></svg>`
+                joints: {
+                    head: {x: 115, y: 50}, neck: {x: 108, y: 70},
+                    shoulder: {x: 105, y: 76}, hip: {x: 95, y: 122},
+                    leftElbow: {x: 130, y: 95}, leftHand: {x: 150, y: 88},
+                    rightElbow: {x: 82, y: 95}, rightHand: {x: 72, y: 78},
+                    leftKnee: {x: 105, y: 162}, leftFoot: {x: 115, y: 202},
+                    rightKnee: {x: 82, y: 160}, rightFoot: {x: 72, y: 200}
+                }
             },
             {
                 id: 5,
@@ -299,7 +328,14 @@
                 tag: '站姿',
                 desc: '自然地往前走，让摄影师抓拍，步伐要大，手臂轻摆。',
                 tips: ['步伐迈开', '手臂自然摆动', '不要看镜头'],
-                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="95" cy="45" r="16"/><path d="M95 61 L100 110"/><path d="M100 72 L130 90 L145 85"/><path d="M100 72 L75 95 L85 110"/><path d="M100 110 L85 155 L70 190"/><path d="M100 110 L125 150 L135 185"/></svg>`
+                joints: {
+                    head: {x: 95, y: 48}, neck: {x: 98, y: 68},
+                    shoulder: {x: 100, y: 74}, hip: {x: 100, y: 120},
+                    leftElbow: {x: 128, y: 92}, leftHand: {x: 148, y: 82},
+                    rightElbow: {x: 75, y: 96}, rightHand: {x: 88, y: 112},
+                    leftKnee: {x: 122, y: 150}, leftFoot: {x: 145, y: 168},
+                    rightKnee: {x: 82, y: 158}, rightFoot: {x: 68, y: 200}
+                }
             },
             {
                 id: 6,
@@ -308,7 +344,14 @@
                 tag: '站姿',
                 desc: '背部轻靠墙面，一条腿弯曲点地，慵懒随性又有型。',
                 tips: ['重心放在靠墙那条腿', '手插兜或抱臂', '头微微侧'],
-                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="40" y1="20" x2="40" y2="220" stroke-width="1" opacity="0.3" stroke-dasharray="5 5"/><circle cx="110" cy="50" r="16"/><path d="M110 66 L105 115"/><path d="M105 75 L135 95 L140 110"/><path d="M105 75 L85 100 L90 115"/><path d="M105 115 L90 160 L80 200"/><path d="M105 115 L125 155 L120 195"/></svg>`
+                joints: {
+                    head: {x: 108, y: 55}, neck: {x: 105, y: 75},
+                    shoulder: {x: 103, y: 80}, hip: {x: 98, y: 125},
+                    leftElbow: {x: 128, y: 100}, leftHand: {x: 128, y: 120},
+                    rightElbow: {x: 78, y: 98}, rightHand: {x: 78, y: 118},
+                    leftKnee: {x: 112, y: 160}, leftFoot: {x: 122, y: 198},
+                    rightKnee: {x: 85, y: 165}, rightFoot: {x: 78, y: 205}
+                }
             },
             {
                 id: 7,
@@ -317,7 +360,14 @@
                 tag: '站姿',
                 desc: '双手向上伸展，身体拉长，适合在开阔场景拍出自由感。',
                 tips: ['手臂贴耳', '手指舒展', '脚尖可踮起'],
-                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="85" r="16"/><path d="M100 101 L100 145"/><path d="M100 110 L70 70 L55 50"/><path d="M100 110 L130 70 L145 50"/><path d="M100 145 L85 185 L80 220"/><path d="M100 145 L115 185 L120 220"/></svg>`
+                joints: {
+                    head: {x: 100, y: 85}, neck: {x: 100, y: 105},
+                    shoulder: {x: 100, y: 110}, hip: {x: 100, y: 155},
+                    leftElbow: {x: 75, y: 70}, leftHand: {x: 55, y: 32},
+                    rightElbow: {x: 125, y: 70}, rightHand: {x: 145, y: 32},
+                    leftKnee: {x: 90, y: 190}, leftFoot: {x: 88, y: 228},
+                    rightKnee: {x: 110, y: 190}, rightFoot: {x: 112, y: 228}
+                }
             },
             {
                 id: 8,
@@ -326,7 +376,14 @@
                 tag: '站姿',
                 desc: '双手插进口袋，肩膀放松，看起来酷酷的又不失自然。',
                 tips: ['肩膀微微后张', '重心放一条腿', '眼神放松'],
-                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="50" r="16"/><path d="M100 66 L100 115"/><path d="M100 78 L70 95 L70 115"/><path d="M100 78 L130 95 L130 115"/><path d="M100 115 L85 165 L80 205"/><path d="M100 115 L115 165 L120 205"/></svg>`
+                joints: {
+                    head: {x: 100, y: 52}, neck: {x: 100, y: 72},
+                    shoulder: {x: 100, y: 78}, hip: {x: 100, y: 125},
+                    leftElbow: {x: 75, y: 100}, leftHand: {x: 75, y: 125},
+                    rightElbow: {x: 125, y: 100}, rightHand: {x: 125, y: 125},
+                    leftKnee: {x: 90, y: 165}, leftFoot: {x: 88, y: 205},
+                    rightKnee: {x: 110, y: 165}, rightFoot: {x: 112, y: 205}
+                }
             },
             {
                 id: 9,
@@ -335,7 +392,14 @@
                 tag: '站姿',
                 desc: '手指穿过发丝，假装整理头发，动态感十足。',
                 tips: ['手腕要自然', '眼神可不看镜头', '头微微后仰'],
-                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="50" r="16"/><path d="M100 66 L100 115"/><path d="M100 78 L70 95 L60 70 L70 55"/><path d="M100 78 L130 100 L140 120"/><path d="M100 115 L85 165 L80 205"/><path d="M100 115 L115 165 L120 205"/></svg>`
+                joints: {
+                    head: {x: 100, y: 52}, neck: {x: 100, y: 72},
+                    shoulder: {x: 100, y: 78}, hip: {x: 100, y: 125},
+                    leftElbow: {x: 72, y: 85}, leftHand: {x: 55, y: 48},
+                    rightElbow: {x: 128, y: 100}, rightHand: {x: 138, y: 128},
+                    leftKnee: {x: 90, y: 165}, leftFoot: {x: 86, y: 205},
+                    rightKnee: {x: 110, y: 165}, rightFoot: {x: 114, y: 205}
+                }
             },
             {
                 id: 10,
@@ -344,7 +408,14 @@
                 tag: '坐姿',
                 desc: '蹲下或坐下，手肘撑在膝盖上托腮，拍出日常随性感。',
                 tips: ['膝盖微微张开', '脚尖点地', '背部挺直'],
-                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="55" r="16"/><path d="M100 71 L100 115"/><path d="M100 82 L65 110 L55 95"/><path d="M100 82 L135 110 L145 95"/><path d="M100 115 L75 145 L55 145"/><path d="M100 115 L125 145 L145 145"/></svg>`
+                joints: {
+                    head: {x: 100, y: 58}, neck: {x: 100, y: 78},
+                    shoulder: {x: 100, y: 84}, hip: {x: 100, y: 118},
+                    leftElbow: {x: 72, y: 110}, leftHand: {x: 88, y: 65},
+                    rightElbow: {x: 128, y: 110}, rightHand: {x: 112, y: 65},
+                    leftKnee: {x: 78, y: 140}, leftFoot: {x: 68, y: 158},
+                    rightKnee: {x: 122, y: 140}, rightFoot: {x: 132, y: 158}
+                }
             },
             {
                 id: 11,
@@ -353,7 +424,14 @@
                 tag: '坐姿',
                 desc: '坐在地上抱住膝盖，头侧靠在膝盖上，像电影截图一样温柔。',
                 tips: ['双腿弯曲并拢', '手臂环绕膝盖', '头轻靠膝盖'],
-                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="75" r="16"/><path d="M100 91 L100 130"/><path d="M100 100 L70 125 L65 150"/><path d="M100 100 L130 125 L135 150"/><path d="M100 130 L80 160 L60 165"/><path d="M100 130 L120 160 L140 165"/></svg>`
+                joints: {
+                    head: {x: 100, y: 78}, neck: {x: 100, y: 96},
+                    shoulder: {x: 100, y: 102}, hip: {x: 100, y: 132},
+                    leftElbow: {x: 78, y: 118}, leftHand: {x: 88, y: 138},
+                    rightElbow: {x: 122, y: 118}, rightHand: {x: 112, y: 138},
+                    leftKnee: {x: 82, y: 150}, leftFoot: {x: 78, y: 170},
+                    rightKnee: {x: 118, y: 150}, rightFoot: {x: 122, y: 170}
+                }
             },
             {
                 id: 12,
@@ -362,7 +440,14 @@
                 tag: '坐姿',
                 desc: '盘腿坐在地上，手自然放在腿上或撑地，适合居家氛围。',
                 tips: ['腰背挺直', '手放膝盖', '低头或看远方'],
-                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="70" r="16"/><path d="M100 86 L100 125"/><path d="M100 95 L70 115 L55 130"/><path d="M100 95 L130 115 L145 130"/><path d="M95 125 L70 145 L50 140"/><path d="M105 125 L130 145 L150 140"/></svg>`
+                joints: {
+                    head: {x: 100, y: 72}, neck: {x: 100, y: 92},
+                    shoulder: {x: 100, y: 98}, hip: {x: 100, y: 132},
+                    leftElbow: {x: 78, y: 115}, leftHand: {x: 82, y: 140},
+                    rightElbow: {x: 122, y: 115}, rightHand: {x: 118, y: 140},
+                    leftKnee: {x: 78, y: 148}, leftFoot: {x: 112, y: 152},
+                    rightKnee: {x: 122, y: 148}, rightFoot: {x: 88, y: 152}
+                }
             },
             {
                 id: 13,
@@ -371,7 +456,14 @@
                 tag: '坐姿',
                 desc: '单膝蹲地，手肘撑在大腿上，直视镜头，拍出酷飒感。',
                 tips: ['重心稳定', '眼神坚定', '单手撑地更稳'],
-                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="60" r="16"/><path d="M100 76 L100 120"/><path d="M100 88 L70 110 L60 130"/><path d="M100 88 L130 110 L140 130"/><path d="M100 120 L80 155 L70 195"/><path d="M100 120 L125 150 L130 180"/></svg>`
+                joints: {
+                    head: {x: 100, y: 62}, neck: {x: 100, y: 82},
+                    shoulder: {x: 100, y: 88}, hip: {x: 100, y: 120},
+                    leftElbow: {x: 72, y: 112}, leftHand: {x: 88, y: 132},
+                    rightElbow: {x: 128, y: 112}, rightHand: {x: 142, y: 148},
+                    leftKnee: {x: 82, y: 150}, leftFoot: {x: 72, y: 170},
+                    rightKnee: {x: 122, y: 150}, rightFoot: {x: 138, y: 170}
+                }
             },
             {
                 id: 14,
@@ -380,7 +472,14 @@
                 tag: '创意',
                 desc: '跳起来抓拍，头发和衣服都会很有动感，充满活力。',
                 tips: ['跳起来时手脚张开', '连拍模式', '选择干净背景'],
-                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="100" r="16"/><path d="M100 116 L100 150"/><path d="M100 125 L60 110 L40 90"/><path d="M100 125 L140 110 L160 90"/><path d="M100 150 L80 180 L60 170"/><path d="M100 150 L120 180 L140 170"/></svg>`
+                joints: {
+                    head: {x: 100, y: 95}, neck: {x: 100, y: 113},
+                    shoulder: {x: 100, y: 120}, hip: {x: 100, y: 152},
+                    leftElbow: {x: 68, y: 108}, leftHand: {x: 45, y: 88},
+                    rightElbow: {x: 132, y: 108}, rightHand: {x: 155, y: 88},
+                    leftKnee: {x: 82, y: 178}, leftFoot: {x: 62, y: 168},
+                    rightKnee: {x: 118, y: 178}, rightFoot: {x: 138, y: 168}
+                }
             },
             {
                 id: 15,
@@ -389,7 +488,14 @@
                 tag: '创意',
                 desc: '背对镜头向前走或站立，不露出正脸，留下想象空间。',
                 tips: ['身体放松', '手可自然摆动', '选择有纵深感的场景'],
-                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="50" r="16"/><path d="M100 66 L100 115"/><path d="M100 78 L75 100 L65 120"/><path d="M100 78 L125 100 L135 120"/><path d="M100 115 L85 165 L80 205"/><path d="M100 115 L115 165 L120 205"/></svg>`
+                joints: {
+                    head: {x: 100, y: 52}, neck: {x: 100, y: 72},
+                    shoulder: {x: 100, y: 78}, hip: {x: 100, y: 125},
+                    leftElbow: {x: 78, y: 100}, leftHand: {x: 70, y: 120},
+                    rightElbow: {x: 122, y: 100}, rightHand: {x: 130, y: 120},
+                    leftKnee: {x: 90, y: 165}, leftFoot: {x: 86, y: 205},
+                    rightKnee: {x: 110, y: 165}, rightFoot: {x: 114, y: 205}
+                }
             },
             {
                 id: 16,
@@ -398,7 +504,14 @@
                 tag: '创意',
                 desc: '先背对镜头，然后突然回头抓拍，自然又有故事感。',
                 tips: ['让摄影师喊口令', '笑容自然', '头发甩起来'],
-                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="110" cy="50" r="16"/><path d="M100 66 L95 115"/><path d="M95 78 L70 100 L60 120"/><path d="M95 78 L120 95 L130 85"/><path d="M95 115 L80 165 L75 205"/><path d="M95 115 L110 165 L115 205"/></svg>`
+                joints: {
+                    head: {x: 112, y: 52}, neck: {x: 105, y: 72},
+                    shoulder: {x: 100, y: 78}, hip: {x: 95, y: 125},
+                    leftElbow: {x: 78, y: 100}, leftHand: {x: 70, y: 120},
+                    rightElbow: {x: 120, y: 95}, rightHand: {x: 132, y: 80},
+                    leftKnee: {x: 88, y: 165}, leftFoot: {x: 82, y: 205},
+                    rightKnee: {x: 108, y: 165}, rightFoot: {x: 116, y: 205}
+                }
             },
             {
                 id: 17,
@@ -407,7 +520,14 @@
                 tag: '创意',
                 desc: '用手遮挡阳光，眯眼看向远方，夏日氛围感拉满。',
                 tips: ['手在额头上方', '眼睛微眯', '背景要有蓝天'],
-                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="55" r="16"/><path d="M100 71 L100 115"/><path d="M100 82 L65 75 L50 55 L70 45"/><path d="M100 82 L135 100 L145 115"/><path d="M100 115 L85 165 L80 205"/><path d="M100 115 L115 165 L120 205"/></svg>`
+                joints: {
+                    head: {x: 100, y: 58}, neck: {x: 100, y: 78},
+                    shoulder: {x: 100, y: 84}, hip: {x: 100, y: 128},
+                    leftElbow: {x: 70, y: 72}, leftHand: {x: 55, y: 48},
+                    rightElbow: {x: 130, y: 98}, rightHand: {x: 145, y: 120},
+                    leftKnee: {x: 90, y: 168}, leftFoot: {x: 86, y: 208},
+                    rightKnee: {x: 110, y: 168}, rightFoot: {x: 114, y: 208}
+                }
             },
             {
                 id: 18,
@@ -416,14 +536,86 @@
                 tag: '多人',
                 desc: '朋友们前后错落站立，不要排成一排，画面更有层次。',
                 tips: ['一前一后', '动作呼应', '表情自然'],
-                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="70" cy="70" r="14"/><path d="M70 84 L70 120"/><path d="M70 92 L50 110 L45 130"/><path d="M70 92 L90 110 L95 130"/><path d="M70 120 L60 155 L55 190"/><path d="M70 120 L80 155 L85 190"/><circle cx="130" cy="55" r="14"/><path d="M130 69 L130 110"/><path d="M130 78 L110 95 L105 115"/><path d="M130 78 L150 95 L155 115"/><path d="M130 110 L120 150 L115 185"/><path d="M130 110 L140 150 L145 185"/></svg>`
+                joints: [
+                    {
+                        head: {x: 70, y: 70}, neck: {x: 70, y: 88},
+                        shoulder: {x: 70, y: 94}, hip: {x: 70, y: 132},
+                        leftElbow: {x: 50, y: 110}, leftHand: {x: 42, y: 130},
+                        rightElbow: {x: 90, y: 110}, rightHand: {x: 98, y: 130},
+                        leftKnee: {x: 60, y: 168}, leftFoot: {x: 55, y: 205},
+                        rightKnee: {x: 80, y: 168}, rightFoot: {x: 85, y: 205}
+                    },
+                    {
+                        head: {x: 130, y: 52}, neck: {x: 130, y: 72},
+                        shoulder: {x: 130, y: 78}, hip: {x: 130, y: 122},
+                        leftElbow: {x: 110, y: 95}, leftHand: {x: 102, y: 78},
+                        rightElbow: {x: 150, y: 95}, rightHand: {x: 158, y: 78},
+                        leftKnee: {x: 120, y: 160}, leftFoot: {x: 112, y: 198},
+                        rightKnee: {x: 140, y: 160}, rightFoot: {x: 148, y: 198}
+                    }
+                ]
             }
         ];
+
+        function renderFigure(container, pose) {
+            const defs = `
+                <defs>
+                    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#a5b4fc;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#c084fc;stop-opacity:1" />
+                    </linearGradient>
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+            `;
+
+            function drawBody(j, offsetX = 0, offsetY = 0, scale = 1) {
+                const t = p => ({x: offsetX + p.x * scale, y: offsetY + p.y * scale});
+                const head = t(j.head), neck = t(j.neck), shoulder = t(j.shoulder), hip = t(j.hip);
+                const le = t(j.leftElbow), lh = t(j.leftHand);
+                const re = t(j.rightElbow), rh = t(j.rightHand);
+                const lk = t(j.leftKnee), lf = t(j.leftFoot);
+                const rk = t(j.rightKnee), rf = t(j.rightFoot);
+
+                const jointDot = (p, r = 2.5) => `<circle cx="${p.x}" cy="${p.y}" r="${r}" fill="url(#bodyGrad)" opacity="0.8"/>`;
+                const limb = (a, b, w) => `<line x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" stroke="url(#bodyGrad)" stroke-width="${w}" stroke-linecap="round" filter="url(#glow)"/>`;
+
+                return `
+                    ${limb(head, neck, 7)}
+                    ${limb(neck, shoulder, 8)}
+                    ${limb(shoulder, hip, 11)}
+                    ${limb(shoulder, le, 7)}${limb(le, lh, 6)}
+                    ${limb(shoulder, re, 7)}${limb(re, rh, 6)}
+                    ${limb(hip, lk, 8)}${limb(lk, lf, 7)}
+                    ${limb(hip, rk, 8)}${limb(rk, rf, 7)}
+                    <circle cx="${head.x}" cy="${head.y}" r="13" stroke="url(#bodyGrad)" stroke-width="3" fill="none" filter="url(#glow)"/>
+                    ${jointDot(shoulder, 3)}${jointDot(hip, 3.5)}${jointDot(le)}${jointDot(re)}${jointDot(lk)}${jointDot(rk)}
+                `;
+            }
+
+            let bodiesHtml = '';
+            if (Array.isArray(pose.joints)) {
+                bodiesHtml = pose.joints.map(j => drawBody(j)).join('');
+            } else {
+                bodiesHtml = drawBody(pose.joints);
+            }
+
+            container.innerHTML = `
+                <svg viewBox="0 0 200 240" width="100%" height="100%">
+                    ${defs}
+                    ${bodiesHtml}
+                </svg>
+            `;
+        }
 
         let currentCategory = 'all';
         let filteredPoses = [...poses];
         let currentIndex = 0;
-        let history = [];
 
         const poseCard = document.getElementById('poseCard');
         const poseTag = document.getElementById('poseTag');
@@ -450,7 +642,7 @@
 
         function updateContent(pose) {
             poseTag.textContent = pose.tag;
-            poseFigure.innerHTML = pose.figure;
+            renderFigure(poseFigure, pose);
             poseTitle.textContent = pose.title;
             poseDesc.textContent = pose.desc;
             poseTips.innerHTML = pose.tips.map(tip => `<span>${tip}</span>`).join('');
@@ -495,7 +687,6 @@
             renderPose(currentIndex);
         });
 
-        // 键盘控制
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') document.getElementById('prevBtn').click();
             if (e.key === 'ArrowRight') document.getElementById('nextBtn').click();
@@ -520,7 +711,6 @@
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         container.appendChild(renderer.domElement);
 
-        // 几何体粒子
         const geometries = [
             new THREE.IcosahedronGeometry(0.5, 0),
             new THREE.OctahedronGeometry(0.5, 0),
@@ -553,14 +743,12 @@
                 rotSpeedY: (Math.random() - 0.5) * 0.02
             };
 
-            // 颜色渐变
             const colors = [0x667eea, 0x764ba2, 0x4facfe, 0x00f2fe];
             mesh.material.color.setHex(colors[Math.floor(Math.random() * colors.length)]);
             particles.push(mesh);
             scene.add(mesh);
         }
 
-        // 连接线
         const lineMaterial = new THREE.LineBasicMaterial({
             color: 0x667eea,
             transparent: true,
@@ -605,7 +793,6 @@
                 if (Math.abs(p.position.z) > 20) p.userData.speedZ *= -1;
             });
 
-            // 更新连接线
             let index = 0;
             const positions = lines.geometry.attributes.position.array;
             for (let i = 0; i < particles.length; i++) {

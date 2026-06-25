@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拍照姿势创意参考</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            overflow: hidden;
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .ui-layer {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .subtitle {
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .category-btn {
+            padding: 8px 18px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.05);
+            color: rgba(255,255,255,0.8);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: transparent;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .pose-card {
+            width: 100%;
+            max-width: 420px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 24px;
+            padding: 35px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 25px 80px rgba(0,0,0,0.4);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(0);
+        }
+
+        .pose-card.switching {
+            transform: translateY(-10px) scale(0.98);
+            opacity: 0.7;
+        }
+
+        .pose-tag {
+            display: inline-block;
+            padding: 5px 14px;
+            background: rgba(102, 126, 234, 0.2);
+            color: #a5b4fc;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-bottom: 18px;
+        }
+
+        .pose-figure {
+            width: 100%;
+            height: 260px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 22px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .pose-figure svg {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .pose-title {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .pose-desc {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .pose-tips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .pose-tips span {
+            padding: 5px 12px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.65);
+        }
+
+        .controls {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.45);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.9);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.18);
+            transform: translateY(-2px);
+        }
+
+        .counter {
+            margin-top: 18px;
+            color: rgba(255,255,255,0.45);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            .pose-card {
+                padding: 25px;
+            }
+            .pose-figure {
+                height: 200px;
+            }
+            .pose-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+
+    <div class="ui-layer">
+        <h1>拍照姿势创意参考</h1>
+        <p class="subtitle">不知道摆什么动作？点一下，灵感就来</p>
+
+        <div class="categories">
+            <button class="category-btn active" data-category="all">全部</button>
+            <button class="category-btn" data-category="selfie">自拍</button>
+            <button class="category-btn" data-category="standing">站姿</button>
+            <button class="category-btn" data-category="sitting">坐姿</button>
+            <button class="category-btn" data-category="creative">创意</button>
+            <button class="category-btn" data-category="group">多人</button>
+        </div>
+
+        <div class="pose-card" id="poseCard">
+            <span class="pose-tag" id="poseTag">自拍</span>
+            <div class="pose-figure" id="poseFigure"></div>
+            <h2 class="pose-title" id="poseTitle">加载中...</h2>
+            <p class="pose-desc" id="poseDesc">正在挑选合适的姿势</p>
+            <div class="pose-tips" id="poseTips"></div>
+        </div>
+
+        <div class="controls">
+            <button class="btn btn-secondary" id="prevBtn">上一个</button>
+            <button class="btn btn-primary" id="randomBtn">随机姿势</button>
+            <button class="btn btn-secondary" id="nextBtn">下一个</button>
+        </div>
+
+        <p class="counter" id="counter">1 / 18</p>
+    </div>
+
+    <script>
+        // 姿势数据
+        const poses = [
+            {
+                id: 1,
+                category: 'selfie',
+                title: '对镜自拍',
+                tag: '自拍',
+                desc: '手机挡住半边脸，身体微微侧向一边，营造不经意的高级感。',
+                tips: ['手机高度与眉毛齐平', '身体侧 45°', '腿往前伸'],
+                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="45" r="18"/><path d="M100 63 L100 110"/><path d="M100 75 L75 95 L60 85"/><path d="M100 75 L125 60 L140 50"/><path d="M100 110 L80 160 L70 200"/><path d="M100 110 L120 160 L130 200"/><rect x="120" y="30" width="50" height="70" rx="4" stroke-dasharray="4 4" opacity="0.6"/></svg>`
+            },
+            {
+                id: 2,
+                category: 'selfie',
+                title: '托脸卖萌',
+                tag: '自拍',
+                desc: '单手或双手托住下巴，眼睛看向镜头上方，显脸小又可爱。',
+                tips: ['手指轻轻贴合脸颊', '不要真的用力压', '嘴巴微张更自然'],
+                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="50" r="18"/><path d="M100 68 L100 115"/><path d="M100 80 L70 100 L68 85"/><path d="M100 80 L130 100 L132 85"/><path d="M100 115 L80 165 L75 205"/><path d="M100 115 L120 165 L125 205"/><path d="M72 98 L72 70"/><path d="M128 98 L128 70"/></svg>`
+            },
+            {
+                id: 3,
+                category: 'selfie',
+                title: '捂嘴笑',
+                tag: '自拍',
+                desc: '用手背轻遮嘴巴，笑眼弯弯，拍出害羞又温柔的感觉。',
+                tips: ['手背朝向镜头', '眼睛要有笑意', '头稍微歪一点'],
+                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="50" r="18"/><path d="M100 68 L100 115"/><path d="M100 80 L70 100 L85 120 L100 115"/><path d="M100 80 L130 100 L115 120 L100 115"/><path d="M100 115 L80 165 L75 205"/><path d="M100 115 L120 165 L125 205"/></svg>`
+            },
+            {
+                id: 4,
+                category: 'standing',
+                title: '侧身回眸',
+                tag: '站姿',
+                desc: '身体侧对镜头，头转回来看镜头， shoulder line 拉长身形。',
+                tips: ['肩膀一前一后', '下巴微收', '眼神看向镜头下方'],
+                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="105" cy="50" r="16"/><path d="M110 66 L115 115"/><path d="M115 78 L140 100 L150 95"/><path d="M115 78 L95 95 L85 85"/><path d="M115 115 L100 165 L95 205"/><path d="M115 115 L130 165 L135 205"/></svg>`
+            },
+            {
+                id: 5,
+                category: 'standing',
+                title: '走路抓拍',
+                tag: '站姿',
+                desc: '自然地往前走，让摄影师抓拍，步伐要大，手臂轻摆。',
+                tips: ['步伐迈开', '手臂自然摆动', '不要看镜头'],
+                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="95" cy="45" r="16"/><path d="M95 61 L100 110"/><path d="M100 72 L130 90 L145 85"/><path d="M100 72 L75 95 L85 110"/><path d="M100 110 L85 155 L70 190"/><path d="M100 110 L125 150 L135 185"/></svg>`
+            },
+            {
+                id: 6,
+                category: 'standing',
+                title: '靠墙站',
+                tag: '站姿',
+                desc: '背部轻靠墙面，一条腿弯曲点地，慵懒随性又有型。',
+                tips: ['重心放在靠墙那条腿', '手插兜或抱臂', '头微微侧'],
+                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="40" y1="20" x2="40" y2="220" stroke-width="1" opacity="0.3" stroke-dasharray="5 5"/><circle cx="110" cy="50" r="16"/><path d="M110 66 L105 115"/><path d="M105 75 L135 95 L140 110"/><path d="M105 75 L85 100 L90 115"/><path d="M105 115 L90 160 L80 200"/><path d="M105 115 L125 155 L120 195"/></svg>`
+            },
+            {
+                id: 7,
+                category: 'standing',
+                title: '举高手',
+                tag: '站姿',
+                desc: '双手向上伸展，身体拉长，适合在开阔场景拍出自由感。',
+                tips: ['手臂贴耳', '手指舒展', '脚尖可踮起'],
+                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="85" r="16"/><path d="M100 101 L100 145"/><path d="M100 110 L70 70 L55 50"/><path d="M100 110 L130 70 L145 50"/><path d="M100 145 L85 185 L80 220"/><path d="M100 145 L115 185 L120 220"/></svg>`
+            },
+            {
+                id: 8,
+                category: 'standing',
+                title: '双手插兜',
+                tag: '站姿',
+                desc: '双手插进口袋，肩膀放松，看起来酷酷的又不失自然。',
+                tips: ['肩膀微微后张', '重心放一条腿', '眼神放松'],
+                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="50" r="16"/><path d="M100 66 L100 115"/><path d="M100 78 L70 95 L70 115"/><path d="M100 78 L130 95 L130 115"/><path d="M100 115 L85 165 L80 205"/><path d="M100 115 L115 165 L120 205"/></svg>`
+            },
+            {
+                id: 9,
+                category: 'standing',
+                title: '撩头发',
+                tag: '站姿',
+                desc: '手指穿过发丝，假装整理头发，动态感十足。',
+                tips: ['手腕要自然', '眼神可不看镜头', '头微微后仰'],
+                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="50" r="16"/><path d="M100 66 L100 115"/><path d="M100 78 L70 95 L60 70 L70 55"/><path d="M100 78 L130 100 L140 120"/><path d="M100 115 L85 165 L80 205"/><path d="M100 115 L115 165 L120 205"/></svg>`
+            },
+            {
+                id: 10,
+                category: 'sitting',
+                title: '蹲坐托腮',
+                tag: '坐姿',
+                desc: '蹲下或坐下，手肘撑在膝盖上托腮，拍出日常随性感。',
+                tips: ['膝盖微微张开', '脚尖点地', '背部挺直'],
+                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="55" r="16"/><path d="M100 71 L100 115"/><path d="M100 82 L65 110 L55 95"/><path d="M100 82 L135 110 L145 95"/><path d="M100 115 L75 145 L55 145"/><path d="M100 115 L125 145 L145 145"/></svg>`
+            },
+            {
+                id: 11,
+                category: 'sitting',
+                title: '坐姿抱膝',
+                tag: '坐姿',
+                desc: '坐在地上抱住膝盖，头侧靠在膝盖上，像电影截图一样温柔。',
+                tips: ['双腿弯曲并拢', '手臂环绕膝盖', '头轻靠膝盖'],
+                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="75" r="16"/><path d="M100 91 L100 130"/><path d="M100 100 L70 125 L65 150"/><path d="M100 100 L130 125 L135 150"/><path d="M100 130 L80 160 L60 165"/><path d="M100 130 L120 160 L140 165"/></svg>`
+            },
+            {
+                id: 12,
+                category: 'sitting',
+                title: '盘腿坐',
+                tag: '坐姿',
+                desc: '盘腿坐在地上，手自然放在腿上或撑地，适合居家氛围。',
+                tips: ['腰背挺直', '手放膝盖', '低头或看远方'],
+                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="70" r="16"/><path d="M100 86 L100 125"/><path d="M100 95 L70 115 L55 130"/><path d="M100 95 L130 115 L145 130"/><path d="M95 125 L70 145 L50 140"/><path d="M105 125 L130 145 L150 140"/></svg>`
+            },
+            {
+                id: 13,
+                category: 'sitting',
+                title: '蹲着看镜头',
+                tag: '坐姿',
+                desc: '单膝蹲地，手肘撑在大腿上，直视镜头，拍出酷飒感。',
+                tips: ['重心稳定', '眼神坚定', '单手撑地更稳'],
+                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="60" r="16"/><path d="M100 76 L100 120"/><path d="M100 88 L70 110 L60 130"/><path d="M100 88 L130 110 L140 130"/><path d="M100 120 L80 155 L70 195"/><path d="M100 120 L125 150 L130 180"/></svg>`
+            },
+            {
+                id: 14,
+                category: 'creative',
+                title: '跳起来',
+                tag: '创意',
+                desc: '跳起来抓拍，头发和衣服都会很有动感，充满活力。',
+                tips: ['跳起来时手脚张开', '连拍模式', '选择干净背景'],
+                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="100" r="16"/><path d="M100 116 L100 150"/><path d="M100 125 L60 110 L40 90"/><path d="M100 125 L140 110 L160 90"/><path d="M100 150 L80 180 L60 170"/><path d="M100 150 L120 180 L140 170"/></svg>`
+            },
+            {
+                id: 15,
+                category: 'creative',
+                title: '背影杀手',
+                tag: '创意',
+                desc: '背对镜头向前走或站立，不露出正脸，留下想象空间。',
+                tips: ['身体放松', '手可自然摆动', '选择有纵深感的场景'],
+                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="50" r="16"/><path d="M100 66 L100 115"/><path d="M100 78 L75 100 L65 120"/><path d="M100 78 L125 100 L135 120"/><path d="M100 115 L85 165 L80 205"/><path d="M100 115 L115 165 L120 205"/></svg>`
+            },
+            {
+                id: 16,
+                category: 'creative',
+                title: '回头杀',
+                tag: '创意',
+                desc: '先背对镜头，然后突然回头抓拍，自然又有故事感。',
+                tips: ['让摄影师喊口令', '笑容自然', '头发甩起来'],
+                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="110" cy="50" r="16"/><path d="M100 66 L95 115"/><path d="M95 78 L70 100 L60 120"/><path d="M95 78 L120 95 L130 85"/><path d="M95 115 L80 165 L75 205"/><path d="M95 115 L110 165 L115 205"/></svg>`
+            },
+            {
+                id: 17,
+                category: 'creative',
+                title: '遮脸挡太阳',
+                tag: '创意',
+                desc: '用手遮挡阳光，眯眼看向远方，夏日氛围感拉满。',
+                tips: ['手在额头上方', '眼睛微眯', '背景要有蓝天'],
+                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="100" cy="55" r="16"/><path d="M100 71 L100 115"/><path d="M100 82 L65 75 L50 55 L70 45"/><path d="M100 82 L135 100 L145 115"/><path d="M100 115 L85 165 L80 205"/><path d="M100 115 L115 165 L120 205"/></svg>`
+            },
+            {
+                id: 18,
+                category: 'group',
+                title: '错位站队',
+                tag: '多人',
+                desc: '朋友们前后错落站立，不要排成一排，画面更有层次。',
+                tips: ['一前一后', '动作呼应', '表情自然'],
+                figure: `<svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="70" cy="70" r="14"/><path d="M70 84 L70 120"/><path d="M70 92 L50 110 L45 130"/><path d="M70 92 L90 110 L95 130"/><path d="M70 120 L60 155 L55 190"/><path d="M70 120 L80 155 L85 190"/><circle cx="130" cy="55" r="14"/><path d="M130 69 L130 110"/><path d="M130 78 L110 95 L105 115"/><path d="M130 78 L150 95 L155 115"/><path d="M130 110 L120 150 L115 185"/><path d="M130 110 L140 150 L145 185"/></svg>`
+            }
+        ];
+
+        let currentCategory = 'all';
+        let filteredPoses = [...poses];
+        let currentIndex = 0;
+        let history = [];
+
+        const poseCard = document.getElementById('poseCard');
+        const poseTag = document.getElementById('poseTag');
+        const poseFigure = document.getElementById('poseFigure');
+        const poseTitle = document.getElementById('poseTitle');
+        const poseDesc = document.getElementById('poseDesc');
+        const poseTips = document.getElementById('poseTips');
+        const counter = document.getElementById('counter');
+        const categoryBtns = document.querySelectorAll('.category-btn');
+
+        function renderPose(index, animate = true) {
+            const pose = filteredPoses[index];
+
+            if (animate) {
+                poseCard.classList.add('switching');
+                setTimeout(() => {
+                    updateContent(pose);
+                    poseCard.classList.remove('switching');
+                }, 200);
+            } else {
+                updateContent(pose);
+            }
+        }
+
+        function updateContent(pose) {
+            poseTag.textContent = pose.tag;
+            poseFigure.innerHTML = pose.figure;
+            poseTitle.textContent = pose.title;
+            poseDesc.textContent = pose.desc;
+            poseTips.innerHTML = pose.tips.map(tip => `<span>${tip}</span>`).join('');
+            counter.textContent = `${currentIndex + 1} / ${filteredPoses.length}`;
+        }
+
+        function filterPoses(category) {
+            currentCategory = category;
+            if (category === 'all') {
+                filteredPoses = [...poses];
+            } else {
+                filteredPoses = poses.filter(p => p.category === category);
+            }
+            currentIndex = 0;
+            renderPose(currentIndex);
+        }
+
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                filterPoses(btn.dataset.category);
+            });
+        });
+
+        document.getElementById('randomBtn').addEventListener('click', () => {
+            let newIndex;
+            do {
+                newIndex = Math.floor(Math.random() * filteredPoses.length);
+            } while (newIndex === currentIndex && filteredPoses.length > 1);
+            currentIndex = newIndex;
+            renderPose(currentIndex);
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + filteredPoses.length) % filteredPoses.length;
+            renderPose(currentIndex);
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % filteredPoses.length;
+            renderPose(currentIndex);
+        });
+
+        // 键盘控制
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') document.getElementById('prevBtn').click();
+            if (e.key === 'ArrowRight') document.getElementById('nextBtn').click();
+            if (e.key === ' ') {
+                e.preventDefault();
+                document.getElementById('randomBtn').click();
+            }
+        });
+
+        renderPose(currentIndex, false);
+
+        // Three.js 背景
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x0a0a0a, 0.02);
+
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 30;
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
+
+        // 几何体粒子
+        const geometries = [
+            new THREE.IcosahedronGeometry(0.5, 0),
+            new THREE.OctahedronGeometry(0.5, 0),
+            new THREE.TetrahedronGeometry(0.5, 0)
+        ];
+
+        const material = new THREE.MeshBasicMaterial({
+            color: 0x667eea,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.4
+        });
+
+        const particles = [];
+        const particleCount = 60;
+
+        for (let i = 0; i < particleCount; i++) {
+            const geometry = geometries[Math.floor(Math.random() * geometries.length)];
+            const mesh = new THREE.Mesh(geometry, material.clone());
+            mesh.position.x = (Math.random() - 0.5) * 60;
+            mesh.position.y = (Math.random() - 0.5) * 60;
+            mesh.position.z = (Math.random() - 0.5) * 40;
+            mesh.rotation.x = Math.random() * Math.PI;
+            mesh.rotation.y = Math.random() * Math.PI;
+            mesh.userData = {
+                speedX: (Math.random() - 0.5) * 0.02,
+                speedY: (Math.random() - 0.5) * 0.02,
+                speedZ: (Math.random() - 0.5) * 0.01,
+                rotSpeedX: (Math.random() - 0.5) * 0.02,
+                rotSpeedY: (Math.random() - 0.5) * 0.02
+            };
+
+            // 颜色渐变
+            const colors = [0x667eea, 0x764ba2, 0x4facfe, 0x00f2fe];
+            mesh.material.color.setHex(colors[Math.floor(Math.random() * colors.length)]);
+            particles.push(mesh);
+            scene.add(mesh);
+        }
+
+        // 连接线
+        const lineMaterial = new THREE.LineBasicMaterial({
+            color: 0x667eea,
+            transparent: true,
+            opacity: 0.08
+        });
+
+        const lineGeometry = new THREE.BufferGeometry();
+        const linePositions = new Float32Array(particleCount * particleCount * 6);
+        lineGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+        const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
+        scene.add(lines);
+
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetX = 0;
+        let targetY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            targetX += (mouseX - targetX) * 0.02;
+            targetY += (mouseY - targetY) * 0.02;
+
+            camera.position.x += (targetX * 5 - camera.position.x) * 0.02;
+            camera.position.y += (targetY * 5 - camera.position.y) * 0.02;
+            camera.lookAt(scene.position);
+
+            particles.forEach(p => {
+                p.position.x += p.userData.speedX;
+                p.position.y += p.userData.speedY;
+                p.position.z += p.userData.speedZ;
+                p.rotation.x += p.userData.rotSpeedX;
+                p.rotation.y += p.userData.rotSpeedY;
+
+                if (Math.abs(p.position.x) > 30) p.userData.speedX *= -1;
+                if (Math.abs(p.position.y) > 30) p.userData.speedY *= -1;
+                if (Math.abs(p.position.z) > 20) p.userData.speedZ *= -1;
+            });
+
+            // 更新连接线
+            let index = 0;
+            const positions = lines.geometry.attributes.position.array;
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].position.x - particles[j].position.x;
+                    const dy = particles[i].position.y - particles[j].position.y;
+                    const dz = particles[i].position.z - particles[j].position.z;
+                    const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+                    if (dist < 8) {
+                        positions[index++] = particles[i].position.x;
+                        positions[index++] = particles[i].position.y;
+                        positions[index++] = particles[i].position.z;
+                        positions[index++] = particles[j].position.x;
+                        positions[index++] = particles[j].position.y;
+                        positions[index++] = particles[j].position.z;
+                    }
+                }
+            }
+            lines.geometry.attributes.position.needsUpdate = true;
+            lines.geometry.setDrawRange(0, index / 3);
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>

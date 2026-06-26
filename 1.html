@@ -9,7 +9,7 @@
 
 <body>
 
-    2222测试测试测试测试
+    2222测试测试测试测试1
     <video></video>
 
     <script>
@@ -63,7 +63,7 @@
         // 一些浏览器部分支持 mediaDevices。我们不能直接给对象设置 getUserMedia 
         // 因为这样可能会覆盖已有的属性。这里我们只会在没有getUserMedia属性的时候添加它。
         if (navigator.mediaDevices.getUserMedia === undefined) {
-            navigator.mediaDevices.getUserMedia = function(constraints) {
+            navigator.mediaDevices.getUserMedia = function (constraints) {
 
                 // 首先，如果有getUserMedia的话，就获得它
                 var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
@@ -74,17 +74,17 @@
                 }
 
                 // 否则，为老的navigator.getUserMedia方法包裹一个Promise
-                return new Promise(function(resolve, reject) {
+                return new Promise(function (resolve, reject) {
                     getUserMedia.call(navigator, constraints, resolve, reject);
                 });
             }
         }
 
         navigator.mediaDevices.getUserMedia({
-                audio: true,
-                video: true
-            })
-            .then(function(stream) {
+            audio: true,
+            video: true
+        })
+            .then(function (stream) {
                 var video = document.querySelector('video');
                 // 旧的浏览器可能没有srcObject
                 if ("srcObject" in video) {
@@ -93,11 +93,11 @@
                     // 防止在新的浏览器里使用它，应为它已经不再支持了
                     video.src = window.URL.createObjectURL(stream);
                 }
-                video.onloadedmetadata = function(e) {
+                video.onloadedmetadata = function (e) {
                     video.play();
                 };
             })
-            .catch(function(err) {
+            .catch(function (err) {
                 console.log(err.name + ": " + err.message);
             });
     </script>
